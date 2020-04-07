@@ -1,0 +1,3276 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+
+
+
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>WSS.COOL</title>
+        <link>https://wangshushuo.github.io/wangshushuo/</link>
+        <description>记录代码生涯，前端，React，Java，Spring，Nginx</description>
+        <generator>Hugo 0.68.3 https://gohugo.io/</generator>
+        
+            <language>zh-CN</language>
+        
+        
+            <managingEditor>wss.six@foxmail.com (WangShuShuo)</managingEditor>
+        
+        
+            <webMaster>wss.six@foxmail.com (WangShuShuo)</webMaster>
+        
+        
+            <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+        
+        <lastBuildDate>Tue, 07 Apr 2020 23:57:28 +0000</lastBuildDate>
+        
+            <atom:link rel="self" type="application/rss+xml" href="https://wangshushuo.github.io/wangshushuo/rss.xml" />
+        
+        
+            <item>
+                <title>JavaScript</title>
+                <link>https://wangshushuo.github.io/wangshushuo/javascript.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/javascript.html</guid>
+                <pubDate>Sat, 04 Apr 2020 02:13:49 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h1 id="上传图片时怎么拿到图片的src地址">上传图片时，怎么拿到图片的src地址？</h1>
+<p>input选中图片以后，只是得到了file对象，如果想在img中显示该图片的话，并不知道src，所以想得到src还需要额外的操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">createObjectURL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// basic
+</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">URL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mozilla(firefox)
+</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// webkit or chrome
+</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">url</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="js操作样式class">JS操作样式class</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>    <span class="c1">// false 因为&#34;c&#34;上面remove掉了
+</span><span class="c1"></span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">===</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">className</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="避免高频率调用">避免高频率调用</h1>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">throttle</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">tId</span><span class="p">)</span> <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">tId</span><span class="p">);</span>
+  <span class="nx">method</span><span class="p">.</span><span class="nx">tId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">method</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">200</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="es6新语法--扩展运算符三个点">ES6新语法--扩展运算符（三个点）</h1>
+<h2 id="第二个参数以及之后的任意多个参数都会被放到values数组中">第二个参数以及之后的任意多个参数都会被放到values数组中</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">a</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="p">...</span><span class="nx">values</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span><span class="nx">values</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">a</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="c1">// [&#34;a&#34;, &#34;b&#34;]
+</span><span class="c1">// [1, 2, 3]
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="合并数组">合并数组</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// ES5 的合并数组
+</span><span class="c1"></span><span class="nx">arr1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">arr2</span><span class="p">,</span> <span class="nx">arr3</span><span class="p">);</span>
+
+<span class="c1">// ES6 的合并数组
+</span><span class="c1"></span><span class="p">[...</span><span class="nx">arr1</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr2</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr3</span><span class="p">]</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="与解构赋值结合">与解构赋值结合</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">111</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">333</span><span class="p">,</span><span class="mi">444</span><span class="p">]</span>
+<span class="c1">// ES5
+</span><span class="c1"></span><span class="nx">a</span> <span class="o">=</span> <span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">rest</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">//a 111
+</span><span class="c1">//b [111,222,333,444]
+</span><span class="c1">// ES6
+</span><span class="c1"></span><span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">]</span> <span class="o">=</span> <span class="nx">list</span>
+<span class="c1">//a 111
+</span><span class="c1">//b [111,222,333,444]
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="js正则">js正则</h2>
+<p>制表符tab  \t<br>
+换行符  \r<br>
+汉字  \S<br>
+任意 .<br>
+小写字母 [a-z]</p>
+<h2 id="数组排序">数组排序</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nx">numbers</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/api/">api</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/javascript/">JavaScript</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>开平方</title>
+                <link>https://wangshushuo.github.io/wangshushuo/square-root-dichotomy-and-newton-iteration.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/square-root-dichotomy-and-newton-iteration.html</guid>
+                <pubDate>Fri, 03 Apr 2020 11:36:01 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>计算开平方可以用二分查找来计算。
+如：求根号10</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 用二分查找，精度0.0001
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">二分开根号</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">end</span> <span class="o">=</span> <span class="nx">x</span><span class="p">,</span><span class="nx">count</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">mid</span> <span class="o">=</span> <span class="nx">start</span> <span class="o">+</span> <span class="p">(</span><span class="nx">end</span> <span class="o">-</span> <span class="nx">start</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">sq</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">*</span> <span class="nx">mid</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">sq</span> <span class="o">-</span> <span class="nx">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="nx">e</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">mid</span><span class="p">,</span><span class="nx">count</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">sq</span> <span class="o">&lt;</span> <span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">start</span> <span class="o">=</span> <span class="nx">mid</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">sq</span> <span class="o">&gt;</span> <span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">end</span> <span class="o">=</span> <span class="nx">mid</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">mid</span><span class="p">,</span><span class="nx">count</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">二分开根号</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="c1">// 3.1622695922851562  18次循环
+</span></code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 用牛顿迭代，精度0.0001
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">牛顿开根号</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// n_ = (n+a/n)/2;
+</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">n_</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">/</span> <span class="nx">n</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="nx">n_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="nx">e</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">n</span> <span class="o">=</span> <span class="nx">n_</span><span class="p">;</span>
+    <span class="nx">n_</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">/</span> <span class="nx">n</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n_</span><span class="p">,</span> <span class="nx">count</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nx">牛顿开根号</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+<span class="c1">// 3.162277660168379   6次循环
+</span></code></pre></td></tr></table>
+</div>
+</div><h1 id="牛顿迭代法适用条件">牛顿迭代法适用条件</h1>
+<p>求函数f(x)=0的解α。<br>
+必须满足如下条件才能用牛顿迭代法求方程的近似解。<br>
+函数的导数不为0；x属于区间[α−r, α+r]；x0为α的近似值，即r&gt;=|a-x0|;<br>
+函数在[α−r, α+r]内二阶导数连续；<br>
+x0足够接近根 α。</p>
+<p><a href="https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E6%B3%95">牛顿法的维基百科</a></p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E7%AE%97%E6%B3%95/">算法</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>MySQL</title>
+                <link>https://wangshushuo.github.io/wangshushuo/mysql.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/mysql.html</guid>
+                <pubDate>Thu, 02 Apr 2020 22:24:03 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="安装mysql">安装MySQL</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">sudo apt-get –y install mysql-server mysql-client
+sudo apt-get install mysql-server mysql-client
+</code></pre></td></tr></table>
+</div>
+</div><p>服务器环境为腾讯云Ubuntu 16.04.1 LTS，使用上面的命令安装mysql服务端与客户端。安装完成后会出现一个设置密码的界面，输入两次密码即完成了安装，然后使用 <code>netstat -anp</code> 命令，会发现 <code>3306</code> 端口正在被监听，即说明安装成功且已运行。</p>
+<h2 id="检查mysql是否启动">检查MySQL是否启动</h2>
+<p><code>ps -ef | grep mysqld</code>
+会看到类似结果说明正在运行：</p>
+<pre><code>mysql      519     1  0 17:44 ?        00:00:00 /usr/sbin/mysqld
+</code></pre><h2 id="开关mysql">开关MySQL</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 开启</span>
+sudo /etc/init.d/mysql start
+<span class="c1"># 关闭命令:</span>
+sudo /etc/init.d/mysql stop
+<span class="c1"># 重启</span>
+sudo /etc/init.d/mysql restart
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="命令行中连接数据库">命令行中连接数据库：</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="n">mysql</span> <span class="o">-</span><span class="n">u</span> <span class="n">root</span> <span class="o">-</span><span class="n">p</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="退出数据库">退出数据库：</h2>
+<pre><code>exit
+</code></pre><h2 id="建库删库">建库/删库</h2>
+<p>CREATE DATABASE <code>yys</code> DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+DROP DATABASE <code>yys</code>;</p>
+<h2 id="建表">建表</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">yuhun</span><span class="o">`</span><span class="p">(</span>
+<span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">INT</span><span class="p">,</span>
+<span class="o">`</span><span class="k">position</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">400</span><span class="p">),</span>
+<span class="o">`</span><span class="k">type</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">400</span><span class="p">),</span>
+<span class="o">`</span><span class="n">v</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span> <span class="k">COMMENT</span> <span class="s1">&#39;表注释&#39;</span><span class="p">,</span>
+<span class="o">`</span><span class="n">bs</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span> <span class="k">COMMENT</span> <span class="s1">&#39;爆伤&#39;</span><span class="p">,</span>
+<span class="o">`</span><span class="n">bj</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">400</span><span class="p">)</span> <span class="k">COMMENT</span> <span class="s1">&#39;表注释&#39;</span><span class="p">,</span>
+ <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span> <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="p">)</span>
+<span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="增删改查">增删改查</h2>
+<h3 id="where">where</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">Customers</span>
+<span class="k">WHERE</span> <span class="n">CustomerID</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><table>
+<thead>
+<tr>
+<th>Operator</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>=</td>
+<td>Equal</td>
+</tr>
+<tr>
+<td>&lt;&gt;</td>
+<td>Not equal. Note: In some versions of SQL this operator may be written as !=</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>Greater than</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>Less than</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>Greater than or equal</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>Less than or equal</td>
+</tr>
+<tr>
+<td>BETWEEN</td>
+<td>Between an inclusive range</td>
+</tr>
+<tr>
+<td>LIKE</td>
+<td>Search for a pattern</td>
+</tr>
+<tr>
+<td>IN</td>
+<td>To specify multiple possible values for a column</td>
+</tr>
+</tbody>
+</table>
+<h3 id="update">update</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">UPDATE</span> <span class="k">table_name</span>
+<span class="k">SET</span> <span class="n">column1</span> <span class="o">=</span> <span class="n">value1</span><span class="p">,</span> <span class="n">column2</span> <span class="o">=</span> <span class="n">value2</span><span class="p">,</span> <span class="p">...</span>
+<span class="k">WHERE</span> <span class="n">condition</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="delete">delete</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="k">table_name</span>
+<span class="k">WHERE</span> <span class="n">condition</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="insert">insert</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="k">table_name</span> <span class="p">(</span><span class="n">column1</span><span class="p">,</span> <span class="n">column2</span><span class="p">,</span> <span class="n">column3</span><span class="p">,</span> <span class="p">...)</span>
+<span class="k">VALUES</span> <span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="p">...);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>use demo
+select zhuanye from runoob_tbl where id=1;
+insert into pe (id,name) values (1,'前');</p>
+<h2 id="导入">导入</h2>
+<p>先将数据处理成一定格式，比如将excel中的数据复制到文档中，这些数据每一行的字段间是被制表符\t分隔，行与行指间被换行符\r\n分隔。<br>
+如果excel中的数据不是很复杂，没有复杂的文本，没有换行之类的字符，就可以直接保存，然后将保存的文件导入数据库。如果文本比较复杂，比如招公务员的岗位的excel的文本中就有很多换行符，这时需要自己处理一下，是整个文本以特定的字符代替\t\r\n来分隔文本，因为导入数据的时候，mysql会考\t\n之类的字符来划分数据。比如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">load</span> <span class="k">data</span> <span class="k">local</span> <span class="n">infile</span> <span class="s2">&#34;~/yuhun.txt&#34;</span> <span class="k">into</span> <span class="k">table</span> <span class="n">yuhun</span>  <span class="nb">CHARACTER</span> <span class="k">SET</span> <span class="n">UTF8</span> <span class="n">fields</span> <span class="n">terminated</span> <span class="k">by</span> <span class="s2">&#34;\t&#34;</span> <span class="n">lines</span> <span class="n">terminated</span> <span class="k">by</span> <span class="s2">&#34;\n&#34;</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我将真正换行的地方替换成了&amp;符号。<br>
+向服务器上传文件
+scp /Users/wangshushuo/Desktop/yuhun.txt <a href="mailto:ubuntu@58.87.109.73">ubuntu@58.87.109.73</a>:~/yuhun.txt</p>
+<p><a href="https://dev.mysql.com/doc/refman/8.0/en/load-data.html">导入官方语法如下</a>:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">LOAD</span> <span class="k">DATA</span> <span class="p">[</span><span class="n">LOW_PRIORITY</span> <span class="o">|</span> <span class="n">CONCURRENT</span><span class="p">]</span> <span class="p">[</span><span class="k">LOCAL</span><span class="p">]</span> <span class="n">INFILE</span> <span class="s1">&#39;file_name&#39;</span>
+    <span class="p">[</span><span class="k">REPLACE</span> <span class="o">|</span> <span class="k">IGNORE</span><span class="p">]</span>
+    <span class="k">INTO</span> <span class="k">TABLE</span> <span class="n">tbl_name</span>
+    <span class="p">[</span><span class="n">PARTITION</span> <span class="p">(</span><span class="n">partition_name</span> <span class="p">[,</span> <span class="n">partition_name</span><span class="p">]</span> <span class="p">...)]</span>
+    <span class="p">[</span><span class="nb">CHARACTER</span> <span class="k">SET</span> <span class="n">charset_name</span><span class="p">]</span>
+    <span class="p">[</span><span class="err">{</span><span class="n">FIELDS</span> <span class="o">|</span> <span class="n">COLUMNS</span><span class="err">}</span>
+        <span class="p">[</span><span class="n">TERMINATED</span> <span class="k">BY</span> <span class="s1">&#39;string&#39;</span><span class="p">]</span>
+        <span class="p">[[</span><span class="n">OPTIONALLY</span><span class="p">]</span> <span class="n">ENCLOSED</span> <span class="k">BY</span> <span class="s1">&#39;char&#39;</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">ESCAPED</span> <span class="k">BY</span> <span class="s1">&#39;char&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+    <span class="p">[</span><span class="n">LINES</span>
+        <span class="p">[</span><span class="n">STARTING</span> <span class="k">BY</span> <span class="s1">&#39;string&#39;</span><span class="p">]</span>
+        <span class="p">[</span><span class="n">TERMINATED</span> <span class="k">BY</span> <span class="s1">&#39;string&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+    <span class="p">[</span><span class="k">IGNORE</span> <span class="nb">number</span> <span class="err">{</span><span class="n">LINES</span> <span class="o">|</span> <span class="k">ROWS</span><span class="err">}</span><span class="p">]</span>
+    <span class="p">[(</span><span class="n">col_name_or_user_var</span>
+        <span class="p">[,</span> <span class="n">col_name_or_user_var</span><span class="p">]</span> <span class="p">...)]</span>
+    <span class="p">[</span><span class="k">SET</span> <span class="n">col_name</span><span class="o">=</span><span class="err">{</span><span class="n">expr</span> <span class="o">|</span> <span class="k">DEFAULT</span><span class="err">}</span><span class="p">,</span>
+        <span class="p">[,</span> <span class="n">col_name</span><span class="o">=</span><span class="err">{</span><span class="n">expr</span> <span class="o">|</span> <span class="k">DEFAULT</span><span class="err">}</span><span class="p">]</span> <span class="p">...]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>一个例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">LOAD</span> <span class="k">DATA</span> <span class="n">INFILE</span> <span class="s1">&#39;file&#39;</span>
+<span class="k">IGNORE</span> <span class="k">INTO</span> <span class="k">TABLE</span> <span class="k">table</span>
+<span class="nb">CHARACTER</span> <span class="k">SET</span> <span class="n">UTF8</span>
+<span class="n">FIELDS</span> <span class="n">TERMINATED</span> <span class="k">BY</span> <span class="s1">&#39;;&#39;</span>
+<span class="n">OPTIONALLY</span> <span class="n">ENCLOSED</span> <span class="k">BY</span> <span class="s1">&#39;&#34;&#39;</span>
+<span class="n">LINES</span> <span class="n">TERMINATED</span> <span class="k">BY</span> <span class="s1">&#39;\n&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="远程连接新建一个帐号帐号名不能为root">远程连接新建一个帐号（帐号名不能为root）</h2>
+<p>如：添加一个用户名为db_user，密码为db_pass，授权为% （%表示所有外围IP能连接）对db_name数据库所有权限，命令如下
+/# mysql -uroot -p
+MySQL [(none)]&gt; grant all privileges on db_name.* to db_user@’%’ identified by ‘db_pass’; #授权语句，特别注意有分号
+MySQL [(none)]&gt; flush privileges;
+MySQL [(none)]&gt; exit; #退出数据库控制台，特别注意有分号</p>
+<h2 id="数据类型">数据类型</h2>
+<h3 id="varchar">varchar</h3>
+<p><code>varchar(666)</code>，其中参数<code>666</code>为字节数。</p>
+<p><code>varchar</code>是可变长度的字符串，大小为<code>0-65535</code>字节。对应的字符串长度会受到字符集影响，若使用<code>utf-8</code>存储汉字，一个汉字字符对应<code>3</code>个字节。</p>
+<p><code>varchar</code>还需要存储数据长度，当小于等于<code>255</code>个字节时，使用<code>1</code>个字节存储长度。大于<code>255</code>长度时，使用<code>2</code>个字节存储长度。</p>
+<p>比如<code>varchar(666)</code>，使用<code>2</code>个字节存储长度，剩下的<code>664</code>个字节存储实际内容，</p>
+<h3 id="text">text</h3>
+<p>TEXT数据不存储在数据库服务器的内存中，因此，每当查询TEXT数据时，MySQL都必须从磁盘读取它，这与CHAR和VARCHAR相比要慢得多。
+<img src="/images/mysql-1.png" alt="mysql文档"></p>
+<blockquote>
+<p>mysql的性能只有在上千万条纪律的时候才需要考虑。
+——潘老师</p>
+</blockquote>
+<h3 id="datetime">DATETIME</h3>
+<p>将js的Date对象传进去，会直接保存，查出来返回到前端页面时，可以这样使用<code>new Date(props.time)</code>转换成Date对象。</p>
+<h3 id="没有布尔值使用tinyint">没有布尔值，使用tinyint</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">ed_class_price_user</span><span class="o">`</span><span class="p">(</span>
+   <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">INT</span> <span class="n">UNSIGNED</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+   <span class="o">`</span><span class="n">user_name</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">unique</span><span class="p">,</span>
+   <span class="o">`</span><span class="n">password</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+   <span class="o">`</span><span class="n">disable</span><span class="o">`</span> <span class="n">TINYINT</span> <span class="k">DEFAULT</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span> <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="p">)</span>
+<span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="表结构">表结构</h2>
+<h3 id="修改表结构">修改表结构</h3>
+<ol>
+<li>查看列：<code>desc 表名;</code></li>
+<li>修改表名：<code>alter table t_book rename to bbb;</code></li>
+<li>添加列：<code>alter table 表名 add column 列名 varchar(30);</code></li>
+<li>删除列：<code>alter table 表名 drop column 列名;</code></li>
+<li>修改列名MySQL： <code>alter table bbb change nnnnn hh int;</code></li>
+<li>修改列名SQLServer：<code>exec sp_rename't_student.name','nn','column';</code></li>
+<li>修改列名Oracle：<code>lter table bbb rename column nnnnn to hh int;</code></li>
+<li>修改列属性：<code>alter table t_book modify name varchar(22);</code></li>
+</ol>
+<h3 id="唯一性约束">唯一性约束</h3>
+<h4 id="建表时加上唯一性约束">建表时加上唯一性约束：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">t_user</span><span class="o">`</span> <span class="p">(</span>
+    <span class="o">`</span><span class="n">Id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span> 
+    <span class="o">`</span><span class="n">username</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">unique</span><span class="p">,</span> 
+    <span class="o">`</span><span class="n">password</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">Id</span><span class="o">`</span><span class="p">)</span> 
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="n">AUTO_INCREMENT</span><span class="o">=</span><span class="mi">1018</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">gbk</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="给已经建好的表加上唯一性约束">给已经建好的表加上唯一性约束：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">t_user</span><span class="o">`</span> <span class="k">ADD</span> <span class="k">unique</span><span class="p">(</span><span class="o">`</span><span class="n">username</span><span class="o">`</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或者：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">unique</span> <span class="k">index</span> <span class="n">UserNameIndex</span> <span class="k">on</span> <span class="s1">&#39;t_user&#39;</span> <span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="索引">索引</h3>
+<h4 id="mysql索引类型">mysql索引类型</h4>
+<ul>
+<li>primary：唯一索引，不允许为null。</li>
+<li>key：普通非唯一索引。</li>
+<li>unique：表示唯一的，不允许重复的索引，可以为null。</li>
+<li>fulltext: 表示全文搜索的索引。 FULLTEXT用于搜索很长一篇文章的时候，效果最好。用在比较短的文本，如果就一两行字的，普通的INDEX 也可以。</li>
+<li>spatial：空间索引。</li>
+</ul>
+<h2 id="表连接">表连接</h2>
+<p>使用了连接语句以后，这两张表就被拼成了一张表。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span> <span class="o">*</span> <span class="k">FROM</span> <span class="n">A</span>  
+<span class="k">INNER</span> <span class="k">JOIN</span> <span class="n">B</span> <span class="k">ON</span> <span class="n">A</span><span class="p">.</span><span class="n">book_id</span><span class="o">=</span><span class="n">B</span><span class="p">.</span><span class="n">book_id</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>四种连接会像下图一样拼装2个表，空白的地方会被填充null</p>
+<p><img src="/images/mysql-1.png" alt="表连接1"></p>
+<p>然后where等语句就可以像操作一张表一样了。</p>
+<h2 id="数据">数据</h2>
+<h3 id="crud">CRUD</h3>
+<h4 id="create">create</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tasks</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="n">description</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;Learn MySQL INSERT&#39;</span><span class="p">,</span><span class="s1">&#39;2017-07-21&#39;</span><span class="p">,</span><span class="s1">&#39;2017-07-22&#39;</span><span class="p">,</span><span class="s1">&#39;Start learning..&#39;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="read-左右链接">read 左右链接</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>
+    <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">user_plugin_name</span><span class="p">,</span>
+    <span class="n">plugin_info</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">plugin_info</span><span class="p">.</span><span class="n">avatar</span><span class="p">,</span> <span class="n">plugin_info</span><span class="p">.</span><span class="n">link</span><span class="p">,</span> <span class="n">plugin_info</span><span class="p">.</span><span class="k">type</span>
+<span class="k">FROM</span> <span class="n">plugin_of_user</span>
+<span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">plugin_info</span>
+<span class="k">ON</span> <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">plugin_id</span><span class="o">=</span><span class="n">plugin_info</span><span class="p">.</span><span class="n">id</span>
+<span class="k">WHERE</span> <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="o">?</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="update-1">update</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">UPDATE</span> <span class="p">[</span><span class="n">LOW_PRIORITY</span><span class="p">]</span> <span class="p">[</span><span class="k">IGNORE</span><span class="p">]</span> <span class="k">table_name</span> 
+<span class="k">SET</span> 
+    <span class="n">column_name1</span> <span class="o">=</span> <span class="n">expr1</span><span class="p">,</span>
+    <span class="n">column_name2</span> <span class="o">=</span> <span class="n">expr2</span><span class="p">,</span>
+    <span class="p">...</span>
+<span class="k">WHERE</span>
+    <span class="n">condition</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h5 id="无则添加有则修改">无则添加，有则修改</h5>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">insert</span> <span class="k">into</span> <span class="n">student</span>
+  <span class="p">(</span><span class="nb">number</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> 
+<span class="k">values</span>
+  <span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="err">‘张三’</span><span class="p">)</span>
+<span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> 
+<span class="nb">number</span> <span class="o">=</span> <span class="mi">46</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="err">‘李四’</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="delete-1">delete</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="k">table_name</span>
+<span class="k">WHERE</span> <span class="n">condition</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="实践">实践</h2>
+<p>评论回帖表</p>
+<p>轮子哥 vczh
+专业造轮子，拉黑抢前排。gaclib.net
+75 人赞同了该回答
+CommentID: GUID (primary key)
+UnderWhichAnswer: GUID (index + foreign key)
+ReplyWhichComment: GUID (nullable + foreign key)
+Author: GUID (foreign key)
+Time: datetime (ascend)
+Content: string</p>
+<h2 id="性能测试">性能测试</h2>
+<p>mysqlslap是mysql自带的测试工具</p>
+<p>下面为测试一条sql的效率</p>
+<pre><code>mysqlslap --create-schema mind -q &quot;select * from test1&quot; --number-of-queries=100 -uroot -p123456
+</code></pre><p>其中<code>--create-schema</code>后为数据库名，<code>-q</code>后为sql语句，<code>--number-of-queries</code>为重复次数。</p>
+<h2 id="工具">工具</h2>
+<h3 id="phpmyadmin">phpmyadmin</h3>
+<p>通过docker使用：拉镜像，然后运行，然后访问本地的<a href="http://localhost:8080">localhost:8080</a></p>
+<pre><code>docker pull phpmyadmin/phpmyadmin
+docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyadmin
+</code></pre><h4 id="连本地的mysqlubuntu">连本地的mysql(ubuntu)</h4>
+<p>将<code>/etc/mysql/mysql.conf.d/mysql.cnf</code>中的<code>bind-address=127.0.0.1</code>改成<code>bind-address=0.0.0.0</code>，使可以远程访问。</p>
+<p>然后使用本机ip访问(192.168.<em>.</em>)，登录的主机地址也是前面那个ip</p>
+<h2 id="资料">资料</h2>
+<p><a href="https://www.yiibai.com/mysql/update-data.html">易百教程MySQL</a>
+<a href="https://www.kancloud.cn/thinkphp/mysql-design-optimalize/39325">Mysql设计与优化专题</a>
+<a href="/images/mysql-1.png">image1</a>:/images/mysql-1.jpg</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/api/">api</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%90%8E%E7%AB%AF/">后端</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/mysql/">mysql</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>重构旧项目-1</title>
+                <link>https://wangshushuo.github.io/wangshushuo/refactoring-old-projects-part-1.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/refactoring-old-projects-part-1.html</guid>
+                <pubDate>Thu, 02 Apr 2020 15:17:52 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="背景">背景</h2>
+<p>这个项目有点老旧</p>
+<pre><code>&quot;dva&quot;: &quot;2.1.0&quot;,
+&quot;react&quot;: &quot;^16.2.0&quot;,
+</code></pre><p>我打算用最新的react和@reduxjs/toolkit开始重构，旧的依赖只能使用connect方式来获取store，使用useSelector和useDispatch很方便也很易读。<code>@reduxjs/toolkit</code>提供的immer和actionCreater也很好用。</p>
+<p>首先重构的是一个643行的组件，它的render方法有580行。</p>
+<h2 id="重复代码">重复代码</h2>
+<p>很容易的发现了一大段重复代码</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">numbers_wrapper</span><span class="p">}&gt;</span>
+  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">member_count</span><span class="p">}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;</span><span class="nx">班级总人数</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">male_count</span><span class="p">}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;</span><span class="nx">男生人数</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">female_count</span><span class="p">}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;</span><span class="nx">女生人数</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">group_count</span> <span class="o">&amp;&amp;</span><span class="p">(</span> <span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">group_count</span><span class="p">[</span><span class="nx">userDetail</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;</span><span class="nx">分组数</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{(</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">user_lecture_count</span> <span class="o">?</span> <span class="p">(</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">user_lecture_count</span><span class="p">[</span><span class="nx">userDetail</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;</span><span class="nx">授课次数</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>可以将他们组织成2个组件</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kd">function</span> <span class="nx">NumberWithLabel</span><span class="p">({</span> <span class="nx">label</span><span class="p">,</span> <span class="nx">count</span> <span class="p">})</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;{</span><span class="nx">label</span><span class="p">}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">numbers_wrapper</span><span class="p">}&gt;</span>
+    <span class="p">&lt;</span><span class="nt">NumberWithLabel</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;班级总人数&#34;</span> <span class="na">count</span><span class="o">=</span><span class="p">{</span><span class="nx">member_count</span><span class="p">}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">NumberWithLabel</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;男生人数&#34;</span> <span class="na">count</span><span class="o">=</span><span class="p">{</span><span class="nx">male_count</span><span class="p">}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">NumberWithLabel</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;女生人数&#34;</span> <span class="na">count</span><span class="o">=</span><span class="p">{</span><span class="nx">female_count</span><span class="p">}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">NumberWithLabel</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;分组数&#34;</span> <span class="na">count</span><span class="o">=</span><span class="p">{</span><span class="nx">group_count</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">group_count</span><span class="p">[</span><span class="nx">userId</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)}</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;</span><span class="nt">NumberWithLabel</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;授课次数&#34;</span> <span class="na">count</span><span class="o">=</span><span class="p">{(</span><span class="nx">user_lecture_count</span> <span class="o">?</span> <span class="p">(</span><span class="nx">user_lecture_count</span><span class="p">[</span><span class="nx">userId</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)}</span> <span class="p">/&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>数据使用useSelector获取，这样代码看起来简单读了。</p>
+<h2 id="封装组件">封装组件</h2>
+<p>然后发现了一大段代码可以封装成一个独立的组件。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">card_body</span><span class="p">}&gt;</span>
+<span class="p">{</span>
+    <span class="nx">groupList</span> <span class="o">&amp;&amp;</span> <span class="nx">groupList</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">group</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_item</span><span class="p">}</span> <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span> <span class="na">onDrop</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">handleStudentDrop</span><span class="p">(</span><span class="nx">group</span><span class="p">)}</span> <span class="na">onDragOver</span><span class="o">=</span><span class="p">{</span><span class="nx">handleStudentDragOver</span><span class="p">}</span>                                                <span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_item_header</span><span class="p">}&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_item_info</span><span class="p">}&gt;</span>
+                    <span class="p">{</span><span class="nx">group</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+                    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">trophy_icon</span><span class="p">}</span> <span class="p">/&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_item_btns</span><span class="p">}&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">Radio</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_student_list_radio</span><span class="p">}</span> <span class="na">checked</span><span class="o">=</span><span class="p">{</span><span class="nx">group</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">curGroup</span><span class="p">}</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">selectCurGroup</span><span class="p">(</span><span class="nx">group</span><span class="p">.</span><span class="nx">id</span><span class="p">)}</span> <span class="p">/&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_student_list</span><span class="p">}&gt;</span>
+                <span class="p">{</span>
+                    <span class="nx">group</span><span class="p">.</span><span class="nx">members</span> <span class="o">&amp;&amp;</span> <span class="nx">group</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">(</span>
+                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span>
+                            <span class="nx">textAlign</span><span class="o">:</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+                            <span class="nx">fontSize</span><span class="o">:</span><span class="mi">14</span><span class="p">,</span>
+                            <span class="nx">color</span><span class="o">:</span><span class="s1">&#39;#666&#39;</span><span class="p">,</span>
+                        <span class="p">}}&gt;</span><span class="nx">该小组没有学生</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;)</span> <span class="o">:</span> <span class="p">(</span>
+                        <span class="nx">group</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">stu</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(&lt;</span><span class="nt">StudentItem</span>
+                            <span class="na">isDrage</span>
+                            <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span>
+                            <span class="na">stu</span><span class="o">=</span><span class="p">{</span><span class="nx">stu</span><span class="p">}</span>
+                            <span class="na">group</span><span class="o">=</span><span class="p">{</span><span class="nx">group</span><span class="p">}</span>
+                            <span class="na">gender</span><span class="o">=</span><span class="p">{</span><span class="nx">stu</span><span class="p">.</span><span class="nx">gender</span><span class="p">}</span>
+                            <span class="na">headimg_res_url</span><span class="o">=</span><span class="p">{</span><span class="nx">stu</span><span class="p">.</span><span class="nx">headimg_res_url</span><span class="p">}</span>
+                            <span class="na">name</span><span class="o">=</span><span class="p">{</span><span class="nx">stu</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
+                            <span class="na">groupStuStyle</span>
+                            <span class="na">onDragStart</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">handleDragStart</span><span class="p">(</span><span class="nx">stu</span><span class="p">,</span> <span class="nx">group</span><span class="p">.</span><span class="nx">id</span><span class="p">)}</span>
+                            <span class="na">onSetLeader</span><span class="o">=</span><span class="p">{</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="nx">handleSetLeader</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">stu</span><span class="p">,</span><span class="nx">group</span><span class="p">)}</span>
+                            <span class="na">onSetHeader</span><span class="o">=</span><span class="p">{</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="nx">handleSetHeader</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">stu</span><span class="p">)}</span>
+                        <span class="p">/&gt;))</span>
+                    <span class="p">)</span>
+                <span class="p">}</span>
+            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">))</span>
+<span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>还有它相关的方法都是像这样的dispatch，大概有五六个，它们都写在render函数内，这非常糟糕。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">handleDragStart</span> <span class="o">=</span> <span class="p">(</span><span class="nx">stu</span><span class="p">,</span> <span class="nx">org_id</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">dispatch</span><span class="p">({</span>
+        <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;classDetail/updateState&#39;</span><span class="p">,</span>
+        <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">onDragStudent</span><span class="o">:</span> <span class="p">{</span>
+                <span class="p">...</span><span class="nx">stu</span><span class="p">,</span>
+                <span class="nx">org_id</span><span class="p">,</span>
+                <span class="nx">type</span><span class="o">:!!</span><span class="nx">org_id</span><span class="p">,</span>
+            <span class="p">},</span>
+        <span class="p">},</span>
+    <span class="p">});</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>我要讲这个<code>dispatch</code>中的<code>action</code>放到一个<code>action_creater.js</code>文件中，将组建放在<code>GroupItem.jsx</code>文件中。这可以让次要的信息不占用篇幅，主要的信息就会一目了然了。
+这段代码就编程了2个组件和1个<code>action creater</code>文件。相关的代码封装在一起，再也不用为了看一个函数而滚动300行代码或者要用搜索才能找到了。</p>
+<blockquote>
+<p>这3个文件目前都只有40-50行。</p>
+</blockquote>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E6%8A%98%E8%85%BE/">折腾</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>vim</title>
+                <link>https://wangshushuo.github.io/wangshushuo/vim.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/vim.html</guid>
+                <pubDate>Wed, 01 Apr 2020 21:27:14 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="替换">替换</h2>
+<div class="shortcodes_withTitle" title="buiiuiuiu">abbnbnbn</div>
+<pre><code>:[range]s/search/replace/optioins 1️⃣
+:%s/aa/bb/g 2️⃣
+:%s/aa/bb/gc 3️⃣
+</code></pre><ul>
+<li>1️⃣ range表示搜索的范围， <code>:8,10 s/</code> 表示第8-10行，<code>:%s/</code> 表示全文。</li>
+<li>2️⃣ <code>g</code> 是一个option(global)，表示要替换所有匹配项，不加它的话只会替换第一个匹配项。</li>
+<li>3️⃣ <code>c</code> 是一个option(confirm)，表示替换前需要确认。</li>
+</ul>
+<h3 id="confirm">confirm</h3>
+<p>加了confirm选项后，替换时会出现这样的提示，需要你回复。</p>
+<pre><code>replace with foo (y/n/a/q/l/^E/^Y)?
+</code></pre><table>
+<thead>
+<tr>
+<th align="center">回复</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">y</td>
+<td align="left">yes</td>
+</tr>
+<tr>
+<td align="center">n</td>
+<td align="left">no</td>
+</tr>
+<tr>
+<td align="center">a</td>
+<td align="left">go ahead，替换所有</td>
+</tr>
+<tr>
+<td align="center">q</td>
+<td align="left">quit 取消、退出操作</td>
+</tr>
+<tr>
+<td align="center">l</td>
+<td align="left">替换当前这个，然后退出操作</td>
+</tr>
+<tr>
+<td align="center">^E/^Y</td>
+<td align="left">scroll the text using Ctrl-e and Ctrl-y</td>
+</tr>
+</tbody>
+</table>
+<h2 id="配置">配置</h2>
+<pre><code>set nocompatible 
+set number
+set relativenumber
+set cursorline
+set wrap
+set laststatus=2
+set ruler
+
+syntax on
+set showmode
+set showcmd
+
+set shiftwidth=4
+set tabstop=2
+set expandtab
+set softtabstop=2
+</code></pre><p>依次：不兼容vi，显示行号，行号是相对当前行的，光标所在的当前行高亮，换行，显示状态栏，状态栏中显示光标的位置，语法高亮开启，模式，指令，<code>&gt;&gt;&lt;&lt;==</code> 操作的空格数，tab键的空格数，缩紧使用空格，tab等于几个空格</p>
+<h2 id="缩紧">缩紧</h2>
+<p>在文本上按下&gt;&gt;（增加一级缩进）、&lt;&lt;（取消一级缩进）或者==（取消全部缩进）时，每一级的字符数。</p>
+<h2 id="reference">reference</h2>
+<ul>
+<li>搜索与替换：<a href="https://www.linux.com/training-tutorials/vim-tips-basics-search-and-replace/">https://www.linux.com/training-tutorials/vim-tips-basics-search-and-replace/</a></li>
+<li>配置：<a href="http://vim.spf13.com/">http://vim.spf13.com/</a></li>
+<li>攻略1：<a href="https://github.com/vim-china/hello-vim">https://github.com/vim-china/hello-vim</a></li>
+<li>攻略2：<a href="https://github.com/oldratlee/vim-practice">https://github.com/oldratlee/vim-practice</a></li>
+<li>攻略3：<a href="https://github.com/wsdjeg/vim-galore-zh_cn">https://github.com/wsdjeg/vim-galore-zh_cn</a></li>
+<li>阮一峰：<a href="https://www.ruanyifeng.com/blog/2018/09/vimrc.html">https://www.ruanyifeng.com/blog/2018/09/vimrc.html</a></li>
+</ul>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/api/">api</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>ReactRouter的哲学</title>
+                <link>https://wangshushuo.github.io/wangshushuo/reactrouter-philosophy.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/reactrouter-philosophy.html</guid>
+                <pubDate>Tue, 31 Mar 2020 13:11:28 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="哲学">哲学</h2>
+<p>本指南的目的是解释使用React Router时的心智模型。 我们将其称为“动态路由”，这与您可能更熟悉的“静态路由”完全不同。</p>
+<h3 id="静态路由">静态路由</h3>
+<p>如果您使用过Rails，Express，Ember，Angular等，那么您已经使用了静态路由。 在这些框架中，您可以在进行任何渲染之前将路由声明为应用程序初始化的一部分。 React Router pre-v4也是静态的（大多数情况下）。<br>
+请注意在应用侦听之前如何声明路由。 我们使用的客户端路由器是类似的。 在Angular中，您可以预先声明您的路由，然后在渲染之前将它们导入顶级AppModule.<br>
+Ember有一个传统的routes.js文件，构建会读取并导入到应用程序中。 同样，这会在您的应用呈现之前发生。<br>
+尽管API不同，但它们都共享“静态路由”模型。 React Router也使用“静态路由”直到v4。要成功使用React Router，您需要忘记这一切！：o</p>
+<h3 id="背景故事">背景故事</h3>
+<p>坦率地说，我们对我们在React Router的v2版本中方向感到非常沮丧。 我们（Michael和Ryan）觉得受到API的限制，认识到我们重新实现了React（生命周期等）的部分，而且它与React给我们创作UI的心理模型不符。我们走过走廊在研讨会讨论如何应对之前的酒店。我们互相问道：“如果我们使用我们在工作室教授的模式构建路由器会是什么样子？”开发只需要几个小时，我们就有了一个概念验证，我们知道它是未来 我们想要路由。 我们最终得到的API并不是React的“外部”，这是一个由React的其余部分组成或自然落实到位的API。 我们认为你会喜欢它。</p>
+<h3 id="动态路由">动态路由</h3>
+<p>当我们说动态路由时，我们指的是在您的应用呈现时发生的路由，而不是在正在运行的应用之外的配置或约定中。 这意味着几乎所有东西都是React Router中的一个组件。 以下是对API的60秒回顾，了解它的工作原理：首先，为自己定位的环境抓住自己的路由器组件，并将其呈现在应用的顶部。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">BrowserRouter</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-router-dom&#39;</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">((</span>
+  <span class="o">&lt;</span><span class="nx">BrowserRouter</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">App</span><span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="err">/BrowserRouter&gt;</span>
+<span class="p">),</span> <span class="nx">el</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>接下来，抓取链接组件以链接到新位置：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">nav</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&#34;/dashboard&#34;</span><span class="o">&gt;</span><span class="nx">Dashboard</span><span class="o">&lt;</span><span class="err">/Link&gt;</span>
+    <span class="o">&lt;</span><span class="err">/nav&gt;</span>
+  <span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>最后，当用户访问/仪表板时渲染Route来显示一些UI。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">nav</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">to</span><span class="o">=</span><span class="s2">&#34;/dashboard&#34;</span><span class="o">&gt;</span><span class="nx">Dashboard</span><span class="o">&lt;</span><span class="err">/Link&gt;</span>
+    <span class="o">&lt;</span><span class="err">/nav&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&#34;/dashboard&#34;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Dashboard</span><span class="p">}</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+  <span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Route将呈现<code>&lt;Dashboard {... props} /&gt;</code>，其中<code>props</code>是一些特定于路由器的东西，看起来像<code>{match，location，history}</code>。 如果用户不在<code>/dashboard</code>，则Route将呈现为null。 这就是它的全部内容。</p>
+<h3 id="嵌套路由">嵌套路由</h3>
+<p>很多路由器都有一些“嵌套路由”的概念。如果您在v4之前使用过React Router的版本，那么您也会知道它也是如此！当您从静态路由配置移动到动态渲染路由时，如何“嵌套路由”？那么，你如何潜逃一个div？</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">BrowserRouter</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="cm">/* here&#39;s a div */</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="cm">/* here&#39;s a Route */</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="nx">Route</span> <span class="nx">path</span><span class="o">=</span><span class="s2">&#34;/tacos&#34;</span> <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Tacos</span><span class="p">}</span><span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="err">/div&gt;</span>
+  <span class="o">&lt;</span><span class="err">/BrowserRouter&gt;</span>
+<span class="p">)</span>
+
+<span class="c1">// when the url matches `/tacos` this component renders
+</span><span class="c1"></span><span class="kr">const</span> <span class="nx">Tacos</span>  <span class="o">=</span> <span class="p">({</span> <span class="nx">match</span> <span class="p">})</span> <span class="p">=&gt;</span> <span class="p">(</span>
+  <span class="c1">// here&#39;s a nested div
+</span><span class="c1"></span>  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="p">{</span><span class="cm">/* here&#39;s a nested Route,
+</span><span class="cm">        match.url helps us make a relative path */</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="nx">Route</span>
+      <span class="nx">path</span><span class="o">=</span><span class="p">{</span><span class="nx">match</span><span class="p">.</span><span class="nx">url</span> <span class="o">+</span> <span class="s1">&#39;/carnitas&#39;</span><span class="p">}</span>
+      <span class="nx">component</span><span class="o">=</span><span class="p">{</span><span class="nx">Carnitas</span><span class="p">}</span>
+    <span class="o">/&gt;</span>
+  <span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>看看路由器没有“嵌套”API？ 路由只是一个组件，就像div一样。 因此，为了筑巢路线或div，你只需......做它。让我变得更加棘手。</p>
+<h3 id="响应路线">响应路线</h3>
+<p>考虑用户导航到<code>/invoices</code>。 您的应用适用于不同的屏幕尺寸，它们具有较窄的视口，因此您只需向其显示发票列表和发票仪表板的链接。他们可以从那里更深入地导航。<br>
+在大屏幕上，<code>/invoices</code>不是有效的路线，但在小屏幕上它是！ 为了让事情变得更有趣，请考虑一个拥有巨型手机的人。 他们可以纵向查看/发票，然后将手机旋转到横向。 突然间，我们有足够的空间来显示主 - 细节用户界面，所以你应该立即重定向！</p>
+<pre><code>
+</code></pre><p>当用户将手机从纵向旋转到横向时，此代码会自动将其重定向到仪表板。 该组有效路由根据用户手中的移动设备的动态特性而改变。
+这只是一个例子。 还有很多其他我们可以讨论的内容，但我们总结一下这个建议：为了让你的直觉与React Router的一致，考虑组件，而不是静态路由。 考虑如何使用React的声明可组合性来解决问题，因为几乎每个“React Router问题”都可能是“React问题”。</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/knowledge/">knowledge</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/front-end/">front end</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/react/">react</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>渐变色</title>
+                <link>https://wangshushuo.github.io/wangshushuo/linear-gradient.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/linear-gradient.html</guid>
+                <pubDate>Tue, 31 Mar 2020 08:41:24 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="先说草图布局">先说草图布局</h2>
+<p>现在工作的公司设计的页面似乎从来不考虑体验。比如说加载数据的loading界面，目前我发现B站、知乎等很多的APP、网页都在用下面图片这种效果。就是在没有拿到数据前，页面用条条框框的图形来代表内容和数据。<br>
+<img src="/images/linear-gradient-1.jpg" alt="草图布局"><br>
+这个效果其实好像还没有一个正式的名字，“草图布局”这个名字是从<a href="https://weibo.com/1400854834/FAbzPbKqE?type=comment#_rnd1531902658334">阮一峰的微博</a>看来的，我认为挺恰当的就这么叫吧。下图来自他的微博，微博里还有demo可以参考。</p>
+<p>这个demo的实现原始是，在<code>background-image</code>中使用各种<code>gradient</code>来画圆形、矩形，使用<code>background-size</code>控制各个图形的尺寸，主要是宽度。再使用<code>background-position</code>控制各个图形的位置来布局。这里就用到的渐变色，只不过用来画了非渐变的图形。</p>
+<p>demo中有一个高亮的动画效果，是使用一个有旋转了100度的<code>linear-gradient</code>加一个位置动画的效果实现的。我在我的项目中实现这个效果时遇到了问题——怎么确定这个渐变色的起始位置。比如，下图这条白色的线，和另一条红线。<br>
+<img src="/images/linear-gradient-3.gif" alt="草图布局">
+<img src="/images/linear-gradient-4.gif" alt="草图布局"></p>
+<p>红线的效果由这段代码实现的：（白线也类似）</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">background-image</span><span class="o">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">120deg</span><span class="o">,</span> <span class="nt">transparent</span> <span class="nt">308px</span><span class="o">,</span> <span class="nt">red</span> <span class="nt">323px</span> <span class="o">,</span><span class="nt">transparent</span> <span class="nt">338px</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>代码中的308px是红线的起始位置，338是结束位置，他们的差是线的宽度。但是308这个数是怎么算出来的呢？</p>
+<h2 id="渐变色的方向与位置">渐变色的方向与位置</h2>
+<p>如果想使用<code>linear-gradient</code>画出那条红线，计算起始位置是关键（308px）。想计算起始位置需要先了解几个概念：渐变线、起始点和终点。<br>
+<img src="/images/linear-gradient-2.png" alt="渐变色" title="渐变线、起始点和终点"></p>
+<blockquote>
+<p>渐变线由包含渐变图形的容器的中心点和一个角度来定义的。渐变线上的颜色值是由不同的点来定义，包括起始点，终点，以及两者之间的可选的中间点（中间点可以有多个）。<br>
+起始点是渐变线上代表起始颜色值的点。起始点由渐变线和过容器顶点的垂直线之间的交叉点来定义。（垂直线跟渐变线在同一象限内）<br>
+同样的，终点是渐变线上代表最终颜色值的点。终点也是由渐变线和从最近的顶点发出的垂直线之间的交叉点定义的，然而从起始点的对称点来定义终点是更容易理解的一种方式，因为终点是起点关于容器的中心点的反射点。</p>
+</blockquote>
+<p>上面的图片和定义来自<a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/linear-gradient">MDZ文档</a></p>
+<p>由这些概念可以知道渐变色是从起始点开始沿着渐变线的方向绘制，渐变色的交界会垂直与渐变线。也就是说我们想做的红线是垂直于渐变线的。那么我们看下图
+<img src="/images/linear-gradient-5.gif" alt="渐变色"> <br>
+已知红线与上边成60度角（自己定义的），所以渐变线应该是120deg，过点B做120deg渐变线的垂直线，相交于点C，点A点C的线段A的长度就是红色的起始位置，如果上边长度为375，由勾股定理可知线段A长度为309，所以红线的起始位置就是309px，（我的代码里取了308px没什么区别）<br>
+由此可以写出上面的代码来实现红线。（其实就是顶点到红线的距离）<br>
+所以当我们想实现一个有角度的渐变色的时候，就可以用类似的方法来计算颜色的起始位置。</p>
+<p>如果渐变方向是平行与上下边或者左右边，可以这样写：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">background-image</span><span class="o">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">to</span> <span class="nt">bottom</span><span class="o">,</span><span class="nt">red</span> <span class="nt">25px</span> <span class="o">,</span><span class="nt">blue</span> <span class="nt">0</span><span class="o">);</span>
+<span class="nt">background-image</span><span class="o">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">to</span> <span class="nt">right</span><span class="o">,</span> <span class="nt">red</span> <span class="nt">25px</span> <span class="o">,</span><span class="nt">blue</span> <span class="nt">0</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>另外下面代码的效果是一样的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">background-image</span><span class="o">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">red</span> <span class="nt">25px</span> <span class="o">,</span><span class="nt">blue</span> <span class="nt">0</span><span class="o">);</span>
+<span class="nt">background-image</span><span class="o">:</span> <span class="nt">linear-gradient</span><span class="o">(</span><span class="nt">180deg</span><span class="o">,</span> <span class="nt">red</span> <span class="nt">25px</span> <span class="o">,</span><span class="nt">blue</span> <span class="nt">0</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>另外，第二个颜色后面的数值便是渐变结束的位置，如果小雨前面颜色的位置就不会有渐变效果，利用这点可以用来实现草图布局。</p>
+<p>例子：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">body</span><span class="o">,</span><span class="nt">html</span><span class="p">{</span>
+	<span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">.</span><span class="nc">empty</span><span class="p">:</span><span class="nd">empty</span> <span class="p">{</span>
+	<span class="k">margin</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+	<span class="k">width</span><span class="p">:</span> <span class="mi">702</span><span class="kt">px</span><span class="p">;</span>
+	<span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+	
+	<span class="k">background-image</span><span class="p">:</span>
+		<span class="nb">linear-gradient</span><span class="p">(</span><span class="mi">100</span><span class="kt">deg</span><span class="p">,</span> 
+			<span class="kc">transparent</span> <span class="mi">600</span><span class="kt">px</span><span class="p">,</span> <span class="nb">rgba</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span> <span class="mi">630</span><span class="kt">px</span> <span class="p">,</span><span class="kc">transparent</span> <span class="mi">660</span><span class="kt">px</span><span class="p">),</span>
+		<span class="nb">linear-gradient</span><span class="p">(</span> <span class="kc">lightgray</span> <span class="mi">150</span><span class="kt">px</span><span class="p">,</span> <span class="kc">transparent</span> <span class="mi">0</span> <span class="p">),</span>
+		<span class="nb">linear-gradient</span><span class="p">(</span> <span class="kc">lightgray</span> <span class="mi">150</span><span class="kt">px</span><span class="p">,</span> <span class="kc">transparent</span> <span class="mi">0</span> <span class="p">),</span>
+		<span class="nb">linear-gradient</span><span class="p">(</span> <span class="kc">lightgray</span> <span class="mi">30</span><span class="kt">px</span><span class="p">,</span> <span class="kc">transparent</span> <span class="mi">0</span> <span class="p">),</span>
+		<span class="nb">linear-gradient</span><span class="p">(</span> <span class="kc">lightgray</span> <span class="mi">88</span><span class="kt">px</span><span class="p">,</span> <span class="kc">transparent</span> <span class="mi">0</span> <span class="p">);</span>
+
+	<span class="k">background-size</span><span class="p">:</span>
+		<span class="mi">100</span><span class="kt">%</span> <span class="mi">100</span><span class="kt">%</span><span class="p">,</span> <span class="c">/* highlight */</span>
+		<span class="mi">336</span><span class="kt">px</span> <span class="mi">150</span><span class="kt">px</span><span class="p">,</span>
+		<span class="mi">336</span><span class="kt">px</span> <span class="mi">150</span><span class="kt">px</span><span class="p">,</span>
+		<span class="mi">570</span><span class="kt">px</span> <span class="mi">30</span><span class="kt">px</span><span class="p">,</span>
+		<span class="mi">720</span><span class="kt">px</span> <span class="mi">88</span><span class="kt">px</span><span class="p">;</span>
+
+	<span class="k">background-position</span><span class="p">:</span>
+		<span class="mi">-700</span><span class="kt">px</span> <span class="mi">0</span><span class="p">,</span>
+		<span class="mi">0</span> <span class="mi">24</span><span class="kt">px</span><span class="p">,</span>
+		<span class="mi">387</span><span class="kt">px</span> <span class="mi">24</span><span class="kt">px</span><span class="p">,</span>
+		<span class="mi">0</span> <span class="mi">230</span><span class="kt">px</span><span class="p">,</span>
+		<span class="mi">0</span> <span class="mi">284</span><span class="kt">px</span><span class="p">;</span>
+	
+	<span class="k">background-repeat</span><span class="p">:</span> <span class="kc">no-repeat</span><span class="p">;</span>
+
+	<span class="k">animation</span><span class="p">:</span> <span class="n">shine</span> <span class="mi">2</span><span class="kt">s</span> <span class="kc">infinite</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">@</span><span class="k">keyframes</span> <span class="nt">shine</span> <span class="p">{</span>
+	<span class="nt">to</span> <span class="p">{</span>
+		<span class="k">background-position</span><span class="p">:</span>
+			<span class="mi">160</span><span class="kt">px</span> <span class="mi">0</span><span class="p">,</span>
+			<span class="mi">0</span> <span class="mi">24</span><span class="kt">px</span><span class="p">,</span>
+			<span class="mi">387</span><span class="kt">px</span> <span class="mi">24</span><span class="kt">px</span><span class="p">,</span>
+			<span class="mi">0</span> <span class="mi">230</span><span class="kt">px</span><span class="p">,</span>
+			<span class="mi">0</span> <span class="mi">284</span><span class="kt">px</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/api/">api</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/css/">css</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>SSH</title>
+                <link>https://wangshushuo.github.io/wangshushuo/ssh.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/ssh.html</guid>
+                <pubDate>Tue, 31 Mar 2020 08:37:31 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>在自己的电脑上生成公钥、密钥。公钥放在远程服务器上，密钥在自己电脑里不用管。连接远程服务器时就不用输入密码了。</p>
+<h2 id="生成key">生成key</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ssh-keygen -t rsa
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="复制公钥">复制公钥</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">scp ~/.ssh/id_rsa.pub username@hostname:~/.ssh/authorized_keys 
+</code></pre></td></tr></table>
+</div>
+</div><p>然后输入密码 .</p>
+<blockquote>
+<p>如果报错 <code>scp: /root/.ssh/authorized_keys: No such file or directory</code><br>
+可以使用<code>ssh root@45.77.251.51 &quot;mkdir ~/.ssh/&quot;</code>命令创建.ssh目录后在使用scp命令复制</p>
+</blockquote>
+<h2 id="登陆服务器">登陆服务器</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">ssh username@hostname
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="alias命令">alias命令</h2>
+<p>在终端中定义缩写的命令，比如：</p>
+<pre><code>alias totx='ssh username@hostname'
+</code></pre><p>这样就可以使用<code>totx</code>命令直接登陆远程服务器了，但是alias命令会在重启终端时</p>
+<h2 id="永久保留alias命令">永久保留alias命令</h2>
+<p>每次登陆时.bash_profile文件是会自动执行，此过程会调用.bashrc，将alias命令写入.bashrc文件就可以将alias命令永久生效了。（如果没有此文件就创建一个）</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/api/">api</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/linux/">LINUX</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>跨域CORS</title>
+                <link>https://wangshushuo.github.io/wangshushuo/%E8%B7%A8%E5%9F%9Fcors.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/%E8%B7%A8%E5%9F%9Fcors.html</guid>
+                <pubDate>Tue, 31 Mar 2020 08:33:05 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="什么是跨域问题">什么是跨域问题</h2>
+<p>在网页中使用AJAX时，AJAX请求的URL与网页的URL相比较，如果是属于同一个域名才可以正常访问，如果不属于一个域名就会出现跨域问题。所以，怎么判断两个URL是不是属于同一个域名呢？</p>
+<p>比如一个网页的URL是&quot;https://segmentfault.com/a/1190000011145364?aaa=666&quot;，可以把它拆分开：<br>
+origin: &quot;https://segmentfault.com&quot;<br>
+pathname: &quot;/a/1190000011145364&quot;<br>
+search: &quot;?aaa=666&quot;</p>
+<p>只有当两个URL的origin完全相同时，才不会出现跨域问题。所以以下origin都会出现跨域问题：<br>
+子域名：https://abc.segmentfault.com<br>
+不同协议：http://segmentfault.com<br>
+不同端口：https://segmentfault.com:8080<br>
+IP地址：https://192.168.4.12</p>
+<p>当出现跨域问题时，AJAX请求返回后浏览器控制台会报错，AJAX的回调拿不到返回值。</p>
+<h2 id="两种常用的解决方法jsonp和cors">两种常用的解决方法：JSONP和CORS</h2>
+<h3 id="jsonp">JSONP</h3>
+<p>原理是利用浏览器允许跨域引用JavaScript资源。<br>
+发送请求时，通过URL告诉服务器函数名，如：<code>http://some.com?callback=handle</code>.<br>
+服务器的通常是函数调用的形式，如：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="nx">handle</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>页面中需要先准备好函数<code>handle</code>：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+	<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="cors">CORS</h3>
+<p>这个方案好像不需要在JS代码中的额外操作。另外，默认情况下，Cookie不包括在CORS请求之中，如果需要请求中带着cookie，设置withCredentials参数即可。<br>
+<a href="http://www.ruanyifeng.com/blog/2016/04/cors.html">阮一峰——跨域资源共享 CORS 详解</a></p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/javascript/">JavaScript</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>AJAX</title>
+                <link>https://wangshushuo.github.io/wangshushuo/ajax.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/ajax.html</guid>
+                <pubDate>Tue, 31 Mar 2020 08:20:17 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>AJAX——异步的JavaScript和XML，就是使用<code>XMLHttpRequest</code>对象与服务器通信。</p>
+<h2 id="发送http请求">发送http请求</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">httpRequest</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+<span class="nx">httpRequest</span><span class="p">.</span><span class="nx">onreadystatechange</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(){};</span>
+<span class="nx">httpRequest</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s1">&#39;GET&#39;</span><span class="p">,</span> <span class="s1">&#39;http://www.example.org/some.file&#39;</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="nx">httpRequest</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>创建XMLHttpRequest对象</li>
+<li>告诉它</li>
+<li>与哪个服务器交互</li>
+<li>以哪种方法交互</li>
+<li>给服务器的数据</li>
+</ol>
+<h2 id="open方法">open()方法</h2>
+<p>这个方法是选择互动的目标，比如玩游戏时，你要告诉服务器我要用这个账号玩，用微信要先选择一个人才能发消息。</p>
+<p>由于<a href="/2018/06/22/cors.html">跨域问题</a>，<code>open()</code> 方法的 <code>URL</code> 参数默认*..不能..*使用第三方域名。<br>
+第一个参数如果不大写某些浏览器可能无法处理（比如FireFox，不知道哪些版本会有这个问题？）</p>
+<h2 id="send方法">send()方法</h2>
+<p>选择了目标后，就可以发消息了。发微信是说人类的语言，这个send方法就是说机器能听懂的语言。</p>
+<h3 id="指定发送给服务器的数据">指定发送给服务器的数据</h3>
+<p><code>send()</code> 方法的参数就是要发送的数据，将会发送到服务器。像查询语句：<code>&quot;name=wss&amp;age=66&quot;</code>，<br>
+或者其他格式, 例如multipart/form-data，JSON，XML等。</p>
+<h3 id="指定返回数据的格式">指定返回数据的格式</h3>
+<p>服务区收到了我们的请求后，会给我们一个响应。我们要事先告诉服务器我们想要的数据的格式。</p>
+<p>当以POST方式获取数据时，需要设置请求的<em>MIME类型</em>。</p>
+<blockquote>
+<p>用于定义网络文件的类型和网页的编码，决定浏览器将以什么形式、什么编码读取这个文件）</p>
+</blockquote>
+<p>比如表单数据：<code>httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');</code></p>
+<h2 id="处理服务器响应">处理服务器响应</h2>
+<p><code>httpRequest.onreadystatechange</code>函数负责处理响应，函数内应该怎么处理呢？</p>
+<p>第一步：检查请求的状态。</p>
+<p>请求的状态会经历如下变化：（每当状态变化是都会调用onreadystatechange方法？）</p>
+<ul>
+<li>0 (未初始化) or (请求还未初始化) UNSENT</li>
+<li>1 (正在加载) or (已建立服务器链接) OPENED</li>
+<li>2 (加载成功) or (请求已接受) HEADERS_RECEIVED</li>
+<li>3 (交互) or (正在处理请求) LOADING</li>
+<li>4 (完成) or (请求已完成并且响应已准备好) DONE</li>
+</ul>
+<p>第二步：请求完成时，检查http状态码。</p>
+<p>当请求完成，意味着完成了与服务器的交互。接下来就可以检查 <a href="http://www.runoob.com/http/http-status-codes.html">HTTP状态码</a> 了：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="k">if</span> <span class="p">(</span><span class="nx">httpRequest</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="nx">XMLHttpRequest</span><span class="p">.</span><span class="nx">DONE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Everything is good, the response was received.
+</span><span class="c1"></span>    <span class="k">if</span> <span class="p">(</span><span class="nx">httpRequest</span><span class="p">.</span><span class="nx">status</span> <span class="o">===</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Perfect!
+</span><span class="c1"></span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="c1">// There was a problem with the request.
+</span><span class="c1"></span>        <span class="c1">// For example, the response may have a 404 (Not Found)
+</span><span class="c1"></span>        <span class="c1">// or 500 (Internal Server Error) response code.
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="c1">// Not ready yet.
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>在检查完HTTP响应码后，就可以使用服务器返回的数据了，有两个方法去访问这些数据：</p>
+<ul>
+<li><code>httpRequest.responseText</code> – 服务器以文本字符的形式返回</li>
+<li><code>httpRequest.responseXML</code> – 以 XMLDocument 对象方式返回，之后就可以使用JavaScript来处理
+（返回JSON怎么处理？）</li>
+</ul>
+<h2 id="responsetype属性">responseType属性</h2>
+<p>可以通过设置一个 XMLHttpRequest 对象的 responseType 属性来改变一个从服务器上返回的响应的<em>数据类型</em><br>
+比如二进制数据:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">httpRequest</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">&#34;GET&#34;</span><span class="p">,</span> <span class="nx">url</span><span class="p">,</span> <span class="kc">true</span><span class="p">);</span>
+<span class="nx">httpRequest</span><span class="p">.</span><span class="nx">responseType</span> <span class="o">=</span> <span class="s2">&#34;arraybuffer&#34;</span><span class="p">;</span>
+<span class="nx">httpRequest</span><span class="p">.</span><span class="nx">send</span><span class="p">();</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="监测进度">监测进度</h2>
+<p>XMLHttpRequest 提供了各种在请求被处理期间发生的事件以供监听。包括定期进度通知、错误通知，等等。(这些事件与上面说的“请求状态readyState”有什么关系？)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">req</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
+
+<span class="nx">req</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;progress&#34;</span><span class="p">,</span> <span class="nx">updateProgress</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;load&#34;</span><span class="p">,</span> <span class="nx">transferComplete</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;error&#34;</span><span class="p">,</span> <span class="nx">transferFailed</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;abort&#34;</span><span class="p">,</span> <span class="nx">transferCanceled</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">open</span><span class="p">();</span>
+
+<span class="c1">// 如果 lengthComputable 属性的值是 false，那么意味着总字节数是未知并且 total 的值为零。
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">updateProgress</span><span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">evt</span><span class="p">.</span><span class="nx">lengthComputable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">percentComplete</span> <span class="o">=</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">loaded</span> <span class="o">/</span> <span class="nx">evt</span><span class="p">.</span><span class="nx">total</span><span class="p">;</span>
+  <span class="p">}</span> 
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>progress 事件同时存在于下载和上传的传输。上传相关事件在 XMLHttpRequest.upload 对象上被触发，像下面这样：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">req</span><span class="p">.</span><span class="nx">upload</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;progress&#34;</span><span class="p">,</span> <span class="nx">updateProgress</span><span class="p">);</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">upload</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;load&#34;</span><span class="p">,</span> <span class="nx">transferComplete</span><span class="p">);</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">upload</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;error&#34;</span><span class="p">,</span> <span class="nx">transferFailed</span><span class="p">);</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">upload</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;abort&#34;</span><span class="p">,</span> <span class="nx">transferCanceled</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用 loadend 事件可以侦测到所有的三种加载结束条件（abort、load、error）：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">req</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;loadend&#34;</span><span class="p">,</span> <span class="nx">loadEnd</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h1 id="参考">参考</h1>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/AJAX/Getting_Started">MDN AJAX Getting Started</a></p>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest/Sending_and_Receiving_Binary_Data">使用JavaScript类型数组接受二进制数据</a></p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/javascript/">JavaScript</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>DOM</title>
+                <link>https://wangshushuo.github.io/wangshushuo/dom.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/dom.html</guid>
+                <pubDate>Mon, 30 Mar 2020 23:25:37 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="获取dataset">获取dataset</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="o">+</span><span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">dataset</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/api/">api</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/dom/">DOM</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>React</title>
+                <link>https://wangshushuo.github.io/wangshushuo/react.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/react.html</guid>
+                <pubDate>Mon, 30 Mar 2020 23:19:26 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="生命周期">生命周期</h2>
+<p>用于初始化 state  constructor() {}</p>
+<p>用于替换 <code>componentWillReceiveProps</code> ，该函数会在初始化和 <code>update</code> 时被调用，</p>
+<p>如果需要对比 <code>prevProps</code> 需要单独在 <code>state</code> 中维护  <code>static getDerivedStateFromProps(nextProps, prevState) {}</code> ，因为该函数是静态函数，所以取不到 <code>this</code> 。</p>
+<p>判断是否需要更新组件，多用于组件性能优化  <code>shouldComponentUpdate(nextProps, nextState) {}</code></p>
+<p>用于获得最新的 <code>DOM</code> 数据  <code>getSnapshotBeforeUpdate() {}</code></p>
+<p>以下函数不建议使用  <code>UNSAFE_componentWillMount() {}</code>，<code>UNSAFE_componentWillUpdate(nextProps, nextState) {}</code>，<code>UNSAFE_componentWillReceiveProps(nextProps) {}</code></p>
+<h2 id="props中没有historylocationmatchwithrouter可以解决">props中没有history,location,match？withRouter可以解决</h2>
+<p>如果A组件的父组件是Route（react-router-dom）,A的props参数会含有history,location,match，但是A组件的子组件B的props参数就不包含history,location,match。<br>
+如果想在B组件中使用history的API，但是没有history对象该怎么办呢。这时就用到withRouter了<a href="https://reacttraining.com/react-router/web/api/withRouter">文档</a>。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">withRouter</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;react-router&#39;</span><span class="p">;</span>
+<span class="kr">class</span> <span class="nx">ShowTheLocation</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="c1">// this.props中会包含history,location,match
+</span><span class="c1"></span><span class="p">}</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">withRouter</span><span class="p">(</span><span class="nx">ShowTheLocation</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/api/">api</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/react/">react</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>博客文章分类</title>
+                <link>https://wangshushuo.github.io/wangshushuo/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB.html</guid>
+                <pubDate>Mon, 30 Mar 2020 22:49:40 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="介绍">介绍</h2>
+<p>分类以树状展开，能体现出难易程度和关系，体现出自己的知识结构。</p>
+<p>最简单和基础的是“api”分类，它是一些简单的语法，或者简单的API的用法的汇总，以前后端、服务器等划分子类，下面再展开具体的语言、类库、框架的API。使用这些API可以完成一些简单的日常工作。</p>
+<p>进阶一点的是“知识点”分类，它是在API的背后的工作原理。掌握原理可以让工作中少踩坑。工作原理也可以在框架之间，在语言之间迁移。</p>
+<p>第三个分类是“折腾”，它是由一些列的API、知识点经过一些步骤组合而成，一般是为了解决问题。</p>
+<blockquote>
+<p>折腾这个名字不大好，叫“实践”？</p>
+</blockquote>
+<p>再然后就是“心得与经验”分类，折腾实践多了，肯定会有好的经验和坏的教训，就需要思考总结，把它们沉淀为经验和套路。</p>
+<h2 id="分类">分类</h2>
+<ul>
+<li>api （简单的API操作的记录）
+<ul>
+<li>前端
+<ul>
+<li>css</li>
+<li>react</li>
+<li>axios</li>
+</ul>
+</li>
+<li>后端
+<ul>
+<li>java hashmap 使用</li>
+<li>spring security</li>
+<li>Spring mvc</li>
+<li>Spring oauth2</li>
+</ul>
+</li>
+<li>服务器
+<ul>
+<li>nginx
+<ul>
+<li>静态网站</li>
+<li>反向代理</li>
+</ul>
+</li>
+<li>linux
+<ul>
+<li>使用源码安装软件</li>
+<li>ssh 登录，指定私钥文件（证书）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>工具
+<ul>
+<li>git</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>知识点 （技术原理）
+<ul>
+<li>react
+<ul>
+<li>diff</li>
+<li>元素</li>
+<li>virtual dom</li>
+<li>hooks</li>
+<li>生命周期</li>
+</ul>
+</li>
+<li>nginx
+<ul>
+<li>负载均衡</li>
+</ul>
+</li>
+<li>java
+<ul>
+<li>hashmap原理</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>折腾（需要若干步骤、若干知识点、若干API操作组合而解决问题）
+<ul>
+<li>博客支持服务</li>
+<li>gitlab的ci</li>
+</ul>
+</li>
+<li>心得与经验（经历了一些事情后的想法，总结规律，思考结果。思想活动）
+<ul>
+<li>如何改bug</li>
+<li>老板评价员工的逻辑</li>
+<li>如何应付需求变动</li>
+<li>如何写出好的代码</li>
+<li>如何少加班</li>
+<li>面试时总是没什么聊的怎么办？</li>
+</ul>
+</li>
+<li>其他</li>
+</ul>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%85%B6%E4%BB%96/">其他</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>css</title>
+                <link>https://wangshushuo.github.io/wangshushuo/css.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/css.html</guid>
+                <pubDate>Sun, 29 Mar 2020 22:10:30 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="居中">居中</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css">  <span class="nt">top</span><span class="p">:</span><span class="nd">50</span><span class="o">%;</span>
+  <span class="nt">left</span><span class="p">:</span><span class="nd">50</span><span class="o">%;</span>
+  <span class="nt">transform</span><span class="o">:</span> <span class="nt">translate</span><span class="o">(</span><span class="nt">-50</span><span class="o">%,</span> <span class="nt">-50</span><span class="o">%);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="flex">Flex</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">class</span><span class="p">{</span>
+  <span class="k">display</span><span class="p">:</span><span class="kc">flex</span><span class="p">;</span>
+  <span class="k">justify-content</span><span class="p">:</span><span class="kc">flex</span><span class="o">-</span><span class="kc">start</span><span class="p">;</span>
+  <span class="k">align-items</span><span class="p">:</span><span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="简易镂空效果">简易镂空效果</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">outline</span><span class="o">:</span>  <span class="nt">9999px</span> <span class="nt">solid</span> <span class="nt">rgba</span><span class="o">(</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="o">,</span><span class="nt">0</span><span class="o">,</span><span class="p">.</span><span class="nc">76</span><span class="o">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="多行文字英文数字换行限制行数">多行文字（英文、数字换行、限制行数）</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css">  <span class="nt">overflow</span><span class="o">:</span> <span class="nt">hidden</span><span class="o">;</span>
+  <span class="nt">text-overflow</span><span class="p">:</span><span class="nd">ellipsis</span><span class="o">;</span>
+  <span class="nt">white-space</span><span class="o">:</span> <span class="nt">nowrap</span><span class="o">;</span>
+  <span class="nt">word-wrap</span><span class="p">:</span><span class="nd">break-word</span><span class="o">;</span>
+  <span class="nt">word-break</span><span class="p">:</span><span class="nd">break-all</span><span class="o">;</span>
+
+  <span class="nt">display</span><span class="p">:</span><span class="nd">-webkit-box</span><span class="o">;</span>
+  <span class="nt">-webkit-box-orient</span><span class="p">:</span><span class="nd">vertical</span><span class="o">;</span>
+  <span class="nt">-webkit-line-clamp</span><span class="p">:</span><span class="nd">2</span><span class="o">;</span>
+  <span class="nt">overflow</span><span class="p">:</span><span class="nd">hidden</span><span class="o">;</span>
+  <span class="nt">word-wrap</span><span class="p">:</span><span class="nd">break-word</span><span class="o">;</span>
+  <span class="nt">word-break</span><span class="p">:</span><span class="nd">break-all</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="flex布局时使子元素不被缩放">flex布局时使子元素不被缩放</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css">  <span class="nt">flex-grow</span><span class="o">:</span> <span class="nt">0</span><span class="o">;</span>
+  <span class="nt">flex-shrink</span><span class="p">:</span><span class="nd">0</span><span class="o">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="ios滚动不流畅">ios滚动不流畅</h2>
+<pre><code>-webkit-overflow-scrolling : touch; 
+</code></pre><h2 id="placeholder的样式">placeholder的样式</h2>
+<pre><code>.className::-webkit-input-placeholder {
+  color: #B7B7B7;
+}
+</code></pre><h2 id="渐变色文字">渐变色文字</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">text</span><span class="p">{</span>
+  <span class="k">background-image</span><span class="p">:</span> <span class="kp">-webkit-</span><span class="nf">gradient</span><span class="p">(</span><span class="kc">linear</span><span class="p">,</span><span class="mi">0</span><span class="kt">%</span> <span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="mi">25</span><span class="kt">%</span> <span class="mi">100</span><span class="kt">%</span><span class="p">,</span><span class="nf">from</span><span class="p">(</span><span class="mh">#ff2c2c</span><span class="p">),</span><span class="nf">to</span><span class="p">(</span><span class="mh">#7a5e91</span><span class="p">));</span>
+  <span class="kp">-webkit-</span><span class="k">background-clip</span><span class="p">:</span> <span class="kc">text</span><span class="p">;</span>
+  <span class="kp">-webkit-</span><span class="n">text-fill-color</span><span class="p">:</span> <span class="kc">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">span</span> <span class="p">{</span>
+  <span class="k">background</span><span class="p">:</span> <span class="nb">linear-gradient</span><span class="p">(</span><span class="kc">to</span> <span class="kc">right</span><span class="p">,</span> <span class="kc">red</span><span class="p">,</span> <span class="kc">blue</span><span class="p">);</span>
+  <span class="kp">-webkit-</span><span class="k">background-clip</span><span class="p">:</span> <span class="kc">text</span><span class="p">;</span>
+  <span class="k">color</span><span class="p">:</span> <span class="kc">transparent</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="ios-阴影-input-textarea">IOS 阴影 input textarea</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">input</span><span class="o">,</span><span class="nt">textarea</span><span class="p">{</span>
+	<span class="kp">-webkit-</span><span class="k">appearance</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="margin塌陷">margin塌陷</h2>
+<p>在标准文档流中，竖直方向的margin会出现叠加现象，即较大的margin会覆盖掉较小的margin，竖直方向的两个盒子中间只有一个较大的margin，这就是margin的塌陷现象。<br>
+margin的塌陷现象分两种情况：
+1.兄弟关系的盒子：
+比如ul的li，相邻的li之间的margin会重叠取较大的一个;
+2.父子关系的盒子。
+子盒子的margin-top大于父盒子时，子的margin-top会覆盖父的。</p>
+<p>解决方法：<br>
+当给父盒子设置边框或padding时，不会出现父子盒子的塌陷现象。<br>
+当父盒子设置display:flex;时，不会出现这2种坍塌现象。</p>
+<h2 id="盒子模型">盒子模型</h2>
+<h2 id="清除浮动">清除浮动</h2>
+<h2 id="css优先级">css优先级</h2>
+<p>!important最高
+行内style属性 &gt; 内联style标签 &gt; 外联css文件
+id &gt; class &gt; tag
+计算：
+行内style属性 = 1000
+ID选择器 = 100
+类选择器、属性选择器、伪类 = 10
+元素/伪元素 = 1
+*通配选择器 = 0</p>
+<h2 id="伪类伪元素">伪类&amp;伪元素</h2>
+<p>伪元素：
+::before
+::after
+::placeholder
+::first-line
+伪类：
+:first-child
+:nth-child
+:empty</p>
+<h2 id="inline-block元素有间隙">inline-block元素有间隙</h2>
+<p>解决方法：在这些inline-block元素的父元素设置样式——fontsize：0；</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/api/">api</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/css/">css</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>vscode</title>
+                <link>https://wangshushuo.github.io/wangshushuo/vscode.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/vscode.html</guid>
+                <pubDate>Sat, 28 Mar 2020 05:02:40 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="git自动刷新">Git自动刷新</h2>
+<p>git 插件会不停的刷新文件的状态，间隔大概5秒。可以在设置中关掉它。</p>
+<pre><code>Autorefresh
+是否启用自动刷新。
+</code></pre>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/api/">api</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>hugo常用格式</title>
+                <link>https://wangshushuo.github.io/wangshushuo/hugo%E5%B8%B8%E7%94%A8%E6%A0%BC%E5%BC%8F.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/hugo%E5%B8%B8%E7%94%A8%E6%A0%BC%E5%BC%8F.html</guid>
+                <pubDate>Sat, 28 Mar 2020 02:52:52 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="自定义shortcodes">自定义shortcodes</h2>
+<pre><code><span>{</span>{< tag nihao >}}</code></pre>
+<p><strong>效果</strong>⬇️</p>
+<span class="shortcodes_tag">nihao</span>
+<h2 id="图片">图片</h2>
+<p>下面引号内的文字是可以不加的，加了的话，会显示在图片下方，作为说明文字。</p>
+<pre><code>![alt](/images/xx.png &quot;说明文字&quot;)
+</code></pre><p><strong>效果</strong>⬇️
+<img src="/images/hugo01.jpg" alt="52区" title="外域52区"></p>
+<h2 id="引用-reference">引用 reference</h2>
+<p>引用图片、网址等，在内容出标出。在文章最后列出所有引用。引用和标记可以互相跳转。</p>
+<pre><code>某文章[^1]说到某技术非常厉害
+
+[^1]: https://github.com/wangshushuo/abc.html
+</code></pre><p><strong>效果</strong>⬇️</p>
+<p>某文章<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>说到某技术非常厉害</p>
+<h2 id="链接">链接</h2>
+<p><strong>第一种：行内</strong></p>
+<p><strong>效果</strong>⬇️</p>
+<pre><code>[链接的文字](https://www.wss.cool)
+</code></pre><p><a href="https://wss.cool">链接的文字</a></p>
+<p><strong>第二种：简写</strong></p>
+<pre><code>[链接的文字][a1]
+
+[a1]: https://wss.cool
+</code></pre><p><strong>效果</strong>⬇️</p>
+<p><a href="https://wss.cool">链接的文字</a></p>
+<h2 id="表格">表格</h2>
+<pre><code>操作 | 代码 
+:---:|:---:
+暂存 | git stash
+列表 | git stash list
+取出 | git stash pop 1
+</code></pre><pre><code>:---: 表示文字居中
+:---  居左
+---:  局右，
+</code></pre><p><strong>效果</strong>⬇️</p>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">暂存</td>
+<td align="center">git stash</td>
+</tr>
+<tr>
+<td align="center">列表</td>
+<td align="center">git stash list</td>
+</tr>
+<tr>
+<td align="center">取出</td>
+<td align="center">git stash pop 1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="行内代码">行内代码</h2>
+<p>这是一段代码 <code>a = b + c</code> 它是这样的。</p>
+<hr>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://github.com/wangshushuo/abc.html">https://github.com/wangshushuo/abc.html</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%85%B6%E4%BB%96/">其他</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Java执行shell命令</title>
+                <link>https://wangshushuo.github.io/wangshushuo/java%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/java%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4.html</guid>
+                <pubDate>Sat, 18 Jan 2020 17:53:17 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="添加依赖">添加依赖</h2>
+<p>首先使用<code>Spring Boot</code>开启一个<code>RESTful</code>项目，额外的加上<code>Apache Commons Exec</code>的依赖。</p>
+<blockquote>
+<p>Exec官网<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，<a href="https://commons.apache.org/proper/commons-exec/apidocs/index.html">API文档</a></p>
+</blockquote>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-xml" data-lang="xml"><span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.apache.commons<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>commons-exec<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.3<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="代码实现">代码实现</h2>
+<p>这里分两种情况。一个是最简的只关心执行是否成功，也就是code大于0为失败；另一个是需要拿到执行的标准输出和错误的信息。</p>
+<h3 id="只关心是否成功">只关心是否成功</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainService</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">Integer</span> <span class="nf">updateBlogFromGit</span><span class="o">(){</span>
+        <span class="c1">// 1
+</span><span class="c1"></span>        <span class="n">CommandLine</span> <span class="n">pull</span> <span class="o">=</span> <span class="n">CommandLine</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&#34;git pull&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 2
+</span><span class="c1"></span>        <span class="n">DefaultExecutor</span> <span class="n">executor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultExecutor</span><span class="o">();</span>
+        <span class="n">executor</span><span class="o">.</span><span class="na">setWorkingDirectory</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;/home/ubuntu/blog&#34;</span><span class="o">));</span>
+
+        <span class="c1">// 3，省略try_catch
+</span><span class="c1"></span>        <span class="kt">int</span> <span class="n">exitValue</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">pull</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">exitValue</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">exitValue</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">hugo</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">exitValue</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>准备要运行的shell命令</li>
+<li>创建执行器，并设置工作目录</li>
+<li>最后执行命令，返回code</li>
+</ol>
+<h3 id="要拿到标准输出和错误的信息">要拿到标准输出和错误的信息</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-java" data-lang="java"><span class="nd">@Service</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MainService</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">updateBlogFromGit</span><span class="o">(){</span>
+        <span class="c1">// 1
+</span><span class="c1"></span>        <span class="n">CommandLine</span> <span class="n">pull</span> <span class="o">=</span> <span class="n">CommandLine</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&#34;git pull&#34;</span><span class="o">);</span>
+        <span class="n">CommandLine</span> <span class="n">hugo</span> <span class="o">=</span> <span class="n">CommandLine</span><span class="o">.</span><span class="na">parse</span><span class="o">(</span><span class="s">&#34;hugo&#34;</span><span class="o">);</span>
+
+        <span class="c1">// 2
+</span><span class="c1"></span>        <span class="n">ByteArrayOutputStream</span> <span class="n">outputStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+        <span class="n">ByteArrayOutputStream</span> <span class="n">errorStream</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ByteArrayOutputStream</span><span class="o">();</span>
+        <span class="n">PumpStreamHandler</span> <span class="n">streamHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PumpStreamHandler</span><span class="o">(</span><span class="n">outputStream</span><span class="o">,</span> <span class="n">errorStream</span><span class="o">);</span>
+
+        <span class="c1">// 3
+</span><span class="c1"></span>        <span class="n">DefaultExecutor</span> <span class="n">executor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">DefaultExecutor</span><span class="o">();</span>
+        <span class="n">executor</span><span class="o">.</span><span class="na">setWorkingDirectory</span><span class="o">(</span><span class="k">new</span> <span class="n">File</span><span class="o">(</span><span class="s">&#34;/home/ubuntu/blog&#34;</span><span class="o">));</span>
+        <span class="n">executor</span><span class="o">.</span><span class="na">setStreamHandler</span><span class="o">(</span><span class="n">streamHandler</span><span class="o">);</span>
+
+        <span class="c1">// 4
+</span><span class="c1"></span>        <span class="k">try</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">exitValue</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">pull</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">exitValue</span> <span class="o">==</span> <span class="n">0</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">exitValue</span> <span class="o">=</span> <span class="n">executor</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">hugo</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="n">String</span> <span class="n">result</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">exitValue</span><span class="o">==</span><span class="n">0</span><span class="o">){</span>
+                <span class="n">result</span><span class="o">=</span> <span class="n">outputStream</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+            <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">errorStream</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="k">return</span> <span class="n">result</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">ExecuteException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">errorStream</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="n">IOException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">e</span><span class="o">.</span><span class="na">getMessage</span><span class="o">();</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li>准备要运行的shell命令</li>
+<li>准备接收标准输出和错误的Stream</li>
+<li>创建执行器，并设置工作目录，设置StreamHandler</li>
+<li>最后执行命令（如果执行时出错会返回大于0的整数），返回标准输出或错误信息或报错堆栈信息</li>
+</ol>
+<h2 id="收获">收获</h2>
+<p>技能树：</p>
+<pre><code>后端 --&gt; Java --&gt; 工具库 --&gt; Exec --&gt; 使用
+后端 --&gt; Java --&gt; 语言基础 --&gt; ByteArrayOutputStream --&gt; 使用
+</code></pre><h2 id="其他相关内容">其他相关内容</h2>
+<ul>
+<li><a href="https://wowfriday.cn/posts/linux-base/#%E4%BD%BF%E7%94%A8systemd%E5%90%AF%E5%8A%A8%E5%85%B3%E9%97%ADjava%E7%A8%8B%E5%BA%8F">使用systemd启动关闭Java程序</a></li>
+<li><a href="https://wowfriday.cn/nginx.html#%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE">配置Nginx</a></li>
+</ul>
+<hr>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Exec官网 <a href="https://commons.apache.org/proper/commons-exec/">https://commons.apache.org/proper/commons-exec/</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E6%8A%98%E8%85%BE/">折腾</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Git</title>
+                <link>https://wangshushuo.github.io/wangshushuo/git/</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/git/</guid>
+                <pubDate>Thu, 18 Jul 2019 10:53:36 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="删除本地的所有分支除了master">删除本地的所有分支，除了master</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git branch <span class="p">|</span> grep -v <span class="s2">&#34;master&#34;</span> <span class="p">|</span> xargs git branch -d
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="暂存改动">暂存改动</h2>
+<table>
+<thead>
+<tr>
+<th align="center">操作</th>
+<th align="center">代码</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">暂存</td>
+<td align="center">git stash</td>
+</tr>
+<tr>
+<td align="center">列表</td>
+<td align="center">git stash list</td>
+</tr>
+<tr>
+<td align="center">取出</td>
+<td align="center">git stash pop 1</td>
+</tr>
+</tbody>
+</table>
+<h2 id="刷新本地的远程分支列表">刷新本地的远程分支列表</h2>
+<p>远程已经被删除的分支，在本地使用<code>git branch -a</code>命令是依然可以看到。所以需要刷新一下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git remote prune origin
+</code></pre></td></tr></table>
+</div>
+</div><p>这条命令是删除与<name>关联的陈旧引用</p>
+<p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git fetch -p
+</code></pre></td></tr></table>
+</div>
+</div><p>这条命令是在获取之前，删除远程不再存在的任何远程跟踪引用。</p>
+<h2 id="不相干分支强制pull或push等操作">不相干分支强制pull或push等操作</h2>
+<p>在命令后面加<code>--allow-unrelated-histories</code></p>
+<h2 id="推送当前分支到远端">推送当前分支到远端</h2>
+<p>如果你还没有推到原点，那么<code>git push -u origin HEAD</code>可以在本地分支中设置上游跟踪信息。</p>
+<h2 id="使用一次新的commit替代上一次提交">使用一次新的commit，替代上一次提交</h2>
+<p>如果代码没有任何新变化，则用来改写上一次commit的提交信息</p>
+<pre><code>git commit --amend -m &quot;666&quot;
+</code></pre><p>代码有变动，要制定文件</p>
+<pre><code>git commit --amend src\plugins\icElement_vote\components\config.vue src\plugins\icElement_chose\components\config.vue
+  -m &quot;fix(编辑器-选择题/投票题):删除不是当前选中的选项&quot;
+</code></pre><h2 id="获取当前分支名">获取当前分支名</h2>
+<pre><code>git symbolic-ref --short -q HEAD 
+</code></pre><h2 id="推送当前分支到远端会在远端新建当前分支名的新分支">推送当前分支到远端，会在远端新建当前分支名的新分支</h2>
+<pre><code>git push -u origin HEAD  
+</code></pre><h2 id="获取上一次commit的message">获取上一次commit的message</h2>
+<pre><code>git log -1 --pretty=%B  
+</code></pre><h2 id="如果有文件没有被add则git-status时有提示">如果有文件没有被add，则git status时有提示</h2>
+<p>Changes not staged for commit:
+有文件被add了：
+Changes to be committed
+上面两种可以同时存在。</p>
+<h2 id="分支间摘-commit">分支间摘 commit</h2>
+<p>分支A有5次提交，想把其中的第二三次提交拿到B分支，先拿到 commit 的 id 可通过 <code>git log -1 --pretty=%B</code> 取到。然后使用摘樱桃命令：</p>
+<pre><code>git cherry-pick 5cf6d24
+</code></pre><p>分支B就把这次commit摘过来了。</p>
+<h2 id="代理">代理</h2>
+<p>全局设置</p>
+<pre><code>git config --global http.proxy 'socks5://127.0.0.1:1080'
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+</code></pre><p>全局取消</p>
+<pre><code>git config --global --unset http.proxy
+git config --global --unset https.proxy
+</code></pre><p>#只对github.com</p>
+<pre><code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+</code></pre><p>#取消代理</p>
+<pre><code>git config --global --unset http.https://github.com.proxy
+</code></pre><h2 id="取消追踪">取消追踪</h2>
+<pre><code>git rm -r --cached 文件或目录
+</code></pre><h2 id="切换分支branch">切换分支(branch)</h2>
+<p>想看React的代码，因为v16有些新特性，所以想看v15的代码。clone代码以后，使用 <code>git branch</code> 查看分支，发现只有 <code>master</code> ，但是看 github 上是有 15-stable 分支的。<br>
+解决办法：使用 <code>git branch -a</code> 可以看到所有分支，包括远端的分支，其中有 <code>remotes/origin/15-stable</code> 分支，用这个名字切换分支即可。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 远程分支列表</span>
+git branch -r
+<span class="c1"># 所有分支列表（包括远程）</span>
+git branch -a 
+<span class="c1"># 分支列表</span>
+git branch
+<span class="c1"># 创建并切换到dev分支,</span>
+git checkout -b dev
+<span class="c1"># 上面的命令，等于下面的两条命令</span>
+<span class="c1"># 创建分支</span>
+git branch dev 
+<span class="c1"># 切换分支</span>
+git checkout dev
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="分支合并">分支合并</h2>
+<p>建议合并时保留目标分支的commit信息。即使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git merge --no-ff <span class="o">[</span>branch name<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>当合并错了以后怎么撤销合并呢，使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard <span class="o">[</span>merge的版本号<span class="o">]</span> <span class="c1">#版本号使用 git log 查，这种方法只针对合并以后对当前分支没有过其他操作，有的话比较复杂</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>合并远程分支：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 如果本地没有远程分支：</span>
+git checkout -b develop origin/develop <span class="c1"># 本地新建develop分支并拉取</span>
+<span class="c1"># 如果本地已有远程分支：</span>
+git checkout develop 
+git pull origin develop <span class="c1">#拉取远程代码</span>
+
+<span class="c1"># 方法二：</span>
+git fetch origin dev:temp <span class="c1">#拉取远程dev分支，创建本地temp分支</span>
+git diff temp
+git merge temp <span class="c1"># 合并</span>
+git branch -d temp <span class="c1">#删除</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="删除远程分支">删除远程分支</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git push origin -d <span class="o">[</span>远程分支名<span class="o">]</span>
+git push origin :<span class="o">[</span>远程分支名<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>git push origin :experimental<br>
+Find a ref that matches experimental in the origin repository (e.g.  refs/heads/experimental), and delete it.</p>
+</blockquote>
+<h2 id="查看记录log">查看记录log</h2>
+<p><code>git log</code> 这样会打印出超级多的信息，包括SHA-1、作者、时间、message,很啰嗦，还是不要这么用得好。<br>
+<code>git log --pretty=format:&quot;%h - %an, %ar : %s&quot;</code> 按格式打印信息，具体选项如下 <br>
+git log --graph
+git log --graph --oneline --decorate</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%H</td>
+<td>提交对象（commit）的完整哈希字串</td>
+</tr>
+<tr>
+<td>%h</td>
+<td>提交对象的简短哈希字串</td>
+</tr>
+<tr>
+<td>%T</td>
+<td>树对象（tree）的完整哈希字串</td>
+</tr>
+<tr>
+<td>%t</td>
+<td>树对象的简短哈希字串</td>
+</tr>
+<tr>
+<td>%P</td>
+<td>父对象（parent）的完整哈希字串</td>
+</tr>
+<tr>
+<td>%p</td>
+<td>父对象的简短哈希字串</td>
+</tr>
+<tr>
+<td>%an</td>
+<td>作者（author）的名字</td>
+</tr>
+<tr>
+<td>%ae</td>
+<td>作者的电子邮件地址</td>
+</tr>
+<tr>
+<td>%ad</td>
+<td>作者修订日期（可以用 -date= 选项定制格式）</td>
+</tr>
+<tr>
+<td>%ar</td>
+<td>作者修订日期，按多久以前的方式显示</td>
+</tr>
+<tr>
+<td>%cn</td>
+<td>提交者(committer)的名字</td>
+</tr>
+<tr>
+<td>%ce</td>
+<td>提交者的电子邮件地址</td>
+</tr>
+<tr>
+<td>%cd</td>
+<td>提交日期</td>
+</tr>
+<tr>
+<td>%cr</td>
+<td>提交日期，按多久以前的方式显示</td>
+</tr>
+<tr>
+<td>%s</td>
+<td>提交说明</td>
+</tr>
+</tbody>
+</table>
+<p><code>git log -2 --oneline</code> 打印最近两次的简化后的记录，其中<code>--oneline</code>为	<code>--pretty=oneline --abbrev-commit</code> 命令的简化用法。<code>-n</code>为最近n次的提交。<br>
+<code>git log --since=2.weeks</code> 打印2周内的记录，具体选项如下</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-(n)</td>
+<td>仅显示最近的 n 条提交</td>
+</tr>
+<tr>
+<td>--since, --after</td>
+<td>仅显示指定时间之后的提交。</td>
+</tr>
+<tr>
+<td>--until, --before</td>
+<td>仅显示指定时间之前的提交。</td>
+</tr>
+<tr>
+<td>--author</td>
+<td>仅显示指定作者相关的提交。</td>
+</tr>
+<tr>
+<td>--committer</td>
+<td>仅显示指定提交者相关的提交。</td>
+</tr>
+</tbody>
+</table>
+<p><code>git log --pretty=&quot;%h - %s&quot; --author=wss --since=&quot;2008-10-01&quot; --before=&quot;2008-11-01&quot;</code> 各种条件可以一起用<br>
+<code>git log -p -2</code> 查看最近两次提交，并显示提交内容（具体改动了什么）</p>
+<h2 id="标签">标签</h2>
+<p>将某次commit打上标签
+<code>git tag &lt;name </code> 默认给最新提交打标签。<br>
+<code>git tag</code> 查看所有标签
+<code>git tag v0.9 f52c633</code> 根据commit id给某次提交打标签</p>
+<h2 id="在缓存中移除某个目录">在缓存中移除某个目录</h2>
+<p><code>git rm -r --cached some-directory</code></p>
+<h2 id="攻略">攻略</h2>
+<p>Git 原理入门 <a href="http://www.ruanyifeng.com/blog/2018/10/git-internals.html">http://www.ruanyifeng.com/blog/2018/10/git-internals.html</a></p>
+<p>Git 分支管理策略 <a href="http://www.ruanyifeng.com/blog/2012/07/git.html">http://www.ruanyifeng.com/blog/2012/07/git.html</a></p>
+<p>Git 工作流程 <a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html">http://www.ruanyifeng.com/blog/2015/12/git-workflow.html</a></p>
+<p>Git 使用规范流程 <a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html">http://www.ruanyifeng.com/blog/2015/08/git-use-process.html</a></p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/api/">api</category>
+                                
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%B7%A5%E5%85%B7/">工具</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>为博客打造在线编辑器</title>
+                <link>https://wangshushuo.github.io/wangshushuo/online-editor-for-markdown-blog/</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/online-editor-for-markdown-blog/</guid>
+                <pubDate>Sun, 23 Jun 2019 21:12:32 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="初衷">初衷</h2>
+<p>博客的内容时使用git管理的。在公司的电脑和家里的两台电脑上都有写博客的需求，那么在3个端的每次的pull和push就显得有一点麻烦。如果有一个基于浏览器访问的编辑器就舒服多了。</p>
+<h2 id="构思">构思</h2>
+<p>我的博客使用了hugo，它的内容是基于markdown或html的，所以如果把博客源文件放在服务器上，同时搭建一个可以编辑这些源文件的后台，就可以实现基于浏览器编辑博客了。</p>
+<p>vscode开源了他们的编辑器monaco-editor，可以使用它作为浏览器中的编辑器。</p>
+<p>在搭建一个后台程序来读取博客文章内容，配合若干接口实现保存、创建、删除、登录等功能即可。</p>
+<h2 id="editor项目">editor项目</h2>
+<p>此项目作为后台服务，需要提供的接口有：</p>
+<ol>
+<li>创建文章</li>
+<li>保存文章</li>
+<li>提交到git并push到仓库，并打包发布。</li>
+</ol>
+<p>准备使用golang实现。需要用到的golang的api有：
+……</p>
+<h3 id="制作image">制作image</h3>
+<pre><code>sudo docker image build -t myeditor .
+</code></pre><h3 id="启动容器">启动容器</h3>
+<pre><code>sudo docker container run -d  --rm -p 3000:3000 -v &quot;/home/wang/code/hugo/content/posts&quot;:/app/blog myeditor
+</code></pre><h2 id="hugo项目中的docker">hugo项目中的docker</h2>
+<h3 id="生成image">生成image</h3>
+<pre><code>sudo docker image build -t site .
+</code></pre><h3 id="启动nginx容器">启动nginx容器</h3>
+<pre><code>sudo docker container run --rm --name myblog \
+-p 80:80 -p 443:443 -d \
+--volume &quot;$PWD/public&quot;:/usr/share/nginx/html site
+</code></pre><h3 id="打包hugo">打包hugo</h3>
+<pre><code>hugo --baseURL https://wowfriday.cn/
+</code></pre><pre><code>hugo serve --renderToDisk --baseURL https://wowfriday.cn/ --appendPort=false
+hugo serve --renderToDisk --appendPort=false
+</code></pre>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E6%8A%98%E8%85%BE/">折腾</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>如何处理大量bug</title>
+                <link>https://wangshushuo.github.io/wangshushuo/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html</link>
+                <guid isPermaLink="true">https://wangshushuo.github.io/wangshushuo/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html</guid>
+                <pubDate>Fri, 21 Dec 2018 16:21:39 +0000</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>处理bug分三步：确认位置及原因，解决方案，实现代码。</p>
+<p>bug数量很多时，领导的心里会有压力，所以先解决容易改的，让数量降下来，领导的压力小了就可以不加班了。如果你改的数量多还可能认为你比别人有些。</p>
+<h2 id="处理问题的1-2-3升级策略">处理问题的“1-2-3”升级策略</h2>
+<p>遇到问题的时候，</p>
+<ol>
+<li>自己一个人处理1小时内没有思路，请找他人小范围讨论</li>
+<li>如果与他人2小时内没有结果，请上升到团队范围</li>
+<li>如果在团队范围3小时内没有思路</li>
+<li>我们就需要借助外部力量了。比如：找产品改需求，找公司外的技术高手做咨询，外包</li>
+</ol>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wangshushuo.github.io/wangshushuo/categories/%E5%BF%83%E5%BE%97%E4%B8%8E%E7%BB%8F%E9%AA%8C/">心得与经验</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+    </channel>
+</rss>
