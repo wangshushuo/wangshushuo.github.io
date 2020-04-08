@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 07 Apr 2020 23:57:28 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 08 Apr 2020 05:45:37 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wangshushuo.github.io/wangshushuo/rss.xml" />
         
@@ -1645,7 +1645,15 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
                     <description><![CDATA[<p>在自己的电脑上生成公钥、密钥。公钥放在远程服务器上，密钥在自己电脑里不用管。连接远程服务器时就不用输入密码了。</p>
-<h2 id="生成key">生成key</h2>
+<h2 id="安装">安装</h2>
+<p>sudo apt-get install openssh-server</p>
+<h2 id="配置">配置</h2>
+<pre><code>sudo vim /etc/ssh/sshd_config <span class="shortcodes_tag">编辑配置文件</span>
+
+PasswordAuthentication yes <span class="shortcodes_tag">找到这行改成yes</span>
+
+service ssh reload {{ tag 退出vim，重启ssh }}
+</code></pre><h2 id="生成key">生成key</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1

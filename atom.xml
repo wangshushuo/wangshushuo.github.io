@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">WSS.COOL</title>
     <subtitle type="html">记录代码生涯，前端，React，Java，Spring，Nginx</subtitle>
-    <updated>2020-04-07T23:57:28+00:00</updated>
+    <updated>2020-04-08T05:45:37+00:00</updated>
     <id>https://wangshushuo.github.io/wangshushuo/</id>
     <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/" />
     <link rel="self" type="application/atom+xml" href="https://wangshushuo.github.io/wangshushuo/atom.xml" />
@@ -1665,7 +1665,15 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"><![CDATA[在自己的电脑上生成公钥、密钥。公钥放在远程服务器上，密钥在自己电脑里不用管。连接远程服务器时就不用输入密码了。]]></summary>
             
                 <content type="html"><![CDATA[<p>在自己的电脑上生成公钥、密钥。公钥放在远程服务器上，密钥在自己电脑里不用管。连接远程服务器时就不用输入密码了。</p>
-<h2 id="生成key">生成key</h2>
+<h2 id="安装">安装</h2>
+<p>sudo apt-get install openssh-server</p>
+<h2 id="配置">配置</h2>
+<pre><code>sudo vim /etc/ssh/sshd_config <span class="shortcodes_tag">编辑配置文件</span>
+
+PasswordAuthentication yes <span class="shortcodes_tag">找到这行改成yes</span>
+
+service ssh reload {{ tag 退出vim，重启ssh }}
+</code></pre><h2 id="生成key">生成key</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -3295,7 +3303,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">如何处理大量bug</title>
             <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html" />
             <id>https://wangshushuo.github.io/wangshushuo/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html</id>
-            <updated>2020-04-07T23:57:25+00:00</updated>
+            <updated>2020-04-08T05:45:34+00:00</updated>
             <published>2018-12-21T16:21:39+00:00</published>
             <author>
                     <name>WangShuShuo</name>
