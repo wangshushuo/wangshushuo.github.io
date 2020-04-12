@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 08 Apr 2020 05:45:37 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 12 Apr 2020 15:24:36 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wangshushuo.github.io/wangshushuo/rss.xml" />
         
@@ -1646,14 +1646,23 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
                 
                     <description><![CDATA[<p>在自己的电脑上生成公钥、密钥。公钥放在远程服务器上，密钥在自己电脑里不用管。连接远程服务器时就不用输入密码了。</p>
 <h2 id="安装">安装</h2>
-<p>sudo apt-get install openssh-server</p>
-<h2 id="配置">配置</h2>
-<pre><code>sudo vim /etc/ssh/sshd_config <span class="shortcodes_tag">编辑配置文件</span>
-
-PasswordAuthentication yes <span class="shortcodes_tag">找到这行改成yes</span>
-
-service ssh reload {{ tag 退出vim，重启ssh }}
-</code></pre><h2 id="生成key">生成key</h2>
+<p>新装的系统可能没有ssh服务，需要自己安装</p>
+<pre><code>sudo apt-get install openssh-server
+</code></pre><h2 id="配置">配置</h2>
+<p>新安装的 <code>ssh server</code> 需要一点配置：开启密码登录，开启公钥登录。</p>
+<ol>
+<li>编辑配置文件
+<pre><code>sudo vim /etc/ssh/sshd_config
+</code></pre></li>
+<li>开启密码登录、公钥登录
+<pre><code>PasswordAuthentication yes
+PubkeyAuthentication yes
+</code></pre></li>
+<li>重启 <code>ssh server</code>
+<pre><code>service ssh reload <span class="shortcodes_tag">退出vim重启ssh</span>
+</code></pre></li>
+</ol>
+<h2 id="生成key">生成key</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1663,20 +1672,21 @@ service ssh reload {{ tag 退出vim，重启ssh }}
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="复制公钥">复制公钥</h2>
+<p>将本机的公钥copy到远程机器</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell">scp ~/.ssh/id_rsa.pub username@hostname:~/.ssh/authorized_keys 
+<pre class="chroma"><code class="language-shell" data-lang="shell">ssh-copy-id username@remote_host_B
 </code></pre></td></tr></table>
 </div>
-</div><p>然后输入密码 .</p>
+</div><p>然后输入密码。</p>
 <blockquote>
-<p>如果报错 <code>scp: /root/.ssh/authorized_keys: No such file or directory</code><br>
-可以使用<code>ssh root@45.77.251.51 &quot;mkdir ~/.ssh/&quot;</code>命令创建.ssh目录后在使用scp命令复制</p>
+<p>该命令会把本机的公钥复制到远程机器的 .ssh/authorized_keys 文件中。</p>
 </blockquote>
 <h2 id="登陆服务器">登陆服务器</h2>
+<p>配置好公钥以后就可以使用如下命令登录了。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -1685,12 +1695,26 @@ service ssh reload {{ tag 退出vim，重启ssh }}
 <pre class="chroma"><code class="language-shell" data-lang="shell">ssh username@hostname
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="alias命令">alias命令</h2>
+</div><h2 id="配置别名">配置别名</h2>
+<p>每次都使用 <code>ssh username@hostname</code> 登录会有点麻烦，可以通过配置将命令简化。比如下面的配置，可以将登录的命令简化为 <code>ssh azu</code> 。配置文件为 <code>~/.ssh/config</code> 。</p>
+<pre><code>Host azu
+   HostName 192.168.1.5
+   User azu
+   IdentityFile /homt/xx/.ssh/id_rsa
+</code></pre><h2 id="alias命令">alias命令</h2>
 <p>在终端中定义缩写的命令，比如：</p>
 <pre><code>alias totx='ssh username@hostname'
 </code></pre><p>这样就可以使用<code>totx</code>命令直接登陆远程服务器了，但是alias命令会在重启终端时</p>
 <h2 id="永久保留alias命令">永久保留alias命令</h2>
 <p>每次登陆时.bash_profile文件是会自动执行，此过程会调用.bashrc，将alias命令写入.bashrc文件就可以将alias命令永久生效了。（如果没有此文件就创建一个）</p>
+<h2 id="报错">报错</h2>
+<pre><code>WARNING: UNPROTECTED PRIVATE KEY FILE!
+Permissions 0644 '' are too open.
+...
+</code></pre><p>我装了window是10和ubuntu双系统，将windows的一个公钥文件复制到ubuntu后，使用ssh的config配置了它。在使用ssh登录时，就报了这个错。</p>
+<p>是文件权限的问题，改成只读的权限即可解决。</p>
+<pre><code>chmod 400 ～/.ssh/id_rsa
+</code></pre><h2 id="heading"></h2>
 ]]></description>
                 
                 
