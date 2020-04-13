@@ -4,13 +4,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">WSS.COOL</title>
     <subtitle type="html">记录代码生涯，前端，React，Java，Spring，Nginx</subtitle>
-    <updated>2020-04-12T15:24:36+00:00</updated>
-    <id>https://wangshushuo.github.io/wangshushuo/</id>
-    <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/" />
-    <link rel="self" type="application/atom+xml" href="https://wangshushuo.github.io/wangshushuo/atom.xml" />
+    <updated>2020-04-13T04:40:50+00:00</updated>
+    <id>https://wss.cool/</id>
+    <link rel="alternate" type="text/html" href="https://wss.cool/" />
+    <link rel="self" type="application/atom+xml" href="https://wss.cool/atom.xml" />
     <author>
             <name>WangShuShuo</name>
-            <uri>https://wangshushuo.github.io/</uri>
+            <uri>https://wss.cool/</uri>
             
                 <email>wss.six@foxmail.com</email>
             </author>
@@ -18,8 +18,8 @@
     <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator>
         <entry>
             <title type="text">JavaScript</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/javascript.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/javascript.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/javascript.html" />
+            <id>https://wss.cool/javascript.html</id>
             <updated>2020-04-04T02:13:49+08:00</updated>
             <published>2020-04-04T02:13:49+08:00</published>
             <author>
@@ -198,19 +198,19 @@
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/api/" term="api" label="api" />
+                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                                <category scheme="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/javascript/" term="JavaScript" label="JavaScript" />
+                                <category scheme="https://wss.cool/categories/javascript/" term="JavaScript" label="JavaScript" />
                             
                         
                     
@@ -222,8 +222,8 @@
     
         <entry>
             <title type="text">开平方</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/square-root-dichotomy-and-newton-iteration.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/square-root-dichotomy-and-newton-iteration.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/square-root-dichotomy-and-newton-iteration.html" />
+            <id>https://wss.cool/square-root-dichotomy-and-newton-iteration.html</id>
             <updated>2020-04-03T11:36:01+08:00</updated>
             <published>2020-04-03T11:36:01+08:00</published>
             <author>
@@ -340,13 +340,13 @@ x0足够接近根 α。</p>
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" term="知识点" label="知识点" />
+                                <category scheme="https://wss.cool/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" term="知识点" label="知识点" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E7%AE%97%E6%B3%95/" term="算法" label="算法" />
+                                <category scheme="https://wss.cool/categories/%E7%AE%97%E6%B3%95/" term="算法" label="算法" />
                             
                         
                     
@@ -358,8 +358,8 @@ x0足够接近根 α。</p>
     
         <entry>
             <title type="text">MySQL</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/mysql.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/mysql.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/mysql.html" />
+            <id>https://wss.cool/mysql.html</id>
             <updated>2020-04-02T22:24:03+08:00</updated>
             <published>2020-04-02T22:24:03+08:00</published>
             <author>
@@ -860,19 +860,19 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/api/" term="api" label="api" />
+                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%90%8E%E7%AB%AF/" term="后端" label="后端" />
+                                <category scheme="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/" term="后端" label="后端" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/mysql/" term="mysql" label="mysql" />
+                                <category scheme="https://wss.cool/categories/mysql/" term="mysql" label="mysql" />
                             
                         
                     
@@ -884,8 +884,8 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
     
         <entry>
             <title type="text">重构旧项目-1</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/refactoring-old-projects-part-1.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/refactoring-old-projects-part-1.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/refactoring-old-projects-part-1.html" />
+            <id>https://wss.cool/refactoring-old-projects-part-1.html</id>
             <updated>2020-04-02T15:17:52+08:00</updated>
             <published>2020-04-02T15:17:52+08:00</published>
             <author>
@@ -1137,7 +1137,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E6%8A%98%E8%85%BE/" term="折腾" label="折腾" />
+                                <category scheme="https://wss.cool/categories/%E6%8A%98%E8%85%BE/" term="折腾" label="折腾" />
                             
                         
                     
@@ -1149,8 +1149,8 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
     
         <entry>
             <title type="text">vim</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/vim.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/vim.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/vim.html" />
+            <id>https://wss.cool/vim.html</id>
             <updated>2020-04-01T21:27:14+08:00</updated>
             <published>2020-04-01T21:27:14+08:00</published>
             <author>
@@ -1248,13 +1248,13 @@ set softtabstop=2
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/api/" term="api" label="api" />
+                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
+                                <category scheme="https://wss.cool/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
                     
@@ -1266,8 +1266,8 @@ set softtabstop=2
     
         <entry>
             <title type="text">ReactRouter的哲学</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/reactrouter-philosophy.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/reactrouter-philosophy.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/reactrouter-philosophy.html" />
+            <id>https://wss.cool/reactrouter-philosophy.html</id>
             <updated>2020-03-31T13:11:28+08:00</updated>
             <published>2020-03-31T13:11:28+08:00</published>
             <author>
@@ -1428,19 +1428,19 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/knowledge/" term="knowledge" label="knowledge" />
+                                <category scheme="https://wss.cool/categories/knowledge/" term="knowledge" label="knowledge" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/front-end/" term="front end" label="front end" />
+                                <category scheme="https://wss.cool/categories/front-end/" term="front end" label="front end" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/react/" term="react" label="react" />
+                                <category scheme="https://wss.cool/categories/react/" term="react" label="react" />
                             
                         
                     
@@ -1452,8 +1452,8 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
     
         <entry>
             <title type="text">渐变色</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/linear-gradient.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/linear-gradient.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/linear-gradient.html" />
+            <id>https://wss.cool/linear-gradient.html</id>
             <updated>2020-03-31T08:41:24+08:00</updated>
             <published>2020-03-31T08:41:24+08:00</published>
             <author>
@@ -1629,19 +1629,19 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/api/" term="api" label="api" />
+                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                                <category scheme="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/css/" term="css" label="css" />
+                                <category scheme="https://wss.cool/categories/css/" term="css" label="css" />
                             
                         
                     
@@ -1653,9 +1653,9 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
     
         <entry>
             <title type="text">SSH</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/ssh.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/ssh.html</id>
-            <updated>2020-04-12T15:24:32+00:00</updated>
+            <link rel="alternate" type="text/html" href="https://wss.cool/ssh.html" />
+            <id>https://wss.cool/ssh.html</id>
+            <updated>2020-04-13T04:40:47+00:00</updated>
             <published>2020-03-31T08:37:31+08:00</published>
             <author>
                     <name>WangShuShuo</name>
@@ -1747,19 +1747,19 @@ Permissions 0644 '' are too open.
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/api/" term="api" label="api" />
+                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" term="服务器" label="服务器" />
+                                <category scheme="https://wss.cool/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" term="服务器" label="服务器" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/linux/" term="LINUX" label="LINUX" />
+                                <category scheme="https://wss.cool/categories/linux/" term="LINUX" label="LINUX" />
                             
                         
                     
@@ -1771,8 +1771,8 @@ Permissions 0644 '' are too open.
     
         <entry>
             <title type="text">跨域CORS</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/%E8%B7%A8%E5%9F%9Fcors.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/%E8%B7%A8%E5%9F%9Fcors.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/%E8%B7%A8%E5%9F%9Fcors.html" />
+            <id>https://wss.cool/%E8%B7%A8%E5%9F%9Fcors.html</id>
             <updated>2020-03-31T08:33:05+08:00</updated>
             <published>2020-03-31T08:33:05+08:00</published>
             <author>
@@ -1835,19 +1835,19 @@ IP地址：https://192.168.4.12</p>
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" term="知识点" label="知识点" />
+                                <category scheme="https://wss.cool/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" term="知识点" label="知识点" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                                <category scheme="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/javascript/" term="JavaScript" label="JavaScript" />
+                                <category scheme="https://wss.cool/categories/javascript/" term="JavaScript" label="JavaScript" />
                             
                         
                     
@@ -1859,8 +1859,8 @@ IP地址：https://192.168.4.12</p>
     
         <entry>
             <title type="text">AJAX</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/ajax.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/ajax.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/ajax.html" />
+            <id>https://wss.cool/ajax.html</id>
             <updated>2020-03-31T08:20:17+08:00</updated>
             <published>2020-03-31T08:20:17+08:00</published>
             <author>
@@ -2050,19 +2050,19 @@ IP地址：https://192.168.4.12</p>
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" term="知识点" label="知识点" />
+                                <category scheme="https://wss.cool/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" term="知识点" label="知识点" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                                <category scheme="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/javascript/" term="JavaScript" label="JavaScript" />
+                                <category scheme="https://wss.cool/categories/javascript/" term="JavaScript" label="JavaScript" />
                             
                         
                     
@@ -2074,8 +2074,8 @@ IP地址：https://192.168.4.12</p>
     
         <entry>
             <title type="text">DOM</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/dom.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/dom.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/dom.html" />
+            <id>https://wss.cool/dom.html</id>
             <updated>2020-03-30T23:25:37+08:00</updated>
             <published>2020-03-30T23:25:37+08:00</published>
             <author>
@@ -2106,19 +2106,19 @@ IP地址：https://192.168.4.12</p>
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/api/" term="api" label="api" />
+                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                                <category scheme="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/dom/" term="DOM" label="DOM" />
+                                <category scheme="https://wss.cool/categories/dom/" term="DOM" label="DOM" />
                             
                         
                     
@@ -2130,8 +2130,8 @@ IP地址：https://192.168.4.12</p>
     
         <entry>
             <title type="text">React</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/react.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/react.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/react.html" />
+            <id>https://wss.cool/react.html</id>
             <updated>2020-03-30T23:19:26+08:00</updated>
             <published>2020-03-30T23:19:26+08:00</published>
             <author>
@@ -2179,19 +2179,19 @@ IP地址：https://192.168.4.12</p>
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/api/" term="api" label="api" />
+                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                                <category scheme="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/react/" term="react" label="react" />
+                                <category scheme="https://wss.cool/categories/react/" term="react" label="react" />
                             
                         
                     
@@ -2203,8 +2203,8 @@ IP地址：https://192.168.4.12</p>
     
         <entry>
             <title type="text">博客文章分类</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB.html" />
+            <id>https://wss.cool/%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%88%86%E7%B1%BB.html</id>
             <updated>2020-03-30T22:49:40+08:00</updated>
             <published>2020-03-30T22:49:40+08:00</published>
             <author>
@@ -2320,7 +2320,7 @@ IP地址：https://192.168.4.12</p>
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%85%B6%E4%BB%96/" term="其他" label="其他" />
+                                <category scheme="https://wss.cool/categories/%E5%85%B6%E4%BB%96/" term="其他" label="其他" />
                             
                         
                     
@@ -2332,8 +2332,8 @@ IP地址：https://192.168.4.12</p>
     
         <entry>
             <title type="text">css</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/css.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/css.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/css.html" />
+            <id>https://wss.cool/css.html</id>
             <updated>2020-03-29T22:10:30+08:00</updated>
             <published>2020-03-29T22:10:30+08:00</published>
             <author>
@@ -2516,19 +2516,19 @@ ID选择器 = 100
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/api/" term="api" label="api" />
+                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                                <category scheme="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/css/" term="css" label="css" />
+                                <category scheme="https://wss.cool/categories/css/" term="css" label="css" />
                             
                         
                     
@@ -2540,8 +2540,8 @@ ID选择器 = 100
     
         <entry>
             <title type="text">vscode</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/vscode.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/vscode.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/vscode.html" />
+            <id>https://wss.cool/vscode.html</id>
             <updated>2020-03-28T05:02:40+08:00</updated>
             <published>2020-03-28T05:02:40+08:00</published>
             <author>
@@ -2569,13 +2569,13 @@ ID选择器 = 100
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/api/" term="api" label="api" />
+                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
+                                <category scheme="https://wss.cool/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
                     
@@ -2587,8 +2587,8 @@ ID选择器 = 100
     
         <entry>
             <title type="text">hugo常用格式</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/hugo%E5%B8%B8%E7%94%A8%E6%A0%BC%E5%BC%8F.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/hugo%E5%B8%B8%E7%94%A8%E6%A0%BC%E5%BC%8F.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/hugo%E5%B8%B8%E7%94%A8%E6%A0%BC%E5%BC%8F.html" />
+            <id>https://wss.cool/hugo%E5%B8%B8%E7%94%A8%E6%A0%BC%E5%BC%8F.html</id>
             <updated>2020-03-28T05:02:40+08:00</updated>
             <published>2020-03-28T02:52:52+08:00</published>
             <author>
@@ -2680,7 +2680,7 @@ ID选择器 = 100
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%85%B6%E4%BB%96/" term="其他" label="其他" />
+                                <category scheme="https://wss.cool/categories/%E5%85%B6%E4%BB%96/" term="其他" label="其他" />
                             
                         
                     
@@ -2692,8 +2692,8 @@ ID选择器 = 100
     
         <entry>
             <title type="text">Java执行shell命令</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/java%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/java%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4.html</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/java%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4.html" />
+            <id>https://wss.cool/java%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4.html</id>
             <updated>2020-01-18T17:53:17+08:00</updated>
             <published>2020-01-18T17:53:17+08:00</published>
             <author>
@@ -2893,7 +2893,7 @@ ID选择器 = 100
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E6%8A%98%E8%85%BE/" term="折腾" label="折腾" />
+                                <category scheme="https://wss.cool/categories/%E6%8A%98%E8%85%BE/" term="折腾" label="折腾" />
                             
                         
                     
@@ -2905,8 +2905,8 @@ ID选择器 = 100
     
         <entry>
             <title type="text">Git</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/git/" />
-            <id>https://wangshushuo.github.io/wangshushuo/git/</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/git/" />
+            <id>https://wss.cool/git/</id>
             <updated>2020-03-27T20:53:36+08:00</updated>
             <published>2019-07-18T10:53:36+08:00</published>
             <author>
@@ -3240,13 +3240,13 @@ git log --graph --oneline --decorate</p>
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/api/" term="api" label="api" />
+                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
+                                <category scheme="https://wss.cool/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
                     
@@ -3258,8 +3258,8 @@ git log --graph --oneline --decorate</p>
     
         <entry>
             <title type="text">为博客打造在线编辑器</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/online-editor-for-markdown-blog/" />
-            <id>https://wangshushuo.github.io/wangshushuo/online-editor-for-markdown-blog/</id>
+            <link rel="alternate" type="text/html" href="https://wss.cool/online-editor-for-markdown-blog/" />
+            <id>https://wss.cool/online-editor-for-markdown-blog/</id>
             <updated>2019-10-18T08:47:32+08:00</updated>
             <published>2019-06-23T21:12:32+08:00</published>
             <author>
@@ -3313,7 +3313,7 @@ hugo serve --renderToDisk --appendPort=false
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E6%8A%98%E8%85%BE/" term="折腾" label="折腾" />
+                                <category scheme="https://wss.cool/categories/%E6%8A%98%E8%85%BE/" term="折腾" label="折腾" />
                             
                         
                     
@@ -3325,9 +3325,9 @@ hugo serve --renderToDisk --appendPort=false
     
         <entry>
             <title type="text">如何处理大量bug</title>
-            <link rel="alternate" type="text/html" href="https://wangshushuo.github.io/wangshushuo/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html" />
-            <id>https://wangshushuo.github.io/wangshushuo/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html</id>
-            <updated>2020-04-12T15:24:32+00:00</updated>
+            <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html" />
+            <id>https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html</id>
+            <updated>2020-04-13T04:40:47+00:00</updated>
             <published>2018-12-21T16:21:39+00:00</published>
             <author>
                     <name>WangShuShuo</name>
@@ -3360,7 +3360,7 @@ hugo serve --renderToDisk --appendPort=false
                             
                             
                             
-                                <category scheme="https://wangshushuo.github.io/wangshushuo/categories/%E5%BF%83%E5%BE%97%E4%B8%8E%E7%BB%8F%E9%AA%8C/" term="心得与经验" label="心得与经验" />
+                                <category scheme="https://wss.cool/categories/%E5%BF%83%E5%BE%97%E4%B8%8E%E7%BB%8F%E9%AA%8C/" term="心得与经验" label="心得与经验" />
                             
                         
                     
