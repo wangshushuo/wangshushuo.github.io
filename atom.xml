@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">WSS.COOL</title>
     <subtitle type="html">记录代码生涯，前端，React，Java，Spring，Nginx</subtitle>
-    <updated>2020-04-13T04:45:07+00:00</updated>
+    <updated>2020-04-13T05:04:00+00:00</updated>
     <id>https://wss.cool/</id>
     <link rel="alternate" type="text/html" href="https://wss.cool/" />
     <link rel="self" type="application/atom+xml" href="https://wss.cool/atom.xml" />
@@ -1655,7 +1655,7 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
             <title type="text">SSH</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/ssh.html" />
             <id>https://wss.cool/ssh.html</id>
-            <updated>2020-04-13T04:45:03+00:00</updated>
+            <updated>2020-04-13T05:03:57+00:00</updated>
             <published>2020-03-31T08:37:31+08:00</published>
             <author>
                     <name>WangShuShuo</name>
@@ -3327,7 +3327,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">如何处理大量bug</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html" />
             <id>https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html</id>
-            <updated>2020-04-13T04:45:03+00:00</updated>
+            <updated>2020-04-13T05:03:57+00:00</updated>
             <published>2018-12-21T16:21:39+00:00</published>
             <author>
                     <name>WangShuShuo</name>
