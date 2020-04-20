@@ -9,7 +9,7 @@
     <channel>
         <title>WSS.COOL</title>
         <link>https://wss.cool/</link>
-        <description>记录代码生涯，前端，React，Java，Spring，Nginx</description>
+        <description>现在是一名前端，希望转到后端，最后做架构师。这里记录了常用到的前端、后端、服务器和各种工具的常用api、知识点等。记录的api方便查找，记录的知识点作为一种输出可以增加理解。</description>
         <generator>Hugo 0.68.3 https://gohugo.io/</generator>
         
             <language>zh-CN</language>
@@ -23,15 +23,511 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 17 Apr 2020 17:05:51 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 20 Apr 2020 15:43:53 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
         
             <item>
+                <title>jsvascript</title>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/js/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/js/</guid>
+                <pubDate>Sat, 18 Apr 2020 01:45:53 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="原生获取真是宽高">原生获取真是宽高</h2>
+<p>不知道为什么用#${divID}会报错，只能用div[]选择器了，id=后面要用单引号。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">textElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="sb">`div[id=&#39;</span><span class="si">${</span><span class="nx">divID</span><span class="si">}</span><span class="sb">&#39;] .ckeditor`</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">width</span> <span class="o">=</span> <span class="nx">textElement</span><span class="p">.</span><span class="nx">offsetWidth</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">textElement</span><span class="p">.</span><span class="nx">offsetHeight</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="promise-asyncawait-获取图片原始尺寸">promise async/await 获取图片原始尺寸</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="nx">async</span> <span class="nx">funciton</span> <span class="nx">getImageInfo</span><span class="p">(</span><span class="nx">image_res_url</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span><span class="nx">width</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">number</span><span class="p">}</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">image</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+    <span class="nx">image</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">image_res_url</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span><span class="nx">width</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">number</span><span class="p">}</span><span class="o">&gt;</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">image</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">resolve</span><span class="p">({</span><span class="nx">width</span>: <span class="kt">image.naturalWidth</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">image.naturalHeight</span><span class="p">});</span>
+        <span class="p">};</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="数组的every方法">数组的every方法</h2>
+<p>every方法可以中断循环</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">contentList</span><span class="p">.</span><span class="nx">every</span><span class="p">((</span><span class="nx">content</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">content</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">contentList</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="事件">事件</h2>
+<pre><code>// 取消默认行为：
+e.preventDefault()
+// 停止冒泡：
+e.stopPropagation();  
+</code></pre><h2 id="将promise改装成await">将promise改装成await</h2>
+<p>将一个element UI库的confirm改装成await：这个confirm方法原来返回的是promise，resolve在try中return，reject在catch中return。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">public</span> <span class="nx">async</span> <span class="nx">confirm_async</span><span class="p">(</span><span class="nx">message</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">title</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">vue</span><span class="p">.</span><span class="nx">$confirm</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">title</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">undefined</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>调用confirm_async方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">isConfirm</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">ed_showConfirm_async</span><span class="p">(</span><span class="s1">&#39;xx&#39;</span><span class="p">,</span><span class="s1">&#39;xx&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">isConfirm</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这两个语句所在方法或函数，必须是一个async的函数或方法。这样就不需要把后续的操作都写在一个then方法中了。</p>
+<h2 id="array-reduce数组的reduce方法">Array reduce，数组的reduce方法</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">memo</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">memo</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">memo</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">{});</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="js复制到剪切板chrome-66-支持">JS复制到剪切板(chrome 66+ 支持)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">navigator</span><span class="p">.</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">writeText</span><span class="p">(</span><span class="s1">&#39;888&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Async: Copying to clipboard was successful!&#39;</span><span class="p">);</span>
+    <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Async: Could not copy text: &#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="p">});</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="处理粘贴事件paste">处理粘贴事件(paste)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">xxxElement</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;paste&#34;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">text</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">(</span><span class="s2">&#34;text/plain&#34;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">text</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">(</span><span class="s2">&#34;Text&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">execCommand</span><span class="p">(</span><span class="s2">&#34;insertHTML&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">text</span><span class="p">);</span>
+<span class="p">});</span>  
+
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/javascript/">JavaScript</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>获取滚动高度</title>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/</guid>
+                <pubDate>Sat, 18 Apr 2020 01:45:53 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="获取滚动高度">获取滚动高度</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">getPageScrollY</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">yScroll</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">yScroll</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Explorer 6 Strict
+</span><span class="c1"></span>        <span class="nx">yScroll</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span><span class="c1">// all other Explorers
+</span><span class="c1"></span>        <span class="nx">yScroll</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">yScroll</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>也可以window.scrollY</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/javascript/">JavaScript</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Git:Perission-Denied</title>
+                <link>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/</guid>
+                <pubDate>Sat, 18 Apr 2020 01:43:23 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="gitperission-denied">git:Perission denied</h2>
+<p>刚使用了一下vuecli的mocha测试插件，然后切换分支，又切换回那个分支，就报了这个错误。把运行vue测试的命令行（窗口）关掉就可以了。
+![666][image1]</p>
+<p>大概是由于vuecli的进程还在控制着tests文件，我之前没有关闭它。现在切换分支，要对这个tests文件夹操作，而windows不允许2个进程操作一个文件，所以只要关闭原来的那个命令行窗口也就关闭了原来的控制进程。再操作就可以了。</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/git/">git</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Npm与yarn</title>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/</guid>
+                <pubDate>Sat, 18 Apr 2020 01:31:26 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="yarn">yarn</h2>
+<h3 id="淘宝的镜像">淘宝的镜像</h3>
+<pre><code>yarn config set registry https://registry.npm.taobao.org --global
+yarn config set disturl https://npm.taobao.org/dist --global
+
+// 额外设置一些常用的库
+yarn config set electron_mirror https://npm.taobao.org/mirrors/electron/ -g
+yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/ -g
+yarn config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/ -g
+yarn config set chromedriver_cdnurl https://cdn.npm.taobao.org/dist/chromedriver -g
+yarn config set operadriver_cdnurl https://cdn.npm.taobao.org/dist/operadriver -g
+yarn config set fse_binary_host_mirror https://npm.taobao.org/mirrors/fsevents -g
+</code></pre><h2 id="npm">npm</h2>
+<pre><code>npm config set registry https://registry.npm.taobao.org
+npm config set disturl https://npm.taobao.org/dist
+
+npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
+npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
+npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
+</code></pre><h3 id="npm设置代理">npm设置代理</h3>
+<pre><code>npm config set proxy http://127.0.0.1:1080
+</code></pre>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>应该知道的</title>
+                <link>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/</guid>
+                <pubDate>Sat, 18 Apr 2020 01:28:32 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<ul>
+<li>Bad architecture causes more problems than bad code.</li>
+<li>You will spend more time thinking than coding.</li>
+<li>The best programmers are always building things.</li>
+<li>There’s always a better way.</li>
+<li>Code reviews by your peers will make all of you better.</li>
+<li>Fewer features for better code is always the right answer in the end.</li>
+<li>Don’t reinvent the wheel, library code is there to help.</li>
+<li>If it’s not tested, it doesn’t work.</li>
+<li>Code that’s hard to understand is hard to maintain.</li>
+<li>Code that’s hard to maintain is next to useless.</li>
+<li>Always know how your business makes money, that determines who gets paid what.</li>
+<li>If you want to feel important as a software developer, work at a tech company.</li>
+</ul>
+<ol>
+<li>您将花费更多的时间思考而不是编码。</li>
+<li>不良的体系结构比不良的代码引起更多的问题。</li>
+<li>最好的程序员总是在构建东西。</li>
+<li>总会有更好的方法。</li>
+<li>同行的代码审查将使所有人变得更好。</li>
+<li>最终，正确的答案就是更少的功能来获得更好的代码。</li>
+<li>如果未测试，它将无法正常工作。</li>
+<li>不要重新发明轮子，库代码可以为您提供帮助。</li>
+<li>难以理解的代码难以维护。</li>
+<li>难以维护的代码几乎是无用的。</li>
+<li>始终知道您的企业是如何赚钱的，这决定了谁能得到酬劳。</li>
+<li>如果您想以软件开发人员的身份感到重要，请在技术公司工作。</li>
+</ol>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E8%A1%8C%E4%B8%9A%E6%88%90%E9%95%BF/">行业成长</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Nginx导致的bug</title>
+                <link>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/</guid>
+                <pubDate>Sat, 18 Apr 2020 01:24:25 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="什么情况下出现了bug">什么情况下出现了bug？</h2>
+<p>后端代码使用 spring boot 实现了一个 github oauth2 认证登录的 client 。将代码附属到服务器以后，请求经过 nginx 反向代理，java程序报错。</p>
+<h2 id="表现">表现</h2>
+<p>报错</p>
+<pre><code>Authentication request failed: org.springframework.security.oauth2.core.OAuth2AuthenticationException: [invalid_redirect_uri_parameter]
+</code></pre><h2 id="原因">原因</h2>
+<p>是nginx的导致的，可能是 nginx 转发请求的时候不会带着3个自定义header</p>
+<h2 id="解决方法">解决方法</h2>
+<p>修改 nginx 配置和 spring boot 的 tomcat 配置，处理3个 header 。</p>
+<p>nginx配置</p>
+<pre><code>proxy_set_header HOST $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Proto $scheme;
+</code></pre><p>application.yml</p>
+<pre><code>server:
+  tomcat:
+    remote-ip-header: &quot;X-Forwarded-For&quot;
+    protocol-header: &quot;X-Forwarded-Proto&quot;
+    protocol-header-https-value: &quot;https&quot;
+</code></pre>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/spring/">spring</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/bug/">bug</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
                 <title>JavaScript</title>
-                <link>https://wss.cool/javascript.html</link>
-                <guid isPermaLink="true">https://wss.cool/javascript.html</guid>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/</guid>
                 <pubDate>Sat, 04 Apr 2020 02:13:49 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (WangShuShuo)</author>
@@ -205,23 +701,19 @@
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
-                            
-                                
-                                
-                                
                                     <category domain="https://wss.cool/categories/javascript/">JavaScript</category>
                                 
                             
                         
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
                         
                     
                 
@@ -859,7 +1351,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -1239,7 +1731,7 @@ set softtabstop=2
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -1436,8 +1928,8 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
         
             <item>
                 <title>渐变色</title>
-                <link>https://wss.cool/linear-gradient.html</link>
-                <guid isPermaLink="true">https://wss.cool/linear-gradient.html</guid>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/linear-gradient/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/linear-gradient/</guid>
                 <pubDate>Tue, 31 Mar 2020 08:41:24 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (WangShuShuo)</author>
@@ -1608,23 +2100,19 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/css/">css</category>
+                                    <category domain="https://wss.cool/categories/css/">CSS</category>
                                 
                             
                         
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
                         
                     
                 
@@ -1735,7 +2223,7 @@ scp -i ./identity_file.pem file_a name@1.1.1.1:~/
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -1844,8 +2332,8 @@ IP地址：https://192.168.4.12</p>
         
             <item>
                 <title>AJAX</title>
-                <link>https://wss.cool/ajax.html</link>
-                <guid isPermaLink="true">https://wss.cool/ajax.html</guid>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/ajax/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/ajax/</guid>
                 <pubDate>Tue, 31 Mar 2020 08:20:17 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (WangShuShuo)</author>
@@ -2032,23 +2520,19 @@ IP地址：https://192.168.4.12</p>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/">知识点</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
-                            
-                                
-                                
-                                
                                     <category domain="https://wss.cool/categories/javascript/">JavaScript</category>
                                 
                             
                         
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
                         
                     
                 
@@ -2056,8 +2540,8 @@ IP地址：https://192.168.4.12</p>
         
             <item>
                 <title>DOM</title>
-                <link>https://wss.cool/dom.html</link>
-                <guid isPermaLink="true">https://wss.cool/dom.html</guid>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/</guid>
                 <pubDate>Mon, 30 Mar 2020 23:25:37 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (WangShuShuo)</author>
@@ -2085,23 +2569,19 @@ IP地址：https://192.168.4.12</p>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
                                     <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/dom/">DOM</category>
                                 
                             
                         
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
                         
                     
                 
@@ -2151,18 +2631,6 @@ IP地址：https://192.168.4.12</p>
                 
                     
                         
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
                             
                                 
                                 
@@ -2303,8 +2771,8 @@ IP地址：https://192.168.4.12</p>
         
             <item>
                 <title>css</title>
-                <link>https://wss.cool/css.html</link>
-                <guid isPermaLink="true">https://wss.cool/css.html</guid>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css/</guid>
                 <pubDate>Sun, 29 Mar 2020 22:10:30 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (WangShuShuo)</author>
@@ -2484,19 +2952,7 @@ ID选择器 = 100
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/css/">css</category>
+                                    <category domain="https://wss.cool/categories/css/">CSS</category>
                                 
                             
                         
@@ -2532,7 +2988,7 @@ ID选择器 = 100
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -3135,8 +3591,8 @@ ID选择器 = 100
         
             <item>
                 <title>Spring MVC与模版 thymeleaf 开发网站</title>
-                <link>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/java/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/</link>
-                <guid isPermaLink="true">https://wss.cool/posts/%E5%90%8E%E7%AB%AF/java/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/</guid>
+                <link>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/</guid>
                 <pubDate>Tue, 25 Feb 2020 23:39:38 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (WangShuShuo)</author>
@@ -3294,7 +3750,7 @@ ID选择器 = 100
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -5531,7 +5987,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -5615,8 +6071,8 @@ Authorization: Bearer some-token-value # Resource Server will process this
         
             <item>
                 <title>Spring Boot 中读取配置文件中的变量</title>
-                <link>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/java/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/</link>
-                <guid isPermaLink="true">https://wss.cool/posts/%E5%90%8E%E7%AB%AF/java/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/</guid>
+                <link>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/</guid>
                 <pubDate>Sat, 18 Jan 2020 17:57:27 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (WangShuShuo)</author>
@@ -6116,7 +6572,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -6343,7 +6799,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -6520,18 +6976,6 @@ npx create-react-app my-app --template redux
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
-                            
-                                
-                                
-                                
                                     <category domain="https://wss.cool/categories/react/">react</category>
                                 
                             
@@ -6654,12 +7098,6 @@ npx create-react-app my-app --template redux
                                 
                                 
                                     <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category>
                                 
                             
                         
@@ -7023,6 +7461,10 @@ ew……挺酷的吧？
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
                     <description><![CDATA[<p>这个博客是使用hugo搭建的，选择来一个大体喜欢的主题。但是有一些细节还是不够满意，所以如何改造hugo主题，加上自己想要的内容，就成了一个值得研究的问题。</p>
+<h2 id="sections">Sections</h2>
+<p>content目录下的各个一级子目录就是一个section，它们是first-level的section，可以为它们定义layout组织内容，并通过url来访问（默认就是目录）。</p>
+<p>一级子目录下也可有任意深度的子目录，只要子目录中定义_index.md就可以作为一个section。</p>
+<p>section除了可以通过以目录层级为url访问，还可以获得到属于它的子文章列表。</p>
 <h2 id="分类法taxonomies">分类法（Taxonomies）</h2>
 <p>我想解决的第一个问题就是文章的分类，因为一个单纯的列表看上去可能有点散乱。观察创建文章的可选参数，以及其他博客。可以确定hugo是支持分类的。在官网文档中的Content Management下有Taxonomies，阅读内容后可以确定，这就是我想找的东西。</p>
 <p>在hugo中，用“Taxonomies”这个术语表示“文章的分类”。相关的有三个概念：</p>
@@ -7231,7 +7673,7 @@ categories         &lt;- Taxonomy
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -7509,7 +7951,7 @@ categories         &lt;- Taxonomy
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -7541,8 +7983,8 @@ categories         &lt;- Taxonomy
         
             <item>
                 <title>CSS知识点汇总</title>
-                <link>https://wss.cool/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB.html</link>
-                <guid isPermaLink="true">https://wss.cool/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%B1%87%E6%80%BB.html</guid>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
                 <pubDate>Sun, 15 Sep 2019 21:53:21 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (WangShuShuo)</author>
@@ -7582,23 +8024,19 @@ categories         &lt;- Taxonomy
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/css/">css</category>
+                                    <category domain="https://wss.cool/categories/css/">CSS</category>
                                 
                             
                         
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
                         
                     
                 
@@ -7625,18 +8063,6 @@ categories         &lt;- Taxonomy
                 
                     
                         
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
                             
                                 
                                 
@@ -7823,12 +8249,6 @@ workbox wizard
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
                                     <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
                                 
                             
@@ -7839,19 +8259,7 @@ workbox wizard
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/tags/service-worker/">service worker</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/workbox/">workbox</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/%E9%A2%84%E4%B8%8B%E8%BD%BD/">预下载</category>
+                                    <category domain="https://wss.cool/tags/api/">api</category>
                                 
                             
                         
@@ -8292,11 +8700,19 @@ domain中的数据会被线性映射到range中。<code>scale(50);</code>中的<
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
                                 
                             
                         
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
                         
                     
                 
@@ -8636,7 +9052,7 @@ git log --graph --oneline --decorate</p>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -8654,8 +9070,8 @@ git log --graph --oneline --decorate</p>
         
             <item>
                 <title>Fetch 与 Axios</title>
-                <link>https://wss.cool/fetch-and-axios.html</link>
-                <guid isPermaLink="true">https://wss.cool/fetch-and-axios.html</guid>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/fetch%E4%B8%8Eaxios/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/fetch%E4%B8%8Eaxios/</guid>
                 <pubDate>Wed, 17 Jul 2019 10:27:44 +0000</pubDate>
                 
                     <author>wss.six@foxmail.com (WangShuShuo)</author>
@@ -9058,6 +9474,14 @@ git log --graph --oneline --decorate</p>
                             
                         
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
                         
                     
                 
@@ -9531,7 +9955,7 @@ sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -9737,7 +10161,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -9837,6 +10261,14 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
                             
                         
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
                         
                     
                 
@@ -10018,14 +10450,16 @@ transform: translate(50%, 50%);</code></pre><blockquote>
                                     <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
                                 
                             
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E6%B5%8F%E8%A7%88%E5%99%A8api/">浏览器API</category>
-                                
-                            
                         
                     
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
                         
                     
                 
@@ -10033,8 +10467,8 @@ transform: translate(50%, 50%);</code></pre><blockquote>
         
             <item>
                 <title>CSS命名</title>
-                <link>https://wss.cool/css-module.html</link>
-                <guid isPermaLink="true">https://wss.cool/css-module.html</guid>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E5%91%BD%E5%90%8D/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E5%91%BD%E5%90%8D/</guid>
                 <pubDate>Wed, 27 Mar 2019 05:08:59 +0000</pubDate>
                 
                     <author>wss.six@foxmail.com (WangShuShuo)</author>
@@ -10071,19 +10505,7 @@ B文件：
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/css/">css</category>
+                                    <category domain="https://wss.cool/categories/css/">CSS</category>
                                 
                             
                         
@@ -10093,19 +10515,7 @@ B文件：
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/tags/classname/">classname</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/css/">css</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/module/">module</category>
+                                    <category domain="https://wss.cool/tags/api/">api</category>
                                 
                             
                         
@@ -10311,7 +10721,7 @@ B文件：
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">API</category>
+                                    <category domain="https://wss.cool/categories/api/">api</category>
                                 
                             
                                 
@@ -10409,18 +10819,6 @@ class AddTodo extends React.Component&lt;IProps, IState>{}</code></pre>
                 
                     
                         
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/api/">API</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
-                                
                             
                                 
                                 
@@ -10842,80 +11240,6 @@ sudo vim /etc/s-nail.rc﻿
                             
                         
                     
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/cancel-effect/">cancel effect</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/dva/">dva</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/dva-cancel-effect/">dva cancel effect</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/dva-effect%E8%B6%85%E6%97%B6/">dva effect超时</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/saga%E8%B6%85%E6%97%B6/">saga超时</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/%E5%8F%96%E6%B6%88axios/">取消axios</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/%E5%8F%96%E6%B6%88effect/">取消effect</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/%E5%8F%96%E6%B6%88saga/">取消saga</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/%E5%8F%96%E6%B6%88saga%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/">取消saga异步任务</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/%E5%8F%96%E6%B6%88%E5%BC%82%E6%AD%A5%E4%BB%BB%E5%8A%A1/">取消异步任务</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/%E5%8F%96%E6%B6%88%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/">取消网络请求</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/tags/%E8%B6%85%E6%97%B6/">超时</category>
-                                
-                            
                         
                     
                 
