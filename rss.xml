@@ -15,15 +15,15 @@
             <language>zh-CN</language>
         
         
-            <managingEditor>wss.six@foxmail.com (WangShuShuo)</managingEditor>
+            <managingEditor>wss.six@foxmail.com (王书硕)</managingEditor>
         
         
-            <webMaster>wss.six@foxmail.com (WangShuShuo)</webMaster>
+            <webMaster>wss.six@foxmail.com (王书硕)</webMaster>
         
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 21 Apr 2020 00:11:04 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 21 Apr 2020 01:00:47 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -34,7 +34,7 @@
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/js/</guid>
                 <pubDate>Sat, 18 Apr 2020 01:45:53 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -243,7 +243,7 @@ e.stopPropagation();
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/</guid>
                 <pubDate>Sat, 18 Apr 2020 01:45:53 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -313,7 +313,7 @@ e.stopPropagation();
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/</guid>
                 <pubDate>Sat, 18 Apr 2020 01:43:23 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -349,7 +349,7 @@ e.stopPropagation();
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/</guid>
                 <pubDate>Sat, 18 Apr 2020 01:31:26 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -410,7 +410,7 @@ npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/</guid>
                 <pubDate>Sat, 18 Apr 2020 01:28:32 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -470,7 +470,7 @@ npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/</guid>
                 <pubDate>Sat, 18 Apr 2020 01:24:25 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -530,7 +530,7 @@ proxy_set_header X-Forwarded-Proto $scheme;
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/</guid>
                 <pubDate>Sat, 04 Apr 2020 02:13:49 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -725,7 +725,7 @@ proxy_set_header X-Forwarded-Proto $scheme;
                 <guid isPermaLink="true">https://wss.cool/square-root-dichotomy-and-newton-iteration.html</guid>
                 <pubDate>Fri, 03 Apr 2020 11:36:01 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -858,7 +858,7 @@ x0足够接近根 α。</p>
                 <guid isPermaLink="true">https://wss.cool/mysql.html</guid>
                 <pubDate>Thu, 02 Apr 2020 22:24:03 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -1379,7 +1379,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
                 <guid isPermaLink="true">https://wss.cool/refactoring-old-projects-part-1.html</guid>
                 <pubDate>Thu, 02 Apr 2020 15:17:52 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -1639,7 +1639,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
                 <guid isPermaLink="true">https://wss.cool/vim.html</guid>
                 <pubDate>Wed, 01 Apr 2020 21:27:14 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -1753,7 +1753,7 @@ set softtabstop=2
                 <guid isPermaLink="true">https://wss.cool/reactrouter-philosophy.html</guid>
                 <pubDate>Tue, 31 Mar 2020 13:11:28 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -1932,7 +1932,7 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/linear-gradient/</guid>
                 <pubDate>Tue, 31 Mar 2020 08:41:24 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -2124,7 +2124,7 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
                 <guid isPermaLink="true">https://wss.cool/ssh.html</guid>
                 <pubDate>Tue, 31 Mar 2020 08:37:31 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -2251,7 +2251,7 @@ scp -i ./identity_file.pem file_a name@1.1.1.1:~/
                 <guid isPermaLink="true">https://wss.cool/%E8%B7%A8%E5%9F%9Fcors.html</guid>
                 <pubDate>Tue, 31 Mar 2020 08:33:05 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -2336,7 +2336,7 @@ IP地址：https://192.168.4.12</p>
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/ajax/</guid>
                 <pubDate>Tue, 31 Mar 2020 08:20:17 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -2544,7 +2544,7 @@ IP地址：https://192.168.4.12</p>
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/</guid>
                 <pubDate>Mon, 30 Mar 2020 23:25:37 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -2593,7 +2593,7 @@ IP地址：https://192.168.4.12</p>
                 <guid isPermaLink="true">https://wss.cool/react.html</guid>
                 <pubDate>Mon, 30 Mar 2020 23:19:26 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -2651,7 +2651,7 @@ IP地址：https://192.168.4.12</p>
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%8D%9A%E5%AE%A2%E5%88%86%E7%B1%BB/</guid>
                 <pubDate>Mon, 30 Mar 2020 22:49:40 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -2775,7 +2775,7 @@ IP地址：https://192.168.4.12</p>
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css/</guid>
                 <pubDate>Sun, 29 Mar 2020 22:10:30 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -2968,7 +2968,7 @@ ID选择器 = 100
                 <guid isPermaLink="true">https://wss.cool/vscode.html</guid>
                 <pubDate>Sat, 28 Mar 2020 05:02:40 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -3010,7 +3010,7 @@ ID选择器 = 100
                 <guid isPermaLink="true">https://wss.cool/hugo%E5%B8%B8%E7%94%A8%E6%A0%BC%E5%BC%8F.html</guid>
                 <pubDate>Sat, 28 Mar 2020 02:52:52 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -3112,7 +3112,7 @@ ID选择器 = 100
                 <guid isPermaLink="true">https://wss.cool/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8.html</guid>
                 <pubDate>Thu, 26 Mar 2020 10:37:50 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -3169,7 +3169,7 @@ ID选择器 = 100
                 <guid isPermaLink="true">https://wss.cool/react-component-be-libiary.html</guid>
                 <pubDate>Thu, 27 Feb 2020 12:10:28 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -3445,7 +3445,7 @@ ID选择器 = 100
                 <guid isPermaLink="true">https://wss.cool/create-react-app.html</guid>
                 <pubDate>Thu, 27 Feb 2020 11:10:50 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -3531,7 +3531,7 @@ ID选择器 = 100
                 <guid isPermaLink="true">https://wss.cool/%E5%A4%9A%E5%BF%AB%E5%A5%BD%E7%9C%81.html</guid>
                 <pubDate>Wed, 26 Feb 2020 13:45:16 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -3595,7 +3595,7 @@ ID选择器 = 100
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/</guid>
                 <pubDate>Tue, 25 Feb 2020 23:39:38 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -3722,7 +3722,7 @@ ID选择器 = 100
                 <guid isPermaLink="true">https://wss.cool/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7.html</guid>
                 <pubDate>Thu, 30 Jan 2020 01:19:02 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -3772,7 +3772,7 @@ ID选择器 = 100
                 <guid isPermaLink="true">https://wss.cool/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%9C%8D%E5%8A%A1.html</guid>
                 <pubDate>Wed, 29 Jan 2020 17:20:32 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -3896,7 +3896,7 @@ ID选择器 = 100
                 <guid isPermaLink="true">https://wss.cool/spring-security-jwt.html</guid>
                 <pubDate>Sun, 19 Jan 2020 13:51:29 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -6015,7 +6015,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
                 <guid isPermaLink="true">https://wss.cool/spring%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5.html</guid>
                 <pubDate>Sat, 18 Jan 2020 18:30:02 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -6075,7 +6075,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/</guid>
                 <pubDate>Sat, 18 Jan 2020 17:57:27 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -6193,7 +6193,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
                 <guid isPermaLink="true">https://wss.cool/java%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4.html</guid>
                 <pubDate>Sat, 18 Jan 2020 17:53:17 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -6401,7 +6401,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
                 <guid isPermaLink="true">https://wss.cool/spring%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%89%AB%E7%9B%B2.html</guid>
                 <pubDate>Thu, 16 Jan 2020 23:55:23 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -6614,7 +6614,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
                 <guid isPermaLink="true">https://wss.cool/gitlab-ci.html</guid>
                 <pubDate>Fri, 29 Nov 2019 16:42:18 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -6821,7 +6821,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
                 <guid isPermaLink="true">https://wss.cool/posts/%E6%9C%AA%E8%AF%BB/</guid>
                 <pubDate>Mon, 18 Nov 2019 10:59:42 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -6877,7 +6877,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
                 <guid isPermaLink="true">https://wss.cool/redux-starter-kit.html</guid>
                 <pubDate>Mon, 28 Oct 2019 10:54:37 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -6994,7 +6994,7 @@ npx create-react-app my-app --template redux
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/</guid>
                 <pubDate>Wed, 23 Oct 2019 06:56:30 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -7115,7 +7115,7 @@ npx create-react-app my-app --template redux
                 <guid isPermaLink="true">https://wss.cool/arts%E6%89%93%E5%8D%A1.html</guid>
                 <pubDate>Tue, 22 Oct 2019 16:35:08 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -7155,7 +7155,7 @@ npx create-react-app my-app --template redux
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/react-spring/</guid>
                 <pubDate>Tue, 22 Oct 2019 14:19:59 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -7360,7 +7360,7 @@ npx create-react-app my-app --template redux
                 <guid isPermaLink="true">https://wss.cool/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98.html</guid>
                 <pubDate>Mon, 21 Oct 2019 16:54:43 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -7458,7 +7458,7 @@ ew……挺酷的吧？
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%B7%A5%E5%85%B7/hugo/</guid>
                 <pubDate>Thu, 10 Oct 2019 14:15:23 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -7697,7 +7697,7 @@ categories         &lt;- Taxonomy
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/</guid>
                 <pubDate>Mon, 07 Oct 2019 18:05:05 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -7826,7 +7826,7 @@ categories         &lt;- Taxonomy
                 <guid isPermaLink="true">https://wss.cool/cdn.html</guid>
                 <pubDate>Fri, 27 Sep 2019 13:16:55 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -7878,7 +7878,7 @@ categories         &lt;- Taxonomy
                 <guid isPermaLink="true">https://wss.cool/nginx.html</guid>
                 <pubDate>Fri, 27 Sep 2019 13:08:38 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -7989,7 +7989,7 @@ categories         &lt;- Taxonomy
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</guid>
                 <pubDate>Sun, 15 Sep 2019 21:53:21 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -8050,7 +8050,7 @@ categories         &lt;- Taxonomy
                 <guid isPermaLink="true">https://wss.cool/react-with-gesture.html</guid>
                 <pubDate>Wed, 28 Aug 2019 13:21:48 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -8099,7 +8099,7 @@ categories         &lt;- Taxonomy
                 <guid isPermaLink="true">https://wss.cool/react-rangeslider.html</guid>
                 <pubDate>Wed, 28 Aug 2019 13:15:47 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -8186,7 +8186,7 @@ categories         &lt;- Taxonomy
                 <guid isPermaLink="true">https://wss.cool/workbox/</guid>
                 <pubDate>Wed, 28 Aug 2019 09:53:21 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -8275,7 +8275,7 @@ workbox wizard
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E6%8E%88%E8%AF%BE%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/</guid>
                 <pubDate>Wed, 28 Aug 2019 07:19:34 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -8368,7 +8368,7 @@ workbox wizard
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</guid>
                 <pubDate>Sun, 25 Aug 2019 20:13:08 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -8469,7 +8469,7 @@ workbox wizard
                 <guid isPermaLink="true">https://wss.cool/react-popup.html</guid>
                 <pubDate>Thu, 22 Aug 2019 10:43:25 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -8614,7 +8614,7 @@ npm install reactjs-popup
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/d3/</guid>
                 <pubDate>Sat, 20 Jul 2019 12:29:41 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -8726,7 +8726,7 @@ domain中的数据会被线性映射到range中。<code>scale(50);</code>中的<
                 <guid isPermaLink="true">https://wss.cool/git/</guid>
                 <pubDate>Thu, 18 Jul 2019 10:53:36 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -9076,7 +9076,7 @@ git log --graph --oneline --decorate</p>
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/fetch%E4%B8%8Eaxios/</guid>
                 <pubDate>Wed, 17 Jul 2019 10:27:44 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -9495,7 +9495,7 @@ git log --graph --oneline --decorate</p>
                 <guid isPermaLink="true">https://wss.cool/react-router-hook.html</guid>
                 <pubDate>Mon, 08 Jul 2019 09:36:38 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -9581,7 +9581,7 @@ git log --graph --oneline --decorate</p>
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%BF%83%E5%BE%97/web%E5%89%8D%E7%AB%AF%E5%AF%B9%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E7%9A%84%E6%84%8F%E4%B9%89/</guid>
                 <pubDate>Sat, 06 Jul 2019 10:04:07 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -9651,7 +9651,7 @@ git log --graph --oneline --decorate</p>
                 <guid isPermaLink="true">https://wss.cool/online-editor-for-markdown-blog/</guid>
                 <pubDate>Sun, 23 Jun 2019 21:12:32 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -9713,7 +9713,7 @@ hugo serve --renderToDisk --appendPort=false
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/</guid>
                 <pubDate>Mon, 17 Jun 2019 02:03:56 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -9797,7 +9797,7 @@ hugo serve --renderToDisk --appendPort=false
                 <guid isPermaLink="true">https://wss.cool/favicon-emoji.html</guid>
                 <pubDate>Wed, 12 Jun 2019 17:58:07 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -9871,7 +9871,7 @@ hugo serve --renderToDisk --appendPort=false
                 <guid isPermaLink="true">https://wss.cool/linux.html</guid>
                 <pubDate>Tue, 11 Jun 2019 23:02:30 +0800</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -9993,7 +9993,7 @@ sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
                 <guid isPermaLink="true">https://wss.cool/docker.html</guid>
                 <pubDate>Thu, 06 Jun 2019 01:47:46 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10185,7 +10185,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/graphql/</guid>
                 <pubDate>Fri, 10 May 2019 06:58:48 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10282,7 +10282,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
                 <guid isPermaLink="true">https://wss.cool/lead.html</guid>
                 <pubDate>Mon, 06 May 2019 02:38:58 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10332,7 +10332,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E7%BD%91%E7%AB%99%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7/</guid>
                 <pubDate>Wed, 03 Apr 2019 02:41:47 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10387,7 +10387,7 @@ transform: translate(50%, 50%);</code></pre><blockquote>
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/</guid>
                 <pubDate>Wed, 27 Mar 2019 05:19:04 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10473,7 +10473,7 @@ transform: translate(50%, 50%);</code></pre><blockquote>
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E5%91%BD%E5%90%8D/</guid>
                 <pubDate>Wed, 27 Mar 2019 05:08:59 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10531,7 +10531,7 @@ B文件：
                 <guid isPermaLink="true">https://wss.cool/browser-cache.html</guid>
                 <pubDate>Thu, 14 Mar 2019 02:23:03 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10597,7 +10597,7 @@ B文件：
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/js-script-tag/</guid>
                 <pubDate>Wed, 13 Mar 2019 02:03:07 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10640,7 +10640,7 @@ B文件：
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%AD%97%E4%BD%93/</guid>
                 <pubDate>Tue, 05 Mar 2019 05:16:17 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10678,7 +10678,7 @@ B文件：
                 <guid isPermaLink="true">https://wss.cool/cheerio.html</guid>
                 <pubDate>Fri, 25 Jan 2019 01:20:58 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10745,7 +10745,7 @@ B文件：
                 <guid isPermaLink="true">https://wss.cool/typescript-react.html</guid>
                 <pubDate>Sun, 20 Jan 2019 14:15:47 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -10841,7 +10841,7 @@ class AddTodo extends React.Component&lt;IProps, IState>{}</code></pre>
                 <guid isPermaLink="true">https://wss.cool/mac-ubuntu-send-email.html</guid>
                 <pubDate>Fri, 04 Jan 2019 04:49:13 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -11044,7 +11044,7 @@ sudo vim /etc/s-nail.rc﻿
                 <guid isPermaLink="true">https://wss.cool/dva-saga-cancel-effect.html</guid>
                 <pubDate>Mon, 31 Dec 2018 09:54:21 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -11253,7 +11253,7 @@ sudo vim /etc/s-nail.rc﻿
                 <guid isPermaLink="true">https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html</guid>
                 <pubDate>Fri, 21 Dec 2018 16:21:39 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -11295,7 +11295,7 @@ sudo vim /etc/s-nail.rc﻿
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-saga/</guid>
                 <pubDate>Sun, 02 Dec 2018 11:04:48 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -11724,7 +11724,7 @@ const members = yield call(fetchMembers, project.id)
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-%E6%A6%82%E8%A6%81/</guid>
                 <pubDate>Wed, 28 Nov 2018 14:24:04 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -11837,7 +11837,7 @@ const store = createStore(reducer);</code></pre>
                 <guid isPermaLink="true">https://wss.cool/react-element-and-component.html</guid>
                 <pubDate>Sat, 24 Nov 2018 04:49:54 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
@@ -12181,7 +12181,7 @@ const store = createStore(reducer);</code></pre>
                 <guid isPermaLink="true">https://wss.cool/react-reconciliation.html</guid>
                 <pubDate>Sat, 17 Nov 2018 08:33:37 +0000</pubDate>
                 
-                    <author>wss.six@foxmail.com (WangShuShuo)</author>
+                    <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
