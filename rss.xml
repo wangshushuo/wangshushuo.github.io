@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 21 Apr 2020 01:40:28 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 21 Apr 2020 05:10:50 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -2211,7 +2211,12 @@ Permissions 0644 '' are too open.
 scp -i ./identity_file.pem file_a name@1.1.1.1:~/
 </code></pre></td></tr></table>
 </div>
-</div>]]></description>
+</div><h2 id="配置密钥文件">配置密钥文件</h2>
+<p>通常使用ssh生成的秘钥文件名是“id_rsa”，通常这一对公钥私钥也是够用的。如果有第二份秘钥的话（腾讯云生成的），需要一个&quot;config&quot;文件。
+该文件存放在&quot;.ssh&quot;目录下（不需要后缀扩展名），内容为：</p>
+<pre><code>Host 128.128.666.666
+   IdentityFile C:\Users\anrui\.ssh\pc_pc  
+</code></pre>]]></description>
                 
                 
                 
@@ -2866,7 +2871,41 @@ IP地址：https://192.168.4.12</p>
 <pre><code>.className::-webkit-input-placeholder {
   color: #B7B7B7;
 }
-</code></pre><h2 id="渐变色文字">渐变色文字</h2>
+</code></pre><h2 id="渐变色">渐变色</h2>
+<p>各个参数的含义：<code>linear-gradient(方向, 开始颜色 大小, 结束颜色 大小);</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">node</span> <span class="p">{</span>
+    <span class="k">background-image</span><span class="p">:</span> <span class="nb">linear-gradient</span><span class="p">(</span><span class="kc">to</span> <span class="kc">right</span><span class="p">,</span> <span class="mh">#000</span> <span class="mi">1</span><span class="kt">px</span><span class="p">,</span> <span class="kc">transparent</span> <span class="mi">0</span><span class="kt">px</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="使用css画不规则边框">使用css画不规则边框</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="p">.</span><span class="nc">node</span> <span class="p">{</span>
+    <span class="k">background-image</span><span class="p">:</span> <span class="nb">linear-gradient</span><span class="p">(</span><span class="kc">to</span> <span class="kc">right</span><span class="p">,</span> <span class="mh">#000</span> <span class="mi">1</span><span class="kt">px</span><span class="p">,</span> <span class="kc">transparent</span> <span class="mi">0</span><span class="kt">px</span><span class="p">);</span>
+    <span class="k">background-size</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+    <span class="n">background-position-y</span><span class="p">:</span> <span class="mi">50</span><span class="kt">%</span><span class="p">;</span>
+    <span class="k">background-repeat</span><span class="p">:</span> <span class="kc">no-repeat</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这段样式可以画半个左边框。其中用到了渐变色属性。</p>
+<h2 id="渐变色文字">渐变色文字</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -2940,7 +2979,78 @@ ID选择器 = 100
 :empty</p>
 <h2 id="inline-block元素有间隙">inline-block元素有间隙</h2>
 <p>解决方法：在这些inline-block元素的父元素设置样式——fontsize：0；</p>
-]]></description>
+<h2 id="居中-1">居中</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="p">#</span><span class="nn">wrapper</span> <span class="p">{</span>
+  <span class="k">display</span><span class="p">:</span> <span class="kc">table</span><span class="p">;</span>
+  <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+  <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">centred</span> <span class="p">{</span>
+  <span class="k">display</span><span class="p">:</span> <span class="kc">table</span><span class="o">-</span><span class="kc">cell</span><span class="p">;</span>
+  <span class="k">vertical-align</span><span class="p">:</span> <span class="kc">middle</span><span class="p">;</span>
+  <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="左右对齐文字">左右对齐文字：</h2>
+<pre><code>.a{
+    width:596px;
+    text-align:justify;
+    text-align-last:justify;  
+}
+</code></pre><h2 id="固定位置显示背景图片">固定位置显示背景图片</h2>
+<p>background-attachment: fixed;</p>
+<h2 id="css滤镜">css滤镜</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-css" data-lang="css"><span class="nt">filter</span><span class="o">:</span> <span class="nt">grayscale</span><span class="o">(</span><span class="nt">100</span><span class="o">%);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="sass继承">sass继承</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-scss" data-lang="scss"><span class="nc">.error</span> <span class="p">{</span>
+  <span class="nt">border</span><span class="nd">:</span> <span class="nt">1px</span> <span class="nn">#f00</span><span class="p">;</span>
+  <span class="nt">background-color</span><span class="nd">:</span> <span class="nn">#fdd</span><span class="p">;</span>
+
+  <span class="k">&amp;</span><span class="nt">--serious</span> <span class="p">{</span>
+    <span class="k">@extend</span> <span class="nc">.error</span><span class="p">;</span>
+    <span class="nt">border-width</span><span class="nd">:</span> <span class="nt">3px</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
                 
                 
                 
@@ -2976,7 +3086,22 @@ ID选择器 = 100
 <p>git 插件会不停的刷新文件的状态，间隔大概5秒。可以在设置中关掉它。</p>
 <pre><code>Autorefresh
 是否启用自动刷新。
-</code></pre>]]></description>
+</code></pre><h2 id="debugger-for-chrome">debugger for chrome</h2>
+<p>当使用parcel时，实际引用js文件会带有hash，而编辑器中的文件没有hash，导致插件认为js文件没有被挂载，断点也就无效了。<br>
+按照如下调整launch.json，可解决此问题。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="s2">&#34;sourceMapPathOverrides&#34;</span><span class="err">:</span> <span class="p">{</span>
+	<span class="nt">&#34;../*&#34;</span><span class="p">:</span> <span class="s2">&#34;${webRoot}/*&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
                 
                 
                 
@@ -6872,21 +6997,20 @@ $ sudo apt-get install gitlab-ci-multi-runner
             </item>
         
             <item>
-                <title>Redux Starter Kit</title>
-                <link>https://wss.cool/redux-starter-kit.html</link>
-                <guid isPermaLink="true">https://wss.cool/redux-starter-kit.html</guid>
+                <title>Redux Toolkit</title>
+                <link>https://wss.cool/redux-toolkit.html</link>
+                <guid isPermaLink="true">https://wss.cool/redux-toolkit.html</guid>
                 <pubDate>Mon, 28 Oct 2019 10:54:37 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[<p><a href="https://redux-starter-kit.js.org/introduction/quick-start">官网</a></p>
+                    <description><![CDATA[<p><a href="https://redux-starter-kit.js.org/introduction/quick-start">Redux Toolkit</a>是 <code>Redux</code> 官方提供的工具箱🧰，它指定了一个 <code>Redux</code> 的使用规则，集成了 <code>immer</code> <code>thunk</code> 等常用的工具库，还有很好的 <code>typescript</code> 支持。</p>
+<p>slice</p>
 <h2 id="安装">安装</h2>
-<pre><code>yarn add redux-starter-kit react-redux
-
-yarn add @reduxjs/toolkit
-
+<pre><code>yarn add @reduxjs/toolkit
+// 或者
 npx create-react-app my-app --template redux
 </code></pre><h2 id="初始化store">初始化store</h2>
 <div class="highlight"><div class="chroma">
@@ -6964,6 +7088,59 @@ npx create-react-app my-app --template redux
     <span class="o">&lt;</span><span class="err">/div&gt;</span>
   <span class="p">);</span>
 <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="创建store">创建store</h3>
+<p>configureStore用于初始化redux仓库，可以合并reducer，可以方便的创建中间件等。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">configureStore</span><span class="p">({</span>
+    <span class="c1">// A single reducer function that will be used as the root reducer,
+</span><span class="c1"></span>    <span class="c1">// or an object of slice reducers that will be passed to combineReducers()
+</span><span class="c1"></span>    <span class="nx">reducer</span><span class="o">:</span> <span class="nb">Object</span><span class="o">&lt;</span><span class="nx">string</span><span class="p">,</span> <span class="nx">ReducerFunction</span><span class="o">&gt;</span> <span class="o">|</span> <span class="nx">ReducerFunction</span><span class="p">,</span>
+    <span class="c1">// An array of Redux middlewares.  If not supplied, uses getDefaultMiddleware()
+</span><span class="c1"></span>    <span class="nx">middleware</span><span class="o">?:</span> <span class="nx">MiddlewareFunction</span><span class="p">[],</span>
+    <span class="c1">// Enable support for the Redux DevTools Extension. Defaults to true.
+</span><span class="c1"></span>    <span class="nx">devTools</span><span class="o">?:</span> <span class="kr">boolean</span> <span class="o">|</span> <span class="nx">EnhancerOptions</span><span class="p">,</span>
+    <span class="c1">// Same as current createStore.
+</span><span class="c1"></span>    <span class="nx">preloadedState</span><span class="o">?:</span> <span class="nx">State</span><span class="p">,</span>
+    <span class="c1">// An optional array of Redux store enhancers
+</span><span class="c1"></span>    <span class="nx">enhancers</span><span class="o">?:</span> <span class="nx">ReduxStoreEnhancer</span><span class="p">[],</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>例子</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="nx">configureStore</span><span class="p">({</span>
+  <span class="nx">reducer</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">config</span><span class="o">:</span> <span class="nx">configReducer</span><span class="p">,</span>
+    <span class="nx">counter</span><span class="o">:</span> <span class="nx">counterReducer</span>
+  <span class="p">},</span>
+<span class="p">})</span>
 </code></pre></td></tr></table>
 </div>
 </div>]]></description>
