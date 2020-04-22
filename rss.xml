@@ -23,10 +23,54 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 22 Apr 2020 00:43:55 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 22 Apr 2020 10:50:33 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>熵与代码</title>
+                <link>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/</guid>
+                <pubDate>Wed, 22 Apr 2020 10:29:53 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>看了阮一峰的博客<a href="http://www.ruanyifeng.com/blog/2017/04/entropy.html">《熵：宇宙的终极规则》</a>，略做记录📝。</p>
+<h2 id="熵是什么">熵是什么？</h2>
+<p>科学家们发现，能量转换总是伴随这损耗，且无法避免。损耗掉的这部分能量就叫做熵。后来总结成来热力学第二定律：能量转换总是产生熵。</p>
+<blockquote>
+<p>比如电能转化机械能不能完全转化，比如设计的代码转化为实际的代码总会产生bug。</p>
+</blockquote>
+<p>这里说的损耗是说能量转换成来预期外的状态，而不是凭空消失来。转化越多，新的状态就越多，状态多就是可能性多，表示混乱。换一种说法：能量转换就会让系统的混乱度增加，熵就是系统的混乱度。</p>
+<p>可以总结出一个道理。如果不施加外力影响，事物永远向着更混乱的状态发展。</p>
+<h2 id="熵与代码">熵与代码</h2>
+<p>如果把熵引入到软件开发中。从需求转换为程序设计，再从程序设计转换成代码，这都想到与能量转换，就会产生熵，这里的熵就是bug，或者复杂度，或者阅读难度。</p>
+<p>软件行业中已经有了一些手段来治理这些熵。写代码要有规范，要有review执行规范。要有测试流程，发现并治理bug。</p>
+<p>所以，由于热力学第二定律，写代码有bug是一件很正常的事。为了治理熵来让系统长治久安，采取“规范、review和测试”等治理熵的外力也是很必要的。</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>jsvascript</title>
