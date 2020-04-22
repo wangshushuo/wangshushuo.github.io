@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 22 Apr 2020 10:50:33 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 22 Apr 2020 10:54:41 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -48,7 +48,7 @@
 <p>可以总结出一个道理。如果不施加外力影响，事物永远向着更混乱的状态发展。</p>
 <h2 id="熵与代码">熵与代码</h2>
 <p>如果把熵引入到软件开发中。从需求转换为程序设计，再从程序设计转换成代码，这都想到与能量转换，就会产生熵，这里的熵就是bug，或者复杂度，或者阅读难度。</p>
-<p>软件行业中已经有了一些手段来治理这些熵。写代码要有规范，要有review执行规范。要有测试流程，发现并治理bug。</p>
+<p>软件行业中已经有了一些手段来治理这些熵。写代码要有规范，要有review执行规范。要有测试流程，发现并治理bug。如果放松来对熵的警惕，熵会在系统中越来越多，系统越来越混乱，最后会破坏系统。也就是代码越来越混乱，变得难以维护和扩展，最后系统无法使用。</p>
 <p>所以，由于热力学第二定律，写代码有bug是一件很正常的事。为了治理熵来让系统长治久安，采取“规范、review和测试”等治理熵的外力也是很必要的。</p>
 ]]></description>
                 
