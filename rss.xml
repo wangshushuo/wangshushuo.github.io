@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 22 Apr 2020 11:28:12 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 22 Apr 2020 14:40:05 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -186,7 +186,7 @@
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/%E5%88%86%E7%B1%BB/">分类</category>
+                                    <category domain="https://wss.cool/categories/dom/">DOM</category>
                                 
                             
                         
@@ -196,7 +196,7 @@
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/">显示在底部</category>
+                                    <category domain="https://wss.cool/tags/api/">api</category>
                                 
                             
                         
@@ -1961,7 +1961,7 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -2693,7 +2693,7 @@ IP地址：https://192.168.4.12</p>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -3599,7 +3599,7 @@ ID选择器 = 100
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -3685,7 +3685,7 @@ ID选择器 = 100
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -7208,7 +7208,7 @@ npx create-react-app my-app --template redux
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -7566,7 +7566,7 @@ npx create-react-app my-app --template redux
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -8299,7 +8299,7 @@ categories         &lt;- Taxonomy
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -8392,7 +8392,7 @@ categories         &lt;- Taxonomy
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -8820,7 +8820,7 @@ npm install reactjs-popup
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -9787,7 +9787,7 @@ git log --graph --oneline --decorate</p>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -11055,7 +11055,7 @@ class AddTodo extends React.Component&lt;IProps, IState>{}</code></pre>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -11467,7 +11467,7 @@ sudo vim /etc/s-nail.rc﻿
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -11930,7 +11930,7 @@ const members = yield call(fetchMembers, project.id)
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -12043,7 +12043,7 @@ const store = createStore(reducer);</code></pre>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -12387,7 +12387,7 @@ const store = createStore(reducer);</code></pre>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
@@ -12627,7 +12627,7 @@ const store = createStore(reducer);</code></pre>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">react</category>
+                                    <category domain="https://wss.cool/categories/react/">React</category>
                                 
                             
                         
