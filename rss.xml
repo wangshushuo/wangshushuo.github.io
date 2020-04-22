@@ -23,66 +23,69 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 22 Apr 2020 10:54:41 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 22 Apr 2020 11:28:12 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
         
             <item>
-                <title>熵与代码</title>
-                <link>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/</link>
-                <guid isPermaLink="true">https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/</guid>
-                <pubDate>Wed, 22 Apr 2020 10:29:53 +0800</pubDate>
+                <title>常用DOM操作</title>
+                <link>https://wss.cool/%E5%B8%B8%E7%94%A8dom%E6%93%8D%E4%BD%9C.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E5%B8%B8%E7%94%A8dom%E6%93%8D%E4%BD%9C.html</guid>
+                <pubDate>Wed, 22 Apr 2020 19:20:48 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[<p>看了阮一峰的博客<a href="http://www.ruanyifeng.com/blog/2017/04/entropy.html">《熵：宇宙的终极规则》</a>，略做记录📝。</p>
-<h2 id="熵是什么">熵是什么？</h2>
-<p>科学家们发现，能量转换总是伴随这损耗，且无法避免。损耗掉的这部分能量就叫做熵。后来总结成来热力学第二定律：能量转换总是产生熵。</p>
-<blockquote>
-<p>比如电能转化机械能不能完全转化，比如设计的代码转化为实际的代码总会产生bug。</p>
-</blockquote>
-<p>这里说的损耗是说能量转换成来预期外的状态，而不是凭空消失来。转化越多，新的状态就越多，状态多就是可能性多，表示混乱。换一种说法：能量转换就会让系统的混乱度增加，熵就是系统的混乱度。</p>
-<p>可以总结出一个道理。如果不施加外力影响，事物永远向着更混乱的状态发展。</p>
-<h2 id="熵与代码">熵与代码</h2>
-<p>如果把熵引入到软件开发中。从需求转换为程序设计，再从程序设计转换成代码，这都想到与能量转换，就会产生熵，这里的熵就是bug，或者复杂度，或者阅读难度。</p>
-<p>软件行业中已经有了一些手段来治理这些熵。写代码要有规范，要有review执行规范。要有测试流程，发现并治理bug。如果放松来对熵的警惕，熵会在系统中越来越多，系统越来越混乱，最后会破坏系统。也就是代码越来越混乱，变得难以维护和扩展，最后系统无法使用。</p>
-<p>所以，由于热力学第二定律，写代码有bug是一件很正常的事。为了治理熵来让系统长治久安，采取“规范、review和测试”等治理熵的外力也是很必要的。</p>
-]]></description>
-                
-                
-                
-                
-                
-                    
-                        
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category>
-                                
-                            
-                        
-                    
-                        
-                    
-                
-            </item>
-        
-            <item>
-                <title>jsvascript</title>
-                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/js/</link>
-                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/js/</guid>
-                <pubDate>Sat, 18 Apr 2020 01:45:53 +0800</pubDate>
-                
-                    <author>wss.six@foxmail.com (王书硕)</author>
-                
-                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-                
-                    <description><![CDATA[<h2 id="原生获取真是宽高">原生获取真是宽高</h2>
+                    <description><![CDATA[<h2 id="上传图片时怎么拿到图片的src地址">上传图片时，怎么拿到图片的src地址？</h2>
+<p>input选中图片以后，只是得到了file对象，如果想在img中显示该图片的话，并不知道src，所以想得到src还需要额外的操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">createObjectURL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// basic
+</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">URL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mozilla(firefox)
+</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// webkit or chrome
+</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">url</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="js操作样式class">JS操作样式class</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>    <span class="c1">// false 因为&#34;c&#34;上面remove掉了
+</span><span class="c1"></span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">===</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">className</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="原生获取真是宽高">原生获取真是宽高</h2>
 <p>不知道为什么用#${divID}会报错，只能用div[]选择器了，id=后面要用单引号。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -121,86 +124,6 @@
     <span class="p">});</span>
     <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
 <span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="数组的every方法">数组的every方法</h2>
-<p>every方法可以中断循环</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">contentList</span><span class="p">.</span><span class="nx">every</span><span class="p">((</span><span class="nx">content</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">content</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">contentList</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-<span class="p">});</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="事件">事件</h2>
-<pre><code>// 取消默认行为：
-e.preventDefault()
-// 停止冒泡：
-e.stopPropagation();  
-</code></pre><h2 id="将promise改装成await">将promise改装成await</h2>
-<p>将一个element UI库的confirm改装成await：这个confirm方法原来返回的是promise，resolve在try中return，reject在catch中return。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">public</span> <span class="nx">async</span> <span class="nx">confirm_async</span><span class="p">(</span><span class="nx">message</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">title</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">try</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">vue</span><span class="p">.</span><span class="nx">$confirm</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">title</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="kc">undefined</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>调用confirm_async方法：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">isConfirm</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">ed_showConfirm_async</span><span class="p">(</span><span class="s1">&#39;xx&#39;</span><span class="p">,</span><span class="s1">&#39;xx&#39;</span><span class="p">);</span>
-<span class="k">if</span><span class="p">(</span><span class="nx">isConfirm</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>这两个语句所在方法或函数，必须是一个async的函数或方法。这样就不需要把后续的操作都写在一个then方法中了。</p>
-<h2 id="array-reduce数组的reduce方法">Array reduce，数组的reduce方法</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">memo</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">memo</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">memo</span><span class="p">;</span>
-  <span class="p">},</span> <span class="p">{});</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="js复制到剪切板chrome-66-支持">JS复制到剪切板(chrome 66+ 支持)</h2>
@@ -263,7 +186,7 @@ e.stopPropagation();
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/javascript/">JavaScript</category>
+                                    <category domain="https://wss.cool/categories/%E5%88%86%E7%B1%BB/">分类</category>
                                 
                             
                         
@@ -273,9 +196,53 @@ e.stopPropagation();
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                    <category domain="https://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/">显示在底部</category>
                                 
                             
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>熵与代码</title>
+                <link>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/</guid>
+                <pubDate>Wed, 22 Apr 2020 10:29:53 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>看了阮一峰的博客<a href="http://www.ruanyifeng.com/blog/2017/04/entropy.html">《熵：宇宙的终极规则》</a>，略做记录📝。</p>
+<h2 id="熵是什么">熵是什么？</h2>
+<p>科学家们发现，能量转换总是伴随这损耗，且无法避免。损耗掉的这部分能量就叫做熵。后来总结成来热力学第二定律：能量转换总是产生熵。</p>
+<blockquote>
+<p>比如电能转化机械能不能完全转化，比如设计的代码转化为实际的代码总会产生bug。</p>
+</blockquote>
+<p>这里说的损耗是说能量转换成来预期外的状态，而不是凭空消失来。转化越多，新的状态就越多，状态多就是可能性多，表示混乱。换一种说法：能量转换就会让系统的混乱度增加，熵就是系统的混乱度。</p>
+<p>可以总结出一个道理。如果不施加外力影响，事物永远向着更混乱的状态发展。</p>
+<h2 id="熵与代码">熵与代码</h2>
+<p>如果把熵引入到软件开发中。从需求转换为程序设计，再从程序设计转换成代码，这都想到与能量转换，就会产生熵，这里的熵就是bug，或者复杂度，或者阅读难度。</p>
+<p>软件行业中已经有了一些手段来治理这些熵。写代码要有规范，要有review执行规范。要有测试流程，发现并治理bug。如果放松来对熵的警惕，熵会在系统中越来越多，系统越来越混乱，最后会破坏系统。也就是代码越来越混乱，变得难以维护和扩展，最后系统无法使用。</p>
+<p>所以，由于热力学第二定律，写代码有bug是一件很正常的事。为了治理熵来让系统长治久安，采取“规范、review和测试”等治理熵的外力也是很必要的。</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category>
+                                
+                            
+                        
+                    
                         
                     
                 
@@ -578,54 +545,7 @@ proxy_set_header X-Forwarded-Proto $scheme;
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[<h1 id="上传图片时怎么拿到图片的src地址">上传图片时，怎么拿到图片的src地址？</h1>
-<p>input选中图片以后，只是得到了file对象，如果想在img中显示该图片的话，并不知道src，所以想得到src还需要额外的操作。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">createObjectURL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// basic
-</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">URL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mozilla(firefox)
-</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// webkit or chrome
-</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nx">url</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h1 id="js操作样式class">JS操作样式class</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">);</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>    <span class="c1">// false 因为&#34;c&#34;上面remove掉了
-</span><span class="c1"></span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">===</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">className</span><span class="p">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h1 id="避免高频率调用">避免高频率调用</h1>
+                    <description><![CDATA[<h2 id="避免高频率调用">避免高频率调用</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -644,8 +564,8 @@ proxy_set_header X-Forwarded-Proto $scheme;
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h1 id="es6新语法--扩展运算符三个点">ES6新语法--扩展运算符（三个点）</h1>
-<h2 id="第二个参数以及之后的任意多个参数都会被放到values数组中">第二个参数以及之后的任意多个参数都会被放到values数组中</h2>
+</div><h2 id="es6新语法--扩展运算符三个点">ES6新语法--扩展运算符（三个点）</h2>
+<h3 id="第二个参数以及之后的任意多个参数都会被放到values数组中">第二个参数以及之后的任意多个参数都会被放到values数组中</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -668,7 +588,7 @@ proxy_set_header X-Forwarded-Proto $scheme;
 </span><span class="c1">// [1, 2, 3]
 </span></code></pre></td></tr></table>
 </div>
-</div><h2 id="合并数组">合并数组</h2>
+</div><h3 id="合并数组">合并数组</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -687,26 +607,30 @@ proxy_set_header X-Forwarded-Proto $scheme;
 
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="与解构赋值结合">与解构赋值结合</h2>
+</div><h3 id="与解构赋值结合">与解构赋值结合</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">111</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">333</span><span class="p">,</span><span class="mi">444</span><span class="p">]</span>
+
 <span class="c1">// ES5
 </span><span class="c1"></span><span class="nx">a</span> <span class="o">=</span> <span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">rest</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="c1">//a 111
 </span><span class="c1">//b [111,222,333,444]
-</span><span class="c1">// ES6
+</span><span class="c1"></span>
+<span class="c1">// ES6
 </span><span class="c1"></span><span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">]</span> <span class="o">=</span> <span class="nx">list</span>
 <span class="c1">//a 111
 </span><span class="c1">//b [111,222,333,444]
@@ -733,7 +657,92 @@ proxy_set_header X-Forwarded-Proto $scheme;
 <span class="p">});</span>
 </code></pre></td></tr></table>
 </div>
-</div>]]></description>
+</div><h2 id="数组的every方法">数组的every方法</h2>
+<p>every方法可以中断循环</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">contentList</span><span class="p">.</span><span class="nx">every</span><span class="p">((</span><span class="nx">content</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">content</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">contentList</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">});</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="事件">事件</h2>
+<pre><code>// 取消默认行为：
+e.preventDefault()
+// 停止冒泡：
+e.stopPropagation();  
+</code></pre><h2 id="将promise改装成await">将promise改装成await</h2>
+<p>将一个element UI库的confirm改装成await：这个confirm方法原来返回的是promise，resolve在try中return，reject在catch中return。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">public</span> <span class="nx">async</span> <span class="nx">confirm_async</span><span class="p">(</span><span class="nx">message</span>: <span class="kt">string</span><span class="p">,</span> <span class="nx">title</span>: <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">try</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">vue</span><span class="p">.</span><span class="nx">$confirm</span><span class="p">(</span><span class="nx">message</span><span class="p">,</span> <span class="nx">title</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">undefined</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>调用confirm_async方法：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">isConfirm</span> <span class="o">=</span> <span class="nx">await</span> <span class="k">this</span><span class="p">.</span><span class="nx">ed_showConfirm_async</span><span class="p">(</span><span class="s1">&#39;xx&#39;</span><span class="p">,</span><span class="s1">&#39;xx&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="p">(</span><span class="nx">isConfirm</span> <span class="o">===</span> <span class="kc">undefined</span><span class="p">)</span> <span class="k">return</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这两个语句所在方法或函数，必须是一个async的函数或方法。这样就不需要把后续的操作都写在一个then方法中了。</p>
+<h2 id="array-reduce数组的reduce方法">Array reduce，数组的reduce方法</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">obj</span><span class="p">).</span><span class="nx">reduce</span><span class="p">((</span><span class="nx">memo</span><span class="p">,</span> <span class="nx">key</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">hooks</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">memo</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">obj</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">memo</span><span class="p">;</span>
+  <span class="p">},</span> <span class="p">{});</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="严格模式">严格模式</h2>
+<pre><code>&quot;use strict&quot;;
+</code></pre><ol>
+<li>禁止this关键字指向全局对象</li>
+</ol>
+]]></description>
                 
                 
                 

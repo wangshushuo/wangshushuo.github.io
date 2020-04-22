@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">WSS.COOL</title>
     <subtitle type="html">现在是一名前端，希望转到后端，最后做架构师。这里记录了常用到的前端、后端、服务器和各种工具的常用api、知识点等。记录的api方便查找，记录的知识点作为一种输出可以增加理解。</subtitle>
-    <updated>2020-04-22T10:54:41+00:00</updated>
+    <updated>2020-04-22T11:28:12+00:00</updated>
     <id>https://wss.cool/</id>
     <link rel="alternate" type="text/html" href="https://wss.cool/" />
     <link rel="self" type="application/atom+xml" href="https://wss.cool/atom.xml" />
@@ -17,10 +17,189 @@
     <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     <generator uri="https://gohugo.io/" version="0.68.3">Hugo</generator>
         <entry>
+            <title type="text">常用DOM操作</title>
+            <link rel="alternate" type="text/html" href="https://wss.cool/%E5%B8%B8%E7%94%A8dom%E6%93%8D%E4%BD%9C.html" />
+            <id>https://wss.cool/%E5%B8%B8%E7%94%A8dom%E6%93%8D%E4%BD%9C.html</id>
+            <updated>2020-04-22T11:28:08+00:00</updated>
+            <published>2020-04-22T19:20:48+08:00</published>
+            <author>
+                    <name>王书硕</name>
+                    <uri>https://wss.cool/</uri>
+                    <email>wss.six@foxmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"><![CDATA[摘要，显示在meta的description中，]]></summary>
+            
+                <content type="html"><![CDATA[<h2 id="上传图片时怎么拿到图片的src地址">上传图片时，怎么拿到图片的src地址？</h2>
+<p>input选中图片以后，只是得到了file对象，如果想在img中显示该图片的话，并不知道src，所以想得到src还需要额外的操作。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">createObjectURL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// basic
+</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">URL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mozilla(firefox)
+</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// webkit or chrome
+</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">url</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="js操作样式class">JS操作样式class</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>    <span class="c1">// false 因为&#34;c&#34;上面remove掉了
+</span><span class="c1"></span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">===</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">className</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="原生获取真是宽高">原生获取真是宽高</h2>
+<p>不知道为什么用#${divID}会报错，只能用div[]选择器了，id=后面要用单引号。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">textElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="sb">`div[id=&#39;</span><span class="si">${</span><span class="nx">divID</span><span class="si">}</span><span class="sb">&#39;] .ckeditor`</span><span class="p">);</span>
+<span class="kr">const</span> <span class="nx">width</span> <span class="o">=</span> <span class="nx">textElement</span><span class="p">.</span><span class="nx">offsetWidth</span><span class="p">;</span>
+<span class="kr">const</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">textElement</span><span class="p">.</span><span class="nx">offsetHeight</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="promise-asyncawait-获取图片原始尺寸">promise async/await 获取图片原始尺寸</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="nx">async</span> <span class="nx">funciton</span> <span class="nx">getImageInfo</span><span class="p">(</span><span class="nx">image_res_url</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span><span class="nx">width</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">number</span><span class="p">}</span><span class="o">&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">image</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
+    <span class="nx">image</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">image_res_url</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span><span class="nx">width</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">number</span><span class="p">}</span><span class="o">&gt;</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">image</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+            <span class="nx">resolve</span><span class="p">({</span><span class="nx">width</span>: <span class="kt">image.naturalWidth</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">image.naturalHeight</span><span class="p">});</span>
+        <span class="p">};</span>
+    <span class="p">});</span>
+    <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="js复制到剪切板chrome-66-支持">JS复制到剪切板(chrome 66+ 支持)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">navigator</span><span class="p">.</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">writeText</span><span class="p">(</span><span class="s1">&#39;888&#39;</span><span class="p">)</span>
+    <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Async: Copying to clipboard was successful!&#39;</span><span class="p">);</span>
+    <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Async: Could not copy text: &#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
+    <span class="p">});</span>  
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="处理粘贴事件paste">处理粘贴事件(paste)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">xxxElement</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;paste&#34;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">text</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">(</span><span class="s2">&#34;text/plain&#34;</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">text</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">(</span><span class="s2">&#34;Text&#34;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">execCommand</span><span class="p">(</span><span class="s2">&#34;insertHTML&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">text</span><span class="p">);</span>
+<span class="p">});</span>  
+
+</code></pre></td></tr></table>
+</div>
+</div>]]></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://wss.cool/categories/%E5%88%86%E7%B1%BB/" term="分类" label="分类" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/" term="显示在底部" label="显示在底部" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
             <title type="text">熵与代码</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-04-22T10:29:53+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -64,10 +243,10 @@
         </entry>
     
         <entry>
-            <title type="text">jsvascript</title>
-            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/js/" />
-            <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/js/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <title type="text">获取滚动高度</title>
+            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/" />
+            <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/</id>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-04-18T01:45:53+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -76,23 +255,9 @@
                     </author>
             <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
     
-    <summary type="html"><![CDATA[原生获取真是宽高 不知道为什么用#${divID}会报错，只能用div[]选择器了，i……]]></summary>
+    <summary type="html"><![CDATA[获取滚动高度 1 2 3 4 5 6 7 8 9 10 11 function getPageScrollY() { let yScroll; if (self.pageYOffset) { yScroll = self.pageYOffset; } else if (document.documentElement &amp;&amp; document.documentElement.scrollTop) { // Explorer 6 Strict yScroll = document.documentElement.scrollTop;……]]></summary>
             
-                <content type="html"><![CDATA[<h2 id="原生获取真是宽高">原生获取真是宽高</h2>
-<p>不知道为什么用#${divID}会报错，只能用div[]选择器了，id=后面要用单引号。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">textElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="sb">`div[id=&#39;</span><span class="si">${</span><span class="nx">divID</span><span class="si">}</span><span class="sb">&#39;] .ckeditor`</span><span class="p">);</span>
-<span class="kr">const</span> <span class="nx">width</span> <span class="o">=</span> <span class="nx">textElement</span><span class="p">.</span><span class="nx">offsetWidth</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">height</span> <span class="o">=</span> <span class="nx">textElement</span><span class="p">.</span><span class="nx">offsetHeight</span><span class="p">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="promise-asyncawait-获取图片原始尺寸">promise async/await 获取图片原始尺寸</h2>
+                <content type="html"><![CDATA[<h2 id="获取滚动高度">获取滚动高度</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -105,18 +270,413 @@
 </span><span class="lnt"> 8
 </span><span class="lnt"> 9
 </span><span class="lnt">10
+</span><span class="lnt">11
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="nx">async</span> <span class="nx">funciton</span> <span class="nx">getImageInfo</span><span class="p">(</span><span class="nx">image_res_url</span>: <span class="kt">string</span><span class="p">)</span><span class="o">:</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span><span class="nx">width</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">number</span><span class="p">}</span><span class="o">&gt;</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">image</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Image</span><span class="p">();</span>
-    <span class="nx">image</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="nx">image_res_url</span><span class="p">;</span>
-    <span class="kr">const</span> <span class="nx">promise</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Promise</span><span class="o">&lt;</span><span class="p">{</span><span class="nx">width</span>: <span class="kt">number</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">number</span><span class="p">}</span><span class="o">&gt;</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="nx">image</span><span class="p">.</span><span class="nx">onload</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-            <span class="nx">resolve</span><span class="p">({</span><span class="nx">width</span>: <span class="kt">image.naturalWidth</span><span class="p">,</span> <span class="nx">height</span>: <span class="kt">image.naturalHeight</span><span class="p">});</span>
-        <span class="p">};</span>
-    <span class="p">});</span>
-    <span class="k">return</span> <span class="nx">promise</span><span class="p">;</span>
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">getPageScrollY</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">yScroll</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">yScroll</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Explorer 6 Strict
+</span><span class="c1"></span>        <span class="nx">yScroll</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">;</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span><span class="c1">// all other Explorers
+</span><span class="c1"></span>        <span class="nx">yScroll</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nx">yScroll</span><span class="p">;</span>
+<span class="p">};</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>也可以window.scrollY</p>
+]]></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://wss.cool/categories/javascript/" term="JavaScript" label="JavaScript" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://wss.cool/tags/api/" term="api" label="api" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Git:Perission-Denied</title>
+            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/" />
+            <id>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/</id>
+            <updated>2020-04-22T11:28:08+00:00</updated>
+            <published>2020-04-18T01:43:23+08:00</published>
+            <author>
+                    <name>王书硕</name>
+                    <uri>https://wss.cool/</uri>
+                    <email>wss.six@foxmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
+    
+    <summary type="html"><![CDATA[git:Perission denied 刚使用了一下vuecli的mocha测试插件，然后切换分支，又切换回那个分支，就……]]></summary>
+            
+                <content type="html"><![CDATA[<h2 id="gitperission-denied">git:Perission denied</h2>
+<p>刚使用了一下vuecli的mocha测试插件，然后切换分支，又切换回那个分支，就报了这个错误。把运行vue测试的命令行（窗口）关掉就可以了。
+![666][image1]</p>
+<p>大概是由于vuecli的进程还在控制着tests文件，我之前没有关闭它。现在切换分支，要对这个tests文件夹操作，而windows不允许2个进程操作一个文件，所以只要关闭原来的那个命令行窗口也就关闭了原来的控制进程。再操作就可以了。</p>
+]]></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://wss.cool/categories/git/" term="git" label="git" />
+                            
+                        
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Npm与yarn</title>
+            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/" />
+            <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/</id>
+            <updated>2020-04-22T11:28:08+00:00</updated>
+            <published>2020-04-18T01:31:26+08:00</published>
+            <author>
+                    <name>王书硕</name>
+                    <uri>https://wss.cool/</uri>
+                    <email>wss.six@foxmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"><![CDATA[设置npm和yarn使用淘宝仓库，设置sass/electron快速下载地址。]]></summary>
+            
+                <content type="html"><![CDATA[<h2 id="yarn">yarn</h2>
+<h3 id="淘宝的镜像">淘宝的镜像</h3>
+<pre><code>yarn config set registry https://registry.npm.taobao.org --global
+yarn config set disturl https://npm.taobao.org/dist --global
+
+// 额外设置一些常用的库
+yarn config set electron_mirror https://npm.taobao.org/mirrors/electron/ -g
+yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/ -g
+yarn config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/ -g
+yarn config set chromedriver_cdnurl https://cdn.npm.taobao.org/dist/chromedriver -g
+yarn config set operadriver_cdnurl https://cdn.npm.taobao.org/dist/operadriver -g
+yarn config set fse_binary_host_mirror https://npm.taobao.org/mirrors/fsevents -g
+</code></pre><h2 id="npm">npm</h2>
+<pre><code>npm config set registry https://registry.npm.taobao.org
+npm config set disturl https://npm.taobao.org/dist
+
+npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
+npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
+npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
+</code></pre><h3 id="npm设置代理">npm设置代理</h3>
+<pre><code>npm config set proxy http://127.0.0.1:1080
+</code></pre>]]></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://wss.cool/tags/api/" term="api" label="api" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">应该知道的</title>
+            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/" />
+            <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/</id>
+            <updated>2020-04-22T11:28:08+00:00</updated>
+            <published>2020-04-18T01:28:32+08:00</published>
+            <author>
+                    <name>王书硕</name>
+                    <uri>https://wss.cool/</uri>
+                    <email>wss.six@foxmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
+    
+    <summary type="html"><![CDATA[Bad architecture causes more problems than bad code. You will spend more time thinking than coding. The best programmers are always building things. There’s always a better way. Code reviews by your peers will make all……]]></summary>
+            
+                <content type="html"><![CDATA[<ul>
+<li>Bad architecture causes more problems than bad code.</li>
+<li>You will spend more time thinking than coding.</li>
+<li>The best programmers are always building things.</li>
+<li>There’s always a better way.</li>
+<li>Code reviews by your peers will make all of you better.</li>
+<li>Fewer features for better code is always the right answer in the end.</li>
+<li>Don’t reinvent the wheel, library code is there to help.</li>
+<li>If it’s not tested, it doesn’t work.</li>
+<li>Code that’s hard to understand is hard to maintain.</li>
+<li>Code that’s hard to maintain is next to useless.</li>
+<li>Always know how your business makes money, that determines who gets paid what.</li>
+<li>If you want to feel important as a software developer, work at a tech company.</li>
+</ul>
+<ol>
+<li>您将花费更多的时间思考而不是编码。</li>
+<li>不良的体系结构比不良的代码引起更多的问题。</li>
+<li>最好的程序员总是在构建东西。</li>
+<li>总会有更好的方法。</li>
+<li>同行的代码审查将使所有人变得更好。</li>
+<li>最终，正确的答案就是更少的功能来获得更好的代码。</li>
+<li>如果未测试，它将无法正常工作。</li>
+<li>不要重新发明轮子，库代码可以为您提供帮助。</li>
+<li>难以理解的代码难以维护。</li>
+<li>难以维护的代码几乎是无用的。</li>
+<li>始终知道您的企业是如何赚钱的，这决定了谁能得到酬劳。</li>
+<li>如果您想以软件开发人员的身份感到重要，请在技术公司工作。</li>
+</ol>
+]]></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://wss.cool/categories/%E8%A1%8C%E4%B8%9A%E6%88%90%E9%95%BF/" term="行业成长" label="行业成长" />
+                            
+                        
+                    
+                
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">Nginx导致的bug</title>
+            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/" />
+            <id>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/</id>
+            <updated>2020-04-22T11:28:08+00:00</updated>
+            <published>2020-04-18T01:24:25+08:00</published>
+            <author>
+                    <name>王书硕</name>
+                    <uri>https://wss.cool/</uri>
+                    <email>wss.six@foxmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
+    
+    <summary type="html"><![CDATA[什么情况下出现了bug？ 后端代码使用 spring boot 实现了一个 github oauth2 认证登录的 client 。将代码附属到服务……]]></summary>
+            
+                <content type="html"><![CDATA[<h2 id="什么情况下出现了bug">什么情况下出现了bug？</h2>
+<p>后端代码使用 spring boot 实现了一个 github oauth2 认证登录的 client 。将代码附属到服务器以后，请求经过 nginx 反向代理，java程序报错。</p>
+<h2 id="表现">表现</h2>
+<p>报错</p>
+<pre><code>Authentication request failed: org.springframework.security.oauth2.core.OAuth2AuthenticationException: [invalid_redirect_uri_parameter]
+</code></pre><h2 id="原因">原因</h2>
+<p>是nginx的导致的，可能是 nginx 转发请求的时候不会带着3个自定义header</p>
+<h2 id="解决方法">解决方法</h2>
+<p>修改 nginx 配置和 spring boot 的 tomcat 配置，处理3个 header 。</p>
+<p>nginx配置</p>
+<pre><code>proxy_set_header HOST $host;
+proxy_set_header X-Real-IP $remote_addr;
+proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+proxy_set_header X-Forwarded-Proto $scheme;
+</code></pre><p>application.yml</p>
+<pre><code>server:
+  tomcat:
+    remote-ip-header: &quot;X-Forwarded-For&quot;
+    protocol-header: &quot;X-Forwarded-Proto&quot;
+    protocol-header-https-value: &quot;https&quot;
+</code></pre>]]></content>
+            
+            
+            
+            
+            
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://wss.cool/categories/spring/" term="spring" label="spring" />
+                            
+                        
+                    
+                
+                    
+                        
+                            
+                            
+                            
+                                <category scheme="https://wss.cool/tags/bug/" term="bug" label="bug" />
+                            
+                        
+                    
+                
+            
+        </entry>
+    
+        <entry>
+            <title type="text">JavaScript</title>
+            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/" />
+            <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/</id>
+            <updated>2020-04-22T11:28:08+00:00</updated>
+            <published>2020-04-04T02:13:49+08:00</published>
+            <author>
+                    <name>王书硕</name>
+                    <uri>https://wss.cool/</uri>
+                    <email>wss.six@foxmail.com</email>
+                    </author>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
+    
+    <summary type="html"><![CDATA[避免高频率调用 1 2 3 4 5 6 function throttle(method, context) { if (method.tId) clearTimeout(method.tId); method.tId = setTimeout(function () { method.call(context); }, 200); } ES6新语法--扩展运算符……]]></summary>
+            
+                <content type="html"><![CDATA[<h2 id="避免高频率调用">避免高频率调用</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">throttle</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">tId</span><span class="p">)</span> <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">tId</span><span class="p">);</span>
+  <span class="nx">method</span><span class="p">.</span><span class="nx">tId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">method</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">200</span><span class="p">);</span>
 <span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="es6新语法--扩展运算符三个点">ES6新语法--扩展运算符（三个点）</h2>
+<h3 id="第二个参数以及之后的任意多个参数都会被放到values数组中">第二个参数以及之后的任意多个参数都会被放到values数组中</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">a</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="p">...</span><span class="nx">values</span><span class="p">){</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span><span class="nx">values</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">a</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+
+<span class="c1">// [&#34;a&#34;, &#34;b&#34;]
+</span><span class="c1">// [1, 2, 3]
+</span></code></pre></td></tr></table>
+</div>
+</div><h3 id="合并数组">合并数组</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// ES5 的合并数组
+</span><span class="c1"></span><span class="nx">arr1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">arr2</span><span class="p">,</span> <span class="nx">arr3</span><span class="p">);</span>
+
+<span class="c1">// ES6 的合并数组
+</span><span class="c1"></span><span class="p">[...</span><span class="nx">arr1</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr2</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr3</span><span class="p">]</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="与解构赋值结合">与解构赋值结合</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">111</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">333</span><span class="p">,</span><span class="mi">444</span><span class="p">]</span>
+
+<span class="c1">// ES5
+</span><span class="c1"></span><span class="nx">a</span> <span class="o">=</span> <span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">rest</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">//a 111
+</span><span class="c1">//b [111,222,333,444]
+</span><span class="c1"></span>
+<span class="c1">// ES6
+</span><span class="c1"></span><span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">]</span> <span class="o">=</span> <span class="nx">list</span>
+<span class="c1">//a 111
+</span><span class="c1">//b [111,222,333,444]
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="js正则">js正则</h2>
+<p>制表符tab  \t<br>
+换行符  \r<br>
+汉字  \S<br>
+任意 .<br>
+小写字母 [a-z]</p>
+<h2 id="数组排序">数组排序</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
+<span class="nx">numbers</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">;</span>
+<span class="p">});</span>
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="数组的every方法">数组的every方法</h2>
@@ -199,565 +759,12 @@ e.stopPropagation();
   <span class="p">},</span> <span class="p">{});</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="js复制到剪切板chrome-66-支持">JS复制到剪切板(chrome 66+ 支持)</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">navigator</span><span class="p">.</span><span class="nx">clipboard</span><span class="p">.</span><span class="nx">writeText</span><span class="p">(</span><span class="s1">&#39;888&#39;</span><span class="p">)</span>
-    <span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Async: Copying to clipboard was successful!&#39;</span><span class="p">);</span>
-    <span class="p">},</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Async: Could not copy text: &#39;</span><span class="p">,</span> <span class="nx">err</span><span class="p">);</span>
-    <span class="p">});</span>  
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="处理粘贴事件paste">处理粘贴事件(paste)</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">xxxElement</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">&#34;paste&#34;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">e</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
-    <span class="kd">var</span> <span class="nx">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span> <span class="o">&amp;&amp;</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">text</span> <span class="o">=</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">(</span><span class="s2">&#34;text/plain&#34;</span><span class="p">);</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span> <span class="o">&amp;&amp;</span> <span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">text</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">clipboardData</span><span class="p">.</span><span class="nx">getData</span><span class="p">(</span><span class="s2">&#34;Text&#34;</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="nb">document</span><span class="p">.</span><span class="nx">execCommand</span><span class="p">(</span><span class="s2">&#34;insertHTML&#34;</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="nx">text</span><span class="p">);</span>
-<span class="p">});</span>  
-
-</code></pre></td></tr></table>
-</div>
-</div>]]></content>
-            
-            
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/categories/javascript/" term="JavaScript" label="JavaScript" />
-                            
-                        
-                    
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/tags/api/" term="api" label="api" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">获取滚动高度</title>
-            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/" />
-            <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
-            <published>2020-04-18T01:45:53+08:00</published>
-            <author>
-                    <name>王书硕</name>
-                    <uri>https://wss.cool/</uri>
-                    <email>wss.six@foxmail.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    
-    <summary type="html"><![CDATA[获取滚动高度 1 2 3 4 5 6 7 8 9 10 11 function getPageScrollY() { let yScroll; if (self.pageYOffset) { yScroll = self.pageYOffset; } else if (document.documentElement &amp;&amp; document.documentElement.scrollTop) { // Explorer 6 Strict yScroll = document.documentElement.scrollTop;……]]></summary>
-            
-                <content type="html"><![CDATA[<h2 id="获取滚动高度">获取滚动高度</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">getPageScrollY</span><span class="p">()</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">yScroll</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">yScroll</span> <span class="o">=</span> <span class="nx">self</span><span class="p">.</span><span class="nx">pageYOffset</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span> <span class="o">&amp;&amp;</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// Explorer 6 Strict
-</span><span class="c1"></span>        <span class="nx">yScroll</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">documentElement</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span> <span class="p">{</span><span class="c1">// all other Explorers
-</span><span class="c1"></span>        <span class="nx">yScroll</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="nx">yScroll</span><span class="p">;</span>
-<span class="p">};</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>也可以window.scrollY</p>
-]]></content>
-            
-            
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/categories/javascript/" term="JavaScript" label="JavaScript" />
-                            
-                        
-                    
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/tags/api/" term="api" label="api" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">Git:Perission-Denied</title>
-            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/" />
-            <id>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
-            <published>2020-04-18T01:43:23+08:00</published>
-            <author>
-                    <name>王书硕</name>
-                    <uri>https://wss.cool/</uri>
-                    <email>wss.six@foxmail.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    
-    <summary type="html"><![CDATA[git:Perission denied 刚使用了一下vuecli的mocha测试插件，然后切换分支，又切换回那个分支，就……]]></summary>
-            
-                <content type="html"><![CDATA[<h2 id="gitperission-denied">git:Perission denied</h2>
-<p>刚使用了一下vuecli的mocha测试插件，然后切换分支，又切换回那个分支，就报了这个错误。把运行vue测试的命令行（窗口）关掉就可以了。
-![666][image1]</p>
-<p>大概是由于vuecli的进程还在控制着tests文件，我之前没有关闭它。现在切换分支，要对这个tests文件夹操作，而windows不允许2个进程操作一个文件，所以只要关闭原来的那个命令行窗口也就关闭了原来的控制进程。再操作就可以了。</p>
-]]></content>
-            
-            
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/categories/git/" term="git" label="git" />
-                            
-                        
-                    
-                
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">Npm与yarn</title>
-            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/" />
-            <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
-            <published>2020-04-18T01:31:26+08:00</published>
-            <author>
-                    <name>王书硕</name>
-                    <uri>https://wss.cool/</uri>
-                    <email>wss.six@foxmail.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"><![CDATA[设置npm和yarn使用淘宝仓库，设置sass/electron快速下载地址。]]></summary>
-            
-                <content type="html"><![CDATA[<h2 id="yarn">yarn</h2>
-<h3 id="淘宝的镜像">淘宝的镜像</h3>
-<pre><code>yarn config set registry https://registry.npm.taobao.org --global
-yarn config set disturl https://npm.taobao.org/dist --global
-
-// 额外设置一些常用的库
-yarn config set electron_mirror https://npm.taobao.org/mirrors/electron/ -g
-yarn config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/ -g
-yarn config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/ -g
-yarn config set chromedriver_cdnurl https://cdn.npm.taobao.org/dist/chromedriver -g
-yarn config set operadriver_cdnurl https://cdn.npm.taobao.org/dist/operadriver -g
-yarn config set fse_binary_host_mirror https://npm.taobao.org/mirrors/fsevents -g
-</code></pre><h2 id="npm">npm</h2>
-<pre><code>npm config set registry https://registry.npm.taobao.org
-npm config set disturl https://npm.taobao.org/dist
-
-npm config set electron_mirror https://npm.taobao.org/mirrors/electron/
-npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/
-npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
-</code></pre><h3 id="npm设置代理">npm设置代理</h3>
-<pre><code>npm config set proxy http://127.0.0.1:1080
-</code></pre>]]></content>
-            
-            
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
-                            
-                        
-                    
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/tags/api/" term="api" label="api" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">应该知道的</title>
-            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/" />
-            <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
-            <published>2020-04-18T01:28:32+08:00</published>
-            <author>
-                    <name>王书硕</name>
-                    <uri>https://wss.cool/</uri>
-                    <email>wss.six@foxmail.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    
-    <summary type="html"><![CDATA[Bad architecture causes more problems than bad code. You will spend more time thinking than coding. The best programmers are always building things. There’s always a better way. Code reviews by your peers will make all……]]></summary>
-            
-                <content type="html"><![CDATA[<ul>
-<li>Bad architecture causes more problems than bad code.</li>
-<li>You will spend more time thinking than coding.</li>
-<li>The best programmers are always building things.</li>
-<li>There’s always a better way.</li>
-<li>Code reviews by your peers will make all of you better.</li>
-<li>Fewer features for better code is always the right answer in the end.</li>
-<li>Don’t reinvent the wheel, library code is there to help.</li>
-<li>If it’s not tested, it doesn’t work.</li>
-<li>Code that’s hard to understand is hard to maintain.</li>
-<li>Code that’s hard to maintain is next to useless.</li>
-<li>Always know how your business makes money, that determines who gets paid what.</li>
-<li>If you want to feel important as a software developer, work at a tech company.</li>
-</ul>
-<ol>
-<li>您将花费更多的时间思考而不是编码。</li>
-<li>不良的体系结构比不良的代码引起更多的问题。</li>
-<li>最好的程序员总是在构建东西。</li>
-<li>总会有更好的方法。</li>
-<li>同行的代码审查将使所有人变得更好。</li>
-<li>最终，正确的答案就是更少的功能来获得更好的代码。</li>
-<li>如果未测试，它将无法正常工作。</li>
-<li>不要重新发明轮子，库代码可以为您提供帮助。</li>
-<li>难以理解的代码难以维护。</li>
-<li>难以维护的代码几乎是无用的。</li>
-<li>始终知道您的企业是如何赚钱的，这决定了谁能得到酬劳。</li>
-<li>如果您想以软件开发人员的身份感到重要，请在技术公司工作。</li>
+</div><h2 id="严格模式">严格模式</h2>
+<pre><code>&quot;use strict&quot;;
+</code></pre><ol>
+<li>禁止this关键字指向全局对象</li>
 </ol>
 ]]></content>
-            
-            
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/categories/%E8%A1%8C%E4%B8%9A%E6%88%90%E9%95%BF/" term="行业成长" label="行业成长" />
-                            
-                        
-                    
-                
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">Nginx导致的bug</title>
-            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/" />
-            <id>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
-            <published>2020-04-18T01:24:25+08:00</published>
-            <author>
-                    <name>王书硕</name>
-                    <uri>https://wss.cool/</uri>
-                    <email>wss.six@foxmail.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    
-    <summary type="html"><![CDATA[什么情况下出现了bug？ 后端代码使用 spring boot 实现了一个 github oauth2 认证登录的 client 。将代码附属到服务……]]></summary>
-            
-                <content type="html"><![CDATA[<h2 id="什么情况下出现了bug">什么情况下出现了bug？</h2>
-<p>后端代码使用 spring boot 实现了一个 github oauth2 认证登录的 client 。将代码附属到服务器以后，请求经过 nginx 反向代理，java程序报错。</p>
-<h2 id="表现">表现</h2>
-<p>报错</p>
-<pre><code>Authentication request failed: org.springframework.security.oauth2.core.OAuth2AuthenticationException: [invalid_redirect_uri_parameter]
-</code></pre><h2 id="原因">原因</h2>
-<p>是nginx的导致的，可能是 nginx 转发请求的时候不会带着3个自定义header</p>
-<h2 id="解决方法">解决方法</h2>
-<p>修改 nginx 配置和 spring boot 的 tomcat 配置，处理3个 header 。</p>
-<p>nginx配置</p>
-<pre><code>proxy_set_header HOST $host;
-proxy_set_header X-Real-IP $remote_addr;
-proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-proxy_set_header X-Forwarded-Proto $scheme;
-</code></pre><p>application.yml</p>
-<pre><code>server:
-  tomcat:
-    remote-ip-header: &quot;X-Forwarded-For&quot;
-    protocol-header: &quot;X-Forwarded-Proto&quot;
-    protocol-header-https-value: &quot;https&quot;
-</code></pre>]]></content>
-            
-            
-            
-            
-            
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/categories/spring/" term="spring" label="spring" />
-                            
-                        
-                    
-                
-                    
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/tags/bug/" term="bug" label="bug" />
-                            
-                        
-                    
-                
-            
-        </entry>
-    
-        <entry>
-            <title type="text">JavaScript</title>
-            <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/" />
-            <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
-            <published>2020-04-04T02:13:49+08:00</published>
-            <author>
-                    <name>王书硕</name>
-                    <uri>https://wss.cool/</uri>
-                    <email>wss.six@foxmail.com</email>
-                    </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    
-    <summary type="html"><![CDATA[上传图片时，怎么拿到图片的src地址？ input选中图片以后，只是得到了file对象……]]></summary>
-            
-                <content type="html"><![CDATA[<h1 id="上传图片时怎么拿到图片的src地址">上传图片时，怎么拿到图片的src地址？</h1>
-<p>input选中图片以后，只是得到了file对象，如果想在img中显示该图片的话，并不知道src，所以想得到src还需要额外的操作。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">getObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">url</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">createObjectURL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// basic
-</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">URL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// mozilla(firefox)
-</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">URL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span> <span class="o">!=</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span> <span class="c1">// webkit or chrome
-</span><span class="c1"></span>    <span class="nx">url</span> <span class="o">=</span> <span class="nb">window</span><span class="p">.</span><span class="nx">webkitURL</span><span class="p">.</span><span class="nx">createObjectURL</span><span class="p">(</span><span class="nx">file</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="nx">url</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h1 id="js操作样式class">JS操作样式class</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toggle</span><span class="p">(</span><span class="s2">&#34;a&#34;</span><span class="p">);</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>
-<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">contains</span><span class="p">(</span><span class="s2">&#34;c&#34;</span><span class="p">);</span>    <span class="c1">// false 因为&#34;c&#34;上面remove掉了
-</span><span class="c1"></span><span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">toString</span><span class="p">()</span> <span class="o">===</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">className</span><span class="p">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h1 id="避免高频率调用">避免高频率调用</h1>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">throttle</span><span class="p">(</span><span class="nx">method</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">tId</span><span class="p">)</span> <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">method</span><span class="p">.</span><span class="nx">tId</span><span class="p">);</span>
-  <span class="nx">method</span><span class="p">.</span><span class="nx">tId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="nx">method</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">context</span><span class="p">);</span>
-  <span class="p">},</span> <span class="mi">200</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><h1 id="es6新语法--扩展运算符三个点">ES6新语法--扩展运算符（三个点）</h1>
-<h2 id="第二个参数以及之后的任意多个参数都会被放到values数组中">第二个参数以及之后的任意多个参数都会被放到values数组中</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">a</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="p">...</span><span class="nx">values</span><span class="p">){</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span><span class="nx">values</span><span class="p">)</span>
-<span class="p">}</span>
-
-<span class="nx">a</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;b&#39;</span><span class="p">],</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
-
-<span class="c1">// [&#34;a&#34;, &#34;b&#34;]
-</span><span class="c1">// [1, 2, 3]
-</span></code></pre></td></tr></table>
-</div>
-</div><h2 id="合并数组">合并数组</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// ES5 的合并数组
-</span><span class="c1"></span><span class="nx">arr1</span><span class="p">.</span><span class="nx">concat</span><span class="p">(</span><span class="nx">arr2</span><span class="p">,</span> <span class="nx">arr3</span><span class="p">);</span>
-
-<span class="c1">// ES6 的合并数组
-</span><span class="c1"></span><span class="p">[...</span><span class="nx">arr1</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr2</span><span class="p">,</span> <span class="p">...</span><span class="nx">arr3</span><span class="p">]</span>
-
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="与解构赋值结合">与解构赋值结合</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">111</span><span class="p">,</span><span class="mi">222</span><span class="p">,</span><span class="mi">333</span><span class="p">,</span><span class="mi">444</span><span class="p">]</span>
-<span class="c1">// ES5
-</span><span class="c1"></span><span class="nx">a</span> <span class="o">=</span> <span class="nx">list</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nx">rest</span> <span class="o">=</span> <span class="nx">list</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1">//a 111
-</span><span class="c1">//b [111,222,333,444]
-</span><span class="c1">// ES6
-</span><span class="c1"></span><span class="p">[</span><span class="nx">a</span><span class="p">,</span> <span class="p">...</span><span class="nx">rest</span><span class="p">]</span> <span class="o">=</span> <span class="nx">list</span>
-<span class="c1">//a 111
-</span><span class="c1">//b [111,222,333,444]
-</span></code></pre></td></tr></table>
-</div>
-</div><h2 id="js正则">js正则</h2>
-<p>制表符tab  \t<br>
-换行符  \r<br>
-汉字  \S<br>
-任意 .<br>
-小写字母 [a-z]</p>
-<h2 id="数组排序">数组排序</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">];</span>
-<span class="nx">numbers</span><span class="p">.</span><span class="nx">sort</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span><span class="p">;</span>
-<span class="p">});</span>
-</code></pre></td></tr></table>
-</div>
-</div>]]></content>
             
             
             
@@ -1835,7 +1842,7 @@ set softtabstop=2
             <title type="text">ReactRouter的哲学</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/reactrouter-philosophy.html" />
             <id>https://wss.cool/reactrouter-philosophy.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-03-31T13:11:28+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2017,7 +2024,7 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
             <title type="text">渐变色</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/linear-gradient/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/linear-gradient/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-03-31T08:41:24+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2214,7 +2221,7 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
             <title type="text">SSH</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/ssh.html" />
             <id>https://wss.cool/ssh.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-03-31T08:37:31+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2437,7 +2444,7 @@ IP地址：https://192.168.4.12</p>
             <title type="text">AJAX</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/ajax/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/ajax/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-03-31T08:20:17+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2648,7 +2655,7 @@ IP地址：https://192.168.4.12</p>
             <title type="text">DOM</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-03-30T23:25:37+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2761,7 +2768,7 @@ IP地址：https://192.168.4.12</p>
             <title type="text">博客文章分类</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%8D%9A%E5%AE%A2%E5%88%86%E7%B1%BB/" />
             <id>https://wss.cool/posts/%E5%8D%9A%E5%AE%A2%E5%88%86%E7%B1%BB/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-03-30T22:49:40+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2890,7 +2897,7 @@ IP地址：https://192.168.4.12</p>
             <title type="text">css</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-03-29T22:10:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3358,7 +3365,7 @@ ID选择器 = 100
             <title type="text">代码大全</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8.html" />
             <id>https://wss.cool/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-03-26T10:37:50+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3418,7 +3425,7 @@ ID选择器 = 100
             <title type="text">React 组件打包为 library</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-component-be-libiary.html" />
             <id>https://wss.cool/react-component-be-libiary.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-02-27T12:10:28+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3697,7 +3704,7 @@ ID选择器 = 100
             <title type="text">创建 React 项目</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/create-react-app.html" />
             <id>https://wss.cool/create-react-app.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-02-27T11:10:50+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3786,7 +3793,7 @@ ID选择器 = 100
             <title type="text">多快好省</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A4%9A%E5%BF%AB%E5%A5%BD%E7%9C%81.html" />
             <id>https://wss.cool/%E5%A4%9A%E5%BF%AB%E5%A5%BD%E7%9C%81.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-02-26T13:45:16+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3853,7 +3860,7 @@ ID选择器 = 100
             <title type="text">Spring MVC与模版 thymeleaf 开发网站</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/" />
             <id>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-02-25T23:39:38+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3985,7 +3992,7 @@ ID选择器 = 100
             <title type="text">Java后端开发常用工具</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7.html" />
             <id>https://wss.cool/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-01-30T01:19:02+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4038,7 +4045,7 @@ ID选择器 = 100
             <title type="text">我的博客支持服务</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%9C%8D%E5%8A%A1.html" />
             <id>https://wss.cool/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%9C%8D%E5%8A%A1.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-01-29T17:20:32+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4165,7 +4172,7 @@ ID选择器 = 100
             <title type="text">Spring Security JWT</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/spring-security-jwt.html" />
             <id>https://wss.cool/spring-security-jwt.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-01-19T13:51:29+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -6289,7 +6296,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">Spring推荐使用构造器注入</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/spring%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5.html" />
             <id>https://wss.cool/spring%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-01-18T18:30:02+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -6354,7 +6361,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">Spring Boot 中读取配置文件中的变量</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/" />
             <id>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-01-18T17:57:27+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -6688,7 +6695,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">Spring探索与扫盲</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/spring%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%89%AB%E7%9B%B2.html" />
             <id>https://wss.cool/spring%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%89%AB%E7%9B%B2.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2020-01-16T23:55:23+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -6906,7 +6913,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">使用Gitlab的Ci</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/gitlab-ci.html" />
             <id>https://wss.cool/gitlab-ci.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-11-29T16:42:18+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7116,7 +7123,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
             <title type="text">未读</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E6%9C%AA%E8%AF%BB/" />
             <id>https://wss.cool/posts/%E6%9C%AA%E8%AF%BB/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-11-18T10:59:42+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7177,7 +7184,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
             <title type="text">Redux Toolkit</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/redux-toolkit.html" />
             <id>https://wss.cool/redux-toolkit.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-10-28T10:54:37+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7351,7 +7358,7 @@ npx create-react-app my-app --template redux
             <title type="text">JavaScript语言精华</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-10-23T06:56:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7475,7 +7482,7 @@ npx create-react-app my-app --template redux
             <title type="text">ARTS打卡</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/arts%E6%89%93%E5%8D%A1.html" />
             <id>https://wss.cool/arts%E6%89%93%E5%8D%A1.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-10-22T16:35:08+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7520,7 +7527,7 @@ npx create-react-app my-app --template redux
             <title type="text">React Spring</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/react-spring/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/react-spring/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-10-22T14:19:59+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7730,7 +7737,7 @@ npx create-react-app my-app --template redux
             <title type="text">[机翻]如何解决问题</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98.html" />
             <id>https://wss.cool/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-10-21T16:54:43+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7833,7 +7840,7 @@ ew……挺酷的吧？
             <title type="text">Hugo</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%B7%A5%E5%85%B7/hugo/" />
             <id>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/hugo/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-10-10T14:15:23+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8075,7 +8082,7 @@ categories         &lt;- Taxonomy
             <title type="text">职业发展</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-10-07T18:05:05+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8209,7 +8216,7 @@ categories         &lt;- Taxonomy
             <title type="text">内容分发网络</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/cdn.html" />
             <id>https://wss.cool/cdn.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-09-27T13:16:55+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8266,7 +8273,7 @@ categories         &lt;- Taxonomy
             <title type="text">Nginx的简单使用</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/nginx.html" />
             <id>https://wss.cool/nginx.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-09-27T13:08:38+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8380,7 +8387,7 @@ categories         &lt;- Taxonomy
             <title type="text">CSS知识点汇总</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-09-15T21:53:21+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8446,7 +8453,7 @@ categories         &lt;- Taxonomy
             <title type="text">React With Gesture</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-with-gesture.html" />
             <id>https://wss.cool/react-with-gesture.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-08-28T13:21:48+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8498,7 +8505,7 @@ categories         &lt;- Taxonomy
             <title type="text">React Rangeslider</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-rangeslider.html" />
             <id>https://wss.cool/react-rangeslider.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-08-28T13:15:47+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8590,7 +8597,7 @@ categories         &lt;- Taxonomy
             <title type="text">workbox</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/workbox/" />
             <id>https://wss.cool/workbox/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-08-28T09:53:21+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8684,7 +8691,7 @@ workbox wizard
             <title type="text">授课项目优化</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E6%8E%88%E8%AF%BE%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E6%8E%88%E8%AF%BE%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-08-28T07:19:34+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8782,7 +8789,7 @@ workbox wizard
             <title type="text">正则表达式</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-08-25T20:13:08+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -8888,7 +8895,7 @@ workbox wizard
             <title type="text">React Popup</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-popup.html" />
             <id>https://wss.cool/react-popup.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-08-22T10:43:25+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9038,7 +9045,7 @@ npm install reactjs-popup
             <title type="text">D3学习笔记</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/d3/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/d3/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-07-20T12:29:41+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9508,7 +9515,7 @@ git log --graph --oneline --decorate</p>
             <title type="text">Fetch 与 Axios</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/fetch%E4%B8%8Eaxios/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/fetch%E4%B8%8Eaxios/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-07-17T10:27:44+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -9932,7 +9939,7 @@ git log --graph --oneline --decorate</p>
             <title type="text">利用useContext使用ReactRouter</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-router-hook.html" />
             <id>https://wss.cool/react-router-hook.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-07-08T09:36:38+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10023,7 +10030,7 @@ git log --graph --oneline --decorate</p>
             <title type="text">web前端对密码加密的意义</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/web%E5%89%8D%E7%AB%AF%E5%AF%B9%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E7%9A%84%E6%84%8F%E4%B9%89/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/web%E5%89%8D%E7%AB%AF%E5%AF%B9%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E7%9A%84%E6%84%8F%E4%B9%89/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-07-06T10:04:07+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10165,7 +10172,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">前端知识点</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-06-17T02:03:56+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -10254,7 +10261,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">Favicon Emoji</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/favicon-emoji.html" />
             <id>https://wss.cool/favicon-emoji.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-06-12T17:58:07+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10333,7 +10340,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">Linux的简单使用</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/linux.html" />
             <id>https://wss.cool/linux.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-06-11T23:02:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10460,7 +10467,7 @@ sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
             <title type="text">docker</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/docker.html" />
             <id>https://wss.cool/docker.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-06-06T01:47:46+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -10657,7 +10664,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
             <title type="text">GraphQl介绍</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/graphql/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/graphql/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-05-10T06:58:48+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -10759,7 +10766,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
             <title type="text">如何拥有技术领导力？</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/lead.html" />
             <id>https://wss.cool/lead.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-05-06T02:38:58+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -10814,7 +10821,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
             <title type="text">网站的兼容性</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E7%BD%91%E7%AB%99%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E7%BD%91%E7%AB%99%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-04-03T02:41:47+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -10874,7 +10881,7 @@ transform: translate(50%, 50%);</code></pre><blockquote>
             <title type="text">自定义事件</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-03-27T05:19:04+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -10963,7 +10970,7 @@ transform: translate(50%, 50%);</code></pre><blockquote>
             <title type="text">CSS命名</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E5%91%BD%E5%90%8D/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E5%91%BD%E5%90%8D/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-03-27T05:08:59+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11026,7 +11033,7 @@ B文件：
             <title type="text">浏览器缓存</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/browser-cache.html" />
             <id>https://wss.cool/browser-cache.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-03-14T02:23:03+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11095,7 +11102,7 @@ B文件：
             <title type="text">加载script标签</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/js-script-tag/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/js-script-tag/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-03-13T02:03:07+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11141,7 +11148,7 @@ B文件：
             <title type="text">字体</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%AD%97%E4%BD%93/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%AD%97%E4%BD%93/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-03-05T05:16:17+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11184,7 +11191,7 @@ B文件：
             <title type="text">Cheerio</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/cheerio.html" />
             <id>https://wss.cool/cheerio.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-01-25T01:20:58+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11256,7 +11263,7 @@ B文件：
             <title type="text">Typescript & React</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/typescript-react.html" />
             <id>https://wss.cool/typescript-react.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-01-20T14:15:47+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11357,7 +11364,7 @@ class AddTodo extends React.Component&lt;IProps, IState>{}</code></pre>
             <title type="text">命令行发送email</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/mac-ubuntu-send-email.html" />
             <id>https://wss.cool/mac-ubuntu-send-email.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2019-01-04T04:49:13+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11563,7 +11570,7 @@ sudo vim /etc/s-nail.rc﻿
             <title type="text">dvadva取消异步任务</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/dva-saga-cancel-effect.html" />
             <id>https://wss.cool/dva-saga-cancel-effect.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2018-12-31T09:54:21+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11777,7 +11784,7 @@ sudo vim /etc/s-nail.rc﻿
             <title type="text">如何处理大量bug</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html" />
             <id>https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2018-12-21T16:21:39+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11824,7 +11831,7 @@ sudo vim /etc/s-nail.rc﻿
             <title type="text">Redux Saga</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-saga/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-saga/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2018-12-02T11:04:48+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12258,7 +12265,7 @@ const members = yield call(fetchMembers, project.id)
             <title type="text">Redux 概要</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-%E6%A6%82%E8%A6%81/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-%E6%A6%82%E8%A6%81/</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2018-11-28T14:24:04+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12376,7 +12383,7 @@ const store = createStore(reducer);</code></pre>
             <title type="text">React 中的元素与组件</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-element-and-component.html" />
             <id>https://wss.cool/react-element-and-component.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2018-11-24T04:49:54+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12725,7 +12732,7 @@ const store = createStore(reducer);</code></pre>
             <title type="text">React的diff</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-reconciliation.html" />
             <id>https://wss.cool/react-reconciliation.html</id>
-            <updated>2020-04-22T10:54:36+00:00</updated>
+            <updated>2020-04-22T11:28:08+00:00</updated>
             <published>2018-11-17T08:33:37+00:00</published>
             <author>
                     <name>王书硕</name>
