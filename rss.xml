@@ -23,10 +23,53 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sat, 25 Apr 2020 09:00:25 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 27 Apr 2020 00:58:31 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>做正确的事</title>
+                <link>https://wss.cool/%E5%81%9A%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%BA%8B.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E5%81%9A%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%BA%8B.html</guid>
+                <pubDate>Mon, 27 Apr 2020 08:41:25 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>作为程序员，在工作和业余时间都会有很多新的技术和不知道的知识点。在它们中找到有价值的、值得投入时间的事很重要。它们是能让自己在行业内成长的事，这里就简称为「正确的事」，这会影响到自己的成长速度。影响到自己在未来一年、三年、五年的能力和价值。</p>
+<p>想要筛选出「正确的事」就要有一个判断标准，这个标准就是自己的目标。比如我想多赚钱，这就意味着去更好的公司，或者更高的职位。这些都要依托于好的技术和能力，那么我的目标就是拥有好的技术和能力，而我作为一个前端且喜欢 React ，市场上也有很多这样的工作机会，我只需要专注与 React 和其他通用技能的锻炼，其他技术对我来说就不重要。所以对于我来说，「正确的事」就是能为我提高「前端基础」「React技术栈」「软件行业通用技能」的事。</p>
+<p>有了目标和判断标准和自己正在做的事的了解以后，就可以对要做的事进行判断了。在工作中选哪些「正确的事」，业余时间也投入到「正确的事」，其他事尽量不做，如果工作中非做不可，可以考虑换个公司。因为把有限的时间投入到「不正确的事」会影响自己的成长速度。</p>
+<hr>
+<p>再具体一点我认为能让自己在行业内成长的事有哪些。</p>
+<ul>
+<li>React原理、Redux原理，常用的JavaScript、CSS。这些属于专业基础知识。</li>
+<li>前端组件化的设计，代码的组织和管理复杂度、代码规范、git的使用和规范。这些是为了让代码长期可维护，易于扩展和管理，少出bug，不给公司拖后腿。</li>
+<li>nginx、linux的简单使用，可以简单的发布项目。</li>
+<li>还有前后端通用的重要基础知识：代码大全（构建代码的技术）、算法，tcp/ip、fetch规范、oauth2规范之类。</li>
+</ul>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E8%A1%8C%E4%B8%9A%E6%88%90%E9%95%BF/">行业成长</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>AccessToken访问远程Gitlab(Github)</title>
