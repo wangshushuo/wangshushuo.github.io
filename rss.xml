@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 27 Apr 2020 00:58:31 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 28 Apr 2020 02:58:11 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -9501,7 +9501,19 @@ git log --graph --oneline --decorate</p>
 <p>Git 分支管理策略 <a href="http://www.ruanyifeng.com/blog/2012/07/git.html">http://www.ruanyifeng.com/blog/2012/07/git.html</a></p>
 <p>Git 工作流程 <a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html">http://www.ruanyifeng.com/blog/2015/12/git-workflow.html</a></p>
 <p>Git 使用规范流程 <a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html">http://www.ruanyifeng.com/blog/2015/08/git-use-process.html</a></p>
-]]></description>
+<h2 id="git记住密码">git记住密码</h2>
+<p>配置本地仓库</p>
+<pre><code>git config user.name &quot;your_name&quot;
+git config user.email XXXX@gmail.com
+</code></pre><p>PS： HTTPS 方式会让每次输入用户名和密码，解决办法如下</p>
+<p>创建 <code>.git-credential</code> 文件 并写入用户信息：用户名和密码</p>
+<p>push 代码 这一步输入的用户名密码会被记住,
+下次再push代码时就不用输入用户名密码, 这一步会在用户目录下生成文件.git-credential记录用户名密码的信息。</p>
+<pre><code>// 当前仓库
+git config  credential.helper store
+// 全局仓库
+git config --global credential.helper store
+</code></pre>]]></description>
                 
                 
                 
