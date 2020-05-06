@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 06 May 2020 01:56:46 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 06 May 2020 08:35:16 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -1709,8 +1709,8 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
         
             <item>
                 <title>重构旧项目-1</title>
-                <link>https://wss.cool/refactoring-old-projects-part-1.html</link>
-                <guid isPermaLink="true">https://wss.cool/refactoring-old-projects-part-1.html</guid>
+                <link>https://wss.cool/%E9%87%8D%E6%9E%84%E6%97%A7%E9%A1%B9%E7%9B%AE-1.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E9%87%8D%E6%9E%84%E6%97%A7%E9%A1%B9%E7%9B%AE-1.html</guid>
                 <pubDate>Thu, 02 Apr 2020 15:17:52 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (王书硕)</author>
@@ -1721,7 +1721,8 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
 <p>这个项目有点老旧</p>
 <pre><code>&quot;dva&quot;: &quot;2.1.0&quot;,
 &quot;react&quot;: &quot;^16.2.0&quot;,
-</code></pre><p>我打算用最新的react和@reduxjs/toolkit开始重构，旧的依赖只能使用connect方式来获取store，使用useSelector和useDispatch很方便也很易读。<code>@reduxjs/toolkit</code>提供的immer和actionCreater也很好用。</p>
+</code></pre><p>我打算用最新的 react 和 @reduxjs/toolkit 开始重构，旧的依赖只能使用 connect 方式来获取 store ，使用 useSelector 和 useDispatch 很方便也很易读。<code>@reduxjs/toolkit</code>提供的immer和actionCreater也很好用。</p>
+<p>新版本的 react-redux 才提供了 useSelector 和 useDispatch ，但是新版本会导致 dva 出错。无奈放弃了新版本，还是用旧版本的 connect 。还好这不影响对代码进行组件化。</p>
 <p>首先重构的是一个643行的组件，它的render方法有580行。</p>
 <h2 id="重复代码">重复代码</h2>
 <p>很容易的发现了一大段重复代码</p>
@@ -1818,7 +1819,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>数据使用useSelector获取，这样代码看起来简单读了。</p>
+</div><p>数据使用 connect 获取，这样代码看起来简单读了。</p>
 <h2 id="封装组件">封装组件</h2>
 <p>然后发现了一大段代码可以封装成一个独立的组件。</p>
 <div class="highlight"><div class="chroma">
@@ -1909,7 +1910,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>还有它相关的方法都是像这样的dispatch，大概有五六个，它们都写在render函数内，这非常糟糕。</p>
+</div><p>还有它相关的方法都是像下面👇这样的 dispatch ，大概有五六个。它们都写在 render 函数内，占用了很大的篇幅，对阅读代码有很大的影响。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -1940,11 +1941,12 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
 <span class="p">};</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>我要讲这个<code>dispatch</code>中的<code>action</code>放到一个<code>action_creater.js</code>文件中，将组建放在<code>GroupItem.jsx</code>文件中。这可以让次要的信息不占用篇幅，主要的信息就会一目了然了。
-这段代码就编程了2个组件和1个<code>action creater</code>文件。相关的代码封装在一起，再也不用为了看一个函数而滚动300行代码或者要用搜索才能找到了。</p>
+</div><p>我将这个 <code>dispatch</code> 中的 <code>action</code> 放到一个 <code>action_creater.js</code> 文件中，将组建放在 <code>GroupItem.jsx</code> 文件中。这可以让次要的信息不占用篇幅，主要的信息就会一目了然了。
+这段代码就变成了2个组件和1个 <code>action creater</code> 文件。相关的代码封装在一起，再也不用为了看一个函数而滚动300行代码或者要用搜索才能找到了。</p>
 <blockquote>
 <p>这3个文件目前都只有40-50行。</p>
 </blockquote>
+<p>原来643行的文件，现在是490行，优化掉了150行（23%）的代码。使代码有了更好的封装，改善了阅读/维护难度。</p>
 ]]></description>
                 
                 

@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">WSS.COOL</title>
     <subtitle type="html">现在是一名前端，希望转到后端，最后做架构师。这里记录了常用到的前端、后端、服务器和各种工具的常用api、知识点等。记录的api方便查找，记录的知识点作为一种输出可以增加理解。</subtitle>
-    <updated>2020-05-06T01:56:46+00:00</updated>
+    <updated>2020-05-06T08:35:16+00:00</updated>
     <id>https://wss.cool/</id>
     <link rel="alternate" type="text/html" href="https://wss.cool/" />
     <link rel="self" type="application/atom+xml" href="https://wss.cool/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">如何准备面试</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A6%82%E4%BD%95%E5%87%86%E5%A4%87%E9%9D%A2%E8%AF%95.html" />
             <id>https://wss.cool/%E5%A6%82%E4%BD%95%E5%87%86%E5%A4%87%E9%9D%A2%E8%AF%95.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-05-04T00:29:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -83,7 +83,7 @@
             <title type="text">做正确的事</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%81%9A%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%BA%8B.html" />
             <id>https://wss.cool/%E5%81%9A%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%BA%8B.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-27T08:41:25+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -129,7 +129,7 @@
             <title type="text">AccessToken访问远程Gitlab(Github)</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/access-token-git-remote-repository-github-gitlab.html" />
             <id>https://wss.cool/access-token-git-remote-repository-github-gitlab.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-22T23:11:20+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -190,7 +190,7 @@
             <title type="text">可编辑元素</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/%E5%8F%AF%E7%BC%96%E8%BE%91%E5%85%83%E7%B4%A0/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/%E5%8F%AF%E7%BC%96%E8%BE%91%E5%85%83%E7%B4%A0/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-22T22:48:25+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -306,7 +306,7 @@
             <title type="text">常用DOM操作</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%B8%B8%E7%94%A8dom%E6%93%8D%E4%BD%9C.html" />
             <id>https://wss.cool/%E5%B8%B8%E7%94%A8dom%E6%93%8D%E4%BD%9C.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-22T19:20:48+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -498,7 +498,7 @@
             <title type="text">熵与代码</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-22T10:29:53+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -545,7 +545,7 @@
             <title type="text">获取滚动高度</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-18T01:45:53+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -620,7 +620,7 @@
             <title type="text">Git:Perission-Denied</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/" />
             <id>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-18T01:43:23+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -661,7 +661,7 @@
             <title type="text">Npm与yarn</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-18T01:31:26+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -725,7 +725,7 @@ npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
             <title type="text">应该知道的</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-18T01:28:32+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -790,7 +790,7 @@ npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
             <title type="text">Nginx导致的bug</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/" />
             <id>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-18T01:24:25+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -855,7 +855,7 @@ proxy_set_header X-Forwarded-Proto $scheme;
             <title type="text">JavaScript</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-04T02:13:49+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1757,24 +1757,23 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
     
         <entry>
             <title type="text">重构旧项目-1</title>
-            <link rel="alternate" type="text/html" href="https://wss.cool/refactoring-old-projects-part-1.html" />
-            <id>https://wss.cool/refactoring-old-projects-part-1.html</id>
-            <updated>2020-04-02T15:17:52+08:00</updated>
+            <link rel="alternate" type="text/html" href="https://wss.cool/%E9%87%8D%E6%9E%84%E6%97%A7%E9%A1%B9%E7%9B%AE-1.html" />
+            <id>https://wss.cool/%E9%87%8D%E6%9E%84%E6%97%A7%E9%A1%B9%E7%9B%AE-1.html</id>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-04-02T15:17:52+08:00</published>
             <author>
                     <name>王书硕</name>
                     <uri>https://wss.cool/</uri>
                     <email>wss.six@foxmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
-    
-    <summary type="html"><![CDATA[背景 这个项目有点老旧 &quot;dva&quot;: &quot;2.1.0&quot;, &quot;react&quot;: &quot;^16.2.0&quot;, 我打算用最新的react和@reduxjs/toolki……]]></summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"><![CDATA[尝试优化一个旧项目的代码，将一个大文件中的部分代码封装为组件。可以降低复杂度，改善阅读代码的难度。]]></summary>
             
                 <content type="html"><![CDATA[<h2 id="背景">背景</h2>
 <p>这个项目有点老旧</p>
 <pre><code>&quot;dva&quot;: &quot;2.1.0&quot;,
 &quot;react&quot;: &quot;^16.2.0&quot;,
-</code></pre><p>我打算用最新的react和@reduxjs/toolkit开始重构，旧的依赖只能使用connect方式来获取store，使用useSelector和useDispatch很方便也很易读。<code>@reduxjs/toolkit</code>提供的immer和actionCreater也很好用。</p>
+</code></pre><p>我打算用最新的 react 和 @reduxjs/toolkit 开始重构，旧的依赖只能使用 connect 方式来获取 store ，使用 useSelector 和 useDispatch 很方便也很易读。<code>@reduxjs/toolkit</code>提供的immer和actionCreater也很好用。</p>
+<p>新版本的 react-redux 才提供了 useSelector 和 useDispatch ，但是新版本会导致 dva 出错。无奈放弃了新版本，还是用旧版本的 connect 。还好这不影响对代码进行组件化。</p>
 <p>首先重构的是一个643行的组件，它的render方法有580行。</p>
 <h2 id="重复代码">重复代码</h2>
 <p>很容易的发现了一大段重复代码</p>
@@ -1871,7 +1870,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>数据使用useSelector获取，这样代码看起来简单读了。</p>
+</div><p>数据使用 connect 获取，这样代码看起来简单读了。</p>
 <h2 id="封装组件">封装组件</h2>
 <p>然后发现了一大段代码可以封装成一个独立的组件。</p>
 <div class="highlight"><div class="chroma">
@@ -1962,7 +1961,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
 <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>还有它相关的方法都是像这样的dispatch，大概有五六个，它们都写在render函数内，这非常糟糕。</p>
+</div><p>还有它相关的方法都是像下面👇这样的 dispatch ，大概有五六个。它们都写在 render 函数内，占用了很大的篇幅，对阅读代码有很大的影响。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -1993,11 +1992,12 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
 <span class="p">};</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>我要讲这个<code>dispatch</code>中的<code>action</code>放到一个<code>action_creater.js</code>文件中，将组建放在<code>GroupItem.jsx</code>文件中。这可以让次要的信息不占用篇幅，主要的信息就会一目了然了。
-这段代码就编程了2个组件和1个<code>action creater</code>文件。相关的代码封装在一起，再也不用为了看一个函数而滚动300行代码或者要用搜索才能找到了。</p>
+</div><p>我将这个 <code>dispatch</code> 中的 <code>action</code> 放到一个 <code>action_creater.js</code> 文件中，将组建放在 <code>GroupItem.jsx</code> 文件中。这可以让次要的信息不占用篇幅，主要的信息就会一目了然了。
+这段代码就变成了2个组件和1个 <code>action creater</code> 文件。相关的代码封装在一起，再也不用为了看一个函数而滚动300行代码或者要用搜索才能找到了。</p>
 <blockquote>
 <p>这3个文件目前都只有40-50行。</p>
 </blockquote>
+<p>原来643行的文件，现在是490行，优化掉了150行（23%）的代码。使代码有了更好的封装，改善了阅读/维护难度。</p>
 ]]></content>
             
             
@@ -2141,7 +2141,7 @@ set softtabstop=2
             <title type="text">ReactRouter的哲学</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/reactrouter-philosophy.html" />
             <id>https://wss.cool/reactrouter-philosophy.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-03-31T13:11:28+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2323,7 +2323,7 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
             <title type="text">渐变色</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/linear-gradient/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/linear-gradient/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-03-31T08:41:24+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2534,7 +2534,7 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
             <title type="text">SSH</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/ssh.html" />
             <id>https://wss.cool/ssh.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-03-31T08:37:31+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2757,7 +2757,7 @@ IP地址：https://192.168.4.12</p>
             <title type="text">AJAX</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/ajax/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/ajax/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-03-31T08:20:17+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3029,7 +3029,7 @@ IP地址：https://192.168.4.12</p>
             <title type="text">博客文章分类</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%8D%9A%E5%AE%A2%E5%88%86%E7%B1%BB/" />
             <id>https://wss.cool/posts/%E5%8D%9A%E5%AE%A2%E5%88%86%E7%B1%BB/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-03-30T22:49:40+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3158,7 +3158,7 @@ IP地址：https://192.168.4.12</p>
             <title type="text">css</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-03-29T22:10:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3652,7 +3652,7 @@ ID选择器 = 100
             <title type="text">代码大全</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8.html" />
             <id>https://wss.cool/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-03-26T10:37:50+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3706,7 +3706,7 @@ ID选择器 = 100
             <title type="text">React 组件打包为 library</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-component-be-libiary.html" />
             <id>https://wss.cool/react-component-be-libiary.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-02-27T12:10:28+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3985,7 +3985,7 @@ ID选择器 = 100
             <title type="text">创建 React 项目</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/create-react-app.html" />
             <id>https://wss.cool/create-react-app.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-02-27T11:10:50+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4074,7 +4074,7 @@ ID选择器 = 100
             <title type="text">多快好省</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A4%9A%E5%BF%AB%E5%A5%BD%E7%9C%81.html" />
             <id>https://wss.cool/%E5%A4%9A%E5%BF%AB%E5%A5%BD%E7%9C%81.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-02-26T13:45:16+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4141,7 +4141,7 @@ ID选择器 = 100
             <title type="text">Spring MVC与模版 thymeleaf 开发网站</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/" />
             <id>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-02-25T23:39:38+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4273,7 +4273,7 @@ ID选择器 = 100
             <title type="text">Java后端开发常用工具</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7.html" />
             <id>https://wss.cool/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-01-30T01:19:02+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4326,7 +4326,7 @@ ID选择器 = 100
             <title type="text">我的博客支持服务</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%9C%8D%E5%8A%A1.html" />
             <id>https://wss.cool/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%9C%8D%E5%8A%A1.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-01-29T17:20:32+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4453,7 +4453,7 @@ ID选择器 = 100
             <title type="text">Spring Security JWT</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/spring-security-jwt.html" />
             <id>https://wss.cool/spring-security-jwt.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-01-19T13:51:29+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -6577,7 +6577,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">Spring推荐使用构造器注入</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/spring%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5.html" />
             <id>https://wss.cool/spring%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-01-18T18:30:02+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -6642,7 +6642,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">Spring Boot 中读取配置文件中的变量</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/" />
             <id>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-01-18T17:57:27+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -6976,7 +6976,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">Spring探索与扫盲</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/spring%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%89%AB%E7%9B%B2.html" />
             <id>https://wss.cool/spring%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%89%AB%E7%9B%B2.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2020-01-16T23:55:23+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7194,7 +7194,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">使用Gitlab的Ci</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/gitlab-ci.html" />
             <id>https://wss.cool/gitlab-ci.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-11-29T16:42:18+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7404,7 +7404,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
             <title type="text">未读</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E6%9C%AA%E8%AF%BB/" />
             <id>https://wss.cool/posts/%E6%9C%AA%E8%AF%BB/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-11-18T10:59:42+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7465,7 +7465,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
             <title type="text">Redux Toolkit</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/redux-toolkit.html" />
             <id>https://wss.cool/redux-toolkit.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-10-28T10:54:37+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7639,7 +7639,7 @@ npx create-react-app my-app --template redux
             <title type="text">JavaScript语言精华</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-10-23T06:56:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7763,7 +7763,7 @@ npx create-react-app my-app --template redux
             <title type="text">ARTS打卡</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/arts%E6%89%93%E5%8D%A1.html" />
             <id>https://wss.cool/arts%E6%89%93%E5%8D%A1.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-10-22T16:35:08+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7808,7 +7808,7 @@ npx create-react-app my-app --template redux
             <title type="text">React Spring</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/react-spring/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/react-spring/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-10-22T14:19:59+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8018,7 +8018,7 @@ npx create-react-app my-app --template redux
             <title type="text">[机翻]如何解决问题</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98.html" />
             <id>https://wss.cool/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-10-21T16:54:43+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8121,7 +8121,7 @@ ew……挺酷的吧？
             <title type="text">Hugo</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%B7%A5%E5%85%B7/hugo/" />
             <id>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/hugo/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-10-10T14:15:23+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8363,7 +8363,7 @@ categories         &lt;- Taxonomy
             <title type="text">职业发展</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-10-07T18:05:05+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8497,7 +8497,7 @@ categories         &lt;- Taxonomy
             <title type="text">内容分发网络</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/cdn.html" />
             <id>https://wss.cool/cdn.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-09-27T13:16:55+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8554,7 +8554,7 @@ categories         &lt;- Taxonomy
             <title type="text">Nginx的简单使用</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/nginx.html" />
             <id>https://wss.cool/nginx.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-09-27T13:08:38+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8668,7 +8668,7 @@ categories         &lt;- Taxonomy
             <title type="text">CSS知识点汇总</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-09-15T21:53:21+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8734,7 +8734,7 @@ categories         &lt;- Taxonomy
             <title type="text">React With Gesture</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-with-gesture.html" />
             <id>https://wss.cool/react-with-gesture.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-08-28T13:21:48+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8786,7 +8786,7 @@ categories         &lt;- Taxonomy
             <title type="text">React Rangeslider</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-rangeslider.html" />
             <id>https://wss.cool/react-rangeslider.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-08-28T13:15:47+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8878,7 +8878,7 @@ categories         &lt;- Taxonomy
             <title type="text">workbox</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/workbox/" />
             <id>https://wss.cool/workbox/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-08-28T09:53:21+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8972,7 +8972,7 @@ workbox wizard
             <title type="text">授课项目优化</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E6%8E%88%E8%AF%BE%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E6%8E%88%E8%AF%BE%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-08-28T07:19:34+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9070,7 +9070,7 @@ workbox wizard
             <title type="text">正则表达式</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-08-25T20:13:08+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -9176,7 +9176,7 @@ workbox wizard
             <title type="text">React Popup</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-popup.html" />
             <id>https://wss.cool/react-popup.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-08-22T10:43:25+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9326,7 +9326,7 @@ npm install reactjs-popup
             <title type="text">D3学习笔记</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/d3/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/d3/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-07-20T12:29:41+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9464,7 +9464,7 @@ domain中的数据会被线性映射到range中。<code>scale(50);</code>中的<
             <title type="text">Git</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git/" />
             <id>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-07-18T10:53:36+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9831,7 +9831,7 @@ git config --global credential.helper store
             <title type="text">Fetch 与 Axios</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/fetch%E4%B8%8Eaxios/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/fetch%E4%B8%8Eaxios/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-07-17T10:27:44+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -10255,7 +10255,7 @@ git config --global credential.helper store
             <title type="text">利用useContext使用ReactRouter</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-router-hook.html" />
             <id>https://wss.cool/react-router-hook.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-07-08T09:36:38+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10346,7 +10346,7 @@ git config --global credential.helper store
             <title type="text">web前端对密码加密的意义</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/web%E5%89%8D%E7%AB%AF%E5%AF%B9%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E7%9A%84%E6%84%8F%E4%B9%89/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/web%E5%89%8D%E7%AB%AF%E5%AF%B9%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E7%9A%84%E6%84%8F%E4%B9%89/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-07-06T10:04:07+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10488,7 +10488,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">前端知识点</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-06-17T02:03:56+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -10577,7 +10577,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">Favicon Emoji</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/favicon-emoji.html" />
             <id>https://wss.cool/favicon-emoji.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-06-12T17:58:07+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10656,7 +10656,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">Linux的简单使用</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/linux.html" />
             <id>https://wss.cool/linux.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-06-11T23:02:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10796,7 +10796,7 @@ passwd root
             <title type="text">docker</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/docker.html" />
             <id>https://wss.cool/docker.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-06-06T01:47:46+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -10993,7 +10993,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
             <title type="text">GraphQl介绍</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/graphql/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/graphql/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-05-10T06:58:48+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11095,7 +11095,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
             <title type="text">如何拥有技术领导力？</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/lead.html" />
             <id>https://wss.cool/lead.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-05-06T02:38:58+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11150,7 +11150,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
             <title type="text">网站的兼容性</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E7%BD%91%E7%AB%99%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E7%BD%91%E7%AB%99%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-04-03T02:41:47+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11210,7 +11210,7 @@ transform: translate(50%, 50%);</code></pre><blockquote>
             <title type="text">自定义事件</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-03-27T05:19:04+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11299,7 +11299,7 @@ transform: translate(50%, 50%);</code></pre><blockquote>
             <title type="text">CSS命名</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E5%91%BD%E5%90%8D/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E5%91%BD%E5%90%8D/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-03-27T05:08:59+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11362,7 +11362,7 @@ B文件：
             <title type="text">浏览器缓存</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/browser-cache.html" />
             <id>https://wss.cool/browser-cache.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-03-14T02:23:03+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11431,7 +11431,7 @@ B文件：
             <title type="text">加载script标签</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/js-script-tag/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/js-script-tag/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-03-13T02:03:07+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11477,7 +11477,7 @@ B文件：
             <title type="text">字体</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%AD%97%E4%BD%93/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%AD%97%E4%BD%93/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-03-05T05:16:17+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11520,7 +11520,7 @@ B文件：
             <title type="text">Cheerio</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/cheerio.html" />
             <id>https://wss.cool/cheerio.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-01-25T01:20:58+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11592,7 +11592,7 @@ B文件：
             <title type="text">Typescript & React</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/typescript-react.html" />
             <id>https://wss.cool/typescript-react.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-01-20T14:15:47+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11693,7 +11693,7 @@ class AddTodo extends React.Component&lt;IProps, IState>{}</code></pre>
             <title type="text">命令行发送email</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/mac-ubuntu-send-email.html" />
             <id>https://wss.cool/mac-ubuntu-send-email.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2019-01-04T04:49:13+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11899,7 +11899,7 @@ sudo vim /etc/s-nail.rc﻿
             <title type="text">dvadva取消异步任务</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/dva-saga-cancel-effect.html" />
             <id>https://wss.cool/dva-saga-cancel-effect.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2018-12-31T09:54:21+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12113,7 +12113,7 @@ sudo vim /etc/s-nail.rc﻿
             <title type="text">如何处理大量bug</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html" />
             <id>https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2018-12-21T16:21:39+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12160,7 +12160,7 @@ sudo vim /etc/s-nail.rc﻿
             <title type="text">Redux Saga</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-saga/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-saga/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2018-12-02T11:04:48+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12607,7 +12607,7 @@ const members = yield call(fetchMembers, project.id)
             <title type="text">Redux 概要</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-%E6%A6%82%E8%A6%81/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-%E6%A6%82%E8%A6%81/</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2018-11-28T14:24:04+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12725,7 +12725,7 @@ const store = createStore(reducer);</code></pre>
             <title type="text">React 中的元素与组件</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-element-and-component.html" />
             <id>https://wss.cool/react-element-and-component.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2018-11-24T04:49:54+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -13074,7 +13074,7 @@ const store = createStore(reducer);</code></pre>
             <title type="text">React的diff</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-reconciliation.html" />
             <id>https://wss.cool/react-reconciliation.html</id>
-            <updated>2020-05-06T01:56:40+00:00</updated>
+            <updated>2020-05-06T08:35:12+00:00</updated>
             <published>2018-11-17T08:33:37+00:00</published>
             <author>
                     <name>王书硕</name>
