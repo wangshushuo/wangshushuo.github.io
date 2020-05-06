@@ -23,10 +23,68 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 28 Apr 2020 02:58:11 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 06 May 2020 01:56:46 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>如何准备面试</title>
+                <link>https://wss.cool/%E5%A6%82%E4%BD%95%E5%87%86%E5%A4%87%E9%9D%A2%E8%AF%95.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E5%A6%82%E4%BD%95%E5%87%86%E5%A4%87%E9%9D%A2%E8%AF%95.html</guid>
+                <pubDate>Mon, 04 May 2020 00:29:30 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>我现在想换个工作，所以要准备面试，但是如何准备还没有完全想好。这里记录一下我想到的面试可能包含的内容。</p>
+<p>面试应该分几个部分。首先是「基础知识点」的考察，这一步是必须的，来验验这个人是能否完成基本的编码工作，这步表现的可以的话应该能拿最低薪水。然后会「聊项目」，这步需要了解在项目中承担了哪些工作，在团队协作中扮演什么角色<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup><sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，如果发现你的能力比较工资会多一些。最后是些人事相关的「非技术问题」，比如期望薪资、福利待遇、为什么离职等等。这几部分又该如何准备呢？</p>
+<h2 id="基础知识">基础知识</h2>
+<p>基础知识可以分为几个部分：语言、框架/库、算法。这些网上都有很多资料，需要筛选出高质量的内容。</p>
+<p>我打算现在 Github 上找到那个<a href="https://github.com/h5bp/Front-end-Developer-Interview-Questions">最著名的前端面试题库</a>，写一个博客记录我的回答。基础搞定以后要复习 React/Vue 原理，主要是「虚拟DOM」「Diff算法」「异步渲染」「Hook原理」，还有一些常用的 API 。另外有些浏览器相关的，比如重绘、缓存、CORS等。准备算法我要继续看《算法》这本书，掌握几个常用常考的算法。</p>
+<p>这个过程中遇到的所有知识，把不会的记录到博客中，会的也要重新整理博客。这些博客像「错题本」一样用来巩固知识。</p>
+<h2 id="聊项目">聊项目</h2>
+<p>这里需要仔细回想你在团队协作中扮演的角色。只是现实功能的话，就要对相关的技术熟一些。如果做了些代码设计工作，可能需要聊一下思路，遇到的问题等等。如果除了完成功能开发外还有其他贡献。比如发现A问题，你开发了B工具解决它，提高了工作效率/代码质量。发现了C问题，重新设计了D代码，将C问题重构/优化。或者为团队/公司解决了什么难题、帮助同事解决了什么问题。</p>
+<p>这些工作都能体现你能力的高低，要「仔细」地想出来，并组织语言准备讲给面试官听。</p>
+<p>拿我来说。我开发过工具提高工作效率，规范 Git 的使用方式。为项目补充文档，优化旧代码降低复杂度，设计组件优化代码，设计新的架构替换旧架构降低复杂度。帮助同事设计组件。为团队解决若干技术难题。制定并代码规范提高代码可读性，降低复杂度。</p>
+<h2 id="非技术问题">非技术问题</h2>
+<p>最重要的是薪资，如果前面聊的顺利，这里可以多说一点，因为公司一般都会还价。其他福利也很重要，有没有年终奖/项目奖金，会写在合同里吗，公积金交多少。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>角色大概可以分为「初中高级」。承担的工作如果都是「实现xx功能」之类的，大概是初级的水平；如果功能、模块、组件这些能自己设计，大概能算中级水平；再高级点的工作，指导别人工作，搞一些工具、组件、方法提高工作效率，解决难题，这就算是高级了。<br>
+<a href="https://twitter.com/haoel/status/1253910100668022784?s=20">https://twitter.com/haoel/status/1253910100668022784?s=20</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>初级：在给出指导和具体实施细节后，能独立按时按量（数量和质量）完成工作。<br>
+中级：不用指导和具体实施细节，能独立的按时按量（数量和质量）完成工作。<br>
+高级：解难题（能解决业务或技术难题），传帮带（能指导培养初中级人员），标准化（能沉淀出可复制或可复用的方法论或工作方式，提高生产效率） <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E8%A1%8C%E4%B8%9A%E6%88%90%E9%95%BF/">行业成长</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>做正确的事</title>
@@ -7428,8 +7486,8 @@ npx create-react-app my-app --template redux
         
             <item>
                 <title>JavaScript语言精华</title>
-                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/</link>
-                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/</guid>
+                <link>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/</guid>
                 <pubDate>Wed, 23 Oct 2019 06:56:30 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (王书硕)</author>
