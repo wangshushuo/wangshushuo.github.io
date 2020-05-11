@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 06 May 2020 08:35:16 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 11 May 2020 07:14:57 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -10554,7 +10554,11 @@ sudo tee /etc/docker/daemon.json &lt;&lt;-'EOF'
 EOF
 sudo systemctl daemon-reload
 sudo systemctl restart docker
-</code></pre><h2 id="tensorflow">tensorflow</h2>
+</code></pre><h2 id="操作">操作</h2>
+<p>进入 container</p>
+<pre><code>docker exec -it container-name/id /bin/sh
+</code></pre><p>最后的 <code>/bin/sh</code> 可以换成 <code>/bin/bash</code></p>
+<h2 id="tensorflow">tensorflow</h2>
 <p>系统ubuntu 18.04，显卡Gtx950，驱动390。</p>
 <ol>
 <li>安装<code>nvidia-docker</code>和<code>nvidia-container-runtime</code></li>
