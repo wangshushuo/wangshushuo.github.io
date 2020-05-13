@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 11 May 2020 07:14:57 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 13 May 2020 05:21:55 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -8393,6 +8393,12 @@ categories         &lt;- Taxonomy
 <pre><code>sudo nginx -s reload
 </code></pre><h2 id="日志">日志</h2>
 <pre><code>cat /var/log/nginx/access.log
+</code></pre><h2 id="http转https">http转https</h2>
+<pre><code>server {
+    listen 80;
+    server_name www.test.com;
+    rewrite ^(.*)$ https://${server_name}$1 permanent; 
+}
 </code></pre><h2 id="https配置">https配置</h2>
 <pre><code>server {
     listen 443 ssl http2;
