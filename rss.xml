@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 21 May 2020 13:28:29 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 21 May 2020 13:58:37 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -7271,7 +7271,8 @@ $ sudo apt-get install gitlab-ci-multi-runner
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[<h2 id="康奈尔笔记法">康奈尔笔记法</h2>
+                    <description><![CDATA[<p>213</p>
+<h2 id="康奈尔笔记法">康奈尔笔记法</h2>
 <p>2019年11月25日12:26:15</p>
 <p>上半右边为要点，左边为线索，下部为总结。看的过程中记录要点，看完了提炼线索。总结整个笔记，用自己的语言，最好与已经会的东西发生练习。</p>
 <h2 id="postgresql与mysql对比">PostgreSQL与MySQL对比</h2>
