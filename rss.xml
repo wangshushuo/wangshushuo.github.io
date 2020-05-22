@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 21 May 2020 13:58:37 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 22 May 2020 07:24:45 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -7317,6 +7317,38 @@ $ sudo apt-get install gitlab-ci-multi-runner
 <h2 id="面试基础知识">面试基础知识</h2>
 <p>算法、网络、系统设计等</p>
 <p><a href="https://github.com/CyC2018/CS-Notes">https://github.com/CyC2018/CS-Notes</a></p>
+<h2 id="程序员技术">程序员技术</h2>
+<h3 id="程序员基础">程序员基础</h3>
+<ol>
+<li>算法、数据结构
+基础的常用的要掌握：链表、散列表、树，排序、查找</li>
+<li>网络协议
+基础的：http、websocket
+高级的：TCP/IP</li>
+</ol>
+<h3 id="前端程序员基础">前端程序员基础</h3>
+<ol>
+<li>程序运行的环境——浏览器——的工作原理
+基础的：event loop 、重绘重排、跨域、事件（代理、冒泡）</li>
+<li>语言HTML、CSS
+块级上下文、盒子模型、居中</li>
+<li>语言JavaScript
+基础：数据类型、对象函数、创建对象（设计模式）、继承（原型）
+中级：模块化、立即执行函数、闭包、变量提升、作用域、箭头函数
+高级：深拷贝、截流</li>
+<li>语言ES6+
+箭头函数、代理、object、array、promise</li>
+<li>语言TypeScript
+枚举、泛型</li>
+<li>框架React
+生命周期</li>
+</ol>
+<h3 id="职业发展">职业发展</h3>
+<ol>
+<li>自己的有点长处、需要改进加强的地方</li>
+<li>职业规划
+现在不管是正常的业务需求还是技术难题都能独立地搞定，属于【能做】。接下来是希望【做好】，就是提高效率和质量，比如自动化、规范、设计组件和模块。再往后就做一些传帮带的工作。</li>
+</ol>
 ]]></description>
                 
                 
