@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 22 May 2020 07:24:45 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 25 May 2020 06:18:14 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -600,19 +600,18 @@
             </item>
         
             <item>
-                <title>Git:Perission-Denied</title>
-                <link>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/</link>
-                <guid isPermaLink="true">https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/gitperission-denied/</guid>
+                <title>Git-Error</title>
+                <link>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git-error/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git-error/</guid>
                 <pubDate>Sat, 18 Apr 2020 01:43:23 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[<h2 id="gitperission-denied">git:Perission denied</h2>
-<p>刚使用了一下vuecli的mocha测试插件，然后切换分支，又切换回那个分支，就报了这个错误。把运行vue测试的命令行（窗口）关掉就可以了。
-![666][image1]</p>
-<p>大概是由于vuecli的进程还在控制着tests文件，我之前没有关闭它。现在切换分支，要对这个tests文件夹操作，而windows不允许2个进程操作一个文件，所以只要关闭原来的那个命令行窗口也就关闭了原来的控制进程。再操作就可以了。</p>
+                    <description><![CDATA[<h2 id="perission-denied">Perission denied</h2>
+<p>在切换分支时，不能切换，报了这个错。</p>
+<p>可能是因为 vuecli 的进程在控制着某个文件。将 vuecli 的命令行关了就可以解决问题了。</p>
 ]]></description>
                 
                 
