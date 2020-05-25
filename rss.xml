@@ -23,10 +23,788 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 25 May 2020 09:04:27 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 25 May 2020 10:48:59 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>深浅拷贝</title>
+                <link>https://wss.cool/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D.html</guid>
+                <pubDate>Mon, 25 May 2020 18:34:27 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="什么是拷贝什么是深浅拷贝">什么是拷贝，什么是深浅拷贝</h2>
+<p>在 JavaScript 中，变量中保存的是对象的引用。比如像下面这样的操作</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">对象1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>a和b都在引用对象1，如果对对象1进行修改，则a和b两个变量都会受到影响。有时我们不希望出现修改a时b也受到影响，这时就要对对象进行拷贝操作来切换引用。比如</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">对象1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">拷贝</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>那么如何实现拷贝呢？</p>
+<p>我们知道对象是由多个key和value组成的，所以拷贝就是创建一个新的对象，将旧对象的key和value拷贝到新对象中，让新旧对象的key和value都完全一样。</p>
+<p>简单的实现使用递归遍历字段。但是会遇到循环引用的问题。解决循环引用问题需要用循环代替递归。</p>
+<p>首先有一个原对象a 创建一个空对象b copy的过程就是遍历a，将a的key和value转移到b上。 当value的值是基本类型时，可以直接将它copy到b上。 但是当value的值不是基本类型，也就是对象时，不能将它直接复制到b，因为这是浅复制的操作。我们需要对它也进行copy的操作。 如果遇到value是对象就立刻进行copy的话，这是递归的做法。为了避免递归，我们可以先将这个子对象存起来，待当前对象遍历完以后，在对刚刚存起来的子对象进行遍历。 对于这个暂存的子对象，需要知道它的父对象和key，才能找到它应该被安置在哪里。 所以它暂存子对象的数据结构是这样的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="nx">parent</span><span class="o">:</span> <span class="nx">子对象的父对象b</span><span class="p">,</span>
+  <span class="nx">key</span><span class="o">:</span> <span class="nx">子对象对应的key</span><span class="p">,</span>
+  <span class="nx">value</span><span class="o">:</span> <span class="nx">子对象</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>当遍历该子对象时，先在父对象上创建一个空对象，将遍历到的key和value复制到空对象上。如果又遇到value是对象，则重复上面的过程，直至没有value是对象。也就是存储子对象的数组为空。</p>
+<p>对于拷贝一个对象的过程lodash使用的是「结构化克隆算法」<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，普通对象直接复制key和value，数组等其他对象使用相应的复制方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// value 参数为原对象
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">cloneLoop</span><span class="p">(</span><span class="nx">oldObject</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 新的空对象
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="p">{};</span>
+
+  <span class="c1">// 存储子对象的数组
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">children</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">parent</span><span class="o">:</span> <span class="nx">root</span><span class="p">,</span>
+      <span class="nx">key</span><span class="o">:</span> <span class="kc">undefined</span><span class="p">,</span>
+      <span class="nx">value</span><span class="o">:</span> <span class="nx">oldObject</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+
+  <span class="c1">// 如果children内有子对象，则将其copy
+</span><span class="c1"></span>  <span class="k">while</span><span class="p">(</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 深度优先，如果使用shift()则是广度有限。
+</span><span class="c1"></span>    <span class="kr">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">children</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="kr">const</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">parent</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">key</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+
+    <span class="c1">// 当key是undefined时，parent是{}，也就是刚开始
+</span><span class="c1"></span>    <span class="c1">// 当key不是undefined时，就是已经复制到子对象了，这时key肯定时有值的，
+</span><span class="c1"></span>    <span class="c1">// 需要把key对应的value初始化为空对象，后面的循环把子对象的 key 和 value 复制到空对象上。
+</span><span class="c1"></span>    <span class="kd">let</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">key</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">res</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 遍历子对象
+</span><span class="c1"></span>    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">k</span> <span class="k">in</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">k</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// 如果value时对象，将子对象放入「子对象数组」中，待下一次while读取遍历
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">value</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// 下一次循环
+</span><span class="c1"></span>          <span class="nx">children</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+            <span class="nx">parent</span><span class="o">:</span> <span class="nx">res</span><span class="p">,</span>
+            <span class="nx">key</span><span class="o">:</span> <span class="nx">k</span><span class="p">,</span>
+            <span class="nx">value</span><span class="o">:</span> <span class="nx">value</span><span class="p">[</span><span class="nx">k</span><span class="p">],</span>
+          <span class="p">});</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">res</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">[</span><span class="nx">k</span><span class="p">];</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">root</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>结构化克隆算法MDN：https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/The_structured_clone_algorithm ↩︎ <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E7%AE%97%E6%B3%95/">算法</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>JavaScript变量类型</title>
+                <link>https://wss.cool/javascript%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B.html</link>
+                <guid isPermaLink="true">https://wss.cool/javascript%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B.html</guid>
+                <pubDate>Mon, 25 May 2020 18:23:09 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>变量类型的值分为基本类型和引用类型。</p>
+<p>基本类型有五种：String、Number、Boolean、Undefined和Null。</p>
+<p>引用类型是对象。对象中又有宿主对象和原生对象的区别。</p>
+<p>宿主对象是环境提供的对象。比如DOM对象：window、document；BOM对象：history、location、navigator等。</p>
+<p>原生对象是JavaScript语言提供的，比如Math、Array、Date、RegExp等，还有ES6的Set、Map等。</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/javascript%E5%9F%BA%E7%A1%80/">JavaScript基础</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Mysql增删改查</title>
+                <link>https://wss.cool/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5.html</link>
+                <guid isPermaLink="true">https://wss.cool/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5.html</guid>
+                <pubDate>Mon, 25 May 2020 17:47:39 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="create">create</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tasks</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="n">description</span><span class="p">)</span>
+<span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;Learn MySQL INSERT&#39;</span><span class="p">,</span><span class="s1">&#39;2017-07-21&#39;</span><span class="p">,</span><span class="s1">&#39;2017-07-22&#39;</span><span class="p">,</span><span class="s1">&#39;Start learning..&#39;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="read-左右链接">read 左右链接</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>
+    <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">user_plugin_name</span><span class="p">,</span>
+    <span class="n">plugin_info</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">plugin_info</span><span class="p">.</span><span class="n">avatar</span><span class="p">,</span> <span class="n">plugin_info</span><span class="p">.</span><span class="n">link</span><span class="p">,</span> <span class="n">plugin_info</span><span class="p">.</span><span class="k">type</span>
+<span class="k">FROM</span> <span class="n">plugin_of_user</span>
+<span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">plugin_info</span>
+<span class="k">ON</span> <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">plugin_id</span><span class="o">=</span><span class="n">plugin_info</span><span class="p">.</span><span class="n">id</span>
+<span class="k">WHERE</span> <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="o">?</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="update">update</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">UPDATE</span> <span class="p">[</span><span class="n">LOW_PRIORITY</span><span class="p">]</span> <span class="p">[</span><span class="k">IGNORE</span><span class="p">]</span> <span class="k">table_name</span> 
+<span class="k">SET</span> 
+    <span class="n">column_name1</span> <span class="o">=</span> <span class="n">expr1</span><span class="p">,</span>
+    <span class="n">column_name2</span> <span class="o">=</span> <span class="n">expr2</span><span class="p">,</span>
+    <span class="p">...</span>
+<span class="k">WHERE</span>
+    <span class="n">condition</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="无则添加有则修改">无则添加，有则修改</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">insert</span> <span class="k">into</span> <span class="n">student</span>
+  <span class="p">(</span><span class="nb">number</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> 
+<span class="k">values</span>
+  <span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="err">‘张三’</span><span class="p">)</span>
+<span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> 
+<span class="nb">number</span> <span class="o">=</span> <span class="mi">46</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="err">‘李四’</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="delete">delete</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="k">table_name</span>
+<span class="k">WHERE</span> <span class="n">condition</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Mysql表结构</title>
+                <link>https://wss.cool/mysql%E8%A1%A8%E7%BB%93%E6%9E%84.html</link>
+                <guid isPermaLink="true">https://wss.cool/mysql%E8%A1%A8%E7%BB%93%E6%9E%84.html</guid>
+                <pubDate>Mon, 25 May 2020 17:46:51 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h3 id="修改表结构">修改表结构</h3>
+<ol>
+<li>查看列：<code>desc 表名;</code></li>
+<li>修改表名：<code>alter table t_book rename to bbb;</code></li>
+<li>添加列：<code>alter table 表名 add column 列名 varchar(30);</code></li>
+<li>删除列：<code>alter table 表名 drop column 列名;</code></li>
+<li>修改列名MySQL： <code>alter table bbb change nnnnn hh int;</code></li>
+<li>修改列名SQLServer：<code>exec sp_rename't_student.name','nn','column';</code></li>
+<li>修改列名Oracle：<code>lter table bbb rename column nnnnn to hh int;</code></li>
+<li>修改列属性：<code>alter table t_book modify name varchar(22);</code></li>
+</ol>
+<h3 id="唯一性约束">唯一性约束</h3>
+<h4 id="建表时加上唯一性约束">建表时加上唯一性约束：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">t_user</span><span class="o">`</span> <span class="p">(</span>
+    <span class="o">`</span><span class="n">Id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span> 
+    <span class="o">`</span><span class="n">username</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">unique</span><span class="p">,</span> 
+    <span class="o">`</span><span class="n">password</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
+    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">Id</span><span class="o">`</span><span class="p">)</span> 
+<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="n">AUTO_INCREMENT</span><span class="o">=</span><span class="mi">1018</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">gbk</span><span class="p">;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><h4 id="给已经建好的表加上唯一性约束">给已经建好的表加上唯一性约束：</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">t_user</span><span class="o">`</span> <span class="k">ADD</span> <span class="k">unique</span><span class="p">(</span><span class="o">`</span><span class="n">username</span><span class="o">`</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>或者：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">unique</span> <span class="k">index</span> <span class="n">UserNameIndex</span> <span class="k">on</span> <span class="s1">&#39;t_user&#39;</span> <span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="索引">索引</h3>
+<h4 id="mysql索引类型">mysql索引类型</h4>
+<ul>
+<li>primary：唯一索引，不允许为null。</li>
+<li>key：普通非唯一索引。</li>
+<li>unique：表示唯一的，不允许重复的索引，可以为null。</li>
+<li>fulltext: 表示全文搜索的索引。 FULLTEXT用于搜索很长一篇文章的时候，效果最好。用在比较短的文本，如果就一两行字的，普通的INDEX 也可以。</li>
+<li>spatial：空间索引。</li>
+</ul>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Mysql数据类型</title>
+                <link>https://wss.cool/mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html</link>
+                <guid isPermaLink="true">https://wss.cool/mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html</guid>
+                <pubDate>Mon, 25 May 2020 17:46:03 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h3 id="varchar">varchar</h3>
+<p><code>varchar(666)</code>，其中参数<code>666</code>为字节数。</p>
+<p><code>varchar</code>是可变长度的字符串，大小为<code>0-65535</code>字节。对应的字符串长度会受到字符集影响，若使用<code>utf-8</code>存储汉字，一个汉字字符对应<code>3</code>个字节。</p>
+<p><code>varchar</code>还需要存储数据长度，当小于等于<code>255</code>个字节时，使用<code>1</code>个字节存储长度。大于<code>255</code>长度时，使用<code>2</code>个字节存储长度。</p>
+<p>比如<code>varchar(666)</code>，使用<code>2</code>个字节存储长度，剩下的<code>664</code>个字节存储实际内容，</p>
+<h3 id="text">text</h3>
+<p>TEXT数据不存储在数据库服务器的内存中，因此，每当查询TEXT数据时，MySQL都必须从磁盘读取它，这与CHAR和VARCHAR相比要慢得多。
+![mysql文档][image1]</p>
+<blockquote>
+<p>mysql的性能只有在上千万条纪律的时候才需要考虑。
+——潘老师</p>
+</blockquote>
+<h3 id="datetime">DATETIME</h3>
+<p>将js的Date对象传进去，会直接保存，查出来返回到前端页面时，可以这样使用<code>new Date(props.time)</code>转换成Date对象。</p>
+<h3 id="没有布尔值使用tinyint">没有布尔值，使用tinyint</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">ed_class_price_user</span><span class="o">`</span><span class="p">(</span>
+   <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">INT</span> <span class="n">UNSIGNED</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
+   <span class="o">`</span><span class="n">user_name</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">unique</span><span class="p">,</span>
+   <span class="o">`</span><span class="n">password</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+   <span class="o">`</span><span class="n">disable</span><span class="o">`</span> <span class="n">TINYINT</span> <span class="k">DEFAULT</span> <span class="mi">0</span><span class="p">,</span>
+   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span> <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="p">)</span>
+<span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/api/">api</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Git记住密码</title>
+                <link>https://wss.cool/git%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81.html</link>
+                <guid isPermaLink="true">https://wss.cool/git%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81.html</guid>
+                <pubDate>Mon, 25 May 2020 17:34:13 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>一、配置本地仓库</p>
+<pre><code>git config user.name &quot;your_name&quot;
+git config user.email XXXX@gmail.com
+</code></pre><p>二、记住密码</p>
+<pre><code>// 当前仓库
+git config  credential.helper store
+// 全局仓库
+git config --global credential.helper store
+</code></pre><p>push 代码 这一步输入的用户名密码会被记住,
+下次再push代码时就不用输入用户名密码, 这一步会在用户目录下生成文件.git-credential记录用户名密码的信息。</p>
+<blockquote>
+<p>创建 <code>.git-credential</code> 文件 并写入用户信息：用户名和密码</p>
+</blockquote>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/git/">git</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Git设置代理</title>
+                <link>https://wss.cool/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86.html</link>
+                <guid isPermaLink="true">https://wss.cool/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86.html</guid>
+                <pubDate>Mon, 25 May 2020 17:32:50 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>全局设置</p>
+<pre><code>git config --global http.proxy 'socks5://127.0.0.1:1080'
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+</code></pre><p>全局取消</p>
+<pre><code>git config --global --unset http.proxy
+git config --global --unset https.proxy
+</code></pre><p>只对github.com</p>
+<pre><code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+</code></pre><p>取消代理</p>
+<pre><code>git config --global --unset http.https://github.com.proxy
+</code></pre>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/git/">git</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Git分支操作</title>
+                <link>https://wss.cool/git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C.html</link>
+                <guid isPermaLink="true">https://wss.cool/git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C.html</guid>
+                <pubDate>Mon, 25 May 2020 17:30:46 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="分支操作">分支操作</h2>
+<h3 id="删除本地的所有分支除了master">删除本地的所有分支，除了master</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git branch <span class="p">|</span> grep -v <span class="s2">&#34;master&#34;</span> <span class="p">|</span> xargs git branch -d
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="刷新本地的远程分支列表">刷新本地的远程分支列表</h3>
+<p>远程已经被删除的分支，在本地使用<code>git branch -a</code>命令是依然可以看到。所以需要刷新一下。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git remote prune origin
+</code></pre></td></tr></table>
+</div>
+</div><p>这条命令是删除与<name>关联的陈旧引用</p>
+<p>或者</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git fetch -p
+</code></pre></td></tr></table>
+</div>
+</div><p>这条命令是在获取之前，删除远程不再存在的任何远程跟踪引用。</p>
+<h3 id="切换分支branch">切换分支(branch)</h3>
+<p>分支分为本地和远程两种，使用 <code>git branch</code> 查看分支，发现只有 <code>master</code> 也就是本地分支。<br>
+查看远程分支可以使用 <code>git branch -a</code> 可以看到所有分支，包括远端的分支，使用远程分支名字 <code>remotes/origin/15-stable</code> 进行切换。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 远程分支列表</span>
+git branch -r
+<span class="c1"># 所有分支列表（包括远程）</span>
+git branch -a 
+<span class="c1"># 分支列表</span>
+git branch
+<span class="c1"># 创建并切换到dev分支,</span>
+git checkout -b dev
+<span class="c1"># 上面的命令，等于下面的两条命令</span>
+<span class="c1"># 创建分支</span>
+git branch dev 
+<span class="c1"># 切换分支</span>
+git checkout dev
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="删除远程分支">删除远程分支</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git push origin -d <span class="o">[</span>远程分支名<span class="o">]</span>
+git push origin :<span class="o">[</span>远程分支名<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>git push origin :experimental<br>
+Find a ref that matches experimental in the origin repository (e.g.  refs/heads/experimental), and delete it.</p>
+</blockquote>
+<h3 id="获取当前分支名">获取当前分支名</h3>
+<pre><code>git symbolic-ref --short -q HEAD 
+</code></pre><h3 id="推送当前分支到远端">推送当前分支到远端</h3>
+<p>如果你还没有推到原点，那么<code>git push -u origin HEAD</code>可以在本地分支中设置上游跟踪信息。</p>
+<h3 id="推送当前分支到远端会在远端新建当前分支名的新分支">推送当前分支到远端，会在远端新建当前分支名的新分支</h3>
+<pre><code>git push -u origin HEAD  
+</code></pre><h3 id="分支合并">分支合并</h3>
+<p>建议合并时保留目标分支的commit信息。即使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git merge --no-ff <span class="o">[</span>branch name<span class="o">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>当合并错了以后怎么撤销合并呢，使用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard <span class="o">[</span>merge的版本号<span class="o">]</span> <span class="c1">#版本号使用 git log 查，这种方法只针对合并以后对当前分支没有过其他操作，有的话比较复杂</span>
+</code></pre></td></tr></table>
+</div>
+</div><hr>
+<p>合并远程分支：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 如果本地没有远程分支：</span>
+git checkout -b develop origin/develop <span class="c1"># 本地新建develop分支并拉取</span>
+<span class="c1"># 如果本地已有远程分支：</span>
+git checkout develop 
+git pull origin develop <span class="c1">#拉取远程代码</span>
+
+<span class="c1"># 方法二：</span>
+git fetch origin dev:temp <span class="c1">#拉取远程dev分支，创建本地temp分支</span>
+git diff temp
+git merge temp <span class="c1"># 合并</span>
+git branch -d temp <span class="c1">#删除</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/git/">git</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>如何准备面试</title>
@@ -130,18 +908,29 @@
             </item>
         
             <item>
-                <title>AccessToken访问远程Gitlab(Github)</title>
-                <link>https://wss.cool/access-token-git-remote-repository-github-gitlab.html</link>
-                <guid isPermaLink="true">https://wss.cool/access-token-git-remote-repository-github-gitlab.html</guid>
+                <title>AccessToken认证</title>
+                <link>https://wss.cool/access-token-for-get.html</link>
+                <guid isPermaLink="true">https://wss.cool/access-token-for-get.html</guid>
                 <pubDate>Wed, 22 Apr 2020 23:11:20 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (王书硕)</author>
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[<h2 id="使用方法">使用方法📝</h2>
+                    <description><![CDATA[<h2 id="用途">用途</h2>
+<p>当我们操作远程 Git 仓库时，需要进行身份认证，一般有三种方式：</p>
+<dl>
+<dt>1.账号密码</dt>
+<dd>每次输入账号密码，或由工具记住并帮忙自动填写</dd>
+<dt>2.<code>ssh</code></dt>
+<dd>将本机的一个公钥设置到 <code>gitlab</code> 账户内</dd>
+<dt>3.<code>access token</code></dt>
+<dd>在链接中加入 <code>token</code></dd>
+</dl>
+<p>认证后进行 pull 或 push 等操作。下面说一下怎么在 gitlab 中使用 <code>access token</code> 进行认证。</p>
+<h2 id="使用方法">使用方法📝</h2>
 <ol>
-<li>点击头像👮‍♀️，找到 「Setting」，再找到 ..AccessTokens..</li>
+<li>点击「头像」，找到 「Setting」，再找到 ..AccessTokens..</li>
 <li>填写 &quot;name&quot; ，选择 <code>read_repository</code> <code>write_repository</code></li>
 <li>点按钮「Create」 ，在页面上方 <em>Your New Personal Access Token</em> 处生成了一个一次性的字符串，将它复制保存起来，刷新页面后它就消失，如果搞丢了只能再生成。</li>
 <li>这是一个使用 <code>access token</code> 的一般形势的链接：<code>http://oauth2:access-token@host.com/user/repo.git</code> ，将其中的 <code>access-token</code> 换成刚刚生成的那个。</li>
@@ -150,13 +939,6 @@
 </code></pre></li>
 <li>完成后 <code>push</code> <code>pull</code> <code>fetch</code> 操作都会使用这个链接</li>
 </ol>
-<h2 id="认证方式">认证方式🔐</h2>
-<p>我用到过三种认证方式</p>
-<ul>
-<li>账号密码：每次输入账号密码，或由工具记住并帮忙自动填写</li>
-<li><code>ssh</code> 公钥：将本机的一个公钥设置到 <code>gitlab</code> 账户内</li>
-<li><code>access token</code> ：在链接中加入 <code>token</code></li>
-</ul>
 ]]></description>
                 
                 
@@ -600,9 +1382,9 @@
             </item>
         
             <item>
-                <title>Git-Error</title>
-                <link>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git-error/</link>
-                <guid isPermaLink="true">https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git-error/</guid>
+                <title>Git报错</title>
+                <link>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git%E6%8A%A5%E9%94%99/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git%E6%8A%A5%E9%94%99/</guid>
                 <pubDate>Sat, 18 Apr 2020 01:43:23 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (王书硕)</author>
@@ -1444,106 +2226,12 @@ scp /Users/wangshushuo/Desktop/yuhun.txt <a href="mailto:ubuntu@58.87.109.73">ub
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="远程连接新建一个帐号帐号名不能为root">远程连接新建一个帐号（帐号名不能为root）</h2>
-<p>如：添加一个用户名为db_user，密码为db_pass，授权为% （%表示所有外围IP能连接）对db_name数据库所有权限，命令如下
-/# mysql -uroot -p
+<p>如：添加一个用户名为db_user，密码为db_pass，授权为% （%表示所有外围IP能连接）对db_name数据库所有权限，命令如下</p>
+<pre><code>/# mysql -uroot -p
 MySQL [(none)]&gt; grant all privileges on db_name.* to db_user@’%’ identified by ‘db_pass’; #授权语句，特别注意有分号
 MySQL [(none)]&gt; flush privileges;
-MySQL [(none)]&gt; exit; #退出数据库控制台，特别注意有分号</p>
-<h2 id="数据类型">数据类型</h2>
-<h3 id="varchar">varchar</h3>
-<p><code>varchar(666)</code>，其中参数<code>666</code>为字节数。</p>
-<p><code>varchar</code>是可变长度的字符串，大小为<code>0-65535</code>字节。对应的字符串长度会受到字符集影响，若使用<code>utf-8</code>存储汉字，一个汉字字符对应<code>3</code>个字节。</p>
-<p><code>varchar</code>还需要存储数据长度，当小于等于<code>255</code>个字节时，使用<code>1</code>个字节存储长度。大于<code>255</code>长度时，使用<code>2</code>个字节存储长度。</p>
-<p>比如<code>varchar(666)</code>，使用<code>2</code>个字节存储长度，剩下的<code>664</code>个字节存储实际内容，</p>
-<h3 id="text">text</h3>
-<p>TEXT数据不存储在数据库服务器的内存中，因此，每当查询TEXT数据时，MySQL都必须从磁盘读取它，这与CHAR和VARCHAR相比要慢得多。
-<img src="/images/mysql-1.png" alt="mysql文档"></p>
-<blockquote>
-<p>mysql的性能只有在上千万条纪律的时候才需要考虑。
-——潘老师</p>
-</blockquote>
-<h3 id="datetime">DATETIME</h3>
-<p>将js的Date对象传进去，会直接保存，查出来返回到前端页面时，可以这样使用<code>new Date(props.time)</code>转换成Date对象。</p>
-<h3 id="没有布尔值使用tinyint">没有布尔值，使用tinyint</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="k">IF</span> <span class="k">NOT</span> <span class="k">EXISTS</span> <span class="o">`</span><span class="n">ed_class_price_user</span><span class="o">`</span><span class="p">(</span>
-   <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="nb">INT</span> <span class="n">UNSIGNED</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span>
-   <span class="o">`</span><span class="n">user_name</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">unique</span><span class="p">,</span>
-   <span class="o">`</span><span class="n">password</span><span class="o">`</span> <span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
-   <span class="o">`</span><span class="n">disable</span><span class="o">`</span> <span class="n">TINYINT</span> <span class="k">DEFAULT</span> <span class="mi">0</span><span class="p">,</span>
-   <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span> <span class="o">`</span><span class="n">id</span><span class="o">`</span> <span class="p">)</span>
-<span class="p">)</span><span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">utf8</span><span class="p">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="表结构">表结构</h2>
-<h3 id="修改表结构">修改表结构</h3>
-<ol>
-<li>查看列：<code>desc 表名;</code></li>
-<li>修改表名：<code>alter table t_book rename to bbb;</code></li>
-<li>添加列：<code>alter table 表名 add column 列名 varchar(30);</code></li>
-<li>删除列：<code>alter table 表名 drop column 列名;</code></li>
-<li>修改列名MySQL： <code>alter table bbb change nnnnn hh int;</code></li>
-<li>修改列名SQLServer：<code>exec sp_rename't_student.name','nn','column';</code></li>
-<li>修改列名Oracle：<code>lter table bbb rename column nnnnn to hh int;</code></li>
-<li>修改列属性：<code>alter table t_book modify name varchar(22);</code></li>
-</ol>
-<h3 id="唯一性约束">唯一性约束</h3>
-<h4 id="建表时加上唯一性约束">建表时加上唯一性约束：</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">t_user</span><span class="o">`</span> <span class="p">(</span>
-    <span class="o">`</span><span class="n">Id</span><span class="o">`</span> <span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="n">AUTO_INCREMENT</span><span class="p">,</span> 
-    <span class="o">`</span><span class="n">username</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">unique</span><span class="p">,</span> 
-    <span class="o">`</span><span class="n">password</span><span class="o">`</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">18</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span> 
-    <span class="k">PRIMARY</span> <span class="k">KEY</span> <span class="p">(</span><span class="o">`</span><span class="n">Id</span><span class="o">`</span><span class="p">)</span> 
-<span class="p">)</span> <span class="n">ENGINE</span><span class="o">=</span><span class="n">InnoDB</span> <span class="n">AUTO_INCREMENT</span><span class="o">=</span><span class="mi">1018</span> <span class="k">DEFAULT</span> <span class="n">CHARSET</span><span class="o">=</span><span class="n">gbk</span><span class="p">;</span> 
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="给已经建好的表加上唯一性约束">给已经建好的表加上唯一性约束：</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">ALTER</span> <span class="k">TABLE</span> <span class="o">`</span><span class="n">t_user</span><span class="o">`</span> <span class="k">ADD</span> <span class="k">unique</span><span class="p">(</span><span class="o">`</span><span class="n">username</span><span class="o">`</span><span class="p">);</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>或者：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">create</span> <span class="k">unique</span> <span class="k">index</span> <span class="n">UserNameIndex</span> <span class="k">on</span> <span class="s1">&#39;t_user&#39;</span> <span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="索引">索引</h3>
-<h4 id="mysql索引类型">mysql索引类型</h4>
-<ul>
-<li>primary：唯一索引，不允许为null。</li>
-<li>key：普通非唯一索引。</li>
-<li>unique：表示唯一的，不允许重复的索引，可以为null。</li>
-<li>fulltext: 表示全文搜索的索引。 FULLTEXT用于搜索很长一篇文章的时候，效果最好。用在比较短的文本，如果就一两行字的，普通的INDEX 也可以。</li>
-<li>spatial：空间索引。</li>
-</ul>
+MySQL [(none)]&gt; exit; #退出数据库控制台，特别注意有分号
+</code></pre><h2 id="表结构">表结构</h2>
 <h2 id="表连接">表连接</h2>
 <p>使用了连接语句以后，这两张表就被拼成了一张表。</p>
 <div class="highlight"><div class="chroma">
@@ -1557,94 +2245,9 @@ MySQL [(none)]&gt; exit; #退出数据库控制台，特别注意有分号</p>
 </code></pre></td></tr></table>
 </div>
 </div><p>四种连接会像下图一样拼装2个表，空白的地方会被填充null</p>
-<p><img src="/images/mysql-1.png" alt="表连接1"></p>
+<p>![表连接1][image1]</p>
 <p>然后where等语句就可以像操作一张表一样了。</p>
-<h2 id="数据">数据</h2>
-<h3 id="crud">CRUD</h3>
-<h4 id="create">create</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">INSERT</span> <span class="k">INTO</span> <span class="n">tasks</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span><span class="n">start_date</span><span class="p">,</span><span class="n">end_date</span><span class="p">,</span><span class="n">description</span><span class="p">)</span>
-<span class="k">VALUES</span><span class="p">(</span><span class="s1">&#39;Learn MySQL INSERT&#39;</span><span class="p">,</span><span class="s1">&#39;2017-07-21&#39;</span><span class="p">,</span><span class="s1">&#39;2017-07-22&#39;</span><span class="p">,</span><span class="s1">&#39;Start learning..&#39;</span><span class="p">);</span>
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="read-左右链接">read 左右链接</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">SELECT</span>
-    <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">id</span><span class="p">,</span> <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">user_plugin_name</span><span class="p">,</span>
-    <span class="n">plugin_info</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">plugin_info</span><span class="p">.</span><span class="n">avatar</span><span class="p">,</span> <span class="n">plugin_info</span><span class="p">.</span><span class="n">link</span><span class="p">,</span> <span class="n">plugin_info</span><span class="p">.</span><span class="k">type</span>
-<span class="k">FROM</span> <span class="n">plugin_of_user</span>
-<span class="k">RIGHT</span> <span class="k">JOIN</span> <span class="n">plugin_info</span>
-<span class="k">ON</span> <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">plugin_id</span><span class="o">=</span><span class="n">plugin_info</span><span class="p">.</span><span class="n">id</span>
-<span class="k">WHERE</span> <span class="n">plugin_of_user</span><span class="p">.</span><span class="n">user_id</span> <span class="o">=</span> <span class="o">?</span>
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="update-1">update</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">UPDATE</span> <span class="p">[</span><span class="n">LOW_PRIORITY</span><span class="p">]</span> <span class="p">[</span><span class="k">IGNORE</span><span class="p">]</span> <span class="k">table_name</span> 
-<span class="k">SET</span> 
-    <span class="n">column_name1</span> <span class="o">=</span> <span class="n">expr1</span><span class="p">,</span>
-    <span class="n">column_name2</span> <span class="o">=</span> <span class="n">expr2</span><span class="p">,</span>
-    <span class="p">...</span>
-<span class="k">WHERE</span>
-    <span class="n">condition</span><span class="p">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h5 id="无则添加有则修改">无则添加，有则修改</h5>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">insert</span> <span class="k">into</span> <span class="n">student</span>
-  <span class="p">(</span><span class="nb">number</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> 
-<span class="k">values</span>
-  <span class="p">(</span><span class="mi">45</span><span class="p">,</span><span class="err">‘张三’</span><span class="p">)</span>
-<span class="k">ON</span> <span class="n">DUPLICATE</span> <span class="k">KEY</span> <span class="k">UPDATE</span> 
-<span class="nb">number</span> <span class="o">=</span> <span class="mi">46</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="err">‘李四’</span><span class="p">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="delete-1">delete</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sql" data-lang="sql"><span class="k">DELETE</span> <span class="k">FROM</span> <span class="k">table_name</span>
-<span class="k">WHERE</span> <span class="n">condition</span><span class="p">;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="实践">实践</h2>
+<h2 id="实践">实践</h2>
 <p>评论回帖表</p>
 <p>轮子哥 vczh
 专业造轮子，拉黑抢前排。gaclib.net
@@ -1671,7 +2274,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
 <h2 id="资料">资料</h2>
 <p><a href="https://www.yiibai.com/mysql/update-data.html">易百教程MySQL</a>
 <a href="https://www.kancloud.cn/thinkphp/mysql-design-optimalize/39325">Mysql设计与优化专题</a>
-<a href="/images/mysql-1.png">image1</a>:/images/mysql-1.jpg</p>
+[image1]:/images/mysql-1.jpg</p>
 ]]></description>
                 
                 
@@ -1684,19 +2287,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">api</category>
-                                
-                            
-                                
-                                
-                                
                                     <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/mysql/">mysql</category>
                                 
                             
                         
@@ -2577,19 +3168,7 @@ scp -i ./identity_file.pem file_a name@1.1.1.1:~/
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">api</category>
-                                
-                            
-                                
-                                
-                                
                                     <category domain="https://wss.cool/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/linux/">LINUX</category>
                                 
                             
                         
@@ -4191,12 +4770,6 @@ ID选择器 = 100
                 
                     
                         
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/api/">api</category>
-                                
                             
                                 
                                 
@@ -6432,19 +7005,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">api</category>
-                                
-                            
-                                
-                                
-                                
                                     <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/spring/">spring</category>
                                 
                             
                         
@@ -6474,18 +7035,6 @@ Authorization: Bearer some-token-value # Resource Server will process this
                 
                     
                         
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/knowledge/">knowledge</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
-                                
                             
                                 
                                 
@@ -7017,19 +7566,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">api</category>
-                                
-                            
-                                
-                                
-                                
                                     <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
-                                
-                            
-                                
-                                
-                                
-                                    <category domain="https://wss.cool/categories/spring/">spring</category>
                                 
                             
                         
@@ -7887,7 +8424,7 @@ npx create-react-app my-app --template redux
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">React</category>
+                                    <category domain="https://wss.cool/categories/react%E5%BA%93/">React库</category>
                                 
                             
                         
@@ -8626,7 +9163,7 @@ categories         &lt;- Taxonomy
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">React</category>
+                                    <category domain="https://wss.cool/categories/react%E5%BA%93/">React库</category>
                                 
                             
                         
@@ -8719,7 +9256,7 @@ categories         &lt;- Taxonomy
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">React</category>
+                                    <category domain="https://wss.cool/categories/react%E5%BA%93/">React库</category>
                                 
                             
                         
@@ -9147,7 +9684,7 @@ npm install reactjs-popup
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">React</category>
+                                    <category domain="https://wss.cool/categories/react%E5%BA%93/">React库</category>
                                 
                             
                         
@@ -9299,7 +9836,7 @@ domain中的数据会被线性映射到range中。<code>scale(50);</code>中的<
             </item>
         
             <item>
-                <title>Git</title>
+                <title>Git常用操作</title>
                 <link>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git/</link>
                 <guid isPermaLink="true">https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git/</guid>
                 <pubDate>Thu, 18 Jul 2019 10:53:36 +0800</pubDate>
@@ -9308,16 +9845,12 @@ domain中的数据会被线性映射到range中。<code>scale(50);</code>中的<
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[<h2 id="删除本地的所有分支除了master">删除本地的所有分支，除了master</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git branch <span class="p">|</span> grep -v <span class="s2">&#34;master&#34;</span> <span class="p">|</span> xargs git branch -d
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="暂存改动">暂存改动</h2>
+                    <description><![CDATA[<h2 id="标签">标签</h2>
+<p>将某次commit打上标签
+<code>git tag &lt;name </code> 默认给最新提交打标签。<br>
+<code>git tag</code> 查看所有标签
+<code>git tag v0.9 f52c633</code> 根据commit id给某次提交打标签</p>
+<h2 id="暂存改动">暂存改动</h2>
 <table>
 <thead>
 <tr>
@@ -9340,165 +9873,22 @@ domain中的数据会被线性映射到range中。<code>scale(50);</code>中的<
 </tr>
 </tbody>
 </table>
-<h2 id="刷新本地的远程分支列表">刷新本地的远程分支列表</h2>
-<p>远程已经被删除的分支，在本地使用<code>git branch -a</code>命令是依然可以看到。所以需要刷新一下。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git remote prune origin
-</code></pre></td></tr></table>
-</div>
-</div><p>这条命令是删除与<name>关联的陈旧引用</p>
-<p>或者</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git fetch -p
-</code></pre></td></tr></table>
-</div>
-</div><p>这条命令是在获取之前，删除远程不再存在的任何远程跟踪引用。</p>
-<h2 id="不相干分支强制pull或push等操作">不相干分支强制pull或push等操作</h2>
-<p>在命令后面加<code>--allow-unrelated-histories</code></p>
-<h2 id="推送当前分支到远端">推送当前分支到远端</h2>
-<p>如果你还没有推到原点，那么<code>git push -u origin HEAD</code>可以在本地分支中设置上游跟踪信息。</p>
-<h2 id="使用一次新的commit替代上一次提交">使用一次新的commit，替代上一次提交</h2>
+<h2 id="获取上一次commit的message">获取上一次commit的message</h2>
+<pre><code>git log -1 --pretty=%B  
+</code></pre><h2 id="使用一次新的commit替代上一次提交">使用一次新的commit，替代上一次提交</h2>
 <p>如果代码没有任何新变化，则用来改写上一次commit的提交信息</p>
 <pre><code>git commit --amend -m &quot;666&quot;
 </code></pre><p>代码有变动，要制定文件</p>
 <pre><code>git commit --amend src\plugins\icElement_vote\components\config.vue src\plugins\icElement_chose\components\config.vue
   -m &quot;fix(编辑器-选择题/投票题):删除不是当前选中的选项&quot;
-</code></pre><h2 id="获取当前分支名">获取当前分支名</h2>
-<pre><code>git symbolic-ref --short -q HEAD 
-</code></pre><h2 id="推送当前分支到远端会在远端新建当前分支名的新分支">推送当前分支到远端，会在远端新建当前分支名的新分支</h2>
-<pre><code>git push -u origin HEAD  
-</code></pre><h2 id="获取上一次commit的message">获取上一次commit的message</h2>
-<pre><code>git log -1 --pretty=%B  
-</code></pre><h2 id="如果有文件没有被add则git-status时有提示">如果有文件没有被add，则git status时有提示</h2>
-<p>Changes not staged for commit:
-有文件被add了：
-Changes to be committed
-上面两种可以同时存在。</p>
-<h2 id="分支间摘-commit">分支间摘 commit</h2>
+</code></pre><h2 id="分支间摘-commit">分支间摘 commit</h2>
 <p>分支A有5次提交，想把其中的第二三次提交拿到B分支，先拿到 commit 的 id 可通过 <code>git log -1 --pretty=%B</code> 取到。然后使用摘樱桃命令：</p>
 <pre><code>git cherry-pick 5cf6d24
 </code></pre><p>分支B就把这次commit摘过来了。</p>
-<h2 id="代理">代理</h2>
-<p>全局设置</p>
-<pre><code>git config --global http.proxy 'socks5://127.0.0.1:1080'
-git config --global https.proxy 'socks5://127.0.0.1:1080'
-</code></pre><p>全局取消</p>
-<pre><code>git config --global --unset http.proxy
-git config --global --unset https.proxy
-</code></pre><p>#只对github.com</p>
-<pre><code>git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
-</code></pre><p>#取消代理</p>
-<pre><code>git config --global --unset http.https://github.com.proxy
-</code></pre><h2 id="取消追踪">取消追踪</h2>
+<h2 id="取消追踪">取消追踪</h2>
 <pre><code>git rm -r --cached 文件或目录
-</code></pre><h2 id="切换分支branch">切换分支(branch)</h2>
-<p>想看React的代码，因为v16有些新特性，所以想看v15的代码。clone代码以后，使用 <code>git branch</code> 查看分支，发现只有 <code>master</code> ，但是看 github 上是有 15-stable 分支的。<br>
-解决办法：使用 <code>git branch -a</code> 可以看到所有分支，包括远端的分支，其中有 <code>remotes/origin/15-stable</code> 分支，用这个名字切换分支即可。</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 远程分支列表</span>
-git branch -r
-<span class="c1"># 所有分支列表（包括远程）</span>
-git branch -a 
-<span class="c1"># 分支列表</span>
-git branch
-<span class="c1"># 创建并切换到dev分支,</span>
-git checkout -b dev
-<span class="c1"># 上面的命令，等于下面的两条命令</span>
-<span class="c1"># 创建分支</span>
-git branch dev 
-<span class="c1"># 切换分支</span>
-git checkout dev
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="分支合并">分支合并</h2>
-<p>建议合并时保留目标分支的commit信息。即使用：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git merge --no-ff <span class="o">[</span>branch name<span class="o">]</span>
-</code></pre></td></tr></table>
-</div>
-</div><hr>
-<p>当合并错了以后怎么撤销合并呢，使用：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git reset --hard <span class="o">[</span>merge的版本号<span class="o">]</span> <span class="c1">#版本号使用 git log 查，这种方法只针对合并以后对当前分支没有过其他操作，有的话比较复杂</span>
-</code></pre></td></tr></table>
-</div>
-</div><hr>
-<p>合并远程分支：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="c1"># 如果本地没有远程分支：</span>
-git checkout -b develop origin/develop <span class="c1"># 本地新建develop分支并拉取</span>
-<span class="c1"># 如果本地已有远程分支：</span>
-git checkout develop 
-git pull origin develop <span class="c1">#拉取远程代码</span>
-
-<span class="c1"># 方法二：</span>
-git fetch origin dev:temp <span class="c1">#拉取远程dev分支，创建本地temp分支</span>
-git diff temp
-git merge temp <span class="c1"># 合并</span>
-git branch -d temp <span class="c1">#删除</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="删除远程分支">删除远程分支</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-sh" data-lang="sh">git push origin -d <span class="o">[</span>远程分支名<span class="o">]</span>
-git push origin :<span class="o">[</span>远程分支名<span class="o">]</span>
-</code></pre></td></tr></table>
-</div>
-</div><blockquote>
-<p>git push origin :experimental<br>
-Find a ref that matches experimental in the origin repository (e.g.  refs/heads/experimental), and delete it.</p>
-</blockquote>
+</code></pre><h2 id="在缓存中移除某个目录">在缓存中移除某个目录</h2>
+<p><code>git rm -r --cached some-directory</code></p>
 <h2 id="查看记录log">查看记录log</h2>
 <p><code>git log</code> 这样会打印出超级多的信息，包括SHA-1、作者、时间、message,很啰嗦，还是不要这么用得好。<br>
 <code>git log --pretty=format:&quot;%h - %an, %ar : %s&quot;</code> 按格式打印信息，具体选项如下 <br>
@@ -9608,31 +9998,12 @@ git log --graph --oneline --decorate</p>
 </table>
 <p><code>git log --pretty=&quot;%h - %s&quot; --author=wss --since=&quot;2008-10-01&quot; --before=&quot;2008-11-01&quot;</code> 各种条件可以一起用<br>
 <code>git log -p -2</code> 查看最近两次提交，并显示提交内容（具体改动了什么）</p>
-<h2 id="标签">标签</h2>
-<p>将某次commit打上标签
-<code>git tag &lt;name </code> 默认给最新提交打标签。<br>
-<code>git tag</code> 查看所有标签
-<code>git tag v0.9 f52c633</code> 根据commit id给某次提交打标签</p>
-<h2 id="在缓存中移除某个目录">在缓存中移除某个目录</h2>
-<p><code>git rm -r --cached some-directory</code></p>
 <h2 id="攻略">攻略</h2>
 <p>Git 原理入门 <a href="http://www.ruanyifeng.com/blog/2018/10/git-internals.html">http://www.ruanyifeng.com/blog/2018/10/git-internals.html</a></p>
 <p>Git 分支管理策略 <a href="http://www.ruanyifeng.com/blog/2012/07/git.html">http://www.ruanyifeng.com/blog/2012/07/git.html</a></p>
 <p>Git 工作流程 <a href="http://www.ruanyifeng.com/blog/2015/12/git-workflow.html">http://www.ruanyifeng.com/blog/2015/12/git-workflow.html</a></p>
 <p>Git 使用规范流程 <a href="http://www.ruanyifeng.com/blog/2015/08/git-use-process.html">http://www.ruanyifeng.com/blog/2015/08/git-use-process.html</a></p>
-<h2 id="git记住密码">git记住密码</h2>
-<p>配置本地仓库</p>
-<pre><code>git config user.name &quot;your_name&quot;
-git config user.email XXXX@gmail.com
-</code></pre><p>PS： HTTPS 方式会让每次输入用户名和密码，解决办法如下</p>
-<p>创建 <code>.git-credential</code> 文件 并写入用户信息：用户名和密码</p>
-<p>push 代码 这一步输入的用户名密码会被记住,
-下次再push代码时就不用输入用户名密码, 这一步会在用户目录下生成文件.git-credential记录用户名密码的信息。</p>
-<pre><code>// 当前仓库
-git config  credential.helper store
-// 全局仓库
-git config --global credential.helper store
-</code></pre>]]></description>
+]]></description>
                 
                 
                 
@@ -11332,12 +11703,6 @@ B文件：
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/api/">api</category>
-                                
-                            
-                                
-                                
-                                
                                     <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
                                 
                             
@@ -11349,7 +11714,7 @@ B文件：
             </item>
         
             <item>
-                <title>Typescript & React</title>
+                <title>React 与 Typescript</title>
                 <link>https://wss.cool/typescript-react.html</link>
                 <guid isPermaLink="true">https://wss.cool/typescript-react.html</guid>
                 <pubDate>Sun, 20 Jan 2019 14:15:47 +0000</pubDate>
@@ -11358,8 +11723,18 @@ B文件：
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[<h2 id="0-类型">0. 类型</h2>
-<p>input的onChange事件，ChangeEvent是event.target，FormEvent是event.currentTarget</p>
+                    <description><![CDATA[<h2 id="input的事件类型">input的事件类型</h2>
+<p>需要注意两点。</p>
+<ol>
+<li>事件类型可能有两种</li>
+</ol>
+<ul>
+<li><code>ChangeEvent</code> 对应 <code>event.target</code></li>
+<li><code>FormEvent</code> 对应 <code>event.currentTarget</code></li>
+</ul>
+<ol start="2">
+<li>泛型对应元素，可能是<code>HTMLInputElement</code> 或 <code>HTMLSelectElement</code> 等。</li>
+</ol>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -11370,58 +11745,57 @@ B文件：
 </span><span class="lnt">6
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-ts" data-lang="ts">    <span class="kr">const</span> <span class="nx">handleSearch</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span>: <span class="kt">React.ChangeEvent</span><span class="o">&lt;</span><span class="nx">HTMLInputElement</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">setKeywords</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-            <span class="nx">props</span><span class="p">.</span><span class="nx">onUpdateKeyword</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
-        <span class="p">}</span>
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="nx">handleSearch</span> <span class="o">=</span> <span class="p">(</span><span class="nx">event</span>: <span class="kt">React.ChangeEvent</span><span class="o">&lt;</span><span class="nx">HTMLInputElement</span><span class="o">&gt;</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">setKeywords</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
+        <span class="nx">props</span><span class="p">.</span><span class="nx">onUpdateKeyword</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>
     <span class="p">}</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="1-创建项目">1. 创建项目</h2>
-<p><a href="https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter">creact-react-app</a>可以直接创建typescript项目。</p>
-<pre class="wp-block-code"><code>create-react-app my-app --scripts-version=react-scripts-ts</code></pre>
-<h2 id="2-修改配置">2. 修改配置</h2>
-<p>2.1. -把tslint.json修改为这样，能舒服一点：</p>
-<pre class="wp-block-code"><code>{
-  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
-  "defaultSeverity": "warning",
-  "linterOptions": {
-    "exclude": [
-      "config/**/*.js",
-      "node_modules/**/*.ts",
-      "coverage/lcov-report/*.js"
+</div><h2 id="class组件的类型">class组件的类型</h2>
+<p>class组件需要定义props和state的类型：</p>
+<pre><code>interface IProps {
+  addTodo: (input: string) =&gt; void;
+}
+interface IState {
+  input: string;
+}
+class AddTodo extends React.Component&lt;IProps, IState&gt;{}
+</code></pre><h2 id="创建项目">创建项目</h2>
+<p><a href="https://github.com/Microsoft/TypeScript-React-Starter#typescript-react-starter">creact-react-app</a>可以直接创建 typescript 项目。</p>
+<pre><code>create-react-app my-app --scripts-version=react-scripts-ts
+</code></pre><h2 id="修改配置">修改配置</h2>
+<p>把 tslint.json 修改为这样，能舒服一点：</p>
+<pre><code>{
+  &quot;extends&quot;: [
+    &quot;tslint:recommended&quot;, 
+    &quot;tslint-react&quot;, 
+    &quot;tslint-config-prettier&quot;
+  ],
+  &quot;defaultSeverity&quot;: &quot;warning&quot;,
+  &quot;linterOptions&quot;: {
+    &quot;exclude&quot;: [
+      &quot;config/**/*.js&quot;,
+      &quot;node_modules/**/*.ts&quot;,
+      &quot;coverage/lcov-report/*.js&quot;
     ]
   },
-  "rules": {
-    "object-literal-sort-keys": false,
-    "no-console": false
+  &quot;rules&quot;: {
+    &quot;object-literal-sort-keys&quot;: false,
+    &quot;no-console&quot;: false
   }
-}</code></pre>
-<p>2.2. 在package.json的script中加入这条，可以让tslint自动修复问题：</p>
-<pre class="wp-block-code"><code>"lint": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'"</code></pre>
-<p>千万要注意，你的代码将被修改，所以要<a href="https://stackoverflow.com/a/44850320/6021280">注意以下事项</a>⚠️：</p>
+}
+</code></pre><p>在package.json的script中加入这条，可以让tslint自动修复问题：</p>
+<pre><code>&quot;lint&quot;: &quot;tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'&quot;
+</code></pre><p>千万要注意，你的代码将被修改，所以要<a href="https://stackoverflow.com/a/44850320/6021280">注意以下事项</a>⚠️：</p>
 <ul>
 <li>Commit the changes you have made to your code</li>
 <li>Run TSLint with the <code>--fix</code> flag like above</li>
 <li>Quickly review the changes TSLint has made</li>
 <li>Make a new commit with these changes, or simply amend them to your previous commit</li>
 </ul>
-<h2 id="3-各种类型怎么定义">3. 各种类型怎么定义</h2>
-<p>class组件需要定义props和state的类型：</p>
-<pre class="wp-block-code"><code>interface IProps {
-  addTodo: (input: string) => void;
-}
-interface IState {
-  input: string;
-}
-class AddTodo extends React.Component&lt;IProps, IState>{}</code></pre>
-<p>input事件需要定义事件类型：</p>
-<pre class="wp-block-code"><code>  public handleInput(event:React.ChangeEvent&lt;HTMLInputElement>) {
-    this.updateInput(event.target.value);
-  }</code></pre>
-<p>HTMLInputElement还可能是HTMLSelectElement等。</p>
-<p>.d.ts文件是使用js编写的api才用的。</p>
+<p><code>.d.ts</code> 文件是使用js编写的api才用的。</p>
 ]]></description>
                 
                 
@@ -11648,7 +12022,7 @@ sudo vim /etc/s-nail.rc﻿
             </item>
         
             <item>
-                <title>dvadva取消异步任务</title>
+                <title>dva取消异步任务</title>
                 <link>https://wss.cool/dva-saga-cancel-effect.html</link>
                 <guid isPermaLink="true">https://wss.cool/dva-saga-cancel-effect.html</guid>
                 <pubDate>Mon, 31 Dec 2018 09:54:21 +0000</pubDate>
@@ -12454,7 +12828,7 @@ const store = createStore(reducer);</code></pre>
             </item>
         
             <item>
-                <title>React 中的元素与组件</title>
+                <title>元素与组件</title>
                 <link>https://wss.cool/react-element-and-component.html</link>
                 <guid isPermaLink="true">https://wss.cool/react-element-and-component.html</guid>
                 <pubDate>Sat, 24 Nov 2018 04:49:54 +0000</pubDate>
@@ -12779,7 +13153,7 @@ const store = createStore(reducer);</code></pre>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">React</category>
+                                    <category domain="https://wss.cool/categories/react%E5%8E%9F%E7%90%86/">React原理</category>
                                 
                             
                         
@@ -12798,7 +13172,7 @@ const store = createStore(reducer);</code></pre>
             </item>
         
             <item>
-                <title>React的diff</title>
+                <title>Diff</title>
                 <link>https://wss.cool/react-reconciliation.html</link>
                 <guid isPermaLink="true">https://wss.cool/react-reconciliation.html</guid>
                 <pubDate>Sat, 17 Nov 2018 08:33:37 +0000</pubDate>
@@ -13019,7 +13393,7 @@ const store = createStore(reducer);</code></pre>
                                 
                                 
                                 
-                                    <category domain="https://wss.cool/categories/react/">React</category>
+                                    <category domain="https://wss.cool/categories/react%E5%8E%9F%E7%90%86/">React原理</category>
                                 
                             
                         
