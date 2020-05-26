@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">WSS.COOL</title>
     <subtitle type="html">现在是一名前端，希望转到后端，最后做架构师。这里记录了常用到的前端、后端、服务器和各种工具的常用api、知识点等。记录的api方便查找，记录的知识点作为一种输出可以增加理解。</subtitle>
-    <updated>2020-05-26T00:46:51+00:00</updated>
+    <updated>2020-05-26T10:26:21+00:00</updated>
     <id>https://wss.cool/</id>
     <link rel="alternate" type="text/html" href="https://wss.cool/" />
     <link rel="self" type="application/atom+xml" href="https://wss.cool/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">深浅拷贝</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D.html" />
             <id>https://wss.cool/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-05-25T18:34:27+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -68,7 +68,7 @@
 <span class="p">})</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>如果所有的value都是基本类型<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，这样的操作没问题。但是如果value是引用类型<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>就会出现新旧对象中都引用了一个对象的情况，也就是上文提到的a和b变量的问题。..如果想完全切断引用，就要对引用类型的value在进行一次拷贝..。对于是否需要完全切断引用就有了两种拷贝方式，需要完全切断引用的就是「深拷贝」，不需要的就是「浅拷贝」。</p>
+</div><p>这样的操作需要注意value的类型，分为基本类型和引用类型<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，如果所有的value都是基本类型，但是如果value是引用类型就会出现新旧对象中都引用了一个对象的情况，也就是上文提到的a和b变量的问题。..如果想完全切断引用，就要对引用类型的value在进行一次拷贝..。对于是否需要完全切断引用就有了两种拷贝方式，需要完全切断引用的就是「深拷贝」，不需要的就是「浅拷贝」。</p>
 <p>简单概括一下。</p>
 <p>「浅拷贝」是只对对象的key和value进行一次遍历拷贝，不管内部的引用。</p>
 <p>「深拷贝」要将对象内部的引用完全切断，对对象进行递归地拷贝。</p>
@@ -81,43 +81,19 @@
 <span class="ln"> 5</span>    <span class="k">if</span><span class="p">(</span><span class="nx">is基本类型</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
 <span class="ln"> 6</span>      <span class="nx">新对象</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">旧对象</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
 <span class="ln"> 7</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-<span class="hl"><span class="ln"> 8</span>      <span class="nx">clone</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// 递归
+<span class="hl"><span class="ln"> 8</span>      <span class="nx">新对象</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">clone</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// 递归
 </span></span><span class="ln"> 9</span><span class="c1"></span>    <span class="p">}</span>
 <span class="ln">10</span>  <span class="p">})</span>
 <span class="ln">11</span>  <span class="k">return</span> <span class="nx">新对象</span><span class="p">;</span>
 <span class="ln">12</span><span class="p">}</span>
 </code></pre></div>
-<hr>
-<p>简单的实现使用递归遍历字段。但是会遇到循环引用的问题。解决循环引用问题需要用循环代替递归。</p>
-<pre><code>首先有一个原对象a
-创建一个空对象b 
-copy的过程就是遍历a，将a的key和value转移到b上。 
-  当value的值是基本类型时，
-    可以直接将它copy到b上。 
-  但是当value的值不是基本类型，也就是对象时，
-    不能将它直接复制到b，因为这是浅复制的操作。
-    我们需要对它也进行copy的操作。 
-    如果遇到value是对象就立刻进行copy的话，这是递归的做法。为了避免递归，我们可以先将这个子对象存起来，待当前对象遍历完以后，在对刚刚存起来的子对象进行遍历。 
-    对于这个暂存的子对象，需要知道它的父对象和key，才能找到它应该被安置在哪里。 
-    所以它暂存子对象的数据结构是这样的
-</code></pre><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
-  <span class="nx">parent</span><span class="o">:</span> <span class="nx">子对象的父对象b</span><span class="p">,</span>
-  <span class="nx">key</span><span class="o">:</span> <span class="nx">子对象对应的key</span><span class="p">,</span>
-  <span class="nx">value</span><span class="o">:</span> <span class="nx">子对象</span>
-<span class="p">}</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>当遍历该子对象时，先在父对象上创建一个空对象，将遍历到的key和value复制到空对象上。如果又遇到value是对象，则重复上面的过程，直至没有value是对象。也就是存储子对象的数组为空。</p>
-<p>对于拷贝一个对象的过程lodash使用的是「结构化克隆算法」<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>，普通对象直接复制key和value，数组等其他对象使用相应的复制方法。</p>
+<p>这种方法用的是递归，即当value不是基本类型时就对它进行拷贝。该方法有一个明显的问题，当出现循环引用时，就进入了一个死循环。</p>
+<p>我们知道，函数的调用会形成一个「执行栈」，函数执行过程中如果又调用了函数就像该函数压入栈顶并执行，前一个函数就暂停了等待新函数执行完。</p>
+<p>递归就是当前对象还没有拷贝完，就开始了下一次拷贝，就是在「执行栈」又压入了一次函数调用，而循环引用会导致不停滴往执行栈顶添加，对后执行栈超过限制大小，而中断。</p>
+<p>为了避免爆栈问题，可以让一次拷贝进行完之后再开始下一次拷贝。就是把遇到的对象放在一个地方（数组1），当遇到对象时把它保存起来，完成一次拷贝后去检查看还有没有需要拷贝的对象。</p>
+<p>这样虽然解决了爆栈，但是仍是一个死循环，因为会不停地向那个地方添加对象。所以需要一种方法来判断已经拷贝过的对象。</p>
+<p>我们再创建一个数组2，用来保存拷贝过的对象，当遇到新的对象时，先去数组内查找，就不向数组1添加了，也就阻止了死循环。</p>
+<p>下面的代码是对上面分析的过程的实现</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -169,11 +145,37 @@ copy的过程就是遍历a，将a的key和value转移到b上。
 </span><span class="lnt">47
 </span><span class="lnt">48
 </span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// value 参数为原对象
 </span><span class="c1"></span><span class="kd">function</span> <span class="nx">cloneLoop</span><span class="p">(</span><span class="nx">oldObject</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// 新的空对象
+
+  <span class="kr">const</span> <span class="nx">uniqueList</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// 用来去重
+</span><span class="c1"></span>  <span class="c1">// 新的空对象
 </span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="p">{};</span>
 
   <span class="c1">// 存储子对象的数组
@@ -191,7 +193,7 @@ copy的过程就是遍历a，将a的key和value转移到b上。
 </span><span class="c1"></span>    <span class="kr">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">children</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
     <span class="kr">const</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">parent</span><span class="p">;</span>
     <span class="kr">const</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">key</span><span class="p">;</span>
-    <span class="kr">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">value</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="nx">childObject</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">childObject</span><span class="p">;</span>
 
     <span class="c1">// 当key是undefined时，parent是{}，也就是刚开始
 </span><span class="c1"></span>    <span class="c1">// 当key不是undefined时，就是已经复制到子对象了，这时key肯定时有值的，
@@ -201,39 +203,64 @@ copy的过程就是遍历a，将a的key和value转移到b上。
       <span class="nx">res</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
     <span class="p">}</span>
 
+    <span class="c1">// 当循环引用时，childObject会与拷贝过的对象相等，就可以把它直接赋值到新对象上。完成一次拷贝。
+</span><span class="c1"></span>    <span class="kd">let</span> <span class="nx">uniqueData</span> <span class="o">=</span> <span class="nx">find</span><span class="p">(</span><span class="nx">uniqueList</span><span class="p">,</span> <span class="nx">childObject</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">uniqueData</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">parent</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">uniqueData</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span> <span class="c1">// 中断本次循环
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="c1">// 数据不存在
+</span><span class="c1"></span>    <span class="c1">// 保存源数据，在拷贝数据中对应的引用
+</span><span class="c1"></span>    <span class="nx">uniqueList</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+      <span class="nx">source</span><span class="o">:</span> <span class="nx">childObject</span><span class="p">,</span>
+      <span class="nx">target</span><span class="o">:</span> <span class="nx">res</span><span class="p">,</span>
+    <span class="p">});</span>
+
     <span class="c1">// 遍历子对象
-</span><span class="c1"></span>    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">k</span> <span class="k">in</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="c1"></span>    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">k</span> <span class="k">in</span> <span class="nx">childObject</span><span class="p">)</span> <span class="p">{</span>
       <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">k</span><span class="p">))</span> <span class="p">{</span>
         <span class="c1">// 如果value时对象，将子对象放入「子对象数组」中，待下一次while读取遍历
-</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">value</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span><span class="p">)</span> <span class="p">{</span>
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">childObject</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span><span class="p">)</span> <span class="p">{</span>
           <span class="c1">// 下一次循环
 </span><span class="c1"></span>          <span class="nx">children</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
             <span class="nx">parent</span><span class="o">:</span> <span class="nx">res</span><span class="p">,</span>
             <span class="nx">key</span><span class="o">:</span> <span class="nx">k</span><span class="p">,</span>
-            <span class="nx">value</span><span class="o">:</span> <span class="nx">value</span><span class="p">[</span><span class="nx">k</span><span class="p">],</span>
+            <span class="nx">childObject</span><span class="o">:</span> <span class="nx">childObject</span><span class="p">[</span><span class="nx">k</span><span class="p">],</span>
           <span class="p">});</span>
         <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-          <span class="nx">res</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span><span class="p">[</span><span class="nx">k</span><span class="p">];</span>
+          <span class="nx">res</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">=</span> <span class="nx">childObject</span><span class="p">[</span><span class="nx">k</span><span class="p">];</span>
         <span class="p">}</span>
       <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>
   <span class="k">return</span> <span class="nx">root</span><span class="p">;</span>
 <span class="p">}</span>
+<span class="kd">function</span> <span class="nx">find</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">source</span> <span class="o">===</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><section class="footnotes" role="doc-endnotes">
+</div><p>总结一下要点：</p>
+<ol>
+<li>使用一个数组存储copy过程中遇到的对象，以破解爆栈的问题。</li>
+<li>使用另一个数组存储copy过的对象，以破解循环引用的问题。</li>
+</ol>
+<p>对于拷贝一个对象的过程lodash使用的是「结构化克隆算法」<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>，普通对象直接复制key和value，数组等其他对象使用相应的复制方法。</p>
+<section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>基本类型有五种：String、Number、Boolean、Undefined和Null。 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Nicholas C.Zakas；JavaScript高级程序设计(第3版)；4.1 基本类型与引用类型的值 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>引用类型就是对象。 <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
-</li>
-<li id="fn:3" role="doc-endnote">
-<p>结构化克隆算法MDN：<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/The_structured_clone_algorithm">https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/The_structured_clone_algorithm</a><br>
-结构化克隆算法规范：<a href="https://html.spec.whatwg.org/multipage/structured-data.html#structuredserializeinternal">https://html.spec.whatwg.org/multipage/structured-data.html#structuredserializeinternal</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>MDN web docs；<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/The_structured_clone_algorithm">结构化克隆算法</a>。<br>
+HTML Living Standard；<a href="https://html.spec.whatwg.org/multipage/structured-data.html#structuredserializeinternal">结构化克隆算法</a>，<a href="https://whatwg-cn.github.io/html/#structuredserializeinternal">中文翻译</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -263,7 +290,7 @@ copy的过程就是遍历a，将a的key和value转移到b上。
             <title type="text">JavaScript变量类型</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/javascript%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B.html" />
             <id>https://wss.cool/javascript%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-05-25T18:23:09+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -305,7 +332,7 @@ copy的过程就是遍历a，将a的key和value转移到b上。
             <title type="text">Mysql增删改查</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5.html" />
             <id>https://wss.cool/mysql%E5%A2%9E%E5%88%A0%E6%94%B9%E6%9F%A5.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-05-25T17:47:39+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -433,7 +460,7 @@ copy的过程就是遍历a，将a的key和value转移到b上。
             <title type="text">Mysql表结构</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/mysql%E8%A1%A8%E7%BB%93%E6%9E%84.html" />
             <id>https://wss.cool/mysql%E8%A1%A8%E7%BB%93%E6%9E%84.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-05-25T17:46:51+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -536,7 +563,7 @@ copy的过程就是遍历a，将a的key和value转移到b上。
             <title type="text">Mysql数据类型</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html" />
             <id>https://wss.cool/mysql%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-05-25T17:46:03+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -616,7 +643,7 @@ copy的过程就是遍历a，将a的key和value转移到b上。
             <title type="text">Git记住密码</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/git%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81.html" />
             <id>https://wss.cool/git%E8%AE%B0%E4%BD%8F%E5%AF%86%E7%A0%81.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-05-25T17:34:13+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -664,7 +691,7 @@ git config --global credential.helper store
             <title type="text">Git设置代理</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86.html" />
             <id>https://wss.cool/git%E8%AE%BE%E7%BD%AE%E4%BB%A3%E7%90%86.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-05-25T17:32:50+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -709,7 +736,7 @@ git config --global --unset https.proxy
             <title type="text">Git分支操作</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C.html" />
             <id>https://wss.cool/git%E5%88%86%E6%94%AF%E6%93%8D%E4%BD%9C.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-05-25T17:30:46+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -881,7 +908,7 @@ git branch -d temp <span class="c1">#删除</span>
             <title type="text">Cors</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/cors.html" />
             <id>https://wss.cool/cors.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-05-07T12:38:38+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -935,7 +962,7 @@ git branch -d temp <span class="c1">#删除</span>
             <title type="text">如何准备面试</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A6%82%E4%BD%95%E5%87%86%E5%A4%87%E9%9D%A2%E8%AF%95.html" />
             <id>https://wss.cool/%E5%A6%82%E4%BD%95%E5%87%86%E5%A4%87%E9%9D%A2%E8%AF%95.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-05-04T00:29:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -998,7 +1025,7 @@ git branch -d temp <span class="c1">#删除</span>
             <title type="text">做正确的事</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%81%9A%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%BA%8B.html" />
             <id>https://wss.cool/%E5%81%9A%E6%AD%A3%E7%A1%AE%E7%9A%84%E4%BA%8B.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-27T08:41:25+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1044,7 +1071,7 @@ git branch -d temp <span class="c1">#删除</span>
             <title type="text">AccessToken认证</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/access-token-for-get.html" />
             <id>https://wss.cool/access-token-for-get.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-22T23:11:20+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1109,7 +1136,7 @@ git branch -d temp <span class="c1">#删除</span>
             <title type="text">可编辑元素</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/%E5%8F%AF%E7%BC%96%E8%BE%91%E5%85%83%E7%B4%A0/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/%E5%8F%AF%E7%BC%96%E8%BE%91%E5%85%83%E7%B4%A0/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-22T22:48:25+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1225,7 +1252,7 @@ git branch -d temp <span class="c1">#删除</span>
             <title type="text">常用DOM操作</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%B8%B8%E7%94%A8dom%E6%93%8D%E4%BD%9C.html" />
             <id>https://wss.cool/%E5%B8%B8%E7%94%A8dom%E6%93%8D%E4%BD%9C.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-22T19:20:48+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1417,7 +1444,7 @@ git branch -d temp <span class="c1">#删除</span>
             <title type="text">熵与代码</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E7%86%B5%E4%B8%8E%E4%BB%A3%E7%A0%81/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-22T10:29:53+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1464,7 +1491,7 @@ git branch -d temp <span class="c1">#删除</span>
             <title type="text">获取滚动高度</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E8%8E%B7%E5%8F%96%E6%BB%9A%E5%8A%A8%E9%AB%98%E5%BA%A6/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-18T01:45:53+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1539,7 +1566,7 @@ git branch -d temp <span class="c1">#删除</span>
             <title type="text">Git报错</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git%E6%8A%A5%E9%94%99/" />
             <id>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git%E6%8A%A5%E9%94%99/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-18T01:43:23+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1579,7 +1606,7 @@ git branch -d temp <span class="c1">#删除</span>
             <title type="text">Npm与yarn</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/npm%E4%B8%8Eyarn/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-18T01:31:26+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1643,7 +1670,7 @@ npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
             <title type="text">应该知道的</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-18T01:28:32+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1708,7 +1735,7 @@ npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
             <title type="text">Nginx导致的bug</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/" />
             <id>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/nginx%E5%AF%BC%E8%87%B4%E7%9A%84bug/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-18T01:24:25+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -1773,7 +1800,7 @@ proxy_set_header X-Forwarded-Proto $scheme;
             <title type="text">JavaScript</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-04T02:13:49+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2022,7 +2049,9 @@ e.stopPropagation();
                     <uri>https://wss.cool/</uri>
                     <email>wss.six@foxmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"><![CDATA[使用二分法或牛顿迭代法计算开平方，]]></summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
+    
+    <summary type="html"><![CDATA[使用二分法或牛顿迭代法计算开平方]]></summary>
             
                 <content type="html"><![CDATA[<p>计算开平方可以用二分查找来计算。
 如：求根号10</p>
@@ -2127,12 +2156,6 @@ x0足够接近根 α。</p>
             
                 
                     
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" term="知识点" label="知识点" />
-                            
                         
                             
                             
@@ -2486,7 +2509,7 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
             <title type="text">重构旧项目-1</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E9%87%8D%E6%9E%84%E6%97%A7%E9%A1%B9%E7%9B%AE-1.html" />
             <id>https://wss.cool/%E9%87%8D%E6%9E%84%E6%97%A7%E9%A1%B9%E7%9B%AE-1.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-04-02T15:17:52+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -2758,7 +2781,9 @@ docker run --name myphpadmin -d -e PMA_ARBITRARY=1 -p 8080:80 phpmyadmin/phpmyad
                     <uri>https://wss.cool/</uri>
                     <email>wss.six@foxmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"><![CDATA[vim常用操作，替换、缩紧等]]></summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
+    
+    <summary type="html"><![CDATA[vim常用操作，替换、缩紧等]]></summary>
             
                 <content type="html"><![CDATA[<h2 id="替换">替换</h2>
 <div class="shortcodes_withTitle" title="buiiuiuiu">abbnbnbn</div>
@@ -2848,12 +2873,6 @@ set softtabstop=2
                             
                             
                             
-                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
-                            
-                        
-                            
-                            
-                            
                                 <category scheme="https://wss.cool/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
@@ -2868,7 +2887,7 @@ set softtabstop=2
             <title type="text">ReactRouter的哲学</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/reactrouter-philosophy.html" />
             <id>https://wss.cool/reactrouter-philosophy.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-03-31T13:11:28+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3050,7 +3069,7 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
             <title type="text">渐变色</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/linear-gradient/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/linear-gradient/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-03-31T08:41:24+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3261,7 +3280,7 @@ Ember有一个传统的routes.js文件，构建会读取并导入到应用程序
             <title type="text">SSH</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/ssh.html" />
             <id>https://wss.cool/ssh.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-03-31T08:37:31+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3384,14 +3403,16 @@ scp -i ./identity_file.pem file_a name@1.1.1.1:~/
             <title type="text">跨域CORS</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E8%B7%A8%E5%9F%9Fcors.html" />
             <id>https://wss.cool/%E8%B7%A8%E5%9F%9Fcors.html</id>
-            <updated>2020-03-31T08:33:05+08:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-03-31T08:33:05+08:00</published>
             <author>
                     <name>王书硕</name>
                     <uri>https://wss.cool/</uri>
                     <email>wss.six@foxmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"><![CDATA[摘要，显示在meta的description中，]]></summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
+    
+    <summary type="html"><![CDATA[什么是跨域问题 在网页中使用AJAX时，AJAX请求的URL与网页的URL相比较，如果……]]></summary>
             
                 <content type="html"><![CDATA[<h2 id="什么是跨域问题">什么是跨域问题</h2>
 <p>在网页中使用AJAX时，AJAX请求的URL与网页的URL相比较，如果是属于同一个域名才可以正常访问，如果不属于一个域名就会出现跨域问题。所以，怎么判断两个URL是不是属于同一个域名呢？</p>
@@ -3446,19 +3467,7 @@ IP地址：https://192.168.4.12</p>
                             
                             
                             
-                                <category scheme="https://wss.cool/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" term="知识点" label="知识点" />
-                            
-                        
-                            
-                            
-                            
                                 <category scheme="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/" term="前端" label="前端" />
-                            
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/categories/javascript/" term="JavaScript" label="JavaScript" />
                             
                         
                     
@@ -3472,7 +3481,7 @@ IP地址：https://192.168.4.12</p>
             <title type="text">AJAX</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/ajax/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/ajax/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-03-31T08:20:17+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3744,7 +3753,7 @@ IP地址：https://192.168.4.12</p>
             <title type="text">博客文章分类</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%8D%9A%E5%AE%A2%E5%88%86%E7%B1%BB/" />
             <id>https://wss.cool/posts/%E5%8D%9A%E5%AE%A2%E5%88%86%E7%B1%BB/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-03-30T22:49:40+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -3873,7 +3882,7 @@ IP地址：https://192.168.4.12</p>
             <title type="text">css</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-03-29T22:10:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4228,12 +4237,6 @@ ID选择器 = 100
                             
                             
                             
-                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
-                            
-                        
-                            
-                            
-                            
                                 <category scheme="https://wss.cool/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
@@ -4272,9 +4275,14 @@ ID选择器 = 100
 </p>
 <h2 id="代码块内的高亮">代码块内的高亮</h2>
 <p>Options:</p>
-<p><code>linenos</code>: configure line numbers. Valid values are <code>true</code>, <code>false</code>, <code>table</code>, or <code>inline</code>. <code>false</code> will turn off line numbers if it’s configured to be on in site config. <code>New in v0.60.0</code> <code>table</code> will give copy-and-paste friendly code blocks.
-<code>hl_lines</code>: lists a set of line numbers or line number ranges to be highlighted.
-<code>linenostart=199</code>: starts the line number count from 199.</p>
+<dl>
+<dt><code>linenos</code></dt>
+<dd>configure line numbers. Valid values are <code>true</code>, <code>false</code>, <code>table</code>, or <code>inline</code>. <code>false</code> will turn off line numbers if it’s configured to be on in site config. New in v0.60.0 <code>table</code> will give copy-and-paste friendly code blocks.</dd>
+<dt><code>hl_lines</code></dt>
+<dd>lists a set of line numbers or line number ranges to be highlighted.</dd>
+<dt><code>linenostart=199</code></dt>
+<dd>starts the line number count from 199.</dd>
+</dl>
 <pre><code><span>{</span>{< highlight go "linenos=table,hl_lines=8 15-17,linenostart=199" >}}
 // ... code
 <span>{</span>{< / highlight >}}
@@ -4322,10 +4330,15 @@ ID选择器 = 100
 </code></pre><p><strong>效果</strong>⬇️
 <img src="/images/hugo01.jpg" alt="52区" title="外域52区"></p>
 <h2 id="脚注">脚注</h2>
+<p><a href="https://zh.wikipedia.org/wiki/Wikipedia:%E5%88%97%E6%98%8E%E6%9D%A5%E6%BA%90">维基百科的列明来源</a>介绍了脚注等说明性内容的用法。</p>
+<blockquote>
+<p>凡是引用前人（包括作者自己过去）已发表的文献中的观点、数据和材料等，我们建议都要对它们在文中出现的地方予以标明，并在文末列出参考文献表。</p>
+</blockquote>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%96%87%E5%90%8E%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE%E8%91%97%E5%BD%95%E8%A7%84%E5%88%99#GB/T_7714-2005">中文参考文献规则</a></p>
 <p>在词/句后或图片前加一个标记<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，其实是一个冒点，点击可追溯到页面地步的注脚定义。</p>
 <pre><code>某文章[^1]说到某技术非常厉害
 
-[^1]: https://github.com/wangshushuo/abc.html
+[^1]: &lt;https://github.com/wangshushuo/abc.html&gt;
 </code></pre><p><strong>效果</strong>⬇️</p>
 <p>某文章<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>说到某技术非常厉害</p>
 <h2 id="链接">链接</h2>
@@ -4408,7 +4421,7 @@ ID选择器 = 100
             <title type="text">代码大全</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8.html" />
             <id>https://wss.cool/%E4%BB%A3%E7%A0%81%E5%A4%A7%E5%85%A8.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-03-26T10:37:50+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4462,7 +4475,7 @@ ID选择器 = 100
             <title type="text">React 组件打包为 library</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-component-be-libiary.html" />
             <id>https://wss.cool/react-component-be-libiary.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-02-27T12:10:28+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4741,7 +4754,7 @@ ID选择器 = 100
             <title type="text">创建 React 项目</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/create-react-app.html" />
             <id>https://wss.cool/create-react-app.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-02-27T11:10:50+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4830,7 +4843,7 @@ ID选择器 = 100
             <title type="text">多快好省</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A4%9A%E5%BF%AB%E5%A5%BD%E7%9C%81.html" />
             <id>https://wss.cool/%E5%A4%9A%E5%BF%AB%E5%A5%BD%E7%9C%81.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-02-26T13:45:16+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -4897,7 +4910,7 @@ ID选择器 = 100
             <title type="text">Spring MVC与模版 thymeleaf 开发网站</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/" />
             <id>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-mvc%E4%B8%8E%E6%A8%A1%E7%89%88thymeleaf%E5%BC%80%E5%8F%91%E7%BD%91%E7%AB%99/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-02-25T23:39:38+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -5029,7 +5042,7 @@ ID选择器 = 100
             <title type="text">Java后端开发常用工具</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7.html" />
             <id>https://wss.cool/java%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-01-30T01:19:02+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -5076,7 +5089,7 @@ ID选择器 = 100
             <title type="text">我的博客支持服务</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%9C%8D%E5%8A%A1.html" />
             <id>https://wss.cool/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E6%9C%8D%E5%8A%A1.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-01-29T17:20:32+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -5203,7 +5216,7 @@ ID选择器 = 100
             <title type="text">Spring Security JWT</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/spring-security-jwt.html" />
             <id>https://wss.cool/spring-security-jwt.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-01-19T13:51:29+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7315,7 +7328,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">Spring推荐使用构造器注入</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/spring%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5.html" />
             <id>https://wss.cool/spring%E6%8E%A8%E8%8D%90%E4%BD%BF%E7%94%A8%E6%9E%84%E9%80%A0%E5%99%A8%E6%B3%A8%E5%85%A5.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-01-18T18:30:02+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7368,7 +7381,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">Spring Boot 中读取配置文件中的变量</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/" />
             <id>https://wss.cool/posts/%E5%90%8E%E7%AB%AF/spring/spring-boot%E4%B8%AD%E8%AF%BB%E5%8F%96%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-01-18T17:57:27+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7702,7 +7715,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">Spring探索与扫盲</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/spring%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%89%AB%E7%9B%B2.html" />
             <id>https://wss.cool/spring%E6%8E%A2%E7%B4%A2%E4%B8%8E%E6%89%AB%E7%9B%B2.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2020-01-16T23:55:23+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -7908,7 +7921,7 @@ Authorization: Bearer some-token-value # Resource Server will process this
             <title type="text">使用Gitlab的Ci</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/gitlab-ci.html" />
             <id>https://wss.cool/gitlab-ci.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-11-29T16:42:18+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8098,12 +8111,6 @@ $ sudo apt-get install gitlab-ci-multi-runner
                             
                             
                             
-                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
-                            
-                        
-                            
-                            
-                            
                                 <category scheme="https://wss.cool/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
@@ -8118,7 +8125,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
             <title type="text">未读</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E6%9C%AA%E8%AF%BB/" />
             <id>https://wss.cool/posts/%E6%9C%AA%E8%AF%BB/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-11-18T10:59:42+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8233,7 +8240,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
             <title type="text">Redux Toolkit</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/redux-toolkit.html" />
             <id>https://wss.cool/redux-toolkit.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-10-28T10:54:37+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8407,7 +8414,7 @@ npx create-react-app my-app --template redux
             <title type="text">JavaScript语言精华</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/javascript%E8%AF%AD%E8%A8%80%E7%B2%BE%E5%8D%8E/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-10-23T06:56:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8531,7 +8538,7 @@ npx create-react-app my-app --template redux
             <title type="text">ARTS打卡</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/arts%E6%89%93%E5%8D%A1.html" />
             <id>https://wss.cool/arts%E6%89%93%E5%8D%A1.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-10-22T16:35:08+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8576,7 +8583,7 @@ npx create-react-app my-app --template redux
             <title type="text">React Spring</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/react-spring/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/react-spring/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-10-22T14:19:59+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8786,7 +8793,7 @@ npx create-react-app my-app --template redux
             <title type="text">[机翻]如何解决问题</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98.html" />
             <id>https://wss.cool/%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-10-21T16:54:43+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -8889,7 +8896,7 @@ ew……挺酷的吧？
             <title type="text">Hugo</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%B7%A5%E5%85%B7/hugo/" />
             <id>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/hugo/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-10-10T14:15:23+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9111,12 +9118,6 @@ categories         &lt;- Taxonomy
                             
                             
                             
-                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
-                            
-                        
-                            
-                            
-                            
                                 <category scheme="https://wss.cool/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
@@ -9131,7 +9132,7 @@ categories         &lt;- Taxonomy
             <title type="text">职业发展</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/%E8%81%8C%E4%B8%9A%E5%8F%91%E5%B1%95/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-10-07T18:05:05+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9265,7 +9266,7 @@ categories         &lt;- Taxonomy
             <title type="text">内容分发网络</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/cdn.html" />
             <id>https://wss.cool/cdn.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-09-27T13:16:55+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9280,16 +9281,27 @@ categories         &lt;- Taxonomy
 <p>以下将内容分发网络简称为CDN</p>
 </blockquote>
 <h2 id="cdn是什么">CDN是什么</h2>
-<p>如果没有CDN，www.baidu.com <code>-&gt;</code> DNS解析 <code>-&gt;</code> 123.123.123.123</p>
-<p>加入了CDN以后，www.baidu.com <code>-&gt;</code> DNS解析为CNAME域名 <code>-&gt;</code> CDN地址image.baidu.cnd258.com <code>-&gt;</code> 在CDN服务器中未发现请求的资源 <code>-&gt;</code> 到源服务器请求资源</p>
-<p>当再次请求相同的资源时，CDN服务器会直接返回资源，而不会访问源服务器。</p>
+<p>如果没有CDN</p>
+<pre><code>www.baidu.com 
+-&gt; DNS解析 
+-&gt; 123.123.123.123
+</code></pre><p>加入了CDN以后</p>
+<pre><code>访问 www.baidu.com  
+-&gt; DNS解析为CNAME域名 
+-&gt; CDN地址image.baidu.cnd258.com 
+-&gt; 在CDN服务器中未发现请求的资源 
+-&gt; 到源服务器请求资源
+</code></pre><p>当再次请求相同的资源时，CDN服务器会直接返回资源，而不会访问源服务器。</p>
 <ol>
 <li>由于有了cdn缓存资源，源服务器的压力大大减小。避免了由于访问量过多而无法响应请求。</li>
 <li>cdn服务商有大量的服务器分布于广阔的地理范围内，可以就近响应请求，从而提高响应请求的速度。</li>
 <li>可以通过cdn的api提前将cdn没有缓存的资源添加到缓存中，这样用户第一次访问资源就可以享受到cdn的缓存加速。</li>
 </ol>
 <h2 id="配置">配置</h2>
-<p>我们需要提供给CDN服务商需要加速的网址和源服务器的ip或域名。服务商会给我们一个cdn网址，需要我们在网址的dns解析服务商处，加一条cname解析，将原来的网址解析为cdn网址。</p>
+<ol>
+<li>提供给CDN服务商需要加速的网址和源服务器的ip或域名。服务商会给我们一个cdn网址</li>
+<li>域名解析：在网址的dns解析处，加一条CNAME解析，将原来的网址解析为cdn网址</li>
+</ol>
 ]]></content>
             
             
@@ -9298,12 +9310,6 @@ categories         &lt;- Taxonomy
             
                 
                     
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/categories/%E7%9F%A5%E8%AF%86%E7%82%B9/" term="知识点" label="知识点" />
-                            
                         
                             
                             
@@ -9322,14 +9328,16 @@ categories         &lt;- Taxonomy
             <title type="text">Nginx的简单使用</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/nginx.html" />
             <id>https://wss.cool/nginx.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-09-27T13:08:38+08:00</published>
             <author>
                     <name>王书硕</name>
                     <uri>https://wss.cool/</uri>
                     <email>wss.six@foxmail.com</email>
                     </author>
-            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights><summary type="html"><![CDATA[nginx的配置文件目录，默认静态网站目录，ubuntu安装nginx，websocket代理。]]></summary>
+            <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
+    
+    <summary type="html"><![CDATA[nginx的配置文件目录，默认静态网站目录，ubuntu安装nginx，websocket代理。]]></summary>
             
                 <content type="html"><![CDATA[<p><a href="https://www.linode.com/docs/web-servers/nginx/how-to-configure-nginx/">攻略1</a></p>
 <p><a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04">攻略2</a></p>
@@ -9379,7 +9387,7 @@ categories         &lt;- Taxonomy
       index  index.html index.htm;
   }
 }
-</code></pre><h1 id="反向代理配置">反向代理配置</h1>
+</code></pre><h2 id="反向代理配置">反向代理配置</h2>
 <pre><code>server {
   listen 80 http;
   server_name  wowfriday.cn;
@@ -9388,7 +9396,7 @@ categories         &lt;- Taxonomy
       proxy_pass http://blog.wowfriday.cn;
   }
 }
-</code></pre><h1 id="websocket代理">websocket代理</h1>
+</code></pre><h2 id="websocket代理">websocket代理</h2>
 <pre><code>location /wss {
   proxy_pass http://127.0.0.1:8765;
   proxy_http_version 1.1;
@@ -9404,12 +9412,6 @@ categories         &lt;- Taxonomy
             
                 
                     
-                        
-                            
-                            
-                            
-                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
-                            
                         
                             
                             
@@ -9442,7 +9444,7 @@ categories         &lt;- Taxonomy
             <title type="text">CSS知识点汇总</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-09-15T21:53:21+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9508,7 +9510,7 @@ categories         &lt;- Taxonomy
             <title type="text">React With Gesture</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-with-gesture.html" />
             <id>https://wss.cool/react-with-gesture.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-08-28T13:21:48+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9560,7 +9562,7 @@ categories         &lt;- Taxonomy
             <title type="text">React Rangeslider</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-rangeslider.html" />
             <id>https://wss.cool/react-rangeslider.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-08-28T13:15:47+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9652,7 +9654,7 @@ categories         &lt;- Taxonomy
             <title type="text">workbox</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/workbox/" />
             <id>https://wss.cool/workbox/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-08-28T09:53:21+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9746,7 +9748,7 @@ workbox wizard
             <title type="text">授课项目优化</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E6%8E%88%E8%AF%BE%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E6%8E%88%E8%AF%BE%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-08-28T07:19:34+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -9844,7 +9846,7 @@ workbox wizard
             <title type="text">正则表达式</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/javascript/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-08-25T20:13:08+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -9950,7 +9952,7 @@ workbox wizard
             <title type="text">React Popup</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-popup.html" />
             <id>https://wss.cool/react-popup.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-08-22T10:43:25+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10100,7 +10102,7 @@ npm install reactjs-popup
             <title type="text">D3学习笔记</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/d3/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/d3/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-07-20T12:29:41+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10238,7 +10240,7 @@ domain中的数据会被线性映射到range中。<code>scale(50);</code>中的<
             <title type="text">Git常用操作</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git/" />
             <id>https://wss.cool/posts/%E5%B7%A5%E5%85%B7/git/git/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-07-18T10:53:36+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10439,7 +10441,7 @@ git log --graph --oneline --decorate</p>
             <title type="text">Fetch 与 Axios</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/fetch%E4%B8%8Eaxios/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/fetch%E4%B8%8Eaxios/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-07-17T10:27:44+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -10863,7 +10865,7 @@ git log --graph --oneline --decorate</p>
             <title type="text">利用useContext使用ReactRouter</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-router-hook.html" />
             <id>https://wss.cool/react-router-hook.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-07-08T09:36:38+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -10954,7 +10956,7 @@ git log --graph --oneline --decorate</p>
             <title type="text">web前端对密码加密的意义</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%BF%83%E5%BE%97/web%E5%89%8D%E7%AB%AF%E5%AF%B9%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E7%9A%84%E6%84%8F%E4%B9%89/" />
             <id>https://wss.cool/posts/%E5%BF%83%E5%BE%97/web%E5%89%8D%E7%AB%AF%E5%AF%B9%E5%AF%86%E7%A0%81%E5%8A%A0%E5%AF%86%E7%9A%84%E6%84%8F%E4%B9%89/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-07-06T10:04:07+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -11096,7 +11098,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">前端知识点</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%82%B9/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-06-17T02:03:56+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11185,7 +11187,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">Favicon Emoji</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/favicon-emoji.html" />
             <id>https://wss.cool/favicon-emoji.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-06-12T17:58:07+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -11264,7 +11266,7 @@ hugo serve --renderToDisk --appendPort=false
             <title type="text">Linux的简单使用</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/linux.html" />
             <id>https://wss.cool/linux.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-06-11T23:02:30+08:00</published>
             <author>
                     <name>王书硕</name>
@@ -11285,13 +11287,14 @@ hugo serve --renderToDisk --appendPort=false
 <li><code>source ~/.zshrc</code></li>
 </ol>
 <h2 id="复制">复制</h2>
-<p>sudo cp -r public /usr/share/nginx/html/blog</p>
-<h2 id="端口被占用">端口被占用</h2>
+<pre><code>sudo cp -r public /usr/share/nginx/html/blog
+</code></pre><h2 id="端口被占用">端口被占用</h2>
 <p>lsof -i :80</p>
 <h2 id="解析域名">解析域名</h2>
-<p>apt install dig</p>
-<p>dig wss.cool</p>
-<h2 id="设置梯子-客户端">设置梯子-客户端</h2>
+<pre><code>apt install dig
+
+dig wss.cool
+</code></pre><h2 id="设置梯子-客户端">设置梯子-客户端</h2>
 <p>使用shadowsocks-libev，</p>
 <p>安装 <code>sudo apt-get install shadowsocks-libev</code></p>
 <p>配置文件在 <code>/etc/shadowsocks-libev/config.json</code></p>
@@ -11370,12 +11373,6 @@ passwd root
                             
                             
                             
-                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
-                            
-                        
-                            
-                            
-                            
                                 <category scheme="https://wss.cool/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/" term="服务器" label="服务器" />
                             
                         
@@ -11404,7 +11401,7 @@ passwd root
             <title type="text">docker</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/docker.html" />
             <id>https://wss.cool/docker.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-06-06T01:47:46+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11585,12 +11582,6 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
                             
                             
                             
-                                <category scheme="https://wss.cool/categories/api/" term="api" label="api" />
-                            
-                        
-                            
-                            
-                            
                                 <category scheme="https://wss.cool/categories/%E5%B7%A5%E5%85%B7/" term="工具" label="工具" />
                             
                         
@@ -11605,7 +11596,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
             <title type="text">GraphQl介绍</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/graphql/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/graphql/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-05-10T06:58:48+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11707,7 +11698,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
             <title type="text">如何拥有技术领导力？</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/lead.html" />
             <id>https://wss.cool/lead.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-05-06T02:38:58+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11762,7 +11753,7 @@ sudo docker push hub.tencentyun.com/wangshushuo/site
             <title type="text">网站的兼容性</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E7%BD%91%E7%AB%99%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E7%BD%91%E7%AB%99%E7%9A%84%E5%85%BC%E5%AE%B9%E6%80%A7/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-04-03T02:41:47+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11822,7 +11813,7 @@ transform: translate(50%, 50%);</code></pre><blockquote>
             <title type="text">自定义事件</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/dom/%E8%87%AA%E5%AE%9A%E4%B9%89%E4%BA%8B%E4%BB%B6/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-03-27T05:19:04+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11911,7 +11902,7 @@ transform: translate(50%, 50%);</code></pre><blockquote>
             <title type="text">CSS命名</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E5%91%BD%E5%90%8D/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/css/css%E5%91%BD%E5%90%8D/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-03-27T05:08:59+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -11974,7 +11965,7 @@ B文件：
             <title type="text">浏览器缓存</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/browser-cache.html" />
             <id>https://wss.cool/browser-cache.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-03-14T02:23:03+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12043,7 +12034,7 @@ B文件：
             <title type="text">加载script标签</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/js-script-tag/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/js-script-tag/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-03-13T02:03:07+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12089,7 +12080,7 @@ B文件：
             <title type="text">字体</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%AD%97%E4%BD%93/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/%E5%AD%97%E4%BD%93/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-03-05T05:16:17+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12132,7 +12123,7 @@ B文件：
             <title type="text">Cheerio</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/cheerio.html" />
             <id>https://wss.cool/cheerio.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-01-25T01:20:58+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12198,7 +12189,7 @@ B文件：
             <title type="text">React 与 Typescript</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/typescript-react.html" />
             <id>https://wss.cool/typescript-react.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-01-20T14:15:47+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12308,7 +12299,7 @@ class AddTodo extends React.Component&lt;IProps, IState&gt;{}
             <title type="text">命令行发送email</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/mac-ubuntu-send-email.html" />
             <id>https://wss.cool/mac-ubuntu-send-email.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2019-01-04T04:49:13+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12514,7 +12505,7 @@ sudo vim /etc/s-nail.rc﻿
             <title type="text">dva取消异步任务</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/dva-saga-cancel-effect.html" />
             <id>https://wss.cool/dva-saga-cancel-effect.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2018-12-31T09:54:21+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12728,7 +12719,7 @@ sudo vim /etc/s-nail.rc﻿
             <title type="text">如何处理大量bug</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html" />
             <id>https://wss.cool/%E5%A6%82%E4%BD%95%E5%A4%84%E7%90%86%E5%A4%A7%E9%87%8Fbug.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2018-12-21T16:21:39+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -12775,7 +12766,7 @@ sudo vim /etc/s-nail.rc﻿
             <title type="text">Redux Saga</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-saga/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-saga/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2018-12-02T11:04:48+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -13222,7 +13213,7 @@ const members = yield call(fetchMembers, project.id)
             <title type="text">Redux 概要</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-%E6%A6%82%E8%A6%81/" />
             <id>https://wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-%E6%A6%82%E8%A6%81/</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2018-11-28T14:24:04+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -13340,7 +13331,7 @@ const store = createStore(reducer);</code></pre>
             <title type="text">元素与组件</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-element-and-component.html" />
             <id>https://wss.cool/react-element-and-component.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2018-11-24T04:49:54+00:00</published>
             <author>
                     <name>王书硕</name>
@@ -13689,7 +13680,7 @@ const store = createStore(reducer);</code></pre>
             <title type="text">Diff</title>
             <link rel="alternate" type="text/html" href="https://wss.cool/react-reconciliation.html" />
             <id>https://wss.cool/react-reconciliation.html</id>
-            <updated>2020-05-26T00:46:46+00:00</updated>
+            <updated>2020-05-26T10:26:17+00:00</updated>
             <published>2018-11-17T08:33:37+00:00</published>
             <author>
                     <name>王书硕</name>
