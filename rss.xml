@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 25 May 2020 10:48:59 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 26 May 2020 00:46:51 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -50,7 +50,7 @@
 <span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>a和b都在引用对象1，如果对对象1进行修改，则a和b两个变量都会受到影响。有时我们不希望出现修改a时b也受到影响，这时就要对对象进行拷贝操作来切换引用。比如</p>
+</div><p>a和b都在引用对象1，如果对对象1进行修改，则a和b两个变量都会受到影响，有时我们不希望出现这种情况，就要对对象进行拷贝操作来切换引用。比如</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -62,10 +62,52 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>那么如何实现拷贝呢？</p>
-<p>我们知道对象是由多个key和value组成的，所以拷贝就是创建一个新的对象，将旧对象的key和value拷贝到新对象中，让新旧对象的key和value都完全一样。</p>
-<p>简单的实现使用递归遍历字段。但是会遇到循环引用的问题。解决循环引用问题需要用循环代替递归。</p>
-<p>首先有一个原对象a 创建一个空对象b copy的过程就是遍历a，将a的key和value转移到b上。 当value的值是基本类型时，可以直接将它copy到b上。 但是当value的值不是基本类型，也就是对象时，不能将它直接复制到b，因为这是浅复制的操作。我们需要对它也进行copy的操作。 如果遇到value是对象就立刻进行copy的话，这是递归的做法。为了避免递归，我们可以先将这个子对象存起来，待当前对象遍历完以后，在对刚刚存起来的子对象进行遍历。 对于这个暂存的子对象，需要知道它的父对象和key，才能找到它应该被安置在哪里。 所以它暂存子对象的数据结构是这样的</p>
+<p>我们知道对象是由多个key和value组成的，所以拷贝就是创建一个新的对象，将旧对象的key和value拷贝到新对象中，让新旧对象的key和value完全一样。比如像下面这样</p>
 <div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">对象1</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">新对象</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">对象1</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果所有的value都是基本类型<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，这样的操作没问题。但是如果value是引用类型<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup>就会出现新旧对象中都引用了一个对象的情况，也就是上文提到的a和b变量的问题。..如果想完全切断引用，就要对引用类型的value在进行一次拷贝..。对于是否需要完全切断引用就有了两种拷贝方式，需要完全切断引用的就是「深拷贝」，不需要的就是「浅拷贝」。</p>
+<p>简单概括一下。</p>
+<p>「浅拷贝」是只对对象的key和value进行一次遍历拷贝，不管内部的引用。</p>
+<p>「深拷贝」要将对象内部的引用完全切断，对对象进行递归地拷贝。</p>
+<h2 id="如何实现深拷贝">如何实现深拷贝</h2>
+<p>先看一种实现方式</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln"> 1</span><span class="kd">function</span> <span class="nx">clone</span><span class="p">(</span><span class="nx">旧对象</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 2</span>  <span class="kd">var</span> <span class="nx">新对象</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="ln"> 3</span>  <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">旧对象</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<span class="ln"> 4</span>    <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">旧对象</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="ln"> 5</span>    <span class="k">if</span><span class="p">(</span><span class="nx">is基本类型</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
+<span class="ln"> 6</span>      <span class="nx">新对象</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">旧对象</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="ln"> 7</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="hl"><span class="ln"> 8</span>      <span class="nx">clone</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// 递归
+</span></span><span class="ln"> 9</span><span class="c1"></span>    <span class="p">}</span>
+<span class="ln">10</span>  <span class="p">})</span>
+<span class="ln">11</span>  <span class="k">return</span> <span class="nx">新对象</span><span class="p">;</span>
+<span class="ln">12</span><span class="p">}</span>
+</code></pre></div>
+<hr>
+<p>简单的实现使用递归遍历字段。但是会遇到循环引用的问题。解决循环引用问题需要用循环代替递归。</p>
+<pre><code>首先有一个原对象a
+创建一个空对象b 
+copy的过程就是遍历a，将a的key和value转移到b上。 
+  当value的值是基本类型时，
+    可以直接将它copy到b上。 
+  但是当value的值不是基本类型，也就是对象时，
+    不能将它直接复制到b，因为这是浅复制的操作。
+    我们需要对它也进行copy的操作。 
+    如果遇到value是对象就立刻进行copy的话，这是递归的做法。为了避免递归，我们可以先将这个子对象存起来，待当前对象遍历完以后，在对刚刚存起来的子对象进行遍历。 
+    对于这个暂存的子对象，需要知道它的父对象和key，才能找到它应该被安置在哪里。 
+    所以它暂存子对象的数据结构是这样的
+</code></pre><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
 </span><span class="lnt">2
@@ -82,7 +124,7 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>当遍历该子对象时，先在父对象上创建一个空对象，将遍历到的key和value复制到空对象上。如果又遇到value是对象，则重复上面的过程，直至没有value是对象。也就是存储子对象的数组为空。</p>
-<p>对于拷贝一个对象的过程lodash使用的是「结构化克隆算法」<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，普通对象直接复制key和value，数组等其他对象使用相应的复制方法。</p>
+<p>对于拷贝一个对象的过程lodash使用的是「结构化克隆算法」<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>，普通对象直接复制key和value，数组等其他对象使用相应的复制方法。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -191,7 +233,14 @@
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>结构化克隆算法MDN：https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/The_structured_clone_algorithm ↩︎ <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>基本类型有五种：String、Number、Boolean、Undefined和Null。 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>引用类型就是对象。 <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>结构化克隆算法MDN：<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/The_structured_clone_algorithm">https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/The_structured_clone_algorithm</a><br>
+结构化克隆算法规范：<a href="https://html.spec.whatwg.org/multipage/structured-data.html#structuredserializeinternal">https://html.spec.whatwg.org/multipage/structured-data.html#structuredserializeinternal</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -801,6 +850,57 @@ git branch -d temp <span class="c1">#删除</span>
                             
                         
                     
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Cors</title>
+                <link>https://wss.cool/cors.html</link>
+                <guid isPermaLink="true">https://wss.cool/cors.html</guid>
+                <pubDate>Thu, 07 May 2020 12:38:38 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>使用 fetch 进行请求时，可在参数中加 <code>mode : 'no-cors'</code>，使浏览器不发送 option 请求，直接发起网络请求。但是请求的 header 只能是 CORS-safelisted 列表中的。其他 header 浏览器不会发送。比如 <code>Authorization</code>
+<code>no-cors</code> 对 header 有影响，</p>
+<p><a href="https://fetch.spec.whatwg.org/#cors-safelisted-response-header-name">https://fetch.spec.whatwg.org/#cors-safelisted-response-header-name</a>
+<a href="https://stackoverflow.com/questions/44606244/using-fetch-api-with-mode-no-cors-can-t-set-request-headers">https://stackoverflow.com/questions/44606244/using-fetch-api-with-mode-no-cors-can-t-set-request-headers</a></p>
+<p><a href="https://fetch.spec.whatwg.org/#http-access-control-allow-headers">https://fetch.spec.whatwg.org/#http-access-control-allow-headers</a>
+<a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers">https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Expose-Headers</a>
+<a href="https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe">https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe</a>
+<a href="https://fetch.spec.whatwg.org/#headers-class">https://fetch.spec.whatwg.org/#headers-class</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Simple_requests">https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Simple_requests</a>
+<a href="https://fetch.spec.whatwg.org/#cors-protocol">https://fetch.spec.whatwg.org/#cors-protocol</a>
+<a href="https://www.ruanyifeng.com/blog/2016/04/cors.html">https://www.ruanyifeng.com/blog/2016/04/cors.html</a></p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%88%86%E7%B1%BB/">分类</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/">显示在底部</category>
+                                
+                            
                         
                     
                 
@@ -4043,6 +4143,47 @@ ID选择器 = 100
     <sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">[1]</a></sup>
   </div>
 </p>
+<h2 id="代码块内的高亮">代码块内的高亮</h2>
+<p>Options:</p>
+<p><code>linenos</code>: configure line numbers. Valid values are <code>true</code>, <code>false</code>, <code>table</code>, or <code>inline</code>. <code>false</code> will turn off line numbers if it’s configured to be on in site config. <code>New in v0.60.0</code> <code>table</code> will give copy-and-paste friendly code blocks.
+<code>hl_lines</code>: lists a set of line numbers or line number ranges to be highlighted.
+<code>linenostart=199</code>: starts the line number count from 199.</p>
+<pre><code><span>{</span>{< highlight go "linenos=table,hl_lines=8 15-17,linenostart=199" >}}
+// ... code
+<span>{</span>{< / highlight >}}
+</code></pre>
+<p><strong>效果</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="hl"><span class="lnt"> 8
+</span></span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">clone</span><span class="p">(</span><span class="nx">旧对象</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">新对象</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">旧对象</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">旧对象</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">is基本类型</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
+      <span class="nx">新对象</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">旧对象</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="hl">      <span class="nx">clone</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+</span>    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="k">return</span> <span class="nx">新对象</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>
 <h2 id="定义">定义</h2>
 <dl>
 <dt>定义一</dt>
