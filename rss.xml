@@ -23,10 +23,61 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 27 May 2020 11:48:24 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 28 May 2020 00:17:48 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>设置jar包使用内存</title>
+                <link>https://wss.cool/%E8%AE%BE%E7%BD%AEjar%E5%8C%85%E4%BD%BF%E7%94%A8%E5%86%85%E5%AD%98.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E8%AE%BE%E7%BD%AEjar%E5%8C%85%E4%BD%BF%E7%94%A8%E5%86%85%E5%AD%98.html</guid>
+                <pubDate>Thu, 28 May 2020 07:56:46 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>下面的命令中包含了几个 <code>jvm option</code> 限制运行jar包使用的内存在72M。</p>
+<pre><code>java -XX:+UseSerialGC -Xss512k -XX:MaxRAM=72m -jar image-0.0.4-SNAPSHOT.jar
+</code></pre><p>如果不加这3个option的话，会使用大概300-400M内存。</p>
+<p>根据这个答案<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>进行的设置：</p>
+<p>With <code>-XX:+UseSerialGC</code> 这将与分配堆内存的线程而不是专用GC线程内联地执行垃圾回收。</p>
+<p>With <code>-Xss512k</code> 这会将每个线程的堆栈内存限制为512KB，而不是默认的1MB。</p>
+<p>With <code>-XX:MaxRAM=72m</code> 这会将JVM对堆和非堆托管内存的计算限制在此值的范围内。</p>
+<p>除了上述JVM选项之外，您还可以在 <code>application.properties</code> 文件中使用以下属性：</p>
+<p><code>server.tomcat.max-threads = 1</code> 这会将HTTP请求处理程序线程数限制为1（默认值为200）</p>
+<p>这是一个使用上述限制并使用 <code>docker -m 72m</code> 参数运行非常简单的 <code>Spring Boot</code> 应用程序的 <code>docker stats</code> 示例。如果我降低的值低于此值，我将无法启动应用程序。</p>
+<pre><code>83ccc9b2156d: Mem Usage: 70.36MiB / 72MiB | Mem Percentage: 97.72%
+</code></pre><section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>CCob.<a href="https://stackoverflow.com/a/52993285/6021280">stackoverflow Answers</a>.2018年10月25日 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>学习TCP</title>
@@ -74,6 +125,46 @@
                                 
                                 
                                     <category domain="https://wss.cool/categories/%E7%BD%91%E7%BB%9C/">网络</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>组件化</title>
+                <link>https://wss.cool/%E7%BB%84%E4%BB%B6%E5%8C%96.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E7%BB%84%E4%BB%B6%E5%8C%96.html</guid>
+                <pubDate>Tue, 26 May 2020 18:27:38 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<dl>
+<dt>减少重复代码</dt>
+<dd>即便没有复杂的逻辑，只是重复的UI元素，也可以封装成组件，以便重复使用，减少重复代码。</dd>
+<dt>封装逻辑</dt>
+<dd>相关的函数、变量和DOM元素封装成一个组件，降低复杂度。需要的话，暴露出参数用于复用。</dd>
+<dt>复用</dt>
+<dd>功能逻辑可以是通用的，比如背景图、颜色、文字等可能变化，也可以重复使用一个组件在不同的地方传不同的参数。</dd>
+</dl>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
                                 
                             
                         
@@ -11110,7 +11201,9 @@ sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
 <pre class="chroma"><code class="language-bash" data-lang="bash">sudo service blog start/stop/status/restart
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="ubuntu-安装python3">ubuntu 安装python3</h2>
+</div><p>修改了service文件后需要刷新</p>
+<pre><code>sudo systemctl daemon-reload
+</code></pre><h2 id="ubuntu-安装python3">ubuntu 安装python3</h2>
 <ol>
 <li>wget <a href="http://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz">http://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz</a></li>
 <li>tar -xvzf Python-3.7.4.tgz</li>
