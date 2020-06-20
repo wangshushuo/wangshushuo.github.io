@@ -23,10 +23,71 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 18 Jun 2020 00:31:24 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 20 Jun 2020 15:14:16 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>React-生命周期</title>
+                <link>https://wss.cool/react-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html</link>
+                <guid isPermaLink="true">https://wss.cool/react-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.html</guid>
+                <pubDate>Fri, 19 Jun 2020 09:41:43 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="挂载">挂载</h2>
+<ul>
+<li>constructor</li>
+<li>getDerviedStateFromProps</li>
+<li>render</li>
+<li>didMount</li>
+</ul>
+<p>willMount已过时</p>
+<h2 id="更新">更新</h2>
+<ul>
+<li>getDerviedStateFromProps</li>
+<li>shouldComponentUpdate(nextProps, nextState)</li>
+<li>render</li>
+<li>getSnapshotBeforeUpdate(prevProps, prevState)</li>
+<li>componentDidUpdate(prevProps, prevState, snapshot)</li>
+</ul>
+<p>willUpdate和willReceiveProps已过时</p>
+<p>getSnapshotBeforeUpdate可以在更新前，从DOM中获取一些信息，比如滚动位置。</p>
+<h2 id="卸载">卸载</h2>
+<ul>
+<li>willUnmount</li>
+</ul>
+<h2 id="异常">异常</h2>
+<ul>
+<li>getDerviedStateFromError</li>
+<li>didCatch</li>
+</ul>
+<h2 id="setstate">setState</h2>
+<p>setState在合成事件或者生命周期中调用时，会将修改放入队列，在协调和更新之后进行更新state</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>前端面试</title>
@@ -112,12 +173,47 @@
 <li>Promise的核心api</li>
 <li>LRU缓存机制（最近最少使用）</li>
 </ul>
+<h2 id="致愿">致愿</h2>
+<ul>
+<li>如何实现每个标签对应一个用户，不会导致身份错误</li>
+</ul>
+<h2 id="企企">企企</h2>
+<ul>
+<li>用js实现一个top:0px到top:200px的动画</li>
+<li>es6的class编译成es5是什么样的代码</li>
+</ul>
+<h2 id="三节课">三节课</h2>
+<ul>
+<li>margin:30%，此处的百分比，是相对于谁的</li>
+<li>css实现定宽加不定宽
+<ul>
+<li>flex,float+calc,position:absolute+calc</li>
+</ul>
+</li>
+<li>自己实现一个promise.all</li>
+</ul>
+<h2 id="不知道什么名字的公司">不知道什么名字的公司</h2>
+<ul>
+<li>自己实现一个call或apply这样的方法来绑定函数的this</li>
+<li>hook实现forceUpdate</li>
+</ul>
 <hr>
 <h2 id="非技术问题">非技术问题</h2>
 <ul>
-<li>以后的职业规划是什么</li>
+<li>以后的职业规划是什么
+<ul>
+<li>我打算以后代码质量、工作效率这方面的提升，还有就是程序和架构的设计知识要进一步的学习，让自己有这方面的知识和能力，如果有机会的话，可以抓住。</li>
+</ul>
+</li>
 <li>现在有什么不足，有什么优点或优势</li>
 </ul>
+<p><strong>JS动画</strong></p>
+<p class="codepen" data-height="565" data-theme-id="light" data-default-tab="js,result" data-user="wangshushuo" data-slug-hash="xxZgKaL" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="企企前端笔试--JS动画">
+  <span>See the Pen <a href="https://codepen.io/wangshushuo/pen/xxZgKaL">
+  企企前端笔试--JS动画</a> by wangshushuo (<a href="https://codepen.io/wangshushuo">@wangshushuo</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
 ]]></description>
                 
                 
