@@ -23,10 +23,168 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 06 Jul 2020 04:17:47 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 14 Jul 2020 03:30:08 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>Go基础三：方法和接口</title>
+                <link>https://wss.cool/learn-go-3.html</link>
+                <guid isPermaLink="true">https://wss.cool/learn-go-3.html</guid>
+                <pubDate>Mon, 06 Jul 2020 12:27:59 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="方法">方法</h2>
+<ol>
+<li>定义</li>
+</ol>
+<p>Go中没有类，不过可以为结构体类型定义方法。方法就是一类带有特殊「接收器」参数的函数。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Vertex</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">float64</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">Vertex</span><span class="p">)</span> <span class="nf">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nf">Sqrt</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span><span class="o">*</span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="o">*</span><span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">v</span> <span class="o">:=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nf">Abs</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>方法接收者，在func与方法名之间。这里是<code>(v Vertex)</code>。相当于为<code>Vertex</code>类型定义类方法<code>Abs</code></p>
+<ol start="2">
+<li>非结构体类型的方法</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">MyFloat</span> <span class="kt">float64</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">f</span> <span class="nx">MyFloat</span><span class="p">)</span> <span class="nf">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="nx">f</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nb">float64</span><span class="p">(</span><span class="o">-</span><span class="nx">f</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nb">float64</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">f</span> <span class="o">:=</span> <span class="nf">MyFloat</span><span class="p">(</span><span class="o">-</span><span class="nx">math</span><span class="p">.</span><span class="nx">Sqrt2</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">f</span><span class="p">.</span><span class="nf">Abs</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>接收者的类型定义和方法声明必须在同一包内；不能为内建类型声明方法。</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Go基础二：流程控制语句</title>
+                <link>https://wss.cool/learn-go-2.html</link>
+                <guid isPermaLink="true">https://wss.cool/learn-go-2.html</guid>
+                <pubDate>Mon, 06 Jul 2020 12:27:59 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="循环">循环</h2>
+<p>Go只有一种循环语句：for</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">sum</span> <span class="o">:=</span> <span class="mi">0</span>
+	<span class="k">for</span> <span class="nx">i</span> <span class="o">:=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="p">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">{</span>
+		<span class="nx">sum</span> <span class="o">+=</span> <span class="nx">i</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">sum</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>链表</title>
@@ -117,9 +275,9 @@
             </item>
         
             <item>
-                <title>学习Go的基础</title>
-                <link>https://wss.cool/learn-go.html</link>
-                <guid isPermaLink="true">https://wss.cool/learn-go.html</guid>
+                <title>Go基础一：包、变量和函数</title>
+                <link>https://wss.cool/learn-go-1.html</link>
+                <guid isPermaLink="true">https://wss.cool/learn-go-1.html</guid>
                 <pubDate>Mon, 29 Jun 2020 10:06:01 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (王书硕)</author>
