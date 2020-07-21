@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 17 Jul 2020 02:06:07 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 21 Jul 2020 02:42:46 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -1879,7 +1879,38 @@ Find a ref that matches experimental in the origin repository (e.g.  refs/heads/
 </blockquote>
 <h3 id="获取当前分支名">获取当前分支名</h3>
 <pre><code>git symbolic-ref --short -q HEAD 
-</code></pre><h3 id="推送当前分支到远端">推送当前分支到远端</h3>
+</code></pre><h3 id="获取当前分支从哪个分支签出">获取当前分支从哪个分支签出</h3>
+<blockquote>
+<p>基于哪个分支拉的分支</p>
+</blockquote>
+<p>下面的两个命令都可以获取到“父分支”，来自——<a href="https://stackoverflow.com/questions/3161204/how-to-find-the-nearest-parent-of-a-git-branch">How to find the nearest parent of a Git branch?</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git show-branch <span class="se">\
+</span><span class="se"></span><span class="p">|</span> sed <span class="s2">&#34;s/].*//&#34;</span> <span class="se">\
+</span><span class="se"></span><span class="p">|</span> grep <span class="s2">&#34;\*&#34;</span> <span class="se">\
+</span><span class="se"></span><span class="p">|</span> grep -v <span class="s2">&#34;</span><span class="k">$(</span>git rev-parse --abbrev-ref HEAD<span class="k">)</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span><span class="p">|</span> head -n1 <span class="se">\
+</span><span class="se"></span><span class="p">|</span> sed <span class="s2">&#34;s/^.*\[//&#34;</span> 
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">git show-branch <span class="p">|</span> grep <span class="s1">&#39;*&#39;</span> <span class="p">|</span> grep -v <span class="s2">&#34;</span><span class="k">$(</span>git rev-parse --abbrev-ref HEAD<span class="k">)</span><span class="s2">&#34;</span> <span class="p">|</span> head -n1 <span class="p">|</span> sed <span class="s1">&#39;s/.*\[\(.*\)\].*/\1/&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/[\^~].*//&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="推送当前分支到远端">推送当前分支到远端</h3>
 <p>如果你还没有推到原点，那么<code>git push -u origin HEAD</code>可以在本地分支中设置上游跟踪信息。</p>
 <h3 id="推送当前分支到远端会在远端新建当前分支名的新分支">推送当前分支到远端，会在远端新建当前分支名的新分支</h3>
 <pre><code>git push -u origin HEAD  
