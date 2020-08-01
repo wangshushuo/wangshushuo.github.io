@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 21 Jul 2020 02:42:46 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 01 Aug 2020 08:42:21 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -42,7 +42,7 @@
 <ol>
 <li>定义</li>
 </ol>
-<p>Go中没有类，不过可以为结构体类型定义方法。方法就是一类带有特殊「接收器」参数的函数。</p>
+<p>Go中没有类，不过可以为结构体类型定义方法。方法就是一类带有特殊「接收者」参数的函数。</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -73,7 +73,7 @@
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>方法接收者，在func与方法名之间。这里是<code>(v Vertex)</code>。相当于为<code>Vertex</code>类型定义类方法<code>Abs</code></p>
+</div><p>方法接收者，在func与方法名之间。这里是<code>(v Vertex)</code>。相当于为<code>Vertex</code>类型定义了方法<code>Abs</code></p>
 <ol start="2">
 <li>非结构体类型的方法</li>
 </ol>
@@ -110,7 +110,283 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>接收者的类型定义和方法声明必须在同一包内；不能为内建类型声明方法。</p>
-]]></description>
+<ol start="3">
+<li>指针接收者</li>
+</ol>
+<p>前面定义的方法，是「值接收者」</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">Vertex</span><span class="p">)</span> <span class="nf">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{}</span>
+<span class="kd">func</span> <span class="p">(</span><span class="nx">f</span> <span class="nx">MyFloat</span><span class="p">)</span> <span class="nf">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>还有一种「指针接收者」，多了一个「*」星号</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="o">*</span><span class="nx">Vertex</span><span class="p">)</span> <span class="nf">Scale</span><span class="p">(</span><span class="nx">f</span> <span class="kt">float64</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="o">*</span> <span class="nx">f</span>
+	<span class="nx">v</span><span class="p">.</span><span class="nx">Y</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span> <span class="o">*</span> <span class="nx">f</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>「指针接收者」可以修改指针，「值接收者」则不能修改。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">Vertex</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">float64</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="nx">Vertex</span><span class="p">)</span> <span class="nf">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span>
+<span class="p">}</span>
+
+<span class="c1">// 可以对v进行修改。如果去掉「*」则不会修改。
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="o">*</span><span class="nx">Vertex</span><span class="p">)</span> <span class="nf">Scale</span><span class="p">(</span><span class="nx">f</span> <span class="kt">float64</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="o">*</span> <span class="nx">f</span>
+	<span class="nx">v</span><span class="p">.</span><span class="nx">Y</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span> <span class="o">*</span> <span class="nx">f</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">v</span> <span class="o">:=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+	<span class="nx">v</span><span class="p">.</span><span class="nf">Scale</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nf">Abs</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="4">
+<li>指针与函数
+函数定义的参数如果是指针，那么传的参数就要求是指针，如果传值就会报错。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">ScaleFunc</span><span class="p">(</span><span class="nx">v</span> <span class="o">*</span><span class="nx">Vertex</span><span class="p">,</span> <span class="nx">f</span> <span class="kt">float64</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="o">*</span> <span class="nx">f</span>
+	<span class="nx">v</span><span class="p">.</span><span class="nx">Y</span> <span class="p">=</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span> <span class="o">*</span> <span class="nx">f</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="nx">v</span> <span class="o">:=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+	<span class="nf">ScaleFunc</span><span class="p">(</span><span class="nx">v</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1">// 编译错误！
+</span><span class="c1"></span>	<span class="nf">ScaleFunc</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">v</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="c1">// OK
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="5">
+<li>方法与指针重定向
+以指针为接收者的方法被调用时，接收者既能为值又能为指针：</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">v</span> <span class="nx">Vertex</span>
+<span class="nx">v</span><span class="p">.</span><span class="nf">Scale</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>  <span class="c1">// OK
+</span><span class="c1"></span><span class="nx">p</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">v</span>
+<span class="nx">p</span><span class="p">.</span><span class="nf">Scale</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1">// OK
+</span></code></pre></td></tr></table>
+</div>
+</div><p>反过来，接受一个值作为参数的函数必须接受一个指定类型的值</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">v</span> <span class="nx">Vertex</span>
+<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">AbsFunc</span><span class="p">(</span><span class="nx">v</span><span class="p">))</span>  <span class="c1">// OK
+</span><span class="c1"></span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nf">AbsFunc</span><span class="p">(</span><span class="o">&amp;</span><span class="nx">v</span><span class="p">))</span> <span class="c1">// 编译错误！
+</span></code></pre></td></tr></table>
+</div>
+</div><p>而以值为接收者的方法被调用时，接收者既能为值又能为指针。</p>
+<p>使用指针接收者能避免在调用时复制值，尤其是大型构造体，会更加高效。</p>
+<p>一般不混用两者。</p>
+<h2 id="接口">接口</h2>
+<ol>
+<li>接口类型是由一组方法签名定义的结合。</li>
+</ol>
+<p>接口类型的变量可以保存任意实现了这些方法的值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 定义接口
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Abser</span> <span class="kd">interface</span> <span class="p">{</span>
+	<span class="nf">Abs</span><span class="p">()</span> <span class="kt">float64</span>
+<span class="p">}</span>
+
+<span class="c1">// 定义结构体，并实现接口
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">MyFloat</span> <span class="kt">float64</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">f</span> <span class="nx">MyFloat</span><span class="p">)</span> <span class="nf">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+	<span class="k">if</span> <span class="nx">f</span> <span class="p">&lt;</span> <span class="mi">0</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nb">float64</span><span class="p">(</span><span class="o">-</span><span class="nx">f</span><span class="p">)</span>
+	<span class="p">}</span>
+	<span class="k">return</span> <span class="nb">float64</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// 定义结构体，并实现结构
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">Vertex</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">X</span><span class="p">,</span> <span class="nx">Y</span> <span class="kt">float64</span>
+<span class="p">}</span>
+
+<span class="c1">// 指针的方法
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">v</span> <span class="o">*</span><span class="nx">Vertex</span><span class="p">)</span> <span class="nf">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">math</span><span class="p">.</span><span class="nf">Sqrt</span><span class="p">(</span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span><span class="o">*</span><span class="nx">v</span><span class="p">.</span><span class="nx">X</span> <span class="o">+</span> <span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="o">*</span><span class="nx">v</span><span class="p">.</span><span class="nx">Y</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">a</span> <span class="nx">Abser</span>
+	<span class="nx">f</span> <span class="o">:=</span> <span class="nf">MyFloat</span><span class="p">(</span><span class="o">-</span><span class="nx">math</span><span class="p">.</span><span class="nx">Sqrt2</span><span class="p">)</span>
+	<span class="nx">v</span> <span class="o">:=</span> <span class="nx">Vertex</span><span class="p">{</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">}</span>
+
+	<span class="nx">a</span> <span class="p">=</span> <span class="nx">f</span>  <span class="c1">// a MyFloat 实现了 Abser
+</span><span class="c1"></span>	<span class="nx">a</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">v</span> <span class="c1">// a *Vertex 实现了 Abser
+</span><span class="c1"></span>
+	<span class="c1">// 下面一行，v 是一个 Vertex（而不是 *Vertex）
+</span><span class="c1"></span>	<span class="c1">// 所以没有实现 Abser。
+</span><span class="c1"></span>	<span class="nx">a</span> <span class="p">=</span> <span class="nx">v</span>
+	<span class="o">&gt;=</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">a</span><span class="p">.</span><span class="nf">Abs</span><span class="p">())</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>接口与隐式实现</li>
+</ol>
+<p>类型通过实现接口的所有方法实现接口，无需专门的声明。</p>
+<p>隐式接口从接口的实现中解藕了定义，这样接口的实现可以出现在任何包中，无需提前准备。</p>
+<ol start="3">
+<li>接口值</li>
+</ol>
+<p>接口也是值。它们可以像其它值一样传递。接口值可以用作函数的参数或返回值。凡是这个接口的类型都可以使用这个方法或作为返回值。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">type</span> <span class="nx">I</span> <span class="kd">interface</span> <span class="p">{</span>
+	<span class="nf">M</span><span class="p">()</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">describe</span><span class="p">(</span><span class="nx">i</span> <span class="nx">I</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;(%v, %T)\n&#34;</span><span class="p">,</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+	<span class="kd">var</span> <span class="nx">i</span> <span class="nx">I</span>
+
+	<span class="nx">i</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">T</span><span class="p">{</span><span class="s">&#34;Hello&#34;</span><span class="p">}</span>
+	<span class="nf">describe</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	<span class="nx">i</span><span class="p">.</span><span class="nf">M</span><span class="p">()</span>
+
+	<span class="nx">i</span> <span class="p">=</span> <span class="nf">F</span><span class="p">(</span><span class="nx">math</span><span class="p">.</span><span class="nx">Pi</span><span class="p">)</span>
+	<span class="nf">describe</span><span class="p">(</span><span class="nx">i</span><span class="p">)</span>
+	<span class="nx">i</span><span class="p">.</span><span class="nf">M</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
                 
                 
                 
