@@ -23,10 +23,282 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sat, 01 Aug 2020 08:42:21 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 18 Aug 2020 02:16:07 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>React与Mobx的MVP和单元测试</title>
+                <link>https://wss.cool/react%E4%B8%8Emobx%E7%9A%84mvp%E5%92%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95.html</link>
+                <guid isPermaLink="true">https://wss.cool/react%E4%B8%8Emobx%E7%9A%84mvp%E5%92%8C%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95.html</guid>
+                <pubDate>Fri, 14 Aug 2020 09:35:25 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>我比较熟悉Redux，所以以Redux与Mobx作为类比我会比较容易理解。</p>
+<p>redux会有一个store与redux组件配合。</p>
+<p>store中定义变量、状态，写修改变量的reducer及相应的action。</p>
+<p>react组件中调用变量，使用dispatch调用action修改变量，完成单向数据流。</p>
+<p>reducer有两种写法——是否包含业务逻辑，这里选择不包含业务逻辑，就只是修改数据。业务逻辑全部放在react中。</p>
+<p>以上是一个普通的redux+react的用法。</p>
+<p>把它改为MVP模式的话，其实只是把业务逻辑和组件状态都从react组件中抽离出来，放在一个Presenter中。让react组件只接受数据和调用方法。</p>
+<p>redux可以换成mobx。</p>
+<p>在mobx的store中，它可以作为MVP中的M。还是声明变量、定义action，作用与redux一样。</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>WebStorm</title>
+                <link>https://wss.cool/webstorm.html</link>
+                <guid isPermaLink="true">https://wss.cool/webstorm.html</guid>
+                <pubDate>Thu, 13 Aug 2020 09:39:16 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>光标回到之前的位置：</p>
+<ol>
+<li>mac：ctrl+<code>-</code> 和 ctrl+shift+<code>-</code></li>
+<li>windows：<code>alt+左/右</code></li>
+</ol>
+<h2 id="常用设置">常用设置</h2>
+<ol>
+<li>自动保存的开关</li>
+<li>修改文件有*标记</li>
+<li>修改的文件的目录和文件的颜色都提示</li>
+<li>Windows系统中使用\n换行符</li>
+<li>切换terminal</li>
+</ol>
+<p><strong>修改默认terminal</strong></p>
+<p>Ctrl+Alt+S 打开设置，选择 tools 目录，选择 terminal</p>
+<p><strong>取消自动保存</strong></p>
+<p>关闭自动保存功能</p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Appearance &amp; Behavior，定位到 Synchronization 一栏，取消勾选以下三项：</p>
+<ul>
+<li>Save files on frame deactivation</li>
+<li>Save files automatically if application is idle for [15] sec</li>
+<li>Use &quot;safe write&quot; (save changes to a temporary file first)</li>
+</ul>
+<p><strong>打开修改文件后的星号提示</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Editor → General → Editor Tabs，定位到 Appearance 一栏，勾选 Mark modified (*)。</p>
+<p><strong>修改编译器字体</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Editor → Font，Font 选择为 Fira Code，Size 设置为 12。</p>
+<p><strong>设置文件换行符</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Editor → Code Style，定位到 General 标签，Line separator 选择为 Unix and OS X (\n)。</p>
+<p><strong>版本控制文件发生改变时上级目录也会有相应提示</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Version Control，勾选 Show directories with changed descendants。</p>
+<h2 id="常用快捷键">常用快捷键</h2>
+<table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">WebStorm</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">重复选中的内容或当前行</td>
+<td align="left">Ctrl+D</td>
+</tr>
+<tr>
+<td align="left">删除行</td>
+<td align="left">Ctrl+Y</td>
+</tr>
+</tbody>
+</table>
+<p>格式化代码 | Ctrl+Alt+L
+按prettier格式化 | Ctrl+Shift+Alt+P
+重命名 | Shift+F6</p>
+<p>撤销或反撤销修改 | Ctrl+Z 或 Ctr+Shift+Z
+回到之前的位置 | Ctrl+Alt+左\右
+光标移到内容的开始或结束标签处 | ctrl+[ 或 ctrl+]</p>
+<p>打开最近操作过的文件 | Ctrl+E
+搜索文件 | Ctrl+Shift+N</p>
+<p>在所有文件中列出代码使用情况 | Alt+F7
+在当前文件中高亮代码使用情况 | Ctrl+Shift+F7</p>
+<h2 id="配置">配置</h2>
+<p><strong>恢复默认配置</strong></p>
+<p>只要删除 C:\Users\wxj.WebStorm2018.3\config 目录，即可恢复默认配置。</p>
+<p><strong>修改默认terminal</strong></p>
+<p>Ctrl+Alt+S 打开设置，选择 tools 目录，选择 terminal</p>
+<p><strong>显示内存指示器</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Appearance &amp; Behavior → Appearance，定位到 Window Options 一栏，勾选 Show memory indicator。</p>
+<p><strong>取消自动打开项目</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Appearance &amp; Behavior → System Settings，定位到 Startup/Shutdown 一栏，取消勾选 Reopen last project on startup。</p>
+<p><strong>取消自动保存</strong></p>
+<p>关闭自动保存功能</p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Appearance &amp; Behavior，定位到 Synchronization 一栏，取消勾选以下三项：</p>
+<ul>
+<li>Save files on frame deactivation</li>
+<li>Save files automatically if application is idle for [15] sec</li>
+<li>Use &quot;safe write&quot; (save changes to a temporary file first)</li>
+</ul>
+<p><strong>打开修改文件后的星号提示</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Editor → General → Editor Tabs，定位到 Appearance 一栏，勾选 Mark modified (*)。</p>
+<p><strong>关闭自动更新检查</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ System Settings → Updates，取消勾选 Automatically check updates for [Stable Releases]。</p>
+<p><strong>启用软换行</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Editor → General，定位到 Soft Wraps 一栏，勾选 Use soft wraps in editor。</p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Editor → General → Console，勾选 Use soft wraps in console。</p>
+<p><strong>修改编译器字体</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Editor → Font，Font 选择为 Fira Code，Size 设置为 12。</p>
+<p><strong>设置文件换行符</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Editor → Code Style，定位到 General 标签，Line separator 选择为 Unix and OS X (\n)。</p>
+<p><strong>设置工程和文件 UTF-8 编码</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Editor → File Encodings，Global Encoding 选择为 UTF-8，Project Encoding 为 UTF-8。</p>
+<p>定位到 Properties Files (*.properties) 一栏，Default encoding for properties files 选择为 UTF-8，但不要勾选 Transparent native-to-ascii conversion。</p>
+<p>定位到 BOM for new UTF-8 files 一栏，Create UTF-8 files 选择为 with NO BOM。</p>
+<p><strong>设置控制台 UTF-8 编码</strong></p>
+<p>在 D:\Program Files\JetBrains\WebStorm 2018.3.5\bin[webstorm|webstorm64].exe.vmoptions 文件末尾添加 -Dfile.encoding=UTF-8。</p>
+<p><strong>版本控制文件发生改变时上级目录也会有相应提示</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Version Control，勾选 Show directories with changed descendants。</p>
+<p><strong>配置 GitHub 账户</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Version Control → GitHub，点击 Add account (Alt+Insert)，在弹出的 Login In to Github 中分别填写 GitHub 账户名和密码，然后点击 Log In。最后勾选 Clone git repositories using ssh。</p>
+<p><strong>配置 Git</strong></p>
+<p>Settings for New Projects（Ctrl+Alt+S）→ Version Control → Git，Path to Git executable 选择 D:\Program Files\Git\bin\git.exe。</p>
+<h2 id="快捷键">快捷键</h2>
+<p>以下所展示的快捷键是默认时的选择，即 Settings for New Projects（Ctrl+Alt+S）→ Keymap 中，选择的是 Default。</p>
+<h3 id="编辑代码">编辑代码</h3>
+<ul>
+<li>同步磁盘文件：Ctrl+Alt+Y</li>
+<li>快速生成通用方法：Alt+Insert</li>
+<li>注释和取消注释：Ctrl+/ 和 Ctrl+Shift+/</li>
+<li>快速修复问题：Alt+Enter</li>
+</ul>
+<h3 id="阅读代码">阅读代码</h3>
+<ul>
+<li>隐藏所有工具窗口：Ctrl+Shift+F12</li>
+<li>显示/隐藏工程目录窗口：Alt+1</li>
+<li>移动窗口分割线：Ctrl+Shift+左箭头 或 Ctrl+Shift+左箭头</li>
+<li>在工程目录中定位当前文件的位置：Alt+F1</li>
+<li>显示说明文档：Ctrl+Q</li>
+<li>折叠代码块：Ctrl+Shift+.</li>
+<li>显示折叠后的代码块：Ctrl++</li>
+<li>查看代码的定义：Ctrl+Shift+I</li>
+<li>退出：Esc</li>
+<li>导航至下一高亮处：F3</li>
+<li>导航至上一高亮处：Shift+F3</li>
+<li>取消高亮：Esc</li>
+<li>跳至代码声明处：Ctrl+B 或 Ctrl+鼠标左键</li>
+<li>跳至代码实现处：Ctrl+Alt+B 或 Ctrl+Alt+鼠标左键</li>
+<li>跳至父类代码：Ctrl+U</li>
+<li>导航文件中的各成员：Ctrl+F12</li>
+<li>打开 UML 类图：Ctrl+Alt+U 或 Ctrl+Alt+Shift+U</li>
+</ul>
+<h3 id="打开文件">打开文件</h3>
+<ul>
+<li>根据 Classes 打开文件：Ctrl+N</li>
+<li>根据文件名打开所有文件或定位目录：Ctrl+Shift+N</li>
+<li>根据 Symbols 打开所有文件：Ctrl+Shift+Alt+N</li>
+</ul>
+<h3 id="打开配置">打开配置</h3>
+<ul>
+<li>打开配置：Ctrl+Alt+S</li>
+<li>搜索所有可用的操作（Actions）：Ctrl+Shift+A</li>
+</ul>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%85%B6%E4%BB%96/">其他</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>笔记</title>
+                <link>https://wss.cool/posts/%E7%AC%94%E8%AE%B0/</link>
+                <guid isPermaLink="true">https://wss.cool/posts/%E7%AC%94%E8%AE%B0/</guid>
+                <pubDate>Wed, 12 Aug 2020 10:59:42 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="mobx的observable变成非observ的变量">mobx的observable变成非observ的变量</h2>
+<p>以@observable声明的变量，可以会变成普通的对象，而失去响应能力，可能是应为直接复制的操作导致的。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kd">@observable</span>
+<span class="kr">private</span> <span class="nx">rowData</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// 这样rowData是不是observable的？
+</span><span class="c1"></span>
+<span class="kd">@observable</span>
+<span class="kr">private</span> <span class="nx">rowData</span> <span class="o">=</span> <span class="nx">observable</span><span class="p">([]);</span> <span class="c1">// 需要这样赋值才行吗？
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="8月13日review">8月13日review</h2>
+<ol>
+<li>cellRendererFramework改成cellRender</li>
+</ol>
+<p>改了cellRender以后不显示了。</p>
+<ol start="2">
+<li>没有AgSelect这个组件</li>
+</ol>
+<p>MetadataHelper.resolveFullTitle()</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%85%B6%E4%BB%96/">其他</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Go基础三：方法和接口</title>
