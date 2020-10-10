@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 15 Sep 2020 07:38:21 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 10 Oct 2020 06:35:47 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -201,18 +201,48 @@
 <td align="left">删除行</td>
 <td align="left">Ctrl+Y</td>
 </tr>
+<tr>
+<td align="left">格式化代码</td>
+<td align="left">Ctrl+Alt+L</td>
+</tr>
+<tr>
+<td align="left">按prettier格式化</td>
+<td align="left">Ctrl+Shift+Alt+P</td>
+</tr>
+<tr>
+<td align="left">重命名</td>
+<td align="left">Shift+F6</td>
+</tr>
+<tr>
+<td align="left">撤销或反撤销修改</td>
+<td align="left">Ctrl+Z 或 Ctr+Shift+Z</td>
+</tr>
+<tr>
+<td align="left">回到之前的位置</td>
+<td align="left">Ctrl+Alt+左\右</td>
+</tr>
+<tr>
+<td align="left">光标移到内容的开始或结束标签处</td>
+<td align="left">ctrl+[ 或 ctrl+]</td>
+</tr>
+<tr>
+<td align="left">打开最近操作过的文件</td>
+<td align="left">Ctrl+E</td>
+</tr>
+<tr>
+<td align="left">搜索文件</td>
+<td align="left">Ctrl+Shift+N</td>
+</tr>
+<tr>
+<td align="left">在所有文件中列出代码使用情况</td>
+<td align="left">Alt+F7</td>
+</tr>
+<tr>
+<td align="left">在当前文件中高亮代码使用情况</td>
+<td align="left">Ctrl+Shift+F7</td>
+</tr>
 </tbody>
 </table>
-<p>格式化代码 | Ctrl+Alt+L
-按prettier格式化 | Ctrl+Shift+Alt+P
-重命名 | Shift+F6</p>
-<p>撤销或反撤销修改 | Ctrl+Z 或 Ctr+Shift+Z
-回到之前的位置 | Ctrl+Alt+左\右
-光标移到内容的开始或结束标签处 | ctrl+[ 或 ctrl+]</p>
-<p>打开最近操作过的文件 | Ctrl+E
-搜索文件 | Ctrl+Shift+N</p>
-<p>在所有文件中列出代码使用情况 | Alt+F7
-在当前文件中高亮代码使用情况 | Ctrl+Shift+F7</p>
 <h2 id="配置">配置</h2>
 <p><strong>恢复默认配置</strong></p>
 <p>只要删除 C:\Users\wxj.WebStorm2018.3\config 目录，即可恢复默认配置。</p>
