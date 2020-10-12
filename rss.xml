@@ -23,10 +23,65 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sat, 10 Oct 2020 06:35:47 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 12 Oct 2020 09:21:45 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>Windows中的换行符</title>
+                <link>https://wss.cool/windows%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6.html</link>
+                <guid isPermaLink="true">https://wss.cool/windows%E4%B8%AD%E7%9A%84%E6%8D%A2%E8%A1%8C%E7%AC%A6.html</guid>
+                <pubDate>Mon, 12 Oct 2020 17:12:27 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>如果项目中设置的eslint，要求换行符是\n(LF)，那么在windows中打开项目的文件，编辑器/IDE可能会标红报错（eslint错误）。为了解决这个问题需要一些错误。</p>
+<h2 id="解决方法">解决方法</h2>
+<ol>
+<li>告诉 Git 在提交时把回车和换行转(CRLF)换成换行(LF)，检出时不转换</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">git config --global core.autocrlf input
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>设置本地 Git 的换行符</li>
+</ol>
+<pre><code>git config --global core.eol lf
+</code></pre><ol start="3">
+<li>设置编辑器/IDE将 CRLF 改成 LF</li>
+</ol>
+<h2 id="原理">原理</h2>
+<p>Git 默认的行为是，在藏库里只保存 LF 换行符，但是Windows系统的默认换行符是 CRLF 。在Windows系统中，Git 为了实现只保存 LF 换行符，在提交代码时，Git 会自动进行转化为 LF ，签出代码时自动转换回 CRLF 。</p>
+<p>经过上面的三步操作，可以让 Git 不做这个自动转换，并且让新创建的换行符都时 LF 的。</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/git/">git</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>高斯模糊</title>
