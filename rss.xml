@@ -23,10 +23,73 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 12 Oct 2020 09:21:45 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 09 Nov 2020 14:31:29 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>NVM阿里源</title>
+                <link>https://wss.cool/nvm%E9%98%BF%E9%87%8C%E6%BA%90.html</link>
+                <guid isPermaLink="true">https://wss.cool/nvm%E9%98%BF%E9%87%8C%E6%BA%90.html</guid>
+                <pubDate>Sat, 07 Nov 2020 22:57:53 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>修改NVM下载nodejs的地址，设置环境变量。</p>
+<p>命令行是<code>bash</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">echo</span> -e <span class="s2">&#34;\nexport NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node&#34;</span> &gt;&gt; ~/.bashrc 
+<span class="nb">source</span> ~/.bashrc
+</code></pre></td></tr></table>
+</div>
+</div><p>命令行是<code>zsh</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh"><span class="nb">echo</span> -e <span class="s2">&#34;\nexport NVM_NODEJS_ORG_MIRROR=http://npm.taobao.org/mirrors/node&#34;</span> &gt;&gt; ~/.zshrc 
+<span class="nb">source</span> ~/.zshrc
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%89%8D%E7%AB%AF/">前端</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/nvm/">nvm</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Windows中的换行符</title>
@@ -135,6 +198,60 @@
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
                     <description><![CDATA[<p><a href="https://blog.jetbrains.com/webstorm/2018/01/using-and-creating-code-snippets/">官网文档</a></p>
+<p>这个功能在 webstorm 中叫做 live template 。就是将一段代码变成模版，就像打出 <code>log</code> 就会出现下来菜单提示 <code>console.log</code> 一样。 live template 可以实现复杂一点的事情，比如在模版内部定义变量，可以在初始时快速编辑它们。</p>
+<ol>
+<li>首先准备好一段代码，下面是创建一个 React 组件，我们要把它变成一个模版，以后可以快速的创建组件。</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">&#39;react&#39;</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Keyword</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>将代码全选后，打开 actions 面板<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>，输入 <code>save as live template</code> ，就可以打开一个操作面板了。
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20201109221701_3ea50a1759e3609e284c85ec2bd99894.png" alt="20201109221701_3ea50a1759e3609e284c85ec2bd99894.png" title="save as live template"></li>
+</ol>
+<ul>
+<li><span class="shortcodes_number">1</span>
+ 在 user 目录下出现了一个新的条目，它就是刚刚那段代码</li>
+<li><span class="shortcodes_number">2</span>
+ 唤醒模板的关键词，比如 <code>log</code></li>
+<li><span class="shortcodes_number">3</span>
+ 可以在模板中设置变量。在代码中定义变量，在按钮中给变量设置值，比如文件名、不带扩展名的文件名等等。</li>
+<li><span class="shortcodes_number">4</span>
+ 多个变量之间可以用 <code>tab</code> 快速切换光标到下一个， <code>$END$</code> 代表最后一个</li>
+</ul>
+<ol start="3">
+<li>点击 ok 保存设置</li>
+<li>尝试一下吧，可以把刚才的代码删掉，输入 <code>imfc</code> 看看效果。</li>
+</ol>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>有两种方法：a. mac 快捷键：<code>shift+cmd+a</code> （可能与系统的快捷键冲突，需要修改一下系统快捷键）；b. 可以通过连按（2次） <code>shift</code> 呼出搜索面板，在切换到 action 标签。 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
 ]]></description>
                 
                 
@@ -168,7 +285,7 @@
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
                     <description><![CDATA[<p>我比较熟悉Redux，所以以Redux与Mobx作为类比我会比较容易理解。</p>
-<p>redux会有一个store与redux组件配合。</p>
+<p>redux会有一个store与react组件配合。</p>
 <p>store中定义变量、状态，写修改变量的reducer及相应的action。</p>
 <p>react组件中调用变量，使用dispatch调用action修改变量，完成单向数据流。</p>
 <p>reducer有两种写法——是否包含业务逻辑，这里选择不包含业务逻辑，就只是修改数据。业务逻辑全部放在react中。</p>
@@ -176,6 +293,8 @@
 <p>把它改为MVP模式的话，其实只是把业务逻辑和组件状态都从react组件中抽离出来，放在一个Presenter中。让react组件只接受数据和调用方法。</p>
 <p>redux可以换成mobx。</p>
 <p>在mobx的store中，它可以作为MVP中的M。还是声明变量、定义action，作用与redux一样。</p>
+<h2 id="声明变量">声明变量</h2>
+<p>如果使用observable声明的话，</p>
 ]]></description>
                 
                 
@@ -12944,6 +13063,15 @@ Description=webserver Daemon
 
 [Service]
 ExecStart=/usr/bin/java -jar /web/server.jar
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><pre><code>[Unit]
+Description=dinghe de image service
+
+[Service]
+ExecStart=/usr/bin/java -XX:+UseSerialGC -Xss512k -XX:MaxRAM=128m -jar /home/ubuntu/image-0.0.4-SNAPSHOT.jar
 User=ubuntu
 
 [Install]
