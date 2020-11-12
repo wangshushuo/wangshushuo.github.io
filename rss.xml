@@ -23,10 +23,97 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 09 Nov 2020 14:31:29 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 12 Nov 2020 05:33:48 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>精度</title>
+                <link>https://wss.cool/%E7%B2%BE%E5%BA%A6.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E7%B2%BE%E5%BA%A6.html</guid>
+                <pubDate>Thu, 12 Nov 2020 11:40:46 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="遇到的问题">遇到的问题</h2>
+<p>在 JS 中计算数字经常会遇到精度的问题。使一些判断语句出现bug。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="mf">1.1</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">===</span> <span class="mi">110</span>
+<span class="c1">// 110.00000000000001
+</span><span class="c1"></span>
+<span class="mf">0.1</span> <span class="o">+</span> <span class="mf">0.2</span> <span class="o">===</span> <span class="mf">0.3</span>
+<span class="c1">// 0.30000000000000004
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="解决方法">解决方法</h2>
+<p>不使用严格相等(==或===)来做判断，容忍两个数之间有一个很小的误差。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">eq</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">left</span> <span class="o">-</span> <span class="nx">right</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mf">0.000001</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="原理">原理</h2>
+<p>比如正常的比较，<code>0.1 + 0.2 === 0.3</code> 相当于 <code>0.1 + 0.2 - 0.3 === 0</code> 。bug就出现在不是等于零，而是一个很小很小的数。这个很小很小的数就使误差。如果误差在可接受范围内，我们就还可以认为它们使相等的。</p>
+<p>这个误差，可以通过 <code>Number.EPSILON</code><sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup> 来设置。具体设置成多少我还不知道，可能要根据做的业务的情况来确定吧。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">eq</span><span class="p">(</span><span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">left</span> <span class="o">-</span> <span class="nx">right</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nb">Number</span><span class="p">.</span><span class="nx">EPSILON</span> <span class="o">*</span> <span class="nb">Math</span><span class="p">.</span><span class="nx">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>阮一峰.<a href="https://es6.ruanyifeng.com/#docs/number#Number-EPSILON">ECMAScript 6 入门</a>.[2020年11月12日] <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/javascript/">JavaScript</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>NVM阿里源</title>
@@ -3670,7 +3757,7 @@ npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/
 <li>If you want to feel important as a software developer, work at a tech company.</li>
 </ul>
 <ol>
-<li>您将花费更多的时间思考而不是编码。</li>
+<li>你将花费更多的时间思考而不是编码。</li>
 <li>不良的体系结构比不良的代码引起更多的问题。</li>
 <li>最好的程序员总是在构建东西。</li>
 <li>总会有更好的方法。</li>
