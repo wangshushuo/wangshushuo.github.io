@@ -23,10 +23,42 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 12 Nov 2020 05:33:48 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 29 Nov 2020 14:52:29 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>榜单</title>
+                <link>https://wss.cool/%E6%A6%9C%E5%8D%95.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E6%A6%9C%E5%8D%95.html</guid>
+                <pubDate>Sun, 29 Nov 2020 22:41:53 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="go-module">Go Module</h2>
+<ol>
+<li><a href="https://zhuanlan.zhihu.com/p/59687626">开始使用 Go Module</a></li>
+</ol>
+<h3 id="关联问题">关联问题</h3>
+<ul>
+<li><code>go run xx.go</code> 报错 <code>package XXX is not in GOROOT</code></li>
+</ul>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>精度</title>
