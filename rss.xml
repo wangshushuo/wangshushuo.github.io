@@ -23,10 +23,166 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sun, 29 Nov 2020 15:19:50 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 18 Dec 2020 05:53:47 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>工作TIPS</title>
+                <link>https://wss.cool/%E5%B7%A5%E4%BD%9Ctips.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E5%B7%A5%E4%BD%9Ctips.html</guid>
+                <pubDate>Fri, 18 Dec 2020 13:46:12 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="go">go</h2>
+<h3 id="为表单加一个字段">为表单加一个字段</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 自定义field中间件
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">NewCustomizedFieldMiddlewares</span><span class="p">()</span> <span class="nx">form_context</span><span class="p">.</span><span class="nx">FormMiddlewares</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nb">new</span><span class="p">(</span><span class="nx">customizedFieldMiddlewares</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">customizedFieldMiddlewares</span> <span class="kd">struct</span><span class="p">{}</span>
+
+<span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">customizedFieldMiddlewares</span><span class="p">)</span> <span class="nf">Register</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">form_context</span><span class="p">.</span><span class="nx">FormContext</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">ctx</span><span class="p">.</span><span class="nf">GetResponsePipeline</span><span class="p">().</span><span class="nf">Add</span><span class="p">(</span><span class="nx">r</span><span class="p">.</span><span class="nx">HandleResponse</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="c1">// ctx的metadataApi可以加一个field（主表子表）
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">r</span> <span class="o">*</span><span class="nx">customizedFieldMiddlewares</span><span class="p">)</span> <span class="nf">HandleResponse</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">form_context</span><span class="p">.</span><span class="nx">FormContext</span><span class="p">,</span> <span class="nx">res</span> <span class="o">*</span><span class="nx">context</span><span class="p">.</span><span class="nx">BizFormConfigResponse</span><span class="p">)</span> <span class="o">*</span><span class="nx">context</span><span class="p">.</span><span class="nx">BizFormConfigResponse</span> <span class="p">{</span>
+	<span class="nx">isMobile</span> <span class="o">:=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">GetSolution</span><span class="p">().</span><span class="nx">FormTemplate</span><span class="p">.</span><span class="nx">IsMobile</span>
+	<span class="k">if</span> <span class="nx">isMobile</span> <span class="o">==</span> <span class="kc">true</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">res</span>
+	<span class="p">}</span>
+	<span class="nf">addMasterFields</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+	<span class="k">return</span> <span class="nx">res</span>
+<span class="p">}</span>
+
+<span class="c1">// 定义field
+</span><span class="c1"></span><span class="kd">func</span> <span class="nf">addMasterFields</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">form_context</span><span class="p">.</span><span class="nx">FormContext</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">api</span> <span class="o">:=</span> <span class="nx">ctx</span><span class="p">.</span><span class="nf">GetMetadataApi</span><span class="p">()</span>
+	<span class="nx">item</span> <span class="o">:=</span> <span class="nx">form_context</span><span class="p">.</span><span class="nx">FormMasterFieldParams</span><span class="p">{</span>
+		<span class="nx">MetadataField</span><span class="p">:</span> <span class="nx">metadata</span><span class="p">.</span><span class="nx">Field</span><span class="p">{</span>
+			<span class="nx">Path</span><span class="p">:</span>           <span class="s">&#34;project&#34;</span><span class="p">,</span>
+			<span class="nx">DisplayName</span><span class="p">:</span>    <span class="s">&#34;项目编码&#34;</span><span class="p">,</span>
+			<span class="nx">IsContextField</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+			<span class="nx">Required</span><span class="p">:</span>       <span class="kc">true</span><span class="p">,</span>
+			<span class="nx">Readonly</span><span class="p">:</span>       <span class="kc">false</span><span class="p">,</span>
+			<span class="nx">IsExtend</span><span class="p">:</span>       <span class="kc">true</span><span class="p">,</span>
+			<span class="nx">IsExtendField</span><span class="p">:</span>  <span class="kc">true</span><span class="p">,</span>
+			<span class="nx">ExtendInfo</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">ExtendInfo</span><span class="p">{</span>
+				<span class="nx">Type</span><span class="p">:</span>      <span class="s">&#34;String&#34;</span><span class="p">,</span>
+				<span class="nx">ReferType</span><span class="p">:</span> <span class="s">&#34;Project&#34;</span><span class="p">,</span>
+				<span class="nx">EnumType</span><span class="p">:</span>  <span class="s">&#34;&#34;</span><span class="p">,</span>
+				<span class="nx">IsMulti</span><span class="p">:</span>   <span class="kc">false</span><span class="p">,</span>
+				<span class="nx">IsSubmit</span><span class="p">:</span>  <span class="kc">false</span><span class="p">,</span>
+				<span class="nx">Precision</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+			<span class="p">},</span>
+		<span class="p">},</span>
+		<span class="nx">TemplateField</span><span class="p">:</span> <span class="nx">template</span><span class="p">.</span><span class="nx">Field</span><span class="p">{</span>
+			<span class="nx">FieldBase</span><span class="p">:</span> <span class="nx">template</span><span class="p">.</span><span class="nx">FieldBase</span><span class="p">{</span>
+				<span class="nx">Extended</span><span class="p">:</span>    <span class="kc">true</span><span class="p">,</span>
+				<span class="nx">Path</span><span class="p">:</span>        <span class="s">&#34;project&#34;</span><span class="p">,</span>
+				<span class="nx">Required</span><span class="p">:</span>    <span class="kc">true</span><span class="p">,</span>
+				<span class="nx">DisplayName</span><span class="p">:</span> <span class="s">&#34;项目编码&#34;</span><span class="p">,</span>
+			<span class="p">},</span>
+			<span class="nx">Colspan</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+			<span class="nx">Rowspan</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+		<span class="p">},</span>
+		<span class="nx">SectionIndex</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+		<span class="nx">InsertIndex</span><span class="p">:</span>  <span class="mi">6</span><span class="p">,</span>
+	<span class="p">}</span>
+	<span class="nx">api</span><span class="p">.</span><span class="nf">AddMasterField</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%B7%A5%E4%BD%9C/">工作</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Go语言核心36讲</title>
