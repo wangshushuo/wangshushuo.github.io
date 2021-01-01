@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 18 Dec 2020 05:53:47 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 01 Jan 2021 11:28:19 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -629,11 +629,17 @@
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[<p>光标回到之前的位置：</p>
-<ol>
-<li>mac：ctrl+<code>-</code> 和 ctrl+shift+<code>-</code></li>
-<li>windows：<code>alt+左/右</code></li>
-</ol>
+                    <description><![CDATA[<h2 id="常用快捷操作">常用快捷操作</h2>
+<p>光标回到之前的位置：菜单是navigate&gt;(back+forward)</p>
+<ul>
+<li>mac：<code>ctrl -</code> 和 <code>ctrl shift -</code></li>
+<li>windows：<code>ctrl alt 左/右</code></li>
+</ul>
+<p>折叠代码：菜单是code&gt;folding</p>
+<ul>
+<li>折叠：<code>ctrl -</code>,<code>ctrl shift -</code></li>
+<li>展开：<code>ctrl +</code>,<code>ctrl shift +</code></li>
+</ul>
 <h2 id="常用设置">常用设置</h2>
 <ol>
 <li>自动保存的开关</li>
