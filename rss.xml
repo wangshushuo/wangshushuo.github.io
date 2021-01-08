@@ -23,10 +23,50 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 07 Jan 2021 11:33:20 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 08 Jan 2021 03:45:49 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>架构整洁之道</title>
+                <link>https://wss.cool/%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E6%9E%B6%E6%9E%84%E6%95%B4%E6%B4%81%E4%B9%8B%E9%81%93.html</guid>
+                <pubDate>Tue, 05 Jan 2021 22:55:39 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="第三部分-设计原则">第三部分 设计原则</h2>
+<p>SOLID原则的主要作用就是告诉我们如何将数据和函数组织成为类，以及如何将这些类链接起来成为程序。</p>
+<p>为软件构建中层结构的主要目标如下：使软件可容忍被改动。使软件更容易被理解。构建可在多个软件系统中复用的组件。</p>
+<p>我们在这里之所以会使用“中层”这个词，是因为这些设计原则主要适用于那些进行模块级编程的程序员。</p>
+<p>SOLID原则应该直接紧贴于具体的代码逻辑之上，这些原则是用来帮助我们定义软件架构中的组件和模块的。</p>
+<blockquote>
+<p>SOLID原则——如何设计好模块</p>
+</blockquote>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">读书笔记</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>工作TIPS</title>
@@ -179,6 +219,54 @@
                             
                         
                     
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Iris</title>
+                <link>https://wss.cool/iris.html</link>
+                <guid isPermaLink="true">https://wss.cool/iris.html</guid>
+                <pubDate>Wed, 16 Dec 2020 23:51:41 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<dl>
+<dt>oauth2</dt>
+<dd>可以用来快速实现github授权登陆功能。</dd>
+<dt>热重启</dt>
+<dd>开发的时候不用每次重新编译</dd>
+<dt>Typescript集成 + Web IDE</dt>
+<dd>这两个是啥？</dd>
+</dl>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%88%86%E7%B1%BB/">分类</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/">显示在底部</category>
+                                
+                            
                         
                     
                 
