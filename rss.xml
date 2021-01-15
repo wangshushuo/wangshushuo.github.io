@@ -23,10 +23,46 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 15 Jan 2021 03:32:46 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 15 Jan 2021 08:28:06 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>沟通</title>
+                <link>https://wss.cool/%E6%B2%9F%E9%80%9A.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E6%B2%9F%E9%80%9A.html</guid>
+                <pubDate>Fri, 15 Jan 2021 16:23:23 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>跟产品沟通，谈开发时间。</p>
+<ul>
+<li>
+<p>开发：评估工作量，要A日期能提测。</p>
+</li>
+<li>
+<p>产品：不行哦，客户等着用呢，要提前到B天。</p>
+</li>
+<li>
+<p>开发：不行哦，时间这么紧张，不能保证质量呀，可能会提测质量不好，后期bug多。</p>
+</li>
+</ul>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Changelist更新时间长</title>
