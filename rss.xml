@@ -23,10 +23,171 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 25 Jan 2021 01:15:27 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 29 Jan 2021 11:27:26 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>Tips</title>
+                <link>https://wss.cool/tips.html</link>
+                <guid isPermaLink="true">https://wss.cool/tips.html</guid>
+                <pubDate>Wed, 27 Jan 2021 15:03:39 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="去map的size">去map的size</h2>
+<p>用 len</p>
+<h2 id="遍历map">遍历map</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="k">for</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">m</span> <span class="p">{</span> 
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;key[%s] value[%s]\n&#34;</span><span class="p">,</span> <span class="nx">k</span><span class="p">,</span> <span class="nx">v</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://stackoverflow.com/questions/1841443/iterating-over-all-the-keys-of-a-map">参考</a></p>
+<h2 id="json转换">json转换</h2>
+<p>使用<code>encoding/json</code>包的 Unmarshal 和 Marshal 方法，结构体要注明 json</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kn">package</span> <span class="nx">main</span>
+
+<span class="kn">import</span> <span class="p">(</span>
+    <span class="s">&#34;fmt&#34;</span>
+    <span class="s">&#34;encoding/json&#34;</span>
+<span class="p">)</span>
+
+<span class="kd">type</span> <span class="nx">Data</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">Votes</span> <span class="o">*</span><span class="nx">Votes</span> <span class="s">`json:&#34;votes&#34;`</span>
+    <span class="nx">Count</span> <span class="kt">string</span> <span class="s">`json:&#34;count,omitempty&#34;`</span>
+<span class="p">}</span>
+
+<span class="kd">type</span> <span class="nx">Votes</span> <span class="kd">struct</span> <span class="p">{</span>
+    <span class="nx">OptionA</span> <span class="kt">string</span> <span class="s">`json:&#34;option_A&#34;`</span>
+<span class="p">}</span>
+
+<span class="kd">func</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">s</span> <span class="o">:=</span> <span class="s">`{ &#34;votes&#34;: { &#34;option_A&#34;: &#34;3&#34; } }`</span>
+    <span class="nx">data</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="nx">Data</span><span class="p">{</span>
+        <span class="nx">Votes</span><span class="p">:</span> <span class="o">&amp;</span><span class="nx">Votes</span><span class="p">{},</span>
+    <span class="p">}</span>
+    <span class="nx">err</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="nx">s</span><span class="p">),</span> <span class="nx">data</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">Votes</span><span class="p">)</span>
+
+    <span class="nx">s2</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">s2</span><span class="p">))</span>
+
+    <span class="nx">data</span><span class="p">.</span><span class="nx">Count</span> <span class="p">=</span> <span class="s">&#34;2&#34;</span>
+    <span class="nx">s3</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Marshal</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span>
+    <span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="nb">string</span><span class="p">(</span><span class="nx">s3</span><span class="p">))</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><a href="https://stackoverflow.com/questions/40429296/decode-json-with-unknown-structure">参考</a></p>
+<h2 id="指定interface">指定interface</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">a</span> <span class="kd">interface</span><span class="p">{}</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="kt">string</span>
+
+<span class="nx">b</span> <span class="p">=</span> <span class="nx">a</span><span class="p">.(</span><span class="kt">string</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="go-run-失败">go run 失败</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ go run main.go
+<span class="c1"># command-line-arguments</span>
+.<span class="se">\m</span>ain.go:4:2: undefined: a
+.<span class="se">\m</span>ain.go:5:2: undefined: average2
+</code></pre></td></tr></table>
+</div>
+</div><p>main.go 文件引用了 package main 中的另外两个文件中的函数。所以 run 命令应该是这样的</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-sh" data-lang="sh">$ go run main.go demo.go average2.go 
+</code></pre></td></tr></table>
+</div>
+</div><p>要把关联的文件都加载才行。</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%90%8E%E7%AB%AF/">后端</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>5.软件构建中的设计</title>
