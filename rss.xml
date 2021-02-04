@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 01 Feb 2021 07:22:34 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 04 Feb 2021 03:43:13 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -305,7 +305,33 @@
 </code></pre></td></tr></table>
 </div>
 </div><p>要把关联的文件都加载才行。</p>
-<h2 id="单元测试">单元测试</h2>
+<h2 id="heading">*</h2>
+<ul>
+<li>声明变量为指针类型
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">var</span> <span class="nx">myIntPointer</span> <span class="o">*</span><span class="kt">int</span>
+<span class="nx">myInt</span> <span class="o">:=</span> <span class="mi">4</span>
+<span class="nx">myIntPointer</span> <span class="p">=</span> <span class="o">&amp;</span><span class="nx">myInt</span>
+</code></pre></td></tr></table>
+</div>
+</div></li>
+<li>获取指针的值</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">fmt</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="o">*</span><span class="nx">myIntPointer</span><span class="p">)</span> <span class="c1">// 4
+</span></code></pre></td></tr></table>
+</div>
+</div><h2 id="单元测试">单元测试</h2>
 <p>命令是 go test 文件名，它会寻找以 _test.go 结尾的文件</p>
 <ul>
 <li>-v 会打印出执行的用例的名字</li>
