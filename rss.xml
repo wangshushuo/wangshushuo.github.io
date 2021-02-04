@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 04 Feb 2021 05:56:58 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 04 Feb 2021 09:12:37 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -365,6 +365,27 @@
 <pre><code>go install -v -work // 
 go install -a -v -work // 强行重新安装指定代码包及其依赖包
 </code></pre><p><a href="https://wiki.jikexueyuan.com/project/go-command-tutorial/0.2.html">参考</a></p>
+<h2 id="go-get">go get</h2>
+<p>go get 命令会下载并install一个go程序</p>
+<p>刚开始本地创建了项目时，要进行 go mode init 会创建一个 go.mod 文件</p>
+<pre><code>module gg
+
+go 1.14
+
+require (
+	github.com/atotto/clipboard v0.1.2
+	github.com/urfave/cli/v2 v2.3.0
+)
+</code></pre><p>其中的 module 是你当前文件夹的名字</p>
+<p>当把它提交到 github 后，用 go get 命令安装时，命令应该是这样的</p>
+<pre><code>go get github.com/wangshushuo/gg
+</code></pre><p>然后会报一个错误</p>
+<pre><code>$ go get github.com/wangshushuo/gg@v0.1.1
+go get: github.com/wangshushuo/gg@v0.1.1: parsing go.mod:
+module declares its path as: gg
+but was required as: github.com/wangshushuo/gg
+</code></pre><p>module 这个字段现在是 gg ，要求的是 github.com/wangshushuo/gg 。</p>
+<p>所以需要在 go.mod 文件中将 gg 改为 github.com/wangshushuo/gg 。</p>
 ]]></description>
                 
                 
