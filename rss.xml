@@ -23,10 +23,46 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 04 Feb 2021 09:12:37 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 04 Feb 2021 11:19:03 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>Cli工具--Gg</title>
+                <link>https://wss.cool/cli%E5%B7%A5%E5%85%B7-gg.html</link>
+                <guid isPermaLink="true">https://wss.cool/cli%E5%B7%A5%E5%85%B7-gg.html</guid>
+                <pubDate>Thu, 04 Feb 2021 18:49:54 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p>使用了这几个库</p>
+<ul>
+<li>github.com/atotto/clipboard</li>
+<li>github.com/urfave/cli/v2</li>
+</ul>
+<p><code>gg r</code>快速的往gitlab提一个 merge request 。</p>
+<ul>
+<li>bufio.NewReader 读取用户输入</li>
+<li>go exec 执行命令</li>
+<li>读取当前git分支名算法</li>
+<li>剪贴板操作</li>
+</ul>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Cli</title>
