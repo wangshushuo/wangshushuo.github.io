@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sun, 07 Feb 2021 06:25:09 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 16 Feb 2021 09:24:24 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -473,7 +473,40 @@ module declares its path as: gg
 but was required as: github.com/wangshushuo/gg
 </code></pre><p>module 这个字段现在是 gg ，要求的是 github.com/wangshushuo/gg 。</p>
 <p>所以需要在 go.mod 文件中将 gg 改为 github.com/wangshushuo/gg 。</p>
-]]></description>
+<h2 id="htmltemplate">html/template</h2>
+<p>简单的方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">temp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">ParseFiles</span><span class="p">(</span><span class="s">&#34;tech_keyword/category/view.html&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>这样的模板不能植入方法，需要用template.New方法</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">demo</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">funcMap</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">FuncMap</span><span class="p">{</span><span class="s">&#34;add&#34;</span><span class="p">:</span> <span class="nx">add</span><span class="p">}</span>
+    <span class="nx">temp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;view.html&#34;</span><span class="p">).</span><span class="nf">Funcs</span><span class="p">(</span><span class="nx">funcMap</span><span class="p">).</span><span class="nf">ParseFiles</span><span class="p">(</span><span class="s">&#34;tech_keyword/category/view.html&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="kd">func</span> <span class="nf">add</span><span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+	<span class="k">return</span> <span class="nx">a</span> <span class="o">+</span> <span class="nx">b</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>New的参数需要是ParseFiles中文件名一样，不然会报错</p>
+<pre><code>error: template: “…” is an incomplete or empty template
+</code></pre>]]></description>
                 
                 
                 
