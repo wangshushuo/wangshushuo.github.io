@@ -23,10 +23,88 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sun, 11 Apr 2021 13:36:15 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 19 Apr 2021 06:39:39 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>Goland</title>
+                <link>https://wss.cool/goland.html</link>
+                <guid isPermaLink="true">https://wss.cool/goland.html</guid>
+                <pubDate>Mon, 19 Apr 2021 14:05:03 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="json转换为go的数据结构定义">json转换为go的数据结构定义</h2>
+<ol>
+<li>copy一段json结构的代码字符串。</li>
+<li>ctrl+v 时会有一个dialog提示</li>
+<li>结构体中还有嵌入结构体时，可以用 ctrl + shift + alt + T 然后选择 intorduce type...把嵌入的结构体提取出来为一个独立的结构体。</li>
+<li>可以改变json的名字格式，alt + enter 选择change field name style in tags 选择fieldName</li>
+<li>还可以批量的修改tag的内容，alt + enter 选择 update key value in tags ，输入 ,omitemypty</li>
+</ol>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>Head-First-设计模式</title>
+                <link>https://wss.cool/head-first-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html</link>
+                <guid isPermaLink="true">https://wss.cool/head-first-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html</guid>
+                <pubDate>Mon, 12 Apr 2021 13:15:26 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="策略">策略</h2>
+<h2 id="观察者">观察者</h2>
+<h2 id="装饰器">装饰器</h2>
+<h2 id="工厂模式">工厂模式</h2>
+<h2 id="单例模式">单例模式</h2>
+<h2 id="命令模式">命令模式</h2>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%88%86%E7%B1%BB/">分类</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/">显示在底部</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>PostgreSQL</title>
