@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 19 Apr 2021 06:39:39 +0000</lastBuildDate>
+        <lastBuildDate>Mon, 26 Apr 2021 05:40:33 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -76,6 +76,12 @@
 <h2 id="工厂模式">工厂模式</h2>
 <h2 id="单例模式">单例模式</h2>
 <h2 id="命令模式">命令模式</h2>
+<h2 id="设计原则">设计原则</h2>
+<h3 id="好莱坞原则">好莱坞原则</h3>
+<p>模板方法模式，父类属于高层组件，子类属于底层组件。父类是冲向类，其中有若干具体抽象方法，他们是算法的某部分的具体实现，由子类提供。父类还可以定义钩子，用于控制算法流程。</p>
+<p>好莱坞原则是说，高层组件会去调用底层组件的方法，不要反向调用。</p>
+<p>这样做的好处是避免环形依赖。解耦，其他代码只依赖高级组件，可以减少整个系统的依赖。</p>
+<p>框架中比较多。框架提供模板，实现算法的步骤，细节交给使用者实现。</p>
 ]]></description>
                 
                 
