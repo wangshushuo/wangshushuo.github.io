@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Mon, 26 Apr 2021 05:40:33 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 27 Apr 2021 02:54:58 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -338,9 +338,9 @@ host  all  all 0.0.0.0/0 md5
             </item>
         
             <item>
-                <title>Tips</title>
-                <link>https://wss.cool/tips.html</link>
-                <guid isPermaLink="true">https://wss.cool/tips.html</guid>
+                <title>Go Tips</title>
+                <link>https://wss.cool/gotips.html</link>
+                <guid isPermaLink="true">https://wss.cool/gotips.html</guid>
                 <pubDate>Wed, 27 Jan 2021 15:03:39 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (王书硕)</author>
@@ -655,7 +655,54 @@ but was required as: github.com/wangshushuo/gg
 </div>
 </div><p>New的参数需要是ParseFiles中文件名一样，不然会报错</p>
 <pre><code>error: template: “…” is an incomplete or empty template
-</code></pre>]]></description>
+</code></pre><h2 id="template-bing-data">template bing data</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="p">(</span><span class="nx">o</span> <span class="o">*</span><span class="nx">OAuth2</span><span class="p">)</span> <span class="nf">view</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">temp</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;view.html&#34;</span><span class="p">).</span><span class="nf">ParseFiles</span><span class="p">(</span><span class="s">&#34;oauth2/view.gohtml&#34;</span><span class="p">)</span>
+	<span class="nx">res</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">o</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">&#34;https://api.github.com/user&#34;</span><span class="p">)</span>
+	<span class="nx">robots</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">ioutil</span><span class="p">.</span><span class="nf">ReadAll</span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">)</span>
+	<span class="nx">res</span><span class="p">.</span><span class="nx">Body</span><span class="p">.</span><span class="nf">Close</span><span class="p">()</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;err: &#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+		<span class="nx">http</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">(),</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">)</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
+	<span class="nx">fmt</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;%s&#34;</span><span class="p">,</span> <span class="nb">string</span><span class="p">(</span><span class="nx">robots</span><span class="p">))</span>
+	<span class="nx">userInfo</span> <span class="o">:=</span> <span class="nx">UserInfoData</span><span class="p">{}</span>
+	<span class="nx">err</span> <span class="p">=</span> <span class="nx">json</span><span class="p">.</span><span class="nf">Unmarshal</span><span class="p">(</span><span class="nx">robots</span><span class="p">,</span> <span class="o">&amp;</span><span class="nx">userInfo</span><span class="p">)</span>
+	<span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+		<span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;err: &#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+		<span class="nx">http</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">(),</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">)</span>
+		<span class="k">return</span>
+	<span class="p">}</span>
+	<span class="nx">_</span> <span class="p">=</span> <span class="nx">temp</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">userInfo</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
                 
                 
                 
