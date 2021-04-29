@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 27 Apr 2021 02:54:58 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 29 Apr 2021 16:44:45 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -46,6 +46,9 @@
 <li>可以改变json的名字格式，alt + enter 选择change field name style in tags 选择fieldName</li>
 <li>还可以批量的修改tag的内容，alt + enter 选择 update key value in tags ，输入 ,omitemypty</li>
 </ol>
+<h2 id="htmltemplate">html/template</h2>
+<p>默认的html/template文件扩展名是gohtml</p>
+<p><a href="https://blog.jetbrains.com/go/2018/12/14/go-templates-made-easy/">https://blog.jetbrains.com/go/2018/12/14/go-templates-made-easy/</a></p>
 ]]></description>
                 
                 
