@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 30 Apr 2021 16:26:40 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 09 May 2021 13:10:12 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -75,21 +75,21 @@
                 
                     <description><![CDATA[<h2 id="第一章">第一章</h2>
 <p>开发中的不变真理——CHANGE</p>
-<h2 id="设计原则">设计原则</h2>
+<h3 id="设计原则">设计原则</h3>
 <ol>
 <li>找出应用中可能变化之处，把它们独立出来，不要和哪些不需要变化的代码混在一起。</li>
 </ol>
 <p>几乎每个设计模式背后的精神所在。所有的模式都提供栏一套方法让“系统中的某部分改变不会影响到其他部分。”</p>
 <p>结果如何？代码变化引起的不经意后果变少，系统变得更有弹性。</p>
 <ol start="2">
-<li>针对接口编程，而不是针对实现编程。
-将鸭子的行为通过接口定义，同一行为的不同表现有不同的实现。这么一来，有了继承的“复用好处”，却没有继承所带来的包袱。</li>
+<li>针对接口编程，而不是针对实现编程。</li>
 </ol>
+<p>将鸭子的行为通过接口定义，同一行为的不同表现有不同的实现。这么一来，有了继承的“复用好处”，却没有继承所带来的包袱。</p>
 <p>类之间的关系：IS-A, HAS-A, IMPLEMENTS，“有一个”比“是一个”更好。</p>
 <ol start="3">
-<li>多用组合，少用继承。
-软件开发在完成后花费的时间更多，所以要致力于提高可维护性和扩展性。</li>
+<li>多用组合，少用继承。</li>
 </ol>
+<p>软件开发在完成后花费的时间更多，所以要致力于提高可维护性和扩展性。</p>
 <h3 id="定义">定义</h3>
 <p>策略模式定义算法族，分别封装起来，让它们之间可以互相替换，此模式让算法的变化独立于使用算法的客户。</p>
 <p>继承（is a）--实线三角；实现--虚线三角；有一个--实现箭头；</p>
@@ -1591,9 +1591,9 @@ but was required as: github.com/wangshushuo/gg
             </item>
         
             <item>
-                <title>WebStorm的code-snippet</title>
-                <link>https://wss.cool/webstorm%E7%9A%84code-snippet.html</link>
-                <guid isPermaLink="true">https://wss.cool/webstorm%E7%9A%84code-snippet.html</guid>
+                <title>WebStorm的live-template</title>
+                <link>https://wss.cool/webstorm%E7%9A%84live-template.html</link>
+                <guid isPermaLink="true">https://wss.cool/webstorm%E7%9A%84live-template.html</guid>
                 <pubDate>Wed, 19 Aug 2020 10:23:09 +0800</pubDate>
                 
                     <author>wss.six@foxmail.com (王书硕)</author>
@@ -1647,6 +1647,18 @@ but was required as: github.com/wangshushuo/gg
 <li>点击 ok 保存设置</li>
 <li>尝试一下吧，可以把刚才的代码删掉，输入 <code>imfc</code> 看看效果。</li>
 </ol>
+<h2 id="例子">例子</h2>
+<p>打开设置，选择Editor &gt; Live Templates，点右侧 + ，选 1</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">const</span> <span class="p">[</span><span class="nx">$NAME$</span><span class="p">,</span> <span class="nx">set$SETNAME$</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="nx">$END$</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210509210549_8d772096ee68ed7f6805b3559bb76c95.png" alt="20210509210549_8d772096ee68ed7f6805b3559bb76c95.png"></p>
+<p>变量间可以互相引用，可以通过表达式进行一些自动变化，如果通过表达式计算出了值，还可以跳过用户输入。</p>
 <section class="footnotes" role="doc-endnotes">
 <hr>
 <ol>
