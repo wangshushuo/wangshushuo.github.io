@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 17 Jun 2021 07:01:47 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 17 Jun 2021 12:04:06 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -869,7 +869,63 @@ but was required as: github.com/wangshushuo/gg
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div>]]></description>
+</div><h2 id="io">io</h2>
+<h3 id="读取http请求的body">读取http请求的body</h3>
+<p>http.Request中的Body是一个io.ReadCloser，可以使用ioutil.ReadAll将其中的内容全部读出来。</p>
+<h2 id="byte-string">byte string</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// 将字符串转化为byte
+</span><span class="c1"></span><span class="p">[]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;hello&#34;</span><span class="p">)</span>
+
+<span class="c1">// 将byte转化为string
+</span><span class="c1"></span><span class="nb">string</span><span class="p">([]</span><span class="nb">byte</span><span class="p">(</span><span class="s">&#34;hello&#34;</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="os">os</h2>
+<h3 id="打开文件">打开文件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">f</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">OpenFile</span><span class="p">(</span><span class="nx">filePath</span><span class="p">,</span> <span class="nx">os</span><span class="p">.</span><span class="nx">O_APPEND</span><span class="p">|</span><span class="nx">os</span><span class="p">.</span><span class="nx">O_CREATE</span><span class="p">|</span><span class="nx">os</span><span class="p">.</span><span class="nx">O_WRONLY</span><span class="p">,</span> <span class="mo">0644</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="清空文件内容">清空文件内容</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="k">if</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nf">Truncate</span><span class="p">(</span><span class="nx">filePath</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Failed to truncate: %v&#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Truncate方法是用来剪切文件大小的。0就相当于把内容清空。</p>
+<h2 id="writer">writer</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">w</span> <span class="o">:=</span> <span class="nx">csv</span><span class="p">.</span><span class="nf">NewWriter</span><span class="p">(</span><span class="nx">f</span><span class="p">)</span>
+<span class="nx">w</span><span class="p">.</span><span class="nf">Write</span><span class="p">(</span><span class="nx">record</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>用Write往文件中写入内容，是增量的写入。</p>
+]]></description>
                 
                 
                 
@@ -13820,11 +13876,13 @@ git log --graph --oneline --decorate</p>
 </span><span class="lnt">5
 </span><span class="lnt">6
 </span><span class="lnt">7
+</span><span class="lnt">8
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;http://example.com/movies.json&#39;</span><span class="p">)</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="c1">// return response.text();
+</span><span class="c1"></span>  <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
 <span class="p">})</span>
 <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">myJson</span><span class="p">)</span> <span class="p">{</span>
   <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">myJson</span><span class="p">);</span>
@@ -13837,6 +13895,7 @@ git log --graph --oneline --decorate</p>
 <li>当<code>Http状态码</code>是<code>404</code>或者<code>500</code>时也是<code>resolve</code>，但是会将<code>resolve</code>的返回值的<code>ok</code>属性设置为<code>false</code>。</li>
 <li>只有当网络故障或者请求被阻止时才会是<code>reject</code>。</li>
 <li><code>resolve</code>中进行<code>response.json()</code>才能拿到返回数据。</li>
+<li><code>response.json()</code>会读取body，如果是json格式的，会将其转化。如果是不是json要用<code>response.text()</code></li>
 </ol>
 <h2 id="怎么设置-methodheader等参数呢">怎么设置 method、header等参数呢？</h2>
 <p>fetch() 方法接受第二个可选参数——一个对象——用来设置请求的参数：</p>
