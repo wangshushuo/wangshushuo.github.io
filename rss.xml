@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 17 Jun 2021 12:04:06 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 30 Jun 2021 12:54:55 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -213,7 +213,7 @@
 <ol>
 <li>找出应用中可能变化之处，把它们独立出来，不要和哪些不需要变化的代码混在一起。</li>
 </ol>
-<p>几乎每个设计模式背后的精神所在。所有的模式都提供栏一套方法让“系统中的某部分改变不会影响到其他部分。”</p>
+<p>这是几乎每个设计模式背后的精神所在。所有的模式都提供栏一套方法让“系统中的某部分改变不会影响到其他部分。”</p>
 <p>结果如何？代码变化引起的不经意后果变少，系统变得更有弹性。</p>
 <ol start="2">
 <li>针对接口编程，而不是针对实现编程。</li>
