@@ -23,10 +23,82 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 30 Jun 2021 12:54:55 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 04 Aug 2021 10:27:44 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>企业微信机器人</title>
+                <link>https://wss.cool/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%9C%BA%E5%99%A8%E4%BA%BA.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1%E6%9C%BA%E5%99%A8%E4%BA%BA.html</guid>
+                <pubDate>Wed, 04 Aug 2021 18:25:15 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="机器人">机器人</h2>
+<blockquote>
+<p>hover机器人，卡片右上角的编辑按钮可以看到机器人配置说明。
+gitlab的webhook可以推送mr消息。企业微信的机器人可以接受消息，但是两边的消息格式不同，需要有一个中间人进行翻译。</p>
+</blockquote>
+<p>gitlab的消息中有</p>
+<pre><code>  &quot;user&quot;: {
+    &quot;id&quot;: 114,
+    &quot;name&quot;: &quot;shushuo.wang&quot;,
+    &quot;username&quot;: &quot;shushuo.wang&quot;,
+    &quot;avatar_url&quot;: &quot;http://gitlab.xxxx.com/uploads/-/system/user/avatar/114/avatar.png&quot;,
+    &quot;email&quot;: &quot;shushuo.wang@77hub.com&quot;
+  }
+</code></pre><p>可以分辨出是谁发起的mr。</p>
+<p>将机器人（小组群）和小组人员做一个映射，如果发mr是张三，就将消息发给张三小组群的机器人。</p>
+<p>发给机器人的消息格式（https://work.weixin.qq.com/api/doc/90000/90136/91770）</p>
+<p>文字消息现在就够用：</p>
+<pre><code>{
+    &quot;msgtype&quot;: &quot;text&quot;,
+    &quot;text&quot;: {
+        &quot;content&quot;: &quot;广州今日天气：29度，大部分多云，降雨概率：60%&quot;,
+        &quot;mentioned_list&quot;:[&quot;wangqing&quot;,&quot;@all&quot;],
+        &quot;mentioned_mobile_list&quot;:[&quot;13800001111&quot;,&quot;@all&quot;]
+    }
+}
+</code></pre><p>将mr的url（object_attributes.url）放到消息提中，提及中@all</p>
+<hr>
+<p>go程序设计</p>
+<p>做一个接口，作为gitlab的webhook地址。（/gitlab/message/mr)
+接收到的数据进行解析，user和object_attributes。
+查到user对应的小组机器人url（需要一个表，或者管理页面）
+向url发起一个请求，将消息发给机器人url</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%88%86%E7%B1%BB/">分类</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/">显示在底部</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>解析pptx文件</title>
