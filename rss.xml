@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 12 Nov 2021 13:21:29 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 12 Nov 2021 18:13:31 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -43,8 +43,17 @@
 <li><a href="https://developers.google.com/protocol-buffers/docs/gotutorial">https://developers.google.com/protocol-buffers/docs/gotutorial</a></li>
 <li><a href="https://developers.google.com/protocol-buffers/docs/reference/go-generated#package">https://developers.google.com/protocol-buffers/docs/reference/go-generated#package</a></li>
 </ol>
+<h2 id="内容">内容</h2>
+<ol>
+<li>根据自己的需要，定义protocol buffer，定义请求、相应、service。</li>
+<li>protoc生成grpc.go和pb.go文件</li>
+<li>实现grpc的service接口</li>
+<li>调用service实现</li>
+</ol>
 <pre><code class="language-protocolbuffer" data-lang="protocolbuffer">syntax = &quot;proto3&quot;;
 package tutorial; // 定义报名，避免命名冲突
+
+option go_package=&quot;/services&quot;;
 
 import &quot;google/protobuf/timestamp.proto&quot;;
 
@@ -75,9 +84,64 @@ message AddressBook {
 }
 </code></pre><p>每个元素上的“= 1”、“= 2”标记标识字段在二进制编码中使用的唯一“标签”。标记数字 1-15 需要比更高数字少一个字节来编码，因此作为一种优化，您可以决定将这些标记用于常用或重复的元素，而将标记 16 和更高的标记用于不太常用的可选元素。重复字段中的每个元素都需要重新编码标签编号，因此重复字段特别适合这种优化。</p>
 <p>下载protoc ：https://github.com/protocolbuffers/protobuf/releases/tag/v3.19.1</p>
+<h2 id="protoc生成grpcpbgo和pbgo文件">protoc生成grpc.pb.go和pb.go文件</h2>
 <p>安装插件：</p>
-<pre><code>go install google.golang.org/protobuf/cmd/protoc-gen-go
-</code></pre>]]></description>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.26
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
+</code></pre></td></tr></table>
+</div>
+</div><p>生成grpc和pb.go两个文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">protoc --go_out<span class="o">=</span>. --go_opt<span class="o">=</span><span class="nv">paths</span><span class="o">=</span>source_relative <span class="se">\
+</span><span class="se"></span>    --go-grpc_out<span class="o">=</span>. --go-grpc_opt<span class="o">=</span><span class="nv">paths</span><span class="o">=</span>source_relative <span class="se">\
+</span><span class="se"></span>    helloworld/helloworld.proto
+</code></pre></td></tr></table>
+</div>
+</div><ul>
+<li><code>option go_package=&quot;/services&quot;</code> 会将生成的文件当作go的一个package，名字为services</li>
+<li><code>--go_out=.</code> 在当前目录下生成pb.go文件</li>
+</ul>
+<h2 id="实现grpc的service接口">实现grpc的service接口</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="c1">// server is used to implement helloworld.GreeterServer.
+</span><span class="c1"></span><span class="kd">type</span> <span class="nx">server</span> <span class="kd">struct</span> <span class="p">{</span>
+	<span class="nx">pb</span><span class="p">.</span><span class="nx">UnimplementedGreeterServer</span>
+<span class="p">}</span>
+
+<span class="c1">// SayHello implements helloworld.GreeterServer
+</span><span class="c1"></span><span class="kd">func</span> <span class="p">(</span><span class="nx">s</span> <span class="o">*</span><span class="nx">server</span><span class="p">)</span> <span class="nf">SayHello</span><span class="p">(</span><span class="nx">ctx</span> <span class="nx">context</span><span class="p">.</span><span class="nx">Context</span><span class="p">,</span> <span class="nx">in</span> <span class="o">*</span><span class="nx">pb</span><span class="p">.</span><span class="nx">HelloRequest</span><span class="p">)</span> <span class="p">(</span><span class="o">*</span><span class="nx">pb</span><span class="p">.</span><span class="nx">HelloReply</span><span class="p">,</span> <span class="kt">error</span><span class="p">)</span> <span class="p">{</span>
+	<span class="nx">log</span><span class="p">.</span><span class="nf">Printf</span><span class="p">(</span><span class="s">&#34;Received: %v&#34;</span><span class="p">,</span> <span class="nx">in</span><span class="p">.</span><span class="nf">GetName</span><span class="p">())</span>
+	<span class="k">return</span> <span class="o">&amp;</span><span class="nx">pb</span><span class="p">.</span><span class="nx">HelloReply</span><span class="p">{</span><span class="nx">Message</span><span class="p">:</span> <span class="s">&#34;Hello &#34;</span> <span class="o">+</span> <span class="nx">in</span><span class="p">.</span><span class="nf">GetName</span><span class="p">()},</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>pb为生成的pb.go包名，UnimplementedGreeterServer为pb.go中实现了server的结构体，将它委托到我们的server结构体中，相当于我们的server结成了它。然后实现我们自己的SayHello方法即可完成server的开发。</p>
+]]></description>
                 
                 
                 
