@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 11 Nov 2021 15:17:40 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 12 Nov 2021 13:21:29 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -203,9 +203,99 @@ message AddressBook {
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[<p>background-warp.js</p>
-<p>background.js</p>
-<p>exceScript</p>
+                    <description><![CDATA[<h2 id="background-warpjs">background-warp.js</h2>
+<h2 id="backgroundjs">background.js</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 监听页面的加载完成事件
+</span><span class="c1"></span><span class="nx">chrome</span><span class="p">.</span><span class="nx">webNavigation</span><span class="p">.</span><span class="nx">onCompleted</span><span class="p">.</span><span class="nx">addListener</span><span class="p">(</span>
+  <span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 调用sotrage存放或设置一些数据
+</span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">storage</span><span class="p">.</span><span class="nx">local</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span> <span class="nx">resolvedBuildValue</span> <span class="p">},</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Value is set to &#39;</span> <span class="o">+</span> <span class="nx">resolvedBuildValue</span><span class="p">);</span>
+    <span class="p">});</span>
+    
+    <span class="c1">// 调用scripting执行插入脚本的操作
+</span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">scripting</span><span class="p">.</span><span class="nx">executeScript</span><span class="p">({</span>
+      <span class="nx">target</span><span class="o">:</span> <span class="p">{</span> <span class="nx">tabId</span><span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">tabId</span> <span class="p">},</span>
+      <span class="kd">function</span><span class="o">:</span> <span class="kd">function</span><span class="p">(){</span>
+        <span class="c1">// 可以正常的调用document的相关api控制页面内的元素
+</span><span class="c1"></span>      <span class="p">},</span>
+      <span class="c1">// files: [&#39;content-script.js&#39;],
+</span><span class="c1"></span>    <span class="p">});</span>
+
+    <span class="c1">// 调用scripting执行插入css样式的操作
+</span><span class="c1"></span>    <span class="nx">chrome</span><span class="p">.</span><span class="nx">scripting</span><span class="p">.</span><span class="nx">insertCSS</span><span class="p">(</span>
+      <span class="p">{</span>
+        <span class="nx">target</span><span class="o">:</span> <span class="p">{</span> <span class="nx">tabId</span><span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">tabId</span> <span class="p">},</span>
+        <span class="nx">css</span><span class="o">:</span> <span class="s1">&#39;body{background: red;}&#39;</span><span class="p">,</span> <span class="c1">// 一个css样式的字符串
+</span><span class="c1"></span>      <span class="p">}</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">interface</span> <span class="nx">data</span> <span class="p">{</span>
+  <span class="nx">frameId</span>: <span class="kt">number</span>
+  <span class="nx">parentFrameId</span>: <span class="kt">number</span>
+  <span class="nx">processId</span>: <span class="kt">number</span>
+  <span class="nx">tabId</span>: <span class="kt">number</span>
+  <span class="nx">timeStamp</span>: <span class="kt">number</span>
+  <span class="nx">url</span>: <span class="kt">string</span>
+<span class="nx">url</span><span class="o">:</span> <span class="s2">&#34;https://weibo.com/wangshushuo/home?topnav=1&amp;wvr=6&#34;</span>
+<span class="p">}</span>
+<span class="kr">interface</span> <span class="nx">target</span> <span class="p">{</span>
+  <span class="nx">tabId</span><span class="o">:</span><span class="p">;</span>
+  <span class="nx">allFrame?</span>: <span class="kt">boolean</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="excescript">exceScript</h2>
 ]]></description>
                 
                 
