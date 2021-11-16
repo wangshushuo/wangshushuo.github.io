@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sat, 13 Nov 2021 17:03:26 +0000</lastBuildDate>
+        <lastBuildDate>Tue, 16 Nov 2021 14:28:16 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -1495,7 +1495,9 @@ but was required as: github.com/wangshushuo/gg
 <span class="nx">sort</span><span class="p">.</span><span class="nf">Sort</span><span class="p">(</span><span class="nf">ByOrdinal</span><span class="p">(</span><span class="nx">columns</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
-</div>]]></description>
+</div><h2 id="值传递">值传递</h2>
+<p>map和slice创建后得到的就是它们的指针，所以赋值给变量后，变量就是一个指针，当把他们传给方法、函数时，传递的是变量的值。但是值里面其实是指针。</p>
+]]></description>
                 
                 
                 
