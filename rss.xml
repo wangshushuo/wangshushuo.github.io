@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 16 Nov 2021 14:28:16 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 17 Nov 2021 12:10:41 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -195,7 +195,13 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.1
 <span class="p">}</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>pb为生成的pb.go包名，UnimplementedGreeterServer为pb.go中实现了server的结构体，将它委托到我们的server结构体中，相当于我们的server结成了它。然后实现我们自己的SayHello方法即可完成server的开发。</p>
+</div><p>pb为生成的pb.go包名，UnimplementedGreeterServer为pb.go中实现了server的结构体，将它委托到我们的server结构体中，相当于我们的server结成了它。然后实现我们自己的SayHello方法即可完成server的开发。、</p>
+<hr>
+<p>Go语言高级编程</p>
+<h2 id="安全认证">安全认证</h2>
+<p>4.5.1，4.5.2</p>
+<h2 id="截取器">截取器</h2>
+<p>4.5.3</p>
 ]]></description>
                 
                 
@@ -1495,7 +1501,10 @@ but was required as: github.com/wangshushuo/gg
 <span class="nx">sort</span><span class="p">.</span><span class="nf">Sort</span><span class="p">(</span><span class="nf">ByOrdinal</span><span class="p">(</span><span class="nx">columns</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="值传递">值传递</h2>
+</div><h2 id="context">context</h2>
+<pre><code>c.Ctx.Value(&quot;token&quot;).(string)
+c.Ctx = context.WithValue(c.Ctx, &quot;token&quot;, &quot;123&quot;)
+</code></pre><h2 id="值传递">值传递</h2>
 <p>map和slice创建后得到的就是它们的指针，所以赋值给变量后，变量就是一个指针，当把他们传给方法、函数时，传递的是变量的值。但是值里面其实是指针。</p>
 ]]></description>
                 
