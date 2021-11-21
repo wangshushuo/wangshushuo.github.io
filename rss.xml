@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Sat, 20 Nov 2021 10:52:45 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 21 Nov 2021 14:57:59 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -38,7 +38,10 @@
                 
                 <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
                 
-                    <description><![CDATA[]]></description>
+                    <description><![CDATA[<pre><code>reg, _ := regexp.Compile(`\s+`)
+r := reg.ReplaceAll(resBody, []byte(&quot;&quot;))
+</code></pre><p>compile string to regexp, then replace all</p>
+]]></description>
                 
                 
                 
@@ -1614,9 +1617,29 @@ but was required as: github.com/wangshushuo/gg
 </code></pre></td></tr></table>
 </div>
 </div><h2 id="context">context</h2>
-<pre><code>c.Ctx.Value(&quot;token&quot;).(string)
-c.Ctx = context.WithValue(c.Ctx, &quot;token&quot;, &quot;123&quot;)
-</code></pre><h2 id="值传递">值传递</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">c</span><span class="p">.</span><span class="nx">Ctx</span> <span class="p">=</span> <span class="nx">context</span><span class="p">.</span><span class="nf">WithValue</span><span class="p">(</span><span class="nx">c</span><span class="p">.</span><span class="nx">Ctx</span><span class="p">,</span> <span class="s">&#34;token&#34;</span><span class="p">,</span> <span class="s">&#34;123&#34;</span><span class="p">)</span>
+<span class="c1">// 或
+</span><span class="c1"></span><span class="nx">context</span><span class="p">.</span><span class="nf">WithValue</span><span class="p">(</span><span class="nx">context</span><span class="p">.</span><span class="nf">Background</span><span class="p">(),</span> <span class="s">&#34;token&#34;</span><span class="p">,</span> <span class="nx">resToken</span><span class="p">.</span><span class="nx">Data</span><span class="p">.</span><span class="nx">Token</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>讲值存到context中。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">c</span><span class="p">.</span><span class="nx">Ctx</span><span class="p">.</span><span class="nf">Value</span><span class="p">(</span><span class="s">&#34;token&#34;</span><span class="p">).(</span><span class="kt">string</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>获取值</p>
+<h2 id="值传递">值传递</h2>
 <p>map和slice创建后得到的就是它们的指针，所以赋值给变量后，变量就是一个指针，当把他们传给方法、函数时，传递的是变量的值。但是值里面其实是指针。</p>
 ]]></description>
                 
