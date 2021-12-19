@@ -7,7 +7,7 @@
 
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>WSS.COOL</title>
+        <title>个人经验感想L</title>
         <link>https://wss.cool/</link>
         <description>现在是一名前端，希望转到后端，最后做架构师。这里记录了常用到的前端、后端、服务器和各种工具的常用api、知识点等。记录的api方便查找，记录的知识点作为一种输出可以增加理解。</description>
         <generator>Hugo 0.68.3 https://gohugo.io/</generator>
@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 14 Dec 2021 04:53:29 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 19 Dec 2021 02:00:24 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
