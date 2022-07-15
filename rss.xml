@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Wed, 13 Jul 2022 06:19:38 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 15 Jul 2022 07:05:13 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -4455,7 +4455,7 @@ but was required as: github.com/wangshushuo/gg
             </item>
         
             <item>
-                <title>Changelist更新时间长</title>
+                <title>WebStorm Changelist更新时间长</title>
                 <link>https://wss.cool/changelist-git-ignore.html</link>
                 <guid isPermaLink="true">https://wss.cool/changelist-git-ignore.html</guid>
                 <pubDate>Fri, 15 Jan 2021 10:45:56 +0800</pubDate>
