@@ -23,10 +23,498 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 21 Jul 2022 11:03:42 +0000</lastBuildDate>
+        <lastBuildDate>Thu, 28 Jul 2022 14:03:46 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>Jest</title>
+                <link>https://wss.cool/jest.html</link>
+                <guid isPermaLink="true">https://wss.cool/jest.html</guid>
+                <pubDate>Fri, 22 Jul 2022 16:35:49 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="模拟模块">模拟模块</h2>
+<p>先看代码，isEntity是我们要测试的目标，其中引用了 metadata 模块。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">metadata</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@metadata&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">isEntity</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">!!</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">getEntity</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果 metadata 模块比较复杂，在 jest 的环境中不能直接初始化出来，这时候最好的办法就是通过 mock 模拟这个模块，使测试代码可以正常运行。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">metadata</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@metadata&#39;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">entity</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">custom1Entity</span><span class="o">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;@metadata&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">getEntity</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockImplementation</span><span class="p">(</span><span class="nx">id</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">entity</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+      <span class="p">}),</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;模拟模块&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">test</span><span class="p">(</span><span class="s1">&#39;isEntity&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">item</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;customEntity2&#39;</span> <span class="p">};</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">isEntity</span><span class="p">(</span><span class="nx">item</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">getEntity</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">pop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">getEntity</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>jest.mock 会模拟 @metadata 模块，无论是测试文件中还是原代码中的 @metadata 模块都会被模拟。
+jest.fn() 只接受空参数的函数作为参数，并返回一个值。如果想有参数，就要在调用 mockImplementation 方法，来提供有逻辑的实现过程。</p>
+<h2 id="模拟函数">模拟函数</h2>
+<p><a href="https://jestjs.io/zh-Hans/docs/mock-function-api#mockfnmockresolvedvaluevalue">jest api document</a>
+模拟函数也就是 jest.fn() 它返回一个 mockFn 对象，它有很多方法，可以从多个角度测试我们的代码。</p>
+<p>名字</p>
+<ul>
+<li>mockFn.mockName(name)</li>
+<li>mockFn.getMockName()</li>
+</ul>
+<p>调用信息：</p>
+<ul>
+<li>mockFn.mock.calls 函数被调用时所接收到的参数。</li>
+<li>mockFn.mock.results</li>
+<li>mockFn.mock.instances</li>
+<li>mockFn.mock.contexts</li>
+<li>mockFn.mock.lastCall</li>
+</ul>
+<p>清理mock，比如虚拟函数被调用了，mock.calls中会有值，可能影响其他用例的结果，就需要清理一下</p>
+<ul>
+<li>mockFn.mockClear()</li>
+<li>mockFn.mockReset()</li>
+<li>mockFn.mockRestore()</li>
+</ul>
+<p>模拟函数的实现，可以在mock模块时使用</p>
+<ul>
+<li>mockFn.mockImplementation(fn)  模拟函数的实现，也就是中间有逻辑，可以根据接收参数，根据参数进行一些计算，与 mockReturnValue 做比较的话，
+mockReturnValue是直接返回一个结果，并可以通过 mockFn.mock.calls 拿到调用函数时的参数</li>
+<li>mockFn.mockImplementationOnce(fn)</li>
+</ul>
+<p>函数直接返回值：</p>
+<ul>
+<li>mockFn.mockReturnThis()</li>
+<li>mockFn.mockReturnValue(value)</li>
+<li>mockFn.mockReturnValueOnce(value)</li>
+</ul>
+<p>函数异步返回结果：</p>
+<ul>
+<li>mockFn.mockResolvedValue(value)</li>
+<li>mockFn.mockResolvedValueOnce(value)</li>
+<li>mockFn.mockRejectedValue(value)</li>
+<li>mockFn.mockRejectedValueOnce(value)</li>
+</ul>
+<h3 id="虚拟函数的例子">虚拟函数的例子</h3>
+<ol>
+<li>模拟模块，并模拟其中的方法</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;metadata&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
+  <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">getEnumValue</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockImplementation</span><span class="p">((</span><span class="nx">id</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">enumMap</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">ChangeViewType</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s1">&#39;adjust&#39;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;adjust&#39;</span><span class="p">,</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;adjust&#39;</span><span class="p">,</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;调整&#39;</span><span class="p">,</span>
+          <span class="p">},</span>
+        <span class="p">},</span>
+      <span class="p">};</span>
+      <span class="k">return</span> <span class="nx">enumMap</span><span class="p">[</span><span class="nx">id</span><span class="p">][</span><span class="nx">value</span><span class="p">];</span>
+    <span class="p">}),</span>
+  <span class="p">},</span>
+<span class="p">}));</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol start="2">
+<li>模拟模块，其中的方法直接返回数据</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;metadata&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
+  <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">getEnumValue</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockReturnValue</span><span class="p">({</span>
+      <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;adjust&#39;</span><span class="p">,</span>
+      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;adjust&#39;</span><span class="p">,</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;调整&#39;</span><span class="p">,</span>
+    <span class="p">}),</span>
+  <span class="p">},</span>
+<span class="p">}));</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="断言举例">断言举例</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 断言对象的实例
+</span><span class="c1"></span><span class="nx">expect</span><span class="p">(</span><span class="nx">buttonController</span><span class="p">).</span><span class="nx">toBeInstanceOf</span><span class="p">(</span><span class="nx">BudgetPlanChangeButtonController</span><span class="p">);</span>
+
+<span class="c1">// 断言方法是否被调用，源代码中的函数可以通过spyOn追踪
+</span><span class="c1"></span><span class="nx">expect</span><span class="p">(</span><span class="nx">spy</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+
+<span class="c1">// 断言虚拟函数的调用情况，mock.calls会记录调用函数的参数
+</span><span class="c1"></span><span class="nx">expect</span><span class="p">(</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">getEnumValue</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">getEnumValue</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">([</span>
+  <span class="s1">&#39;ChangeViewType&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;ChangeViewType.adjust&#39;</span><span class="p">,</span>
+<span class="p">]);</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="jestspyonobject-methodname">jest.spyOn(object, methodName)</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">play</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">video</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./video&#39;</span><span class="p">);</span>
+
+<span class="nx">afterEach</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// restore the spy created with spyOn
+</span><span class="c1"></span>  <span class="nx">jest</span><span class="p">.</span><span class="nx">restoreAllMocks</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s1">&#39;plays video&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">spy</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">video</span><span class="p">,</span> <span class="s1">&#39;play&#39;</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">isPlaying</span> <span class="o">=</span> <span class="nx">video</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">spy</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">isPlaying</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>jest.spyOn(object, methodName)会跟踪对应的方法，会使其成为一个 mock function ，就可以调用 mockFn 的各种方法和断言。</p>
+<p>比如原函数是未被覆盖的，想要覆盖的话，就可以通过调用mockImplementation方法覆盖。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span> <span class="nx">methodName</span><span class="p">).</span><span class="nx">mockImplementation</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">customImplementation</span><span class="p">)</span>
+<span class="nx">object</span><span class="p">[</span><span class="nx">methodName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">customImplementation</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>因为 jest.spyOn 是一个模拟。 您可以在 afterEach 方法上调用 jest.restoreAllMocks 恢复初始状态。</p>
+<h2 id="jestspyonobject-methodname-accesstype">jest.spyOn(object, methodName, accessType?)</h2>
+<p>accessType为get或set，可以追踪get/set方法。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// it&#39;s a getter!
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// it&#39;s a getter!
+</span><span class="c1"></span>  <span class="nx">get</span> <span class="nx">play</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">video</span><span class="p">;</span>
+
+<span class="c1">// xx.test.js
+</span><span class="c1"></span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;plays video&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">spy</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">video</span><span class="p">,</span> <span class="s1">&#39;play&#39;</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">);</span> <span class="c1">// we pass &#39;get&#39;
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">isPlaying</span> <span class="o">=</span> <span class="nx">video</span><span class="p">.</span><span class="nx">play</span><span class="p">;</span>
+
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">spy</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">isPlaying</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%88%86%E7%B1%BB/">分类</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/">显示在底部</category>
+                                
+                            
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>使用systemd</title>
+                <link>https://wss.cool/%E4%BD%BF%E7%94%A8systemd.html</link>
+                <guid isPermaLink="true">https://wss.cool/%E4%BD%BF%E7%94%A8systemd.html</guid>
+                <pubDate>Thu, 21 Jul 2022 23:40:40 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<p><a href="https://stackoverflow.com/a/28704296/6021280">参考1</a></p>
+<p>使用spring boot创建的项目，使用maven打包出来成jar包。上传到服务器，这里使用linux的systemd来开启和关闭java程序。</p>
+<p>首先找到用户定义的service目录，ubuntu是在<code>/etc/systemd/system</code>，其他发行版可能在<code>/usr/lib/systemd/system/</code></p>
+<p>第二步，在其中创建文件<code>名字.service</code>，我的是叫<code>blog.service</code>，编辑文件。</p>
+<p>可以设置工作目录</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>unit<span class="o">]</span>
+<span class="nv">Description</span><span class="o">=</span>webserver Daemon
+
+<span class="o">[</span>Service<span class="o">]</span>
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/root
+<span class="nv">ExecStart</span><span class="o">=</span>/root/77kpi
+<span class="nv">User</span><span class="o">=</span>root
+
+<span class="o">[</span>Install<span class="o">]</span>
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</code></pre></td></tr></table>
+</div>
+</div><p>可以不设置工作目录</p>
+<pre><code>[Unit]
+Description=webserver Daemon
+
+[Service]
+ExecStart=/usr/bin/java -jar /web/server.jar
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target
+</code></pre><p>启动Java程序，设置最大内存。</p>
+<pre><code>ExecStart=/usr/bin/java -XX:+UseSerialGC -Xss512k -XX:MaxRAM=128m -jar /home/ubuntu/image-0.0.4-SNAPSHOT.jar
+</code></pre><p>第三步，启动/关闭/查看状态。</p>
+<p>命令可以这样用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start blog.service <span class="c1"># starts the service</span>
+sudo systemctl stop blog.service <span class="c1"># stops the service</span>
+
+sudo systemctl status blog.service
+sudo systemctl restart blog.service <span class="c1"># restarts the service</span>
+
+sudo systemctl <span class="nb">enable</span> blog.service <span class="c1"># auto starts the service</span>
+sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>还可以这样用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-bash" data-lang="bash">sudo service blog start/stop/status/restart
+</code></pre></td></tr></table>
+</div>
+</div><p>修改了service文件后需要刷新</p>
+<pre><code>sudo systemctl daemon-reload
+</code></pre>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/categories/%E5%88%86%E7%B1%BB/">分类</category>
+                                
+                            
+                        
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="https://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/">显示在底部</category>
+                                
+                            
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>Openvpn</title>
@@ -18106,65 +18594,7 @@ dig wss.cool
 <p>修改后启动服务 <code>systemctl start shadowsocks-livev-local@config</code></p>
 <p>开机自启动 <code>systemctl enable shadowsocks-livev-local@config</code></p>
 <p>可以查看日志 <code>journalctl -u shadowsocks-livev-local@config</code></p>
-<h2 id="使用systemd启动关闭java程序">使用systemd启动关闭Java程序</h2>
-<p><a href="https://stackoverflow.com/a/28704296/6021280">参考1</a></p>
-<p>使用spring boot创建的项目，使用maven打包出来成jar包。上传到服务器，这里使用linux的systemd来开启和关闭java程序。</p>
-<p>首先找到用户定义的service目录，ubuntu是在<code>/etc/systemd/system</code>，其他发行版可能在<code>/usr/lib/systemd/system/</code></p>
-<p>第二步，在其中创建文件<code>名字.service</code>，我的是叫<code>blog.service</code>，编辑文件。</p>
-<pre><code>[Unit]
-Description=webserver Daemon
-
-[Service]
-ExecStart=/usr/bin/java -jar /web/server.jar
-User=ubuntu
-
-[Install]
-WantedBy=multi-user.target
-</code></pre><pre><code>[Unit]
-Description=dinghe de image service
-
-[Service]
-ExecStart=/usr/bin/java -XX:+UseSerialGC -Xss512k -XX:MaxRAM=128m -jar /home/ubuntu/image-0.0.4-SNAPSHOT.jar
-User=ubuntu
-
-[Install]
-WantedBy=multi-user.target
-</code></pre><p>第三步，启动/关闭/查看状态。</p>
-<p>命令可以这样用：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start blog.service <span class="c1"># starts the service</span>
-sudo systemctl stop blog.service <span class="c1"># stops the service</span>
-
-sudo systemctl status blog.service
-sudo systemctl restart blog.service <span class="c1"># restarts the service</span>
-
-sudo systemctl <span class="nb">enable</span> blog.service <span class="c1"># auto starts the service</span>
-sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>还可以这样用：</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo service blog start/stop/status/restart
-</code></pre></td></tr></table>
-</div>
-</div><p>修改了service文件后需要刷新</p>
-<pre><code>sudo systemctl daemon-reload
-</code></pre><h2 id="ubuntu-安装python3">ubuntu 安装python3</h2>
+<h2 id="ubuntu-安装python3">ubuntu 安装python3</h2>
 <ol>
 <li>wget <a href="http://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz">http://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz</a></li>
 <li>tar -xvzf Python-3.7.4.tgz</li>
