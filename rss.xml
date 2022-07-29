@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Thu, 28 Jul 2022 14:08:22 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 29 Jul 2022 07:29:50 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -343,13 +343,9 @@ mockReturnValue是直接返回一个结果，并可以通过 mockFn.mock.calls �
 </span><span class="lnt">15
 </span><span class="lnt">16
 </span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="c1">// it&#39;s a getter!
-</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="p">{</span>
   <span class="c1">// it&#39;s a getter!
 </span><span class="c1"></span>  <span class="nx">get</span> <span class="nx">play</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
@@ -368,7 +364,9 @@ mockReturnValue是直接返回一个结果，并可以通过 mockFn.mock.calls �
 <span class="p">});</span>
 </code></pre></td></tr></table>
 </div>
-</div>]]></description>
+</div><h2 id="模拟模块-1">模拟模块</h2>
+<p><img src="http://hugo-1256216240.cos.ap-chengdu.myqcloud.com/pasteimageintomarkdown/2022-07-29/352636115774400.png" alt=""></p>
+]]></description>
                 
                 
                 
