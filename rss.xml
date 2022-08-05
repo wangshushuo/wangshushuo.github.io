@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Tue, 02 Aug 2022 06:06:41 +0000</lastBuildDate>
+        <lastBuildDate>Fri, 05 Aug 2022 05:47:47 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="https://wss.cool/rss.xml" />
         
@@ -237,6 +237,82 @@
 </div>
 </div><p>jest.mock 会模拟 @metadata 模块，无论是测试文件中还是原代码中的 @metadata 模块都会被模拟。
 jest.fn() 只接受空参数的函数作为参数，并返回一个值。如果想有参数，就要在调用 mockImplementation 方法，来提供有逻辑的实现过程。</p>
+<h2 id="模拟es6类">模拟ES6类</h2>
+<p>上面的mock方式</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;@metadata&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">getEntity</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockImplementation</span><span class="p">(</span><span class="nx">id</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">entity</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+      <span class="p">}),</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;@client&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockImplementation</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">post</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+<span class="p">})</span>
+<span class="kr">import</span> <span class="nx">client</span> <span class="nx">from</span> <span class="s1">&#39;@client&#39;</span><span class="p">;</span>
+
+<span class="nx">client</span><span class="p">.</span><span class="nx">post</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockImplementation</span><span class="p">(()</span> <span class="p">=&gt;</span>
+  <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span>
+      <span class="nx">data</span><span class="o">:</span> <span class="p">{}</span>
+  <span class="p">})</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果上面的mock方式不起作用，可以看看mock的目标是一个 class ，比如这种：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Client</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./client&#39;</span><span class="p">;</span>
+<span class="kr">export</span> <span class="o">*</span> <span class="nx">from</span> <span class="s1">&#39;./types&#39;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">client</span><span class="p">;</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="手动模拟">手动模拟</h3>
+<p><img src="http://hugo-1256216240.cos.ap-chengdu.myqcloud.com/pasteimageintomarkdown/2022-07-29/352636115774400.png" alt="">
+在 <strong>mock</strong> 目录中，新建与模拟目标目录相同的一个文件。在测试文件中，就回用它代替原本的依赖。</p>
 <h2 id="模拟函数">模拟函数</h2>
 <p><a href="https://jestjs.io/zh-Hans/docs/mock-function-api#mockfnmockresolvedvaluevalue">jest api document</a>
 模拟函数也就是 jest.fn() 它返回一个 mockFn 对象，它有很多方法，可以从多个角度测试我们的代码。</p>
@@ -488,9 +564,7 @@ mockReturnValue是直接返回一个结果，并可以通过 mockFn.mock.calls �
 <span class="p">});</span>
 </code></pre></td></tr></table>
 </div>
-</div><h2 id="模拟模块-1">模拟模块</h2>
-<p><img src="http://hugo-1256216240.cos.ap-chengdu.myqcloud.com/pasteimageintomarkdown/2022-07-29/352636115774400.png" alt=""></p>
-]]></description>
+</div>]]></description>
                 
                 
                 
