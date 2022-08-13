@@ -23,10 +23,429 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 12 Aug 2022 00:30:35 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 13 Aug 2022 11:41:17 +0000</lastBuildDate>
         
             <atom:link rel="self" type="application/rss+xml" href="http://wss.cool/rss.xml" />
         
+        
+            <item>
+                <title>Http服务器</title>
+                <link>http://wss.cool/http%E6%9C%8D%E5%8A%A1%E5%99%A8.html</link>
+                <guid isPermaLink="true">http://wss.cool/http%E6%9C%8D%E5%8A%A1%E5%99%A8.html</guid>
+                <pubDate>Sat, 13 Aug 2022 00:09:29 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="http服务器">HTTP服务器</h2>
+<p>首先要开启一个服务器，并能响应一些url，先看一下官方文档。</p>
+<p>ListenAndServe starts an HTTP server with a given address and handler. The
+handler is usually nil, which means to use DefaultServeMux. Handle and
+HandleFunc add handlers to DefaultServeMux:</p>
+<pre><code>http.Handle(&quot;/foo&quot;, fooHandler)
+
+http.HandleFunc(&quot;/bar&quot;, func(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, &quot;Hello, %q&quot;, html.EscapeString(r.URL.Path))
+})
+
+log.Fatal(http.ListenAndServe(&quot;:8080&quot;, nil))
+</code></pre>
+<p>More control over the server's behavior is available by creating a custom
+Server:</p>
+<pre><code>s := &amp;http.Server{
+    Addr:           &quot;:8080&quot;,
+    Handler:        myHandler,
+    ReadTimeout:    10 * time.Second,
+    WriteTimeout:   10 * time.Second,
+    MaxHeaderBytes: 1 &lt;&lt; 20,
+}
+log.Fatal(s.ListenAndServe())
+</code></pre>
+<p>上面是官方文档介绍的 HTTP 服务器，Handle 与 HandleFunc 的区别是它们的第二个参数一个是结构体一个是处理函数。一般用 HandleFunc 就行了，
+处理函数内部可以按<strong>数据接口</strong>或者<strong>网页</strong>来处理请求。</p>
+<h2 id="接口">接口</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="nx">h2</span> <span class="o">:=</span> <span class="kd">func</span><span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">_</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">io</span><span class="p">.</span><span class="nf">WriteString</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="s">&#34;Hello from a HandleFunc #2!\n&#34;</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="网页">网页</h2>
+<p>先看一个典型的处理网页的请求：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">onlyTemplateHandler</span> <span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">temp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;index.gohtml&#34;</span><span class="p">).</span><span class="nf">ParseFiles</span><span class="p">(</span><span class="s">&#34;myTemp/index.gohtml&#34;</span><span class="p">)</span>
+    <span class="nx">temp</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>通过解析文件 myTemp/index.gohtml 创建一个名为 index.gohtml 的模板，通过 Execute 方法将内容写到 ResponseWriter 以相应请求。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">withDataHandler</span> <span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">temp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;index.gohtml&#34;</span><span class="p">).</span><span class="nf">ParseFiles</span><span class="p">(</span><span class="s">&#34;code-kpi/index.gohtml&#34;</span><span class="p">)</span>
+    <span class="nx">temp</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="kd">struct</span><span class="p">{</span>
+      <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;wangshushuo&#34;</span><span class="p">,</span>
+    <span class="p">})</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>一般模板里面都是要绑定数据的，可以通过 Execute 的第二个参数将数据传入模板。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-go" data-lang="go"><span class="kd">func</span> <span class="nf">bindFuncHandler</span> <span class="p">(</span><span class="nx">w</span> <span class="nx">http</span><span class="p">.</span><span class="nx">ResponseWriter</span><span class="p">,</span> <span class="nx">r</span> <span class="o">*</span><span class="nx">http</span><span class="p">.</span><span class="nx">Request</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">funcMap</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nx">FuncMap</span><span class="p">{</span><span class="s">&#34;minus&#34;</span><span class="p">:</span> <span class="kd">func</span> <span class="p">(</span><span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">a</span> <span class="o">-</span> <span class="nx">b</span>
+    <span class="p">}}</span>
+    <span class="nx">temp</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">template</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;index.gohtml&#34;</span><span class="p">).</span><span class="nf">Funcs</span><span class="p">(</span><span class="nx">funcMap</span><span class="p">).</span><span class="nf">ParseFiles</span><span class="p">(</span><span class="s">&#34;code-kpi/index.gohtml&#34;</span><span class="p">)</span>
+    <span class="nx">err</span> <span class="p">=</span> <span class="nx">temp</span><span class="p">.</span><span class="nf">Execute</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="kd">struct</span><span class="p">{</span>
+      <span class="nx">Name</span><span class="p">:</span> <span class="s">&#34;wangshushuo&#34;</span><span class="p">,</span>
+    <span class="p">})</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+        <span class="nx">log</span><span class="p">.</span><span class="nf">Println</span><span class="p">(</span><span class="s">&#34;bind vars err: &#34;</span><span class="p">,</span> <span class="nx">err</span><span class="p">)</span>
+        <span class="nx">http</span><span class="p">.</span><span class="nf">Error</span><span class="p">(</span><span class="nx">w</span><span class="p">,</span> <span class="nx">err</span><span class="p">.</span><span class="nf">Error</span><span class="p">(),</span> <span class="nx">http</span><span class="p">.</span><span class="nx">StatusBadRequest</span><span class="p">)</span>
+        <span class="k">return</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>如果需要对数据进行计算，模板提供了一些方法，如果内置的方法不支持，就需要自己绑定函数到模板中，才能在模板中就可以使用函数，比如上面的代码是两个数字相减函数。</p>
+]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="http://wss.cool/categories/%E5%88%86%E7%B1%BB/">分类</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
+        
+            <item>
+                <title>设计模式实践</title>
+                <link>http://wss.cool/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AE%9E%E8%B7%B5.html</link>
+                <guid isPermaLink="true">http://wss.cool/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AE%9E%E8%B7%B5.html</guid>
+                <pubDate>Wed, 10 Aug 2022 18:47:44 +0800</pubDate>
+                
+                    <author>wss.six@foxmail.com (王书硕)</author>
+                
+                <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
+                
+                    <description><![CDATA[<h2 id="策略模式">策略模式</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">class</span> <span class="nx">D</span> <span class="p">{</span>
+    <span class="nx">createCode</span><span class="p">(</span><span class="nx">parentId</span><span class="p">,</span> <span class="nx">followTaskId</span><span class="p">)</span><span class="o">:</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">parent</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getTaskById</span><span class="p">(</span><span class="nx">parentId</span><span class="p">);</span>
+        <span class="kd">let</span> <span class="nx">code</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">parent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kr">const</span> <span class="nx">parentCode</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">.</span><span class="nx">taskNbr</span><span class="p">;</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">followTaskId</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">code</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">parentCode</span><span class="si">}${</span><span class="nx">parentCode</span> <span class="o">?</span> <span class="s1">&#39;.&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="si">}${</span><span class="nx">nbrArr</span><span class="p">.</span><span class="nx">length</span> <span class="o">?</span> <span class="nb">Number</span><span class="p">(</span><span class="nx">nbrArr</span><span class="p">[</span><span class="nx">nbrArr</span><span class="p">.</span><span class="nx">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">code</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">parentCode</span><span class="si">}${</span><span class="nx">parentCode</span> <span class="o">?</span> <span class="s1">&#39;.&#39;</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="si">}${</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span> <span class="o">+</span> <span class="mi">1</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">code</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">index</span> <span class="o">+</span> <span class="mi">2</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">code</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kr">public</span> <span class="nx">createTaskResolver</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">mode</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">task</span>: <span class="kt">any</span> <span class="o">=</span> <span class="p">{};</span>
+        <span class="kr">const</span> <span class="nx">parentId</span> <span class="o">=</span> <span class="nb">String</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">parentId</span> <span class="o">?</span> <span class="nx">data</span><span class="p">.</span><span class="nx">parentId</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">parentId</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">task</span><span class="p">.</span><span class="nx">parent</span> <span class="o">=</span> <span class="p">{</span><span class="nx">id</span>: <span class="kt">parentId</span><span class="p">}</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">data</span> <span class="o">&amp;&amp;</span> <span class="nx">data</span><span class="p">.</span><span class="nx">followTaskIndex</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">task</span><span class="p">.</span><span class="nx">followTaskIndex</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">followTaskIndex</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">task</span>
+    <span class="p">}</span>
+
+    <span class="kr">public</span> <span class="nx">setCreatePullData</span><span class="p">(</span><span class="nx">task</span>: <span class="kt">IProjectTask</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">let</span> <span class="nx">topLevel</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getTopLevelTasks</span><span class="p">();</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">oc</span><span class="p">(</span><span class="nx">task</span><span class="p">.</span><span class="nx">parent</span><span class="p">).</span><span class="nx">id</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">))</span> <span class="p">{</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">task</span><span class="p">.</span><span class="nx">followTaskId</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nx">task</span><span class="p">[</span><span class="nx">F_ProjectTask_scheduledStart</span><span class="p">])</span> <span class="p">{</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">toJS</span><span class="p">(</span><span class="nx">task</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kr">public</span> <span class="nx">getFollowTaskId</span><span class="p">(</span><span class="nx">data</span><span class="p">,</span> <span class="nx">allData</span><span class="p">)</span><span class="o">:</span> <span class="kt">string</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">followTaskId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">parentId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="xx模式">xx模式</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">class</span> <span class="nx">E</span> <span class="p">{</span>
+    <span class="kr">private</span> <span class="nx">showDialog</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="nx">mode</span>: <span class="kt">BizFormModeEnum</span><span class="p">,</span>
+        <span class="nx">dataId</span>: <span class="kt">string</span><span class="p">,</span>
+        <span class="nx">options</span>: <span class="kt">Optional</span><span class="o">&lt;</span><span class="nx">IBizFormDialogOptions</span><span class="o">&gt;</span> <span class="o">=</span> <span class="p">{},</span>
+    <span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="c1">// 如果dialogId存在，说明弹窗已经生成，那么就先关闭那个弹窗，防止多次点击出现多个弹窗
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">mediator</span><span class="p">.</span><span class="nx">dialogId</span><span class="p">)</span> <span class="k">this</span><span class="p">.</span><span class="nx">mediator</span><span class="p">.</span><span class="nx">closeTaskDialog</span><span class="p">();</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="nx">presenter</span><span class="p">.</span><span class="nx">getBean</span><span class="p">(</span><span class="nx">PageBeanNames</span><span class="p">.</span><span class="nx">NestFormController</span><span class="p">).</span><span class="nx">showNestBizFormDialog</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="nx">fieldName</span>: <span class="kt">F_ProjectSchedule_tasks</span><span class="p">,</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;任务详情&#39;</span><span class="p">,</span>
+                <span class="nx">size</span><span class="o">:</span> <span class="s1">&#39;largest&#39;</span><span class="p">,</span>
+                <span class="nx">dataId</span>: <span class="kt">dataId</span><span class="p">,</span>
+                <span class="nx">mode</span>: <span class="kt">mode</span><span class="p">,</span>
+                <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="p">...</span><span class="nx">options</span><span class="p">,</span>
+                    <span class="nx">projectScheduleAPI</span>: <span class="kt">this.presenter.options.projectScheduleAPI</span><span class="p">,</span>
+                    <span class="nx">displayOptions</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="nx">suppressDetailAttachmentUpload</span><span class="o">:</span> <span class="p">[</span><span class="nx">F_ProjectTask_deliverables</span><span class="p">]</span>
+                    <span class="p">},</span>
+                    <span class="nx">onSave</span><span class="o">:</span> <span class="p">(</span><span class="nx">dialogOptions</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                        <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                            <span class="k">this</span><span class="p">.</span><span class="nx">updateGanttData</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="nx">dialogOptions</span><span class="p">.</span><span class="nx">dataId</span><span class="p">,</span> <span class="nx">dialogOptions</span><span class="p">.</span><span class="nx">options</span><span class="p">.</span><span class="nx">taskContext</span><span class="p">.</span><span class="nx">followTaskIndex</span><span class="p">);</span>
+                        <span class="p">},</span> <span class="mi">300</span><span class="p">);</span>
+                    <span class="p">}</span>
+                <span class="p">},</span>
+                <span class="nx">customizeButtons</span>: <span class="kt">options.customizeButtons</span><span class="p">,</span>
+                <span class="nx">presenterClass</span>: <span class="kt">TaskFormPresenter</span><span class="p">,</span>
+                <span class="nx">presenterOptions</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="nx">passParams</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="c1">// showDialog: this.showDialog,
+</span><span class="c1"></span>                        <span class="nx">mediatorKey</span>: <span class="kt">this.mediatorKey</span><span class="p">,</span>
+                        <span class="nx">passOptions</span><span class="o">:</span> <span class="p">{</span>
+                            <span class="nx">mainPresenterAttachment</span><span class="o">:</span> <span class="p">(</span><span class="nx">task</span><span class="p">,</span> <span class="nx">newFiles</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">setTaskAttachmentAppendRow</span><span class="p">(</span><span class="nx">task</span><span class="p">,</span> <span class="nx">newFiles</span><span class="p">);</span>
+                            <span class="p">},</span>
+                            <span class="nx">mainPresenterSave</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                <span class="k">this</span><span class="p">.</span><span class="nx">presenter</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">save</span><span class="p">()</span>
+                            <span class="p">},</span>
+                            <span class="nx">mainPresenterIsEdit</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+                                <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">presenter</span><span class="p">.</span><span class="nx">api</span><span class="p">.</span><span class="nx">stateController</span><span class="p">.</span><span class="nx">isEditing</span><span class="p">;</span>
+                            <span class="p">}</span>
+                        <span class="p">}</span>
+                    <span class="p">},</span>
+                <span class="p">},</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>showNestBizFormDialog的参数是一个大型的option，而此方法中用到了其中一部分参数</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-ts" data-lang="ts"><span class="kr">interface</span> <span class="nx">NestBizFormDialogOption</span> <span class="p">{</span>
+    <span class="nx">nestFieldName?</span>: <span class="kt">string</span><span class="p">,</span>
+    <span class="nx">title</span>: <span class="kt">string</span><span class="p">,</span>
+    <span class="nx">size</span>: <span class="kt">string</span><span class="p">,</span>
+    <span class="nx">dataId</span>: <span class="kt">string</span><span class="p">,</span>
+    <span class="nx">mode</span>: <span class="kt">string</span><span class="p">,</span>
+    <span class="nx">suppressDetailAttachmentUpload</span><span class="o">:</span> <span class="p">[</span><span class="nx">F_ProjectTask_deliverables</span><span class="p">],</span>
+    <span class="nx">onSave</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">,</span>
+    <span class="nx">customizeButtons</span><span class="p">,</span>
+    <span class="nx">mediatorKey</span><span class="p">,</span>
+    <span class="nx">mainPresenterAttachment</span><span class="o">:</span> <span class="p">(</span><span class="nx">task</span><span class="p">,</span> <span class="nx">newFiles</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">,</span>
+    <span class="nx">mainPresenterSave</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">,</span>
+    <span class="nx">mainPresenterIsEdit</span><span class="o">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="k">void</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div>]]></description>
+                
+                
+                
+                
+                
+                    
+                        
+                            
+                                
+                                
+                                
+                                    <category domain="http://wss.cool/categories/%E5%88%86%E7%B1%BB/">分类</category>
+                                
+                            
+                        
+                    
+                        
+                    
+                
+            </item>
         
             <item>
                 <title>装饰器</title>
