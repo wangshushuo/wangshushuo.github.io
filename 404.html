@@ -4,36 +4,10 @@
     <meta charset="UTF-8" />
 
     <meta name="generator" content="Hugo 0.68.3" /><meta name="theme-color" content="#fff" />
-        <script>
-            const userPrefers = localStorage.getItem('theme');
-            const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
-            if (userPrefers === 'dark') {
-                changeModeMeta('dark');
-            } else if (userPrefers === 'light') {
-                changeModeMeta('light');
-            } else if (darkModeMediaQuery.matches) {
-                changeModeMeta('dark');
-            } else if (lightModeMediaQuery.matches) {
-                changeModeMeta('light');
-            }
-            function changeModeMeta(theme) {
-                document.documentElement.setAttribute('data-theme', theme);
-                if (theme === 'dark') {
-                    changeThemeColor('#282a36');
-                } else {
-                    changeThemeColor('#fff');
-                }
-            }
-            function changeThemeColor(themeColor) {
-                document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
-            }
-        </script>
+    <meta name="color-scheme" content="light dark">
 
     
-
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <meta name="format-detection" content="telephone=no, date=no, address=no, email=no" />
     
@@ -43,19 +17,21 @@
 
     <title>404 Page not found | 硕的研发日志</title>
 
-    <link rel="stylesheet" href="/css/meme.min.78b1f5e94c82af3228d82adfdeef660e6dcef0e295bebb877f036d0644f98852.css" integrity="sha256-eLH16UyCrzIo2Crf3u9mDm3O8OKVvruHfwNtBkT5iFI=" />
+    <link rel="stylesheet" href="/css/meme.min.7b775be0b3adb73813f2641bad6df3f2a792bbf99fb46de6e6a8104eaf40e645.css"/>
+
+    
+    
 
     
 
-    <meta name="author" content="王书硕" />
-    <meta name="description" content="技术博客" />
+    <meta name="author" content="王书硕" /><meta name="description" content="王书硕的技术博客" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
     <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#2a6df4" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="硕的研发日志" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="硕的研发日志" />
     <meta name="msapplication-starturl" content="../" />
@@ -68,8 +44,7 @@
 
     
     <link rel="canonical" href="http://wss.cool/404.html" />
-
-
+    
 
 <script type="application/ld+json">
     {
@@ -79,7 +54,7 @@
         "dateModified": "2015-07-20T20:17:43+00:00",
         "url": "http://wss.cool/404.html",
         "name": "404 Page not found",
-        "description": "技术博客",
+        "description": "王书硕的技术博客",
         "image": "http://wss.cool/icons/apple-touch-icon.png",
         "license": "[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)",
         "publisher": {
@@ -100,8 +75,6 @@
 
     
 
-
-
 <meta name="twitter:card" content="summary" />
 
 <meta name="twitter:site" content="@shuo666" />
@@ -111,15 +84,16 @@
 
 
 
-
-
 <meta property="og:title" content="404 Page not found" />
-<meta property="og:description" content="技术博客" />
+<meta property="og:description" content="王书硕的技术博客" />
 <meta property="og:url" content="http://wss.cool/404.html" />
 <meta property="og:site_name" content="硕的研发日志" />
 <meta property="og:locale" content="zh" /><meta property="og:image" content="http://wss.cool/icons/apple-touch-icon.png" />
     <meta property="og:type" content="website" />
 
+
+    
+    
 
     
 </head>
@@ -129,7 +103,7 @@
             <main class="fof">
                 
                 <div class="main-inner">
-                    <h1>404 Page NOT Found.</h1>
+                    <h1>404 - 页面不存在</h1>
                     <div class="fof-footer">
                         <a href="/">送我回主页</a>
                     </div>

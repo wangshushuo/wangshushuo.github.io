@@ -1,16 +1,21 @@
 {
-    "name": "Hugo Theme MemE",
-    "short_name": "MemE",
+    "name": "硕的研发日志",
+    "short_name": "wss.cool",
     "icons": [
         {
-            "src": "./icons/android-chrome-512x512.png",
-            "sizes": "512x512",
+            "src": "./icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./icons/android-chrome-256x256.png",
+            "sizes": "256x256",
             "type": "image/png"
         }
     ],
-    "theme_color": "#fff",
-    "background_color": "#fff",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
     "display": "standalone",
     "orientation": "portrait-primary",
-    "start_url": "./?utm_source=homescreen"
+    "start_url": "/"
 }
