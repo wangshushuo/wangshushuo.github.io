@@ -9,10 +9,28 @@
     <managingEditor>wss.six@foxmail.com (王书硕)</managingEditor>
     <webMaster>wss.six@foxmail.com (王书硕)</webMaster>
     <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
-    <lastBuildDate>Wed, 24 Aug 2022 23:08:40 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 14 Nov 2022 22:34:08 +0800</lastBuildDate>
     
 	<atom:link href="http://wss.cool/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>显示在底部</title>
+      <link>http://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/</link>
+      <pubDate>Mon, 14 Nov 2022 22:34:08 +0800</pubDate>
+      <author>wss.six@foxmail.com (王书硕)</author>
+      <guid>http://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>template</title>
+      <link>http://wss.cool/tags/template/</link>
+      <pubDate>Sat, 24 Sep 2022 16:06:31 +0800</pubDate>
+      <author>wss.six@foxmail.com (王书硕)</author>
+      <guid>http://wss.cool/tags/template/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>React.lazy</title>
@@ -29,15 +47,6 @@
       <pubDate>Wed, 24 Aug 2022 23:08:40 +0800</pubDate>
       <author>wss.six@foxmail.com (王书硕)</author>
       <guid>http://wss.cool/tags/react.suspense/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>显示在底部</title>
-      <link>http://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/</link>
-      <pubDate>Sun, 21 Aug 2022 13:24:30 +0800</pubDate>
-      <author>wss.six@foxmail.com (王书硕)</author>
-      <guid>http://wss.cool/tags/%E6%98%BE%E7%A4%BA%E5%9C%A8%E5%BA%95%E9%83%A8/</guid>
       <description></description>
     </item>
     
@@ -470,6 +479,15 @@
       <pubDate>Tue, 05 Mar 2019 05:16:17 +0000</pubDate>
       <author>wss.six@foxmail.com (王书硕)</author>
       <guid>http://wss.cool/tags/bug%E8%BF%BD%E8%B8%AA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>image/png</title>
+      <link>http://wss.cool/tags/image/png/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <author>wss.six@foxmail.com (王书硕)</author>
+      <guid>http://wss.cool/tags/image/png/</guid>
       <description></description>
     </item>
     
