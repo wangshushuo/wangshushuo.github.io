@@ -17,11 +17,11 @@
 
     <title>开平方 | 硕的研发日志</title>
 
-    <link rel="stylesheet" href="/css/meme.min.7b775be0b3adb73813f2641bad6df3f2a792bbf99fb46de6e6a8104eaf40e645.css"/>
+    <link rel="stylesheet" href="/css/meme.min.59d7080a0fae391fb3279a21c9de0ebfc20ed5edf69c3fd367047a2e83e70fed.css"/>
 
     
     
-        <script src="/js/meme.min.5d5b523d40bedb59053df1180183fcc458772ccc0bf1ece1e06110fbc725101b.js"></script>
+        <script src="/js/meme.min.b001a404453e6c5bc202b0639a003aeaf480c91cc0e59cd334d29152d199235a.js"></script>
 
     
 
@@ -78,11 +78,11 @@
                 "@type": "ImageObject",
                 "url": "http://blog.wss.cool/icons/apple-touch-icon.png"
             },
-            "url": "http://blog.wss.cool/"
+            "url": "http://blog.wss.cool"
         },
         "mainEntityOfPage": {
             "@type": "WebSite",
-            "@id": "http://blog.wss.cool/"
+            "@id": "http://blog.wss.cool"
         }
     }
 </script>
@@ -247,102 +247,7 @@
             
 
             <nav class="contents"></nav><div class="post-body e-content">
-                <p>计算开平方可以用二分查找来计算。
-如：求根号10</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 用二分查找，精度0.0001
-</span><span class="c1"></span><span class="kd">function</span> <span class="nx">二分开根号</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="nx">end</span> <span class="o">=</span> <span class="nx">x</span><span class="p">,</span><span class="nx">count</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span>
-  <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">mid</span> <span class="o">=</span> <span class="nx">start</span> <span class="o">+</span> <span class="p">(</span><span class="nx">end</span> <span class="o">-</span> <span class="nx">start</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="kd">var</span> <span class="nx">sq</span> <span class="o">=</span> <span class="nx">mid</span> <span class="o">*</span> <span class="nx">mid</span><span class="p">;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">sq</span> <span class="o">-</span> <span class="nx">x</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="nx">e</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">mid</span><span class="p">,</span><span class="nx">count</span><span class="p">);</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">sq</span> <span class="o">&lt;</span> <span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">start</span> <span class="o">=</span> <span class="nx">mid</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">sq</span> <span class="o">&gt;</span> <span class="nx">x</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">end</span> <span class="o">=</span> <span class="nx">mid</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-      <span class="nx">console</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">mid</span><span class="p">,</span><span class="nx">count</span><span class="p">);</span>
-      <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="nx">二分开根号</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="c1">// 3.1622695922851562  18次循环
-</span></code></pre></td></tr></table></div>
-</div>
-</div><div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 用牛顿迭代，精度0.0001
-</span><span class="c1"></span><span class="kd">function</span> <span class="nx">牛顿开根号</span><span class="p">(</span><span class="nx">a</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// n_ = (n+a/n)/2;
-</span><span class="c1"></span>  <span class="kd">var</span> <span class="nx">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">n_</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">/</span> <span class="nx">n</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-  <span class="k">while</span> <span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">abs</span><span class="p">(</span><span class="nx">n</span> <span class="o">-</span> <span class="nx">n_</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="nx">e</span><span class="o">-</span><span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">n</span> <span class="o">=</span> <span class="nx">n_</span><span class="p">;</span>
-    <span class="nx">n_</span> <span class="o">=</span> <span class="p">(</span><span class="nx">n</span> <span class="o">+</span> <span class="nx">a</span> <span class="o">/</span> <span class="nx">n</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-    <span class="nx">count</span><span class="o">++</span><span class="p">;</span>
-  <span class="p">}</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">n_</span><span class="p">,</span> <span class="nx">count</span><span class="p">)</span>
-<span class="p">}</span>
-<span class="nx">牛顿开根号</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-<span class="c1">// 3.162277660168379   6次循环
-</span></code></pre></td></tr></table></div>
-</div>
-</div><h1 id="牛顿迭代法适用条件"><a href="#牛顿迭代法适用条件" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:牛顿迭代法适用条件" class="headings">牛顿迭代法适用条件</a></h1>
-<p>求函数f(x)=0的解α。<br>
-必须满足如下条件才能用牛顿迭代法求方程的近似解。<br>
-函数的导数不为0；x属于区间[α−r, α+r]；x0为α的近似值，即r&gt;=|a-x0|;<br>
-函数在[α−r, α+r]内二阶导数连续；<br>
-x0足够接近根 α。</p>
-<p><a href="https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E6%B3%95" target="_blank" rel="noopener">牛顿法的维基百科</a></p>
-
+                
             </div>
 
             
@@ -372,7 +277,26 @@ x0足够接近根 α。</p>
     <div class="updated-badge-container">
         <span title="Updated @ 2020-04-03 11:36:01 &#43;0800" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2020-04-03</text><text x="915" y="140" textLength="650" transform="scale(.1)">2020-04-03</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge">
+    <linearGradient id="b" x2="0" y2="100%">
+        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+        <stop offset="1" stop-opacity=".1"/>
+    </linearGradient>
+    <clipPath id="a">
+        <rect width="130" height="20" rx="3" fill="#fff"/>
+    </clipPath>
+    <g clip-path="url(#a)">
+        <path class="updated-badge-left" d="M0 0h55v20H0z"/>
+        <path class="updated-badge-right" d="M55 0h75v20H55z"/>
+        <path fill="url(#b)" d="M0 0h130v20H0z"/>
+    </g>
+    <g fill="#fff" text-anchor="middle" font-size="110">
+        <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
+        <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text>
+        <text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2020-04-03</text>
+        <text x="915" y="140" textLength="650" transform="scale(.1)">2020-04-03</text>
+    </g>
+</svg>
         </span></div>
 
 
@@ -540,7 +464,6 @@ x0足够接近根 α。</p>
     
 
 
-
     </div>
 </main>
 
@@ -559,7 +482,7 @@ x0足够接近根 α。</p>
             
 
 
-            
+            <a target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VSImJnsiOic_FTM6LTg0PDl7Njo4" style="text-decoration:none;"><img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
         </div>
     </footer>
 
@@ -585,7 +508,7 @@ x0足够接近根 α。</p>
 
         
             <script>
-    function loadComments() {
+    (function loadComments() {
         if (!document.getElementById('disqus_thread')) {
             return;
         }
@@ -611,7 +534,7 @@ x0足够接近根 α。</p>
                 }
             });
         }
-    }
+    })()
 </script>
 
         

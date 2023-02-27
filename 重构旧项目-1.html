@@ -17,11 +17,11 @@
 
     <title>重构旧项目-1 | 硕的研发日志</title>
 
-    <link rel="stylesheet" href="/css/meme.min.7b775be0b3adb73813f2641bad6df3f2a792bbf99fb46de6e6a8104eaf40e645.css"/>
+    <link rel="stylesheet" href="/css/meme.min.59d7080a0fae391fb3279a21c9de0ebfc20ed5edf69c3fd367047a2e83e70fed.css"/>
 
     
     
-        <script src="/js/meme.min.5d5b523d40bedb59053df1180183fcc458772ccc0bf1ece1e06110fbc725101b.js"></script>
+        <script src="/js/meme.min.b001a404453e6c5bc202b0639a003aeaf480c91cc0e59cd334d29152d199235a.js"></script>
 
     
 
@@ -54,7 +54,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2020-04-02T15:17:52+08:00",
-        "dateModified": "2023-02-27T15:14:42+00:00",
+        "dateModified": "2023-02-27T15:52:47+00:00",
         "url": "http://blog.wss.cool/%E9%87%8D%E6%9E%84%E6%97%A7%E9%A1%B9%E7%9B%AE-1.html",
         "headline": "重构旧项目-1",
         "description": "尝试优化一个旧项目的代码，将一个大文件中的部分代码封装为组件。可以降低复杂度，改善阅读代码的难度。",
@@ -78,11 +78,11 @@
                 "@type": "ImageObject",
                 "url": "http://blog.wss.cool/icons/apple-touch-icon.png"
             },
-            "url": "http://blog.wss.cool/"
+            "url": "http://blog.wss.cool"
         },
         "mainEntityOfPage": {
             "@type": "WebSite",
-            "@id": "http://blog.wss.cool/"
+            "@id": "http://blog.wss.cool"
         }
     }
 </script>
@@ -105,7 +105,7 @@
 <meta property="og:locale" content="zh" /><meta property="og:image" content="http://blog.wss.cool/icons/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2020-04-02T15:17:52&#43;08:00" />
-    <meta property="article:modified_time" content="2023-02-27T15:14:42&#43;00:00" />
+    <meta property="article:modified_time" content="2023-02-27T15:52:47&#43;00:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -219,7 +219,7 @@
     
     
         
-        <time datetime="2023-02-27T15:14:42&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
+        <time datetime="2023-02-27T15:52:47&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
     
     
     
@@ -252,237 +252,7 @@
     <li><a id="contents:封装组件" href="#封装组件">封装组件</a></li>
   </ol>
 </nav><div class="post-body e-content">
-                <h2 id="背景"><a href="#背景" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:背景" class="headings">背景</a></h2>
-<p>这个项目有点老旧</p>
-<pre><code>&quot;dva&quot;: &quot;2.1.0&quot;,
-&quot;react&quot;: &quot;^16.2.0&quot;,
-</code></pre><p>我打算用最新的 react 和 @reduxjs/toolkit 开始重构，旧的依赖只能使用 connect 方式来获取 store ，使用 useSelector 和 useDispatch 很方便也很易读。<code>@reduxjs/toolkit</code>提供的immer和actionCreater也很好用。</p>
-<p>新版本的 react-redux 才提供了 useSelector 和 useDispatch ，但是新版本会导致 dva 出错。无奈放弃了新版本，还是用旧版本的 connect 。还好这不影响对代码进行组件化。</p>
-<p>首先重构的是一个643行的组件，它的render方法有580行。</p>
-<h2 id="重复代码"><a href="#重复代码" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:重复代码" class="headings">重复代码</a></h2>
-<p>很容易的发现了一大段重复代码</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">numbers_wrapper</span><span class="p">}&gt;</span>
-  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
-      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">member_count</span><span class="p">}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;</span><span class="nx">班级总人数</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
-      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">male_count</span><span class="p">}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;</span><span class="nx">男生人数</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
-      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">female_count</span><span class="p">}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;</span><span class="nx">女生人数</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
-      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">group_count</span> <span class="o">&amp;&amp;</span><span class="p">(</span> <span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">group_count</span><span class="p">[</span><span class="nx">userDetail</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;</span><span class="nx">分组数</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
-      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{(</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">user_lecture_count</span> <span class="o">?</span> <span class="p">(</span><span class="nx">detail</span><span class="p">.</span><span class="nx">properties</span><span class="p">.</span><span class="nx">user_lecture_count</span><span class="p">[</span><span class="nx">userDetail</span><span class="p">.</span><span class="nx">detail</span><span class="p">.</span><span class="nx">id</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-      <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;</span><span class="nx">授课次数</span><span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-  <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</code></pre></td></tr></table></div>
-</div>
-</div><p>可以将他们组织成2个组件</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="kd">function</span> <span class="nx">NumberWithLabel</span><span class="p">({</span> <span class="nx">label</span><span class="p">,</span> <span class="nx">count</span> <span class="p">})</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">(</span>
-        <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number_item</span><span class="p">}&gt;</span>
-            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">number</span><span class="p">}&gt;{</span><span class="nx">count</span><span class="p">}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">text</span><span class="p">}&gt;{</span><span class="nx">label</span><span class="p">}&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-    <span class="p">);</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
-</div>
-</div><div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">numbers_wrapper</span><span class="p">}&gt;</span>
-    <span class="p">&lt;</span><span class="nt">NumberWithLabel</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;班级总人数&#34;</span> <span class="na">count</span><span class="o">=</span><span class="p">{</span><span class="nx">member_count</span><span class="p">}</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">NumberWithLabel</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;男生人数&#34;</span> <span class="na">count</span><span class="o">=</span><span class="p">{</span><span class="nx">male_count</span><span class="p">}</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">NumberWithLabel</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;女生人数&#34;</span> <span class="na">count</span><span class="o">=</span><span class="p">{</span><span class="nx">female_count</span><span class="p">}</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">NumberWithLabel</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;分组数&#34;</span> <span class="na">count</span><span class="o">=</span><span class="p">{</span><span class="nx">group_count</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="nx">group_count</span><span class="p">[</span><span class="nx">userId</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)}</span> <span class="p">/&gt;</span>
-    <span class="p">&lt;</span><span class="nt">NumberWithLabel</span> <span class="na">label</span><span class="o">=</span><span class="s">&#34;授课次数&#34;</span> <span class="na">count</span><span class="o">=</span><span class="p">{(</span><span class="nx">user_lecture_count</span> <span class="o">?</span> <span class="p">(</span><span class="nx">user_lecture_count</span><span class="p">[</span><span class="nx">userId</span><span class="p">]</span> <span class="o">||</span> <span class="mi">0</span><span class="p">)</span> <span class="o">:</span> <span class="mi">0</span><span class="p">)}</span> <span class="p">/&gt;</span>
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</code></pre></td></tr></table></div>
-</div>
-</div><p>数据使用 connect 获取，这样代码看起来简单读了。</p>
-<h2 id="封装组件"><a href="#封装组件" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:封装组件" class="headings">封装组件</a></h2>
-<p>然后发现了一大段代码可以封装成一个独立的组件。</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-jsx" data-lang="jsx"><span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">card_body</span><span class="p">}&gt;</span>
-<span class="p">{</span>
-    <span class="nx">groupList</span> <span class="o">&amp;&amp;</span> <span class="nx">groupList</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">group</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_item</span><span class="p">}</span> <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">index</span><span class="p">}</span> <span class="na">onDrop</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">handleStudentDrop</span><span class="p">(</span><span class="nx">group</span><span class="p">)}</span> <span class="na">onDragOver</span><span class="o">=</span><span class="p">{</span><span class="nx">handleStudentDragOver</span><span class="p">}</span>                                                <span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_item_header</span><span class="p">}&gt;</span>
-                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_item_info</span><span class="p">}&gt;</span>
-                    <span class="p">{</span><span class="nx">group</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
-                    <span class="p">&lt;</span><span class="nt">i</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">trophy_icon</span><span class="p">}</span> <span class="p">/&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_item_btns</span><span class="p">}&gt;</span>
-                <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
-                <span class="p">&lt;</span><span class="nt">Radio</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_student_list_radio</span><span class="p">}</span> <span class="na">checked</span><span class="o">=</span><span class="p">{</span><span class="nx">group</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">curGroup</span><span class="p">}</span> <span class="na">onClick</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">selectCurGroup</span><span class="p">(</span><span class="nx">group</span><span class="p">.</span><span class="nx">id</span><span class="p">)}</span> <span class="p">/&gt;</span>
-            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="o">=</span><span class="p">{</span><span class="nx">styles</span><span class="p">.</span><span class="nx">group_student_list</span><span class="p">}&gt;</span>
-                <span class="p">{</span>
-                    <span class="nx">group</span><span class="p">.</span><span class="nx">members</span> <span class="o">&amp;&amp;</span> <span class="nx">group</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">length</span> <span class="o">===</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">(</span>
-                        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="p">{{</span>
-                            <span class="nx">textAlign</span><span class="o">:</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
-                            <span class="nx">fontSize</span><span class="o">:</span><span class="mi">14</span><span class="p">,</span>
-                            <span class="nx">color</span><span class="o">:</span><span class="s1">&#39;#666&#39;</span><span class="p">,</span>
-                        <span class="p">}}&gt;</span><span class="nx">该小组没有学生</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;)</span> <span class="o">:</span> <span class="p">(</span>
-                        <span class="nx">group</span><span class="p">.</span><span class="nx">members</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">stu</span><span class="p">,</span> <span class="nx">i</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">(&lt;</span><span class="nt">StudentItem</span>
-                            <span class="na">isDrage</span>
-                            <span class="na">key</span><span class="o">=</span><span class="p">{</span><span class="nx">i</span><span class="p">}</span>
-                            <span class="na">stu</span><span class="o">=</span><span class="p">{</span><span class="nx">stu</span><span class="p">}</span>
-                            <span class="na">group</span><span class="o">=</span><span class="p">{</span><span class="nx">group</span><span class="p">}</span>
-                            <span class="na">gender</span><span class="o">=</span><span class="p">{</span><span class="nx">stu</span><span class="p">.</span><span class="nx">gender</span><span class="p">}</span>
-                            <span class="na">headimg_res_url</span><span class="o">=</span><span class="p">{</span><span class="nx">stu</span><span class="p">.</span><span class="nx">headimg_res_url</span><span class="p">}</span>
-                            <span class="na">name</span><span class="o">=</span><span class="p">{</span><span class="nx">stu</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span>
-                            <span class="na">groupStuStyle</span>
-                            <span class="na">onDragStart</span><span class="o">=</span><span class="p">{()</span> <span class="p">=&gt;</span> <span class="nx">handleDragStart</span><span class="p">(</span><span class="nx">stu</span><span class="p">,</span> <span class="nx">group</span><span class="p">.</span><span class="nx">id</span><span class="p">)}</span>
-                            <span class="na">onSetLeader</span><span class="o">=</span><span class="p">{</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="nx">handleSetLeader</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">stu</span><span class="p">,</span><span class="nx">group</span><span class="p">)}</span>
-                            <span class="na">onSetHeader</span><span class="o">=</span><span class="p">{</span><span class="nx">e</span> <span class="p">=&gt;</span> <span class="nx">handleSetHeader</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">stu</span><span class="p">)}</span>
-                        <span class="p">/&gt;))</span>
-                    <span class="p">)</span>
-                <span class="p">}</span>
-            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">))</span>
-<span class="p">}</span>
-<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-</code></pre></td></tr></table></div>
-</div>
-</div><p>还有它相关的方法都是像下面👇这样的 dispatch ，大概有五六个。它们都写在 render 函数内，占用了很大的篇幅，对阅读代码有很大的影响。</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">handleDragStart</span> <span class="o">=</span> <span class="p">(</span><span class="nx">stu</span><span class="p">,</span> <span class="nx">org_id</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="nx">dispatch</span><span class="p">({</span>
-        <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;classDetail/updateState&#39;</span><span class="p">,</span>
-        <span class="nx">payload</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">onDragStudent</span><span class="o">:</span> <span class="p">{</span>
-                <span class="p">...</span><span class="nx">stu</span><span class="p">,</span>
-                <span class="nx">org_id</span><span class="p">,</span>
-                <span class="nx">type</span><span class="o">:!!</span><span class="nx">org_id</span><span class="p">,</span>
-            <span class="p">},</span>
-        <span class="p">},</span>
-    <span class="p">});</span>
-<span class="p">};</span>
-</code></pre></td></tr></table></div>
-</div>
-</div><p>我将这个 <code>dispatch</code> 中的 <code>action</code> 放到一个 <code>action_creater.js</code> 文件中，将组建放在 <code>GroupItem.jsx</code> 文件中。这可以让次要的信息不占用篇幅，主要的信息就会一目了然了。
-这段代码就变成了2个组件和1个 <code>action creater</code> 文件。相关的代码封装在一起，再也不用为了看一个函数而滚动300行代码或者要用搜索才能找到了。</p>
-<blockquote>
-<p>这3个文件目前都只有40-50行。</p>
-</blockquote>
-<p>原来643行的文件，现在是490行，优化掉了150行（23%）的代码。使代码有了更好的封装，改善了阅读/维护难度。</p>
-
+                
             </div>
 
             
@@ -510,9 +280,28 @@
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-02-27 15:14:42 UTC" style="cursor:help">
+        <span title="Updated @ 2023-02-27 15:52:47 UTC" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge">
+    <linearGradient id="b" x2="0" y2="100%">
+        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+        <stop offset="1" stop-opacity=".1"/>
+    </linearGradient>
+    <clipPath id="a">
+        <rect width="130" height="20" rx="3" fill="#fff"/>
+    </clipPath>
+    <g clip-path="url(#a)">
+        <path class="updated-badge-left" d="M0 0h55v20H0z"/>
+        <path class="updated-badge-right" d="M55 0h75v20H55z"/>
+        <path fill="url(#b)" d="M0 0h130v20H0z"/>
+    </g>
+    <g fill="#fff" text-anchor="middle" font-size="110">
+        <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
+        <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text>
+        <text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text>
+        <text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text>
+    </g>
+</svg>
         </span></div>
 
 
@@ -692,7 +481,6 @@
     
 
 
-
     </div>
 </main>
 
@@ -711,7 +499,7 @@
             
 
 
-            
+            <a target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VSImJnsiOic_FTM6LTg0PDl7Njo4" style="text-decoration:none;"><img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
         </div>
     </footer>
 
@@ -737,7 +525,7 @@
 
         
             <script>
-    function loadComments() {
+    (function loadComments() {
         if (!document.getElementById('disqus_thread')) {
             return;
         }
@@ -763,7 +551,7 @@
                 }
             });
         }
-    }
+    })()
 </script>
 
         

@@ -17,11 +17,11 @@
 
     <title>使用Gitlab的Ci | 硕的研发日志</title>
 
-    <link rel="stylesheet" href="/css/meme.min.7b775be0b3adb73813f2641bad6df3f2a792bbf99fb46de6e6a8104eaf40e645.css"/>
+    <link rel="stylesheet" href="/css/meme.min.59d7080a0fae391fb3279a21c9de0ebfc20ed5edf69c3fd367047a2e83e70fed.css"/>
 
     
     
-        <script src="/js/meme.min.5d5b523d40bedb59053df1180183fcc458772ccc0bf1ece1e06110fbc725101b.js"></script>
+        <script src="/js/meme.min.b001a404453e6c5bc202b0639a003aeaf480c91cc0e59cd334d29152d199235a.js"></script>
 
     
 
@@ -54,7 +54,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2019-11-29T16:42:18+08:00",
-        "dateModified": "2023-02-27T15:14:42+00:00",
+        "dateModified": "2023-02-27T15:52:47+00:00",
         "url": "http://blog.wss.cool/gitlab-ci.html",
         "headline": "使用Gitlab的Ci",
         "description": "使用gitlab的ci/cd打包部署前端项目到oss对象存储",
@@ -78,11 +78,11 @@
                 "@type": "ImageObject",
                 "url": "http://blog.wss.cool/icons/apple-touch-icon.png"
             },
-            "url": "http://blog.wss.cool/"
+            "url": "http://blog.wss.cool"
         },
         "mainEntityOfPage": {
             "@type": "WebSite",
-            "@id": "http://blog.wss.cool/"
+            "@id": "http://blog.wss.cool"
         }
     }
 </script>
@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh" /><meta property="og:image" content="http://blog.wss.cool/images/gitlab-ci-1.jpg" />
 <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2019-11-29T16:42:18&#43;08:00" />
-    <meta property="article:modified_time" content="2023-02-27T15:14:42&#43;00:00" />
+    <meta property="article:modified_time" content="2023-02-27T15:52:47&#43;00:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -220,7 +220,7 @@
     
     
         
-        <time datetime="2023-02-27T15:14:42&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
+        <time datetime="2023-02-27T15:52:47&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
     
     
     
@@ -253,176 +253,7 @@
     <li><a id="contents:部署" href="#部署">部署</a></li>
   </ol>
 </nav><div class="post-body e-content">
-                <h1 id="需求"><a href="#需求" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:需求" class="headings">需求</a></h1>
-<p>一个前端项目需要分别发布到线上的测试环境和生产环境。在打包步骤，利用CI的环境变量功能，分别配置不同的API地址、项目地址等。完成打包后，将其上传到阿里oss中，完成发布。</p>
-<h1 id="使用gitlab-cicd的准备工作"><a href="#使用gitlab-cicd的准备工作" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:使用gitlab-cicd的准备工作" class="headings">使用Gitlab CI/CD的准备工作</a></h1>
-<p>需要准备三个东西：<code>.gitlab-ci.yml</code> 文件定义CI的工作流程、Runner执行流程、阿里云OSS的SDK及上传程序用于部署。</p>
-<h2 id="gitlab-ciyml文件"><a href="#gitlab-ciyml文件" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:gitlab-ciyml文件" class="headings">.gitlab-ci.yml文件</a></h2>
-<p>项目根目录下需要有一个 <code>.gitlab-ci.yml</code> 文件。</p>
-<p><strong>声明流程</strong></p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">stages</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- install<span class="w">
-</span><span class="w">  </span>- build<span class="w">
-</span></code></pre></td></tr></table></div>
-</div>
-</div><p><code>stages</code> 声明流程，这里就是包括 <code>install</code> 和 <code>build</code> 两个流程。这两个流程都做哪些工作呢？这里的声明相当于一个类型或者接口，需要在后面去实现它。</p>
-<p><strong>实现流程</strong></p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">job_name</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">stage</span><span class="p">:</span><span class="w"> </span>install<span class="w">
-</span><span class="w">  </span><span class="k">script</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- npm<span class="w"> </span>install<span class="w">
-</span></code></pre></td></tr></table></div>
-</div>
-</div><p>这个 <code>job</code> 就是实现 <code>stages</code> 中声明的 <code>install</code> 流程的，其中 <code>job_name</code> 随便写就是个名字，<code>stage</code> 字段是说这个 <code>job</code> 是实现的哪个接口。一个接口也可以被实现多次，但是要有条件区分开。</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">build_develop</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">stage</span><span class="p">:</span><span class="w"> </span>build<span class="w">
-</span><span class="w">  </span><span class="k">variables</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">REACT_APP_BASE_UR</span><span class="p">:</span><span class="w"> </span>https<span class="p">:</span>//develop.edinnovaedu.com<span class="p">:</span><span class="m">35040</span>/<span class="w">
-</span><span class="w">    </span><span class="k">REACT_APP_LEARNBOT_URL</span><span class="p">:</span><span class="w"> </span>https<span class="p">:</span>//ng-api--dev.edinnovaedu.com/<span class="w">
-</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- develop<span class="w">
-</span><span class="w">  </span><span class="k">script</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- npm<span class="w"> </span>run<span class="w"> </span>build<span class="p">:</span>dev<span class="w">
-</span><span class="w">    </span>- npm<span class="w"> </span>run<span class="w"> </span>deploy<span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="k">build_production</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">stage</span><span class="p">:</span><span class="w"> </span>build<span class="w">
-</span><span class="w">  </span><span class="k">variables</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">REACT_APP_BASE_URL</span><span class="p">:</span><span class="w"> </span>https<span class="p">:</span>//api-gray.v.edinnovaedu.com/<span class="w">
-</span><span class="w">    </span><span class="k">REACT_APP_LEARNBOT_URL</span><span class="p">:</span><span class="w"> </span>https<span class="p">:</span>//api-gray.v.edinnovaedu.com<span class="w">
-</span><span class="w">  </span><span class="k">only</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- master<span class="w">
-</span><span class="w">  </span><span class="k">script</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- npm<span class="w"> </span>run<span class="w"> </span>build<span class="p">:</span>gray<span class="w">
-</span><span class="w">    </span>- npm<span class="w"> </span>run<span class="w"> </span>deploy<span class="w">
-</span></code></pre></td></tr></table></div>
-</div>
-</div><p>上面的两个 <code>job</code>，都是 <code>build</code> 的实现，它们根据 <code>only</code> 字段定义的条件（分支名）做不同的工作。</p>
-<p><strong>总结</strong></p>
-<p><code>总结一下，stages</code> 声明流程，总的流程是第一步执行 <code>install</code> ，第二步执行 <code>build</code>
-<img src="/images/gitlab-ci-1.jpg" alt="install-build"></p>
-<p><code>job</code> 实现流程，多个 <code>job</code> 可以实现同一步流程。第一步执行 <code>install</code>；第二步执行 <code>build</code>，但是会根据条件去执行对应的那个实现。
-<img src="/images/gitlab-ci-2.jpg" alt="install-mutl-build"></p>
-<p><strong>变量</strong></p>
-<p>在 job build_develop 中看到有一个 variables 字段，它定义了两个环境变量， npm run build 中会用到他们。</p>
-<p>在 job 中声明的变量是局部变量，只在当前 job 中有效。还可以声明全局变量，写法一样，只是写的位置是与 stages 平级。</p>
-<p><strong>缓存</strong></p>
-<p>在执行不同的流程时，会清除掉.gitignore中的文件，比如 node_modules 就会每次都被删除。</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">cache</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">key</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;$CI_COMMIT_REF_SLUG&#34;</span><span class="w">
-</span><span class="w">  </span><span class="k">paths</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- node_modules/<span class="w">
-</span></code></pre></td></tr></table></div>
-</div>
-</div><p>上面这段是分支不同时才清除 node_modules ，同个分支的不同 job 间会保留/共享它。</p>
-<h2 id="runner"><a href="#runner" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:runner" class="headings">Runner</a></h2>
-<p>在<code>.gitlab-ci.yml</code>文件中定义好流程后，需要配置一个Runner来执行这些操作。它是一个软件，需要单独安装，可以安装在运行gitlab的机器上，也可以安装在另一台机器上。</p>
-<p><strong>安装</strong></p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="c1"># For Debian/Ubuntu</span>
-$ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.deb.sh <span class="p">|</span> sudo bash
-$ sudo apt-get install gitlab-ci-multi-runner
-</code></pre></td></tr></table></div>
-</div>
-</div><p><strong>注册</strong></p>
-<p>注册是为了把gitlab和runner连接。gitlab的项目的设置中会提供一个url和一个token</p>
-<p><img src="/images/gitlab-ci-runner.png" alt="runner"></p>
-<p>拿到了这两个东西，回到刚才安装了runner的电脑，开始注册runner。</p>
-<pre><code>sudo gitlab-ci-multi-runner register
-</code></pre><p>然后依次输入URL、Token、名字、不用输入、shell，就完成了。</p>
-<p>可以用 <code>sudo gitlab-ci-multi-runner list</code> 命令来查看各个 Runner 的状态。</p>
-<p>有了<code>.gitlab-ci.yml</code>和 <code>runner</code> gitlab的<code>CI/CD</code>就可以工作了，默认的情况，每次上传<code>commit</code>都会触发<code>CI/CD</code>执行。</p>
-<h2 id="部署"><a href="#部署" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:部署" class="headings">部署</a></h2>
-<p>我使用了阿里云的oss部署前端项目，所以只需要把打包后的文件上传到对应的目录即可。这里使用<code>oss</code>的<code>python sdk</code>来上传。</p>
-<p><code>python</code>程序放在了项目目录中，<code>runner</code>服务器也安装好了python和sdk。所以只需要运行<code>npm run deploy</code>执行<code>python</code>程序即可。</p>
-<h1 id="遇到的问题"><a href="#遇到的问题" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:遇到的问题" class="headings">遇到的问题</a></h1>
-<p>由于gitlab项目配置错误，clone项目的url与实际url不同。在CI执行时，使用的是错误的URL导致无法clone项目而报错。</p>
-<p>解决方法是Runner的配置文件。文档链接是<strong>参考3</strong></p>
-<p><code>root</code>用户的配置文件在<code>/etc/gitlab-runner/config.toml</code>，可以为一个<code>runner</code>设置一个<code>clone_url</code>即可解决问题。</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-toml" data-lang="toml"><span class="p">[[</span><span class="nx">runners</span><span class="p">]]</span>
-  <span class="nx">name</span> <span class="p">=</span> <span class="s2">&#34;ruby-2.1-docker&#34;</span>
-  <span class="nx">url</span> <span class="p">=</span> <span class="s2">&#34;https://CI/&#34;</span>
-  <span class="nx">token</span> <span class="p">=</span> <span class="s2">&#34;TOKEN&#34;</span>
-  <span class="nx">limit</span> <span class="p">=</span> <span class="mi">0</span>
-  <span class="nx">executor</span> <span class="p">=</span> <span class="s2">&#34;docker&#34;</span>
-  <span class="nx">builds_dir</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
-  <span class="nx">shell</span> <span class="p">=</span> <span class="s2">&#34;&#34;</span>
-  <span class="nx">environment</span> <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;ENV=value&#34;</span><span class="p">,</span> <span class="s2">&#34;LC_ALL=en_US.UTF-8&#34;</span><span class="p">]</span>
-  <span class="nx">clone_url</span> <span class="p">=</span> <span class="s2">&#34;http://gitlab.example.local&#34;</span>
-</code></pre></td></tr></table></div>
-</div>
-</div><p><a href="https://scarletsky.github.io/2016/07/29/use-gitlab-ci-for-continuous-integration/#cache-job-cache" target="_blank" rel="noopener">参考1</a>
-<a href="https://docs.gitlab.com/ce/ci/variables/README.html#masked-variables" target="_blank" rel="noopener">参考2</a>
-<a href="https://docs.gitlab.com/runner/configuration/advanced-configuration.html#the-global-section" target="_blank" rel="noopener">参考3</a></p>
-
+                
             </div>
 
             
@@ -450,9 +281,28 @@ $ sudo apt-get install gitlab-ci-multi-runner
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-02-27 15:14:42 UTC" style="cursor:help">
+        <span title="Updated @ 2023-02-27 15:52:47 UTC" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge">
+    <linearGradient id="b" x2="0" y2="100%">
+        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+        <stop offset="1" stop-opacity=".1"/>
+    </linearGradient>
+    <clipPath id="a">
+        <rect width="130" height="20" rx="3" fill="#fff"/>
+    </clipPath>
+    <g clip-path="url(#a)">
+        <path class="updated-badge-left" d="M0 0h55v20H0z"/>
+        <path class="updated-badge-right" d="M55 0h75v20H55z"/>
+        <path fill="url(#b)" d="M0 0h130v20H0z"/>
+    </g>
+    <g fill="#fff" text-anchor="middle" font-size="110">
+        <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
+        <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text>
+        <text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text>
+        <text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text>
+    </g>
+</svg>
         </span></div>
 
 
@@ -616,7 +466,6 @@ $ sudo apt-get install gitlab-ci-multi-runner
     
 
 
-
     </div>
 </main>
 
@@ -635,7 +484,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
             
 
 
-            
+            <a target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VSImJnsiOic_FTM6LTg0PDl7Njo4" style="text-decoration:none;"><img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
         </div>
     </footer>
 
@@ -661,7 +510,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
 
         
             <script>
-    function loadComments() {
+    (function loadComments() {
         if (!document.getElementById('disqus_thread')) {
             return;
         }
@@ -687,7 +536,7 @@ $ sudo apt-get install gitlab-ci-multi-runner
                 }
             });
         }
-    }
+    })()
 </script>
 
         

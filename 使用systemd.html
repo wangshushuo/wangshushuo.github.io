@@ -17,11 +17,11 @@
 
     <title>使用systemd | 硕的研发日志</title>
 
-    <link rel="stylesheet" href="/css/meme.min.7b775be0b3adb73813f2641bad6df3f2a792bbf99fb46de6e6a8104eaf40e645.css"/>
+    <link rel="stylesheet" href="/css/meme.min.59d7080a0fae391fb3279a21c9de0ebfc20ed5edf69c3fd367047a2e83e70fed.css"/>
 
     
     
-        <script src="/js/meme.min.5d5b523d40bedb59053df1180183fcc458772ccc0bf1ece1e06110fbc725101b.js"></script>
+        <script src="/js/meme.min.b001a404453e6c5bc202b0639a003aeaf480c91cc0e59cd334d29152d199235a.js"></script>
 
     
 
@@ -54,7 +54,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2022-07-21T23:40:40+08:00",
-        "dateModified": "2023-02-27T15:14:42+00:00",
+        "dateModified": "2023-02-27T15:52:47+00:00",
         "url": "http://blog.wss.cool/%E4%BD%BF%E7%94%A8systemd.html",
         "headline": "使用systemd",
         "description": "使用systemd启动关闭程序",
@@ -78,11 +78,11 @@
                 "@type": "ImageObject",
                 "url": "http://blog.wss.cool/icons/apple-touch-icon.png"
             },
-            "url": "http://blog.wss.cool/"
+            "url": "http://blog.wss.cool"
         },
         "mainEntityOfPage": {
             "@type": "WebSite",
-            "@id": "http://blog.wss.cool/"
+            "@id": "http://blog.wss.cool"
         }
     }
 </script>
@@ -105,7 +105,7 @@
 <meta property="og:locale" content="zh" /><meta property="og:image" content="http://blog.wss.cool/icons/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2022-07-21T23:40:40&#43;08:00" />
-    <meta property="article:modified_time" content="2023-02-27T15:14:42&#43;00:00" />
+    <meta property="article:modified_time" content="2023-02-27T15:52:47&#43;00:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -220,7 +220,7 @@
     
     
         
-        <time datetime="2023-02-27T15:14:42&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
+        <time datetime="2023-02-27T15:52:47&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
     
     
     
@@ -247,85 +247,7 @@
             
 
             <nav class="contents"></nav><div class="post-body e-content">
-                <p><a href="https://stackoverflow.com/a/28704296/6021280" target="_blank" rel="noopener">参考1</a></p>
-<p>使用spring boot创建的项目，使用maven打包出来成jar包。上传到服务器，这里使用linux的systemd来开启和关闭java程序。</p>
-<p>首先找到用户定义的service目录，ubuntu是在<code>/etc/systemd/system</code>，其他发行版可能在<code>/usr/lib/systemd/system/</code></p>
-<p>第二步，在其中创建文件<code>名字.service</code>，我的是叫<code>blog.service</code>，编辑文件。</p>
-<p>可以设置工作目录</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-shell" data-lang="shell"><span class="o">[</span>unit<span class="o">]</span>
-<span class="nv">Description</span><span class="o">=</span>webserver Daemon
-
-<span class="o">[</span>Service<span class="o">]</span>
-<span class="nv">WorkingDirectory</span><span class="o">=</span>/root
-<span class="nv">ExecStart</span><span class="o">=</span>/root/77kpi
-<span class="nv">User</span><span class="o">=</span>root
-
-<span class="o">[</span>Install<span class="o">]</span>
-<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
-</code></pre></td></tr></table></div>
-</div>
-</div><p>可以不设置工作目录</p>
-<pre><code>[Unit]
-Description=webserver Daemon
-
-[Service]
-ExecStart=/usr/bin/java -jar /web/server.jar
-User=ubuntu
-
-[Install]
-WantedBy=multi-user.target
-</code></pre><p>启动Java程序，设置最大内存。</p>
-<pre><code>ExecStart=/usr/bin/java -XX:+UseSerialGC -Xss512k -XX:MaxRAM=128m -jar /home/ubuntu/image-0.0.4-SNAPSHOT.jar
-</code></pre><p>第三步，启动/关闭/查看状态。</p>
-<p>命令可以这样用：</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl start blog.service <span class="c1"># starts the service</span>
-sudo systemctl stop blog.service <span class="c1"># stops the service</span>
-
-sudo systemctl status blog.service
-sudo systemctl restart blog.service <span class="c1"># restarts the service</span>
-
-sudo systemctl <span class="nb">enable</span> blog.service <span class="c1"># auto starts the service</span>
-sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
-</code></pre></td></tr></table></div>
-</div>
-</div><p>还可以这样用：</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-bash" data-lang="bash">sudo service blog start/stop/status/restart
-</code></pre></td></tr></table></div>
-</div>
-</div><p>修改了service文件后需要刷新</p>
-<pre><code>sudo systemctl daemon-reload
-</code></pre>
+                
             </div>
 
             
@@ -353,9 +275,28 @@ sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-02-27 15:14:42 UTC" style="cursor:help">
+        <span title="Updated @ 2023-02-27 15:52:47 UTC" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge">
+    <linearGradient id="b" x2="0" y2="100%">
+        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+        <stop offset="1" stop-opacity=".1"/>
+    </linearGradient>
+    <clipPath id="a">
+        <rect width="130" height="20" rx="3" fill="#fff"/>
+    </clipPath>
+    <g clip-path="url(#a)">
+        <path class="updated-badge-left" d="M0 0h55v20H0z"/>
+        <path class="updated-badge-right" d="M55 0h75v20H55z"/>
+        <path fill="url(#b)" d="M0 0h130v20H0z"/>
+    </g>
+    <g fill="#fff" text-anchor="middle" font-size="110">
+        <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
+        <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text>
+        <text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text>
+        <text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text>
+    </g>
+</svg>
         </span></div>
 
 
@@ -535,7 +476,6 @@ sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
     
 
 
-
     </div>
 </main>
 
@@ -554,7 +494,7 @@ sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
             
 
 
-            
+            <a target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VSImJnsiOic_FTM6LTg0PDl7Njo4" style="text-decoration:none;"><img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
         </div>
     </footer>
 
@@ -580,7 +520,7 @@ sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
 
         
             <script>
-    function loadComments() {
+    (function loadComments() {
         if (!document.getElementById('disqus_thread')) {
             return;
         }
@@ -606,7 +546,7 @@ sudo systemctl disable blog.service <span class="c1"># stops autostart</span>
                 }
             });
         }
-    }
+    })()
 </script>
 
         

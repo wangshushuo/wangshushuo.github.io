@@ -17,11 +17,11 @@
 
     <title>dva取消异步任务 | 硕的研发日志</title>
 
-    <link rel="stylesheet" href="/css/meme.min.7b775be0b3adb73813f2641bad6df3f2a792bbf99fb46de6e6a8104eaf40e645.css"/>
+    <link rel="stylesheet" href="/css/meme.min.59d7080a0fae391fb3279a21c9de0ebfc20ed5edf69c3fd367047a2e83e70fed.css"/>
 
     
     
-        <script src="/js/meme.min.5d5b523d40bedb59053df1180183fcc458772ccc0bf1ece1e06110fbc725101b.js"></script>
+        <script src="/js/meme.min.b001a404453e6c5bc202b0639a003aeaf480c91cc0e59cd334d29152d199235a.js"></script>
 
     
 
@@ -54,7 +54,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2018-12-31T09:54:21+00:00",
-        "dateModified": "2023-02-27T15:14:42+00:00",
+        "dateModified": "2023-02-27T15:52:47+00:00",
         "url": "http://blog.wss.cool/dva-saga-cancel-effect.html",
         "headline": "dva取消异步任务",
         "description": "先声明一个axios的网络请求函数login🤪： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 //service.js import……",
@@ -78,11 +78,11 @@
                 "@type": "ImageObject",
                 "url": "http://blog.wss.cool/icons/apple-touch-icon.png"
             },
-            "url": "http://blog.wss.cool/"
+            "url": "http://blog.wss.cool"
         },
         "mainEntityOfPage": {
             "@type": "WebSite",
-            "@id": "http://blog.wss.cool/"
+            "@id": "http://blog.wss.cool"
         }
     }
 </script>
@@ -105,7 +105,7 @@
 <meta property="og:locale" content="zh" /><meta property="og:image" content="http://blog.wss.cool/icons/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2018-12-31T09:54:21&#43;00:00" />
-    <meta property="article:modified_time" content="2023-02-27T15:14:42&#43;00:00" />
+    <meta property="article:modified_time" content="2023-02-27T15:52:47&#43;00:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -219,7 +219,7 @@
     
     
         
-        <time datetime="2023-02-27T15:14:42&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
+        <time datetime="2023-02-27T15:52:47&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
     
     
     
@@ -246,184 +246,7 @@
             
 
             <nav class="contents"></nav><div class="post-body e-content">
-                <p>先声明一个axios的网络请求函数login🤪：</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">//service.js
-</span><span class="c1"></span><span class="kr">import</span> <span class="nx">axios</span> <span class="nx">from</span> <span class="s1">&#39;axios&#39;</span><span class="p">;</span>
-
-<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
-  <span class="nx">login</span><span class="o">:</span> <span class="nx">async</span> <span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">cancelToken</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-    <span class="k">try</span> <span class="p">{</span>
-      <span class="kr">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">ApiServer</span><span class="si">}</span><span class="sb">/auth/user`</span><span class="p">,</span> <span class="nx">params</span><span class="p">,</span> <span class="nx">cancelToken</span><span class="p">);</span>
-      <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
-    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">axios</span><span class="p">.</span><span class="nx">isCancel</span><span class="p">(</span><span class="nx">error</span><span class="p">))</span> <span class="p">{</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Request canceled&#39;</span><span class="p">,</span> <span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="nx">message</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-</code></pre></td></tr></table></div>
-</div>
-</div><p>这段代码可以处理3中情况的异常：</p>
-<ul>
-<li>axios.interceptors.response中throw Error</li>
-<li>http status code !== 200时的promise reject，不使用async时是在catch中处理</li>
-<li>axios请求被代码cancel掉</li>
-</ul>
-<p>有了网络请求，可以写saga函数了：</p>
-<p>如果是在dva中，saga函数会被写在model中的effects对象中：</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">CancelToken</span> <span class="o">=</span> <span class="nx">axios</span><span class="p">.</span><span class="nx">CancelToken</span><span class="p">;</span>
-<span class="p">...</span>  
-<span class="nx">effects</span><span class="o">:</span> <span class="p">{</span>
-    <span class="o">*</span><span class="nx">startLogin</span><span class="p">({</span> <span class="nx">payload</span> <span class="p">},</span> <span class="p">{</span> <span class="nx">put</span><span class="p">,</span> <span class="nx">call</span><span class="p">,</span> <span class="nx">race</span> <span class="p">})</span> <span class="p">{</span>
-      <span class="kr">const</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">CancelToken</span><span class="p">.</span><span class="nx">source</span><span class="p">();</span>
-      <span class="kr">const</span> <span class="p">{</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">timeout</span> <span class="p">}</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">race</span><span class="p">({</span>
-        <span class="nx">data</span><span class="o">:</span> <span class="nx">call</span><span class="p">(</span><span class="nx">login</span><span class="p">,</span> <span class="p">{</span><span class="nx">username</span><span class="o">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">username</span><span class="p">,},</span> <span class="p">{</span><span class="nx">cancelToken</span><span class="o">:</span> <span class="nx">source</span><span class="p">.</span><span class="nx">token</span><span class="p">,}),</span>
-        <span class="nx">timeout</span><span class="o">:</span> <span class="nx">call</span><span class="p">(</span><span class="nx">delay</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span>
-      <span class="p">});</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">yield</span> <span class="nx">put</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="nx">payload</span><span class="o">:</span> <span class="s1">&#39;success&#39;</span> <span class="p">});</span>
-      <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-        <span class="k">yield</span> <span class="nx">source</span><span class="p">.</span><span class="nx">cancel</span><span class="p">(</span><span class="s1">&#39;登录超时&#39;</span><span class="p">);</span>
-        <span class="k">yield</span> <span class="nx">put</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="nx">payload</span><span class="o">:</span> <span class="s1">&#39;timeout&#39;</span> <span class="p">});</span>
-      <span class="p">}</span>
-     <span class="p">},</span>
-   <span class="p">}</span>
-</code></pre></td></tr></table></div>
-</div>
-</div><p>当然startLogin函数也可以写成generator函数作为普通saga，在不用dva的情况下使用。</p>
-<p>这段代码调用了上面👆的login函数进行网络请求，其中race是saga提供的一种effect，是一种竞赛模式，race下面的多个任务，只有一个胜利者，即第一个完成的任务，其他任务会被取消。</p>
-<p>所以这段代码就是用race实现的网络请求任务的超时处理。</p>
-<p>但是网络请求任务只是一个saga任务一个异步任务，异步任务被取消了，但是网络请求并没有被取消，所以取消网络请求需要单独处理。</p>
-<p>对于axios这个库来说，就是使用CancelToken这个api了。👆上面两段代码就是一个完整的CancelToken使用的例子。</p>
-<p>上面说了什么呢？上文使用两段代码，介绍了一种——在使用dva或者redux-saga时——取消effect（取消异步任务、cancel effect、处理异步任务超时、处理网路请求超时、取消axios请求）的写法。下面介绍另一种写法。</p>
-<p>除了用race以外，还可以用take Effect来写。比如：</p>
-<div class="highlight"><div class="chroma">
-<div class="table-container"><table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-js" data-lang="js"> <span class="nx">namespace</span><span class="o">:</span> <span class="s1">&#39;products&#39;</span><span class="p">,</span>
- <span class="nx">effects</span><span class="o">:</span> <span class="p">{</span>
-  <span class="o">*</span><span class="nx">start</span><span class="p">(){},</span>
-  <span class="o">*</span><span class="nx">stop</span><span class="p">(){},</span>
-  <span class="nx">watchLogin</span><span class="o">:</span> <span class="p">[</span>
-      <span class="kd">function</span><span class="o">*</span> <span class="p">({</span> <span class="nx">take</span><span class="p">,</span> <span class="nx">put</span><span class="p">,</span> <span class="nx">call</span><span class="p">,</span> <span class="nx">cancel</span><span class="p">,</span> <span class="nx">fork</span><span class="p">,</span> <span class="nx">cancelled</span> <span class="p">})</span> <span class="p">{</span>
-          <span class="k">yield</span> <span class="nx">take</span><span class="p">(</span><span class="s1">&#39;start&#39;</span><span class="p">);</span>
-          <span class="kr">const</span> <span class="nx">timerTask</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">fork</span><span class="p">(</span><span class="nx">timer</span><span class="p">)</span>
-          <span class="kr">const</span> <span class="nx">bgSyncTask</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">fork</span><span class="p">(</span><span class="nx">bgSync</span><span class="p">)</span>
-          <span class="k">yield</span> <span class="nx">take</span><span class="p">(</span><span class="s1">&#39;stop&#39;</span><span class="p">)</span>
-          <span class="k">yield</span> <span class="nx">cancel</span><span class="p">(</span><span class="nx">bgSyncTask</span><span class="p">)</span>
-          <span class="k">yield</span> <span class="nx">cancel</span><span class="p">(</span><span class="nx">timerTask</span><span class="p">)</span>
-
-        <span class="kd">function</span><span class="o">*</span> <span class="nx">bgSync</span><span class="p">()</span> <span class="p">{</span>
-          <span class="k">try</span> <span class="p">{</span>
-            <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-              <span class="kr">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">yield</span> <span class="nx">call</span><span class="p">(</span><span class="nx">delay</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
-              <span class="k">yield</span> <span class="nx">put</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;stop&#39;</span> <span class="p">})</span>
-            <span class="p">}</span>
-          <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
-            <span class="k">if</span> <span class="p">(</span><span class="k">yield</span> <span class="nx">cancelled</span><span class="p">())</span>
-              <span class="k">yield</span> <span class="nx">put</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="nx">payload</span><span class="o">:</span> <span class="s1">&#39;fetch🛑&#39;</span> <span class="p">})</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="kd">function</span><span class="o">*</span> <span class="nx">timer</span><span class="p">(</span><span class="nx">time</span><span class="p">)</span> <span class="p">{</span>
-          <span class="kd">let</span> <span class="nx">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
-          <span class="k">while</span> <span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">yield</span> <span class="nx">put</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;log&#39;</span><span class="p">,</span> <span class="nx">payload</span><span class="o">:</span> <span class="nx">i</span><span class="o">++</span> <span class="p">})</span>
-            <span class="k">yield</span> <span class="nx">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
-          <span class="p">}</span>
-        <span class="p">}</span>
-      <span class="p">},</span>
-      <span class="p">{</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;watcher&#39;</span> <span class="p">},</span>
-    <span class="p">],</span>
-<span class="p">}</span>
-</code></pre></td></tr></table></div>
-</div>
-</div><p>多说一句，这段代码还是在dva中的写法，它也可以被轻易的改成redux-saga的写法。</p>
-<p>watchLogin是一个saga，它被dva自动run运行，它的第一个take在等待一个type为start的action被dispatch或者put，take(‘start’)被触发后，2个非阻塞任务运行，同时等待take(‘stop’)被触发。</p>
-<p>action stop触发take(‘stop’)，下面2行代码执行，取消了2个非阻塞任务🤪。</p>
-<p>我们看到fork的2个任务都是generator函数，也就是saga，它们可以写在dva的model的effects下，被disptach或者put发送action调用触发，如果这样的话就无法通过代码将其cancel。</p>
-<p>所以为了实现取消异步任务，可以像这样写在一个effect中，通过take帮助，实现cancel。</p>
-<p>其实dva中每个model的effects被看作一个大saga，会被当作sagaMiddleware.run()方法的参数，而effects下面的每个方法，都会被fork成一个子任务。</p>
-<p>综上所述，现在我们可以处理一种问题了——在使用dva或者redux-saga时——取消effect、取消异步任务、cancel effect、处理异步任务超时、处理网路请求超时、取消axios请求。</p>
-
+                
             </div>
 
             
@@ -451,9 +274,28 @@
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-02-27 15:14:42 UTC" style="cursor:help">
+        <span title="Updated @ 2023-02-27 15:52:47 UTC" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge">
+    <linearGradient id="b" x2="0" y2="100%">
+        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+        <stop offset="1" stop-opacity=".1"/>
+    </linearGradient>
+    <clipPath id="a">
+        <rect width="130" height="20" rx="3" fill="#fff"/>
+    </clipPath>
+    <g clip-path="url(#a)">
+        <path class="updated-badge-left" d="M0 0h55v20H0z"/>
+        <path class="updated-badge-right" d="M55 0h75v20H55z"/>
+        <path fill="url(#b)" d="M0 0h130v20H0z"/>
+    </g>
+    <g fill="#fff" text-anchor="middle" font-size="110">
+        <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
+        <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text>
+        <text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text>
+        <text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text>
+    </g>
+</svg>
         </span></div>
 
 
@@ -633,7 +475,6 @@
     
 
 
-
     </div>
 </main>
 
@@ -652,7 +493,7 @@
             
 
 
-            
+            <a target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VSImJnsiOic_FTM6LTg0PDl7Njo4" style="text-decoration:none;"><img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
         </div>
     </footer>
 
@@ -678,7 +519,7 @@
 
         
             <script>
-    function loadComments() {
+    (function loadComments() {
         if (!document.getElementById('disqus_thread')) {
             return;
         }
@@ -704,7 +545,7 @@
                 }
             });
         }
-    }
+    })()
 </script>
 
         
