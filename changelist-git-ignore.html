@@ -17,11 +17,11 @@
 
     <title>WebStorm Changelist更新时间长 | 硕的研发日志</title>
 
-    <link rel="stylesheet" href="/css/meme.min.59d7080a0fae391fb3279a21c9de0ebfc20ed5edf69c3fd367047a2e83e70fed.css"/>
+    <link rel="stylesheet" href="/css/meme.min.7b775be0b3adb73813f2641bad6df3f2a792bbf99fb46de6e6a8104eaf40e645.css"/>
 
     
     
-        <script src="/js/meme.min.b001a404453e6c5bc202b0639a003aeaf480c91cc0e59cd334d29152d199235a.js"></script>
+        <script src="/js/meme.min.5d5b523d40bedb59053df1180183fcc458772ccc0bf1ece1e06110fbc725101b.js"></script>
 
     
 
@@ -54,7 +54,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2021-01-15T10:45:56+08:00",
-        "dateModified": "2023-02-27T15:54:43+00:00",
+        "dateModified": "2023-02-27T16:09:11+00:00",
         "url": "http://blog.wss.cool/changelist-git-ignore.html",
         "headline": "WebStorm Changelist更新时间长",
         "description": "有时changelist会进行长时间的updating并占用大量cpu，这里会解决这个问题",
@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh" /><meta property="og:image" content="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210115110317_7eebc60a6f46b7076eddc44f64d02287.png" />
 <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2021-01-15T10:45:56&#43;08:00" />
-    <meta property="article:modified_time" content="2023-02-27T15:54:43&#43;00:00" />
+    <meta property="article:modified_time" content="2023-02-27T16:09:11&#43;00:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -221,7 +221,7 @@
     
     
         
-        <time datetime="2023-02-27T15:54:43&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
+        <time datetime="2023-02-27T16:09:11&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
     
     
     
@@ -253,7 +253,31 @@
     <li><a id="contents:解决方法" href="#解决方法">解决方法</a></li>
   </ol>
 </nav><div class="post-body e-content">
-                
+                <h2 id="问题"><a href="#问题" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:问题" class="headings">问题</a></h2>
+<p>当发生切换分支等操作时，webstorm的commit窗口中的changelist会进行updating，正常情况下它应该执行的很快，甚至察觉不到，但是不知道什么情况下updating会长时间不结束并占用大量cpu。</p>
+<p>当发生了异常情况时，打开任务管理器，可以看到，这时webstorm是在运行一个git命令</p>
+<pre><code>git -c credential.helper= -c core.quotepath=false -c log.showSignature=false status --ignored --porcelain -z --
+</code></pre><p>可以理解为是在运行<code>git status --ignored</code>，它就会扫描 node_module 等已经设置为忽略的文件，而它们有层次很深，文件很多，就会导致git占用大量cpu进行计算。可能会让webstorm变卡、电脑变卡。</p>
+<h2 id="解决方法"><a href="#解决方法" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:解决方法" class="headings">解决方法</a></h2>
+<p>可以通过修改webstorm的注册表，让它不扫描忽略文件。</p>
+<ol>
+<li>
+<p>打开注册表</p>
+<ul>
+<li>菜单中 Help | Find action..., 输入<code>Registry...</code></li>
+</ul>
+</li>
+<li>
+<p>找到<code>git.process.ignored</code></p>
+<ul>
+<li>在注册表界面可以直接输入<code>git.process.ignored</code>进行搜索</li>
+<li>取消它的勾选就可以了
+<img src="https://hugo-1256216240.cos.ap-chengdu.myqcloud.com/20210115110317_7eebc60a6f46b7076eddc44f64d02287.png" alt="20210115110317_7eebc60a6f46b7076eddc44f64d02287.png"></li>
+</ul>
+</li>
+</ol>
+<p>这样updating的时候，就不会扫描忽略文件了，就很快了。</p>
+
             </div>
 
             
@@ -281,28 +305,9 @@
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-02-27 15:54:43 UTC" style="cursor:help">
+        <span title="Updated @ 2023-02-27 16:09:11 UTC" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge">
-    <linearGradient id="b" x2="0" y2="100%">
-        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
-        <stop offset="1" stop-opacity=".1"/>
-    </linearGradient>
-    <clipPath id="a">
-        <rect width="130" height="20" rx="3" fill="#fff"/>
-    </clipPath>
-    <g clip-path="url(#a)">
-        <path class="updated-badge-left" d="M0 0h55v20H0z"/>
-        <path class="updated-badge-right" d="M55 0h75v20H55z"/>
-        <path fill="url(#b)" d="M0 0h130v20H0z"/>
-    </g>
-    <g fill="#fff" text-anchor="middle" font-size="110">
-        <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
-        <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text>
-        <text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text>
-        <text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text></g></svg>
         </span></div>
 
 
@@ -490,6 +495,7 @@
     
 
 
+
     </div>
 </main>
 
@@ -508,7 +514,7 @@
             
 
 
-            <a target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VSImJnsiOic_FTM6LTg0PDl7Njo4" style="text-decoration:none;"><img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
+            
         </div>
     </footer>
 
@@ -534,7 +540,7 @@
 
         
             <script>
-    (function loadComments() {
+    function loadComments() {
         if (!document.getElementById('disqus_thread')) {
             return;
         }
@@ -560,7 +566,7 @@
                 }
             });
         }
-    })()
+    }
 </script>
 
         

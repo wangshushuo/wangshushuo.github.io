@@ -17,11 +17,11 @@
 
     <title>深浅拷贝 | 硕的研发日志</title>
 
-    <link rel="stylesheet" href="/css/meme.min.59d7080a0fae391fb3279a21c9de0ebfc20ed5edf69c3fd367047a2e83e70fed.css"/>
+    <link rel="stylesheet" href="/css/meme.min.7b775be0b3adb73813f2641bad6df3f2a792bbf99fb46de6e6a8104eaf40e645.css"/>
 
     
     
-        <script src="/js/meme.min.b001a404453e6c5bc202b0639a003aeaf480c91cc0e59cd334d29152d199235a.js"></script>
+        <script src="/js/meme.min.5d5b523d40bedb59053df1180183fcc458772ccc0bf1ece1e06110fbc725101b.js"></script>
 
     
 
@@ -54,7 +54,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2020-05-25T18:34:27+08:00",
-        "dateModified": "2023-02-27T15:54:43+00:00",
+        "dateModified": "2023-02-27T16:09:11+00:00",
         "url": "http://blog.wss.cool/%E6%B7%B1%E6%B5%85%E6%8B%B7%E8%B4%9D.html",
         "headline": "深浅拷贝",
         "description": "什么是拷贝，什么是深浅拷贝 在 JavaScript 中，变量中保存的是对象的引用。比如像下面这样的操作 1 2……",
@@ -105,7 +105,7 @@
 <meta property="og:locale" content="zh" /><meta property="og:image" content="http://blog.wss.cool/icons/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2020-05-25T18:34:27&#43;08:00" />
-    <meta property="article:modified_time" content="2023-02-27T15:54:43&#43;00:00" />
+    <meta property="article:modified_time" content="2023-02-27T16:09:11&#43;00:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -219,7 +219,7 @@
     
     
         
-        <time datetime="2023-02-27T15:54:43&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
+        <time datetime="2023-02-27T16:09:11&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
     
     
     
@@ -251,7 +251,240 @@
     <li><a id="contents:如何实现深拷贝" href="#如何实现深拷贝">如何实现深拷贝</a></li>
   </ol>
 </nav><div class="post-body e-content">
-                
+                <h2 id="什么是拷贝什么是深浅拷贝"><a href="#什么是拷贝什么是深浅拷贝" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:什么是拷贝什么是深浅拷贝" class="headings">什么是拷贝，什么是深浅拷贝</a></h2>
+<p>在 JavaScript 中，变量中保存的是对象的引用。比如像下面这样的操作</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">对象1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">a</span><span class="p">;</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>a和b都在引用对象1，如果对对象1进行修改，则a和b两个变量都会受到影响，有时我们不希望出现这种情况，就要对对象进行拷贝操作来切换引用。比如</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="nx">对象1</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">b</span> <span class="o">=</span> <span class="nx">拷贝</span><span class="p">(</span><span class="nx">a</span><span class="p">);</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>那么如何实现拷贝呢？</p>
+<p>我们知道对象是由多个key和value组成的，所以拷贝就是创建一个新的对象，将旧对象的key和value拷贝到新对象中，让新旧对象的key和value完全一样。比如像下面这样</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">对象1</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="nx">新对象</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">对象1</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="p">})</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>这样的操作需要注意value的类型，分为基本类型和引用类型<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">[1]</a></sup>，如果所有的value都是基本类型，但是如果value是引用类型就会出现新旧对象中都引用了一个对象的情况，也就是上文提到的a和b变量的问题。<em class="emphasis-point">如果想完全切断引用，就要对引用类型的value在进行一次拷贝</em>。对于是否需要完全切断引用就有了两种拷贝方式，需要完全切断引用的就是「深拷贝」，不需要的就是「浅拷贝」。</p>
+<p>简单概括一下。</p>
+<p>「浅拷贝」是只对对象的key和value进行一次遍历拷贝，不管内部的引用。</p>
+<p>「深拷贝」要将对象内部的引用完全切断，对对象进行递归地拷贝。</p>
+<h2 id="如何实现深拷贝"><a href="#如何实现深拷贝" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:如何实现深拷贝" class="headings">如何实现深拷贝</a></h2>
+<p>先看一种实现方式</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln"> 1</span><span class="kd">function</span> <span class="nx">clone</span><span class="p">(</span><span class="nx">旧对象</span><span class="p">)</span> <span class="p">{</span>
+<span class="ln"> 2</span>  <span class="kd">var</span> <span class="nx">新对象</span> <span class="o">=</span> <span class="p">{};</span>
+<span class="ln"> 3</span>  <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">旧对象</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<span class="ln"> 4</span>    <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">旧对象</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="ln"> 5</span>    <span class="k">if</span><span class="p">(</span><span class="nx">is基本类型</span><span class="p">(</span><span class="nx">value</span><span class="p">))</span> <span class="p">{</span>
+<span class="ln"> 6</span>      <span class="nx">新对象</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">旧对象</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+<span class="ln"> 7</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="hl"><span class="ln"> 8</span>      <span class="nx">新对象</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">clone</span><span class="p">(</span><span class="nx">value</span><span class="p">);</span> <span class="c1">// 递归
+</span></span><span class="ln"> 9</span><span class="c1"></span>    <span class="p">}</span>
+<span class="ln">10</span>  <span class="p">})</span>
+<span class="ln">11</span>  <span class="k">return</span> <span class="nx">新对象</span><span class="p">;</span>
+<span class="ln">12</span><span class="p">}</span>
+</code></pre></div>
+<p>这种方法用的是递归，即当value不是基本类型时就对它进行拷贝。该方法有一个明显的问题，当出现循环引用时，就进入了一个死循环。</p>
+<p>我们知道，函数的调用会形成一个「执行栈」，函数执行过程中如果又调用了函数就像该函数压入栈顶并执行，前一个函数就暂停了等待新函数执行完。</p>
+<p>递归就是当前对象还没有拷贝完，就开始了下一次拷贝，就是在「执行栈」又压入了一次函数调用，而循环引用会导致不停滴往执行栈顶添加，对后执行栈超过限制大小，而中断。</p>
+<p>为了避免爆栈问题，可以让一次拷贝进行完之后再开始下一次拷贝。就是把遇到的对象放在一个地方（数组1），当遇到对象时把它保存起来，完成一次拷贝后去检查看还有没有需要拷贝的对象。</p>
+<p>这样虽然解决了爆栈，但是仍是一个死循环，因为会不停地向那个地方添加对象。所以需要一种方法来判断已经拷贝过的对象。</p>
+<p>我们再创建一个数组2，用来保存拷贝过的对象，当遇到新的对象时，先去数组内查找，就不向数组1添加了，也就阻止了死循环。</p>
+<p>下面的代码是对上面分析的过程的实现</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span><span class="lnt">73
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// value 参数为原对象
+</span><span class="c1"></span><span class="kd">function</span> <span class="nx">cloneLoop</span><span class="p">(</span><span class="nx">oldObject</span><span class="p">)</span> <span class="p">{</span>
+
+  <span class="kr">const</span> <span class="nx">uniqueList</span> <span class="o">=</span> <span class="p">[];</span> <span class="c1">// 用来去重
+</span><span class="c1"></span>  <span class="c1">// 新的空对象
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">root</span> <span class="o">=</span> <span class="p">{};</span>
+
+  <span class="c1">// 存储子对象的数组
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">children</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nx">parent</span><span class="o">:</span> <span class="nx">root</span><span class="p">,</span>
+      <span class="nx">key</span><span class="o">:</span> <span class="kc">undefined</span><span class="p">,</span>
+      <span class="nx">value</span><span class="o">:</span> <span class="nx">oldObject</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">];</span>
+
+  <span class="c1">// 如果children内有子对象，则将其copy
+</span><span class="c1"></span>  <span class="k">while</span><span class="p">(</span><span class="nx">children</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// 深度优先，如果使用shift()则是广度有限。
+</span><span class="c1"></span>    <span class="kr">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">children</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+    <span class="kr">const</span> <span class="nx">parent</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">parent</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="nx">key</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">key</span><span class="p">;</span>
+    <span class="kr">const</span> <span class="nx">childObject</span> <span class="o">=</span> <span class="nx">node</span><span class="p">.</span><span class="nx">childObject</span><span class="p">;</span>
+
+    <span class="c1">// 当key是undefined时，parent是{}，也就是刚开始
+</span><span class="c1"></span>    <span class="c1">// 当key不是undefined时，就是已经复制到子对象了，这时key肯定时有值的，
+</span><span class="c1"></span>    <span class="c1">// 需要把key对应的value初始化为空对象，后面的循环把子对象的 key 和 value 复制到空对象上。
+</span><span class="c1"></span>    <span class="kd">let</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">key</span> <span class="o">!==</span> <span class="s1">&#39;undefined&#39;</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">res</span> <span class="o">=</span> <span class="nx">parent</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{};</span>
+    <span class="p">}</span>
+
+    <span class="c1">// 当循环引用时，childObject会与拷贝过的对象相等，就可以把它直接赋值到新对象上。完成一次拷贝。
+</span><span class="c1"></span>    <span class="kd">let</span> <span class="nx">uniqueData</span> <span class="o">=</span> <span class="nx">find</span><span class="p">(</span><span class="nx">uniqueList</span><span class="p">,</span> <span class="nx">childObject</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">uniqueData</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">parent</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">uniqueData</span><span class="p">.</span><span class="nx">target</span><span class="p">;</span>
+      <span class="k">break</span><span class="p">;</span> <span class="c1">// 中断本次循环
+</span><span class="c1"></span>    <span class="p">}</span>
+
+    <span class="c1">// 数据不存在
+</span><span class="c1"></span>    <span class="c1">// 保存源数据，在拷贝数据中对应的引用
+</span><span class="c1"></span>    <span class="nx">uniqueList</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+      <span class="nx">source</span><span class="o">:</span> <span class="nx">childObject</span><span class="p">,</span>
+      <span class="nx">target</span><span class="o">:</span> <span class="nx">res</span><span class="p">,</span>
+    <span class="p">});</span>
+
+    <span class="c1">// 遍历子对象
+</span><span class="c1"></span>    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">k</span> <span class="k">in</span> <span class="nx">childObject</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">hasOwnProperty</span><span class="p">(</span><span class="nx">k</span><span class="p">))</span> <span class="p">{</span>
+        <span class="c1">// 如果value时对象，将子对象放入「子对象数组」中，待下一次while读取遍历
+</span><span class="c1"></span>        <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">childObject</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">===</span> <span class="s1">&#39;object&#39;</span><span class="p">)</span> <span class="p">{</span>
+          <span class="c1">// 下一次循环
+</span><span class="c1"></span>          <span class="nx">children</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+            <span class="nx">parent</span><span class="o">:</span> <span class="nx">res</span><span class="p">,</span>
+            <span class="nx">key</span><span class="o">:</span> <span class="nx">k</span><span class="p">,</span>
+            <span class="nx">childObject</span><span class="o">:</span> <span class="nx">childObject</span><span class="p">[</span><span class="nx">k</span><span class="p">],</span>
+          <span class="p">});</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+          <span class="nx">res</span><span class="p">[</span><span class="nx">k</span><span class="p">]</span> <span class="o">=</span> <span class="nx">childObject</span><span class="p">[</span><span class="nx">k</span><span class="p">];</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">root</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">function</span> <span class="nx">find</span><span class="p">(</span><span class="nx">arr</span><span class="p">,</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">arr</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">source</span> <span class="o">===</span> <span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">arr</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>总结一下要点：</p>
+<ol>
+<li>使用一个数组存储copy过程中遇到的对象，以破解爆栈的问题。</li>
+<li>使用另一个数组存储copy过的对象，以破解循环引用的问题。</li>
+</ol>
+<p>对于拷贝一个对象的过程lodash使用的是「结构化克隆算法」<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">[2]</a></sup>，普通对象直接复制key和value，数组等其他对象使用相应的复制方法。</p>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>Nicholas C.Zakas；JavaScript高级程序设计(第3版)；4.1 基本类型与引用类型的值 <a href="#fnref:1" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>MDN web docs；<a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/API/DOM/The_structured_clone_algorithm" target="_blank" rel="noopener">结构化克隆算法</a>。<br>
+HTML Living Standard；<a href="https://html.spec.whatwg.org/multipage/structured-data.html#structuredserializeinternal" target="_blank" rel="noopener">结构化克隆算法</a>，<a href="https://whatwg-cn.github.io/html/#structuredserializeinternal" target="_blank" rel="noopener">中文翻译</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="icon footnote-icon"><path d="M177 159.7l136 136c9.4 9.4 9.4 24.6 0 33.9l-22.6 22.6c-9.4 9.4-24.6 9.4-33.9 0L160 255.9l-96.4 96.4c-9.4 9.4-24.6 9.4-33.9 0L7 329.7c-9.4-9.4-9.4-24.6 0-33.9l136-136c9.4-9.5 24.6-9.5 34-.1z"/></svg></a></p>
+</li>
+</ol>
+</section>
+
             </div>
 
             
@@ -279,28 +512,9 @@
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-02-27 15:54:43 UTC" style="cursor:help">
+        <span title="Updated @ 2023-02-27 16:09:11 UTC" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge">
-    <linearGradient id="b" x2="0" y2="100%">
-        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
-        <stop offset="1" stop-opacity=".1"/>
-    </linearGradient>
-    <clipPath id="a">
-        <rect width="130" height="20" rx="3" fill="#fff"/>
-    </clipPath>
-    <g clip-path="url(#a)">
-        <path class="updated-badge-left" d="M0 0h55v20H0z"/>
-        <path class="updated-badge-right" d="M55 0h75v20H55z"/>
-        <path fill="url(#b)" d="M0 0h130v20H0z"/>
-    </g>
-    <g fill="#fff" text-anchor="middle" font-size="110">
-        <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
-        <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text>
-        <text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text>
-        <text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text></g></svg>
         </span></div>
 
 
@@ -468,6 +682,7 @@
     
 
 
+
     </div>
 </main>
 
@@ -486,7 +701,7 @@
             
 
 
-            <a target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VSImJnsiOic_FTM6LTg0PDl7Njo4" style="text-decoration:none;"><img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
+            
         </div>
     </footer>
 
@@ -512,7 +727,7 @@
 
         
             <script>
-    (function loadComments() {
+    function loadComments() {
         if (!document.getElementById('disqus_thread')) {
             return;
         }
@@ -538,7 +753,7 @@
                 }
             });
         }
-    })()
+    }
 </script>
 
         

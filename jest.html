@@ -17,11 +17,11 @@
 
     <title>Jest | 硕的研发日志</title>
 
-    <link rel="stylesheet" href="/css/meme.min.59d7080a0fae391fb3279a21c9de0ebfc20ed5edf69c3fd367047a2e83e70fed.css"/>
+    <link rel="stylesheet" href="/css/meme.min.7b775be0b3adb73813f2641bad6df3f2a792bbf99fb46de6e6a8104eaf40e645.css"/>
 
     
     
-        <script src="/js/meme.min.b001a404453e6c5bc202b0639a003aeaf480c91cc0e59cd334d29152d199235a.js"></script>
+        <script src="/js/meme.min.5d5b523d40bedb59053df1180183fcc458772ccc0bf1ece1e06110fbc725101b.js"></script>
 
     
 
@@ -54,7 +54,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2022-07-22T16:35:49+08:00",
-        "dateModified": "2023-02-27T15:54:43+00:00",
+        "dateModified": "2023-02-27T16:09:11+00:00",
         "url": "http://blog.wss.cool/jest.html",
         "headline": "Jest",
         "description": "模拟模块 先看代码，isEntity是我们要测试的目标，其中引用了 metadata 模块。 1 2 3 4 5 import……",
@@ -106,7 +106,7 @@
 <meta property="og:locale" content="zh" /><meta property="og:image" content="http://hugo-1256216240.cos.ap-chengdu.myqcloud.com/pasteimageintomarkdown/2022-07-29/352636115774400.png" />
 <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2022-07-22T16:35:49&#43;08:00" />
-    <meta property="article:modified_time" content="2023-02-27T15:54:43&#43;00:00" />
+    <meta property="article:modified_time" content="2023-02-27T16:09:11&#43;00:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -220,7 +220,7 @@
     
     
         
-        <time datetime="2023-02-27T15:54:43&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
+        <time datetime="2023-02-27T16:09:11&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
     
     
     
@@ -264,7 +264,409 @@
     <li><a id="contents:jestspyonobject-methodname-accesstype" href="#jestspyonobject-methodname-accesstype">jest.spyOn(object, methodName, accessType?)</a></li>
   </ol>
 </nav><div class="post-body e-content">
-                
+                <h2 id="模拟模块"><a href="#模拟模块" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:模拟模块" class="headings">模拟模块</a></h2>
+<p>先看代码，isEntity是我们要测试的目标，其中引用了 metadata 模块。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">metadata</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@metadata&#39;</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">isEntity</span> <span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">!!</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">getEntity</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>如果 metadata 模块比较复杂，在 jest 的环境中不能直接初始化出来，这时候最好的办法就是通过 mock 模拟这个模块，使测试代码可以正常运行。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">metadata</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@metadata&#39;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">entity</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">custom1Entity</span><span class="o">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;@metadata&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">getEntity</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockImplementation</span><span class="p">(</span><span class="nx">id</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">entity</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+      <span class="p">}),</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">&#39;模拟模块&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="nx">test</span><span class="p">(</span><span class="s1">&#39;isEntity&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="kr">const</span> <span class="nx">item</span> <span class="o">=</span> <span class="p">{</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;customEntity2&#39;</span> <span class="p">};</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">isEntity</span><span class="p">(</span><span class="nx">item</span><span class="p">)).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">getEntity</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">pop</span><span class="p">()[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+        <span class="nx">expect</span><span class="p">(</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">getEntity</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>jest.mock 会模拟 @metadata 模块，无论是测试文件中还是原代码中的 @metadata 模块都会被模拟。
+jest.fn() 只接受空参数的函数作为参数，并返回一个值。如果想有参数，就要在调用 mockImplementation 方法，来提供有逻辑的实现过程。</p>
+<h2 id="模拟es6类"><a href="#模拟es6类" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:模拟es6类" class="headings">模拟ES6类</a></h2>
+<p>上面的mock方式</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;@metadata&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">getEntity</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockImplementation</span><span class="p">(</span><span class="nx">id</span> <span class="p">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">entity</span><span class="p">[</span><span class="nx">id</span><span class="p">];</span>
+      <span class="p">}),</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">});</span>
+<span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;@client&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockImplementation</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="nx">post</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+    <span class="p">};</span>
+  <span class="p">});</span>
+<span class="p">})</span>
+<span class="kr">import</span> <span class="nx">client</span> <span class="nx">from</span> <span class="s1">&#39;@client&#39;</span><span class="p">;</span>
+
+<span class="nx">client</span><span class="p">.</span><span class="nx">post</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockImplementation</span><span class="p">(()</span> <span class="p">=&gt;</span>
+  <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">({</span>
+      <span class="nx">data</span><span class="o">:</span> <span class="p">{}</span>
+  <span class="p">})</span>
+<span class="p">)</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>如果上面的mock方式不起作用，可以看看mock的目标是一个 class ，比如这种：</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">import</span> <span class="p">{</span> <span class="nx">Client</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;./client&#39;</span><span class="p">;</span>
+<span class="kr">export</span> <span class="o">*</span> <span class="nx">from</span> <span class="s1">&#39;./types&#39;</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Client</span><span class="p">();</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="nx">client</span><span class="p">;</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h3 id="手动模拟"><a href="#手动模拟" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:手动模拟" class="headings">手动模拟</a></h3>
+<p><img src="http://hugo-1256216240.cos.ap-chengdu.myqcloud.com/pasteimageintomarkdown/2022-07-29/352636115774400.png" alt="">
+在 <strong>mock</strong> 目录中，新建与模拟目标目录相同的一个文件。在测试文件中，就回用它代替原本的依赖。</p>
+<h2 id="模拟函数"><a href="#模拟函数" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:模拟函数" class="headings">模拟函数</a></h2>
+<p><a href="https://jestjs.io/zh-Hans/docs/mock-function-api#mockfnmockresolvedvaluevalue" target="_blank" rel="noopener">jest api document</a>
+模拟函数也就是 jest.fn() 它返回一个 mockFn 对象，它有很多方法，可以从多个角度测试我们的代码。</p>
+<p>名字</p>
+<ul>
+<li>mockFn.mockName(name)</li>
+<li>mockFn.getMockName()</li>
+</ul>
+<p>调用信息：</p>
+<ul>
+<li>mockFn.mock.calls 函数被调用时所接收到的参数。</li>
+<li>mockFn.mock.results</li>
+<li>mockFn.mock.instances</li>
+<li>mockFn.mock.contexts</li>
+<li>mockFn.mock.lastCall</li>
+</ul>
+<p>清理mock，比如虚拟函数被调用了，mock.calls中会有值，可能影响其他用例的结果，就需要清理一下</p>
+<ul>
+<li>mockFn.mockClear()</li>
+<li>mockFn.mockReset()</li>
+<li>mockFn.mockRestore()</li>
+</ul>
+<p>模拟函数的实现，可以在mock模块时使用</p>
+<ul>
+<li>mockFn.mockImplementation(fn)  模拟函数的实现，也就是中间有逻辑，可以根据接收参数，根据参数进行一些计算，与 mockReturnValue 做比较的话，
+mockReturnValue是直接返回一个结果，并可以通过 mockFn.mock.calls 拿到调用函数时的参数</li>
+<li>mockFn.mockImplementationOnce(fn)</li>
+</ul>
+<p>函数直接返回值：</p>
+<ul>
+<li>mockFn.mockReturnThis()</li>
+<li>mockFn.mockReturnValue(value)</li>
+<li>mockFn.mockReturnValueOnce(value)</li>
+</ul>
+<p>函数异步返回结果：</p>
+<ul>
+<li>mockFn.mockResolvedValue(value)</li>
+<li>mockFn.mockResolvedValueOnce(value)</li>
+<li>mockFn.mockRejectedValue(value)</li>
+<li>mockFn.mockRejectedValueOnce(value)</li>
+</ul>
+<h3 id="虚拟函数的例子"><a href="#虚拟函数的例子" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:虚拟函数的例子" class="headings">虚拟函数的例子</a></h3>
+<ol>
+<li>模拟模块，并模拟其中的方法</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;metadata&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
+  <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">getEnumValue</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockImplementation</span><span class="p">((</span><span class="nx">id</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+      <span class="kr">const</span> <span class="nx">enumMap</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">ChangeViewType</span><span class="o">:</span> <span class="p">{</span>
+          <span class="s1">&#39;adjust&#39;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;adjust&#39;</span><span class="p">,</span>
+            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;adjust&#39;</span><span class="p">,</span>
+            <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;调整&#39;</span><span class="p">,</span>
+          <span class="p">},</span>
+        <span class="p">},</span>
+      <span class="p">};</span>
+      <span class="k">return</span> <span class="nx">enumMap</span><span class="p">[</span><span class="nx">id</span><span class="p">][</span><span class="nx">value</span><span class="p">];</span>
+    <span class="p">}),</span>
+  <span class="p">},</span>
+<span class="p">}));</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><ol start="2">
+<li>模拟模块，其中的方法直接返回数据</li>
+</ol>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">jest</span><span class="p">.</span><span class="nx">mock</span><span class="p">(</span><span class="s1">&#39;metadata&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">({</span>
+  <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">getEnumValue</span><span class="o">:</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">().</span><span class="nx">mockReturnValue</span><span class="p">({</span>
+      <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;adjust&#39;</span><span class="p">,</span>
+      <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;adjust&#39;</span><span class="p">,</span>
+      <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;调整&#39;</span><span class="p">,</span>
+    <span class="p">}),</span>
+  <span class="p">},</span>
+<span class="p">}));</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h2 id="断言举例"><a href="#断言举例" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:断言举例" class="headings">断言举例</a></h2>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="c1">// 断言对象的实例
+</span><span class="c1"></span><span class="nx">expect</span><span class="p">(</span><span class="nx">buttonController</span><span class="p">).</span><span class="nx">toBeInstanceOf</span><span class="p">(</span><span class="nx">BudgetPlanChangeButtonController</span><span class="p">);</span>
+
+<span class="c1">// 断言方法是否被调用，源代码中的函数可以通过spyOn追踪
+</span><span class="c1"></span><span class="nx">expect</span><span class="p">(</span><span class="nx">spy</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+
+<span class="c1">// 断言虚拟函数的调用情况，mock.calls会记录调用函数的参数
+</span><span class="c1"></span><span class="nx">expect</span><span class="p">(</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">getEnumValue</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">metadata</span><span class="p">.</span><span class="nx">getEnumValue</span><span class="p">.</span><span class="nx">mock</span><span class="p">.</span><span class="nx">calls</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">([</span>
+  <span class="s1">&#39;ChangeViewType&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;ChangeViewType.adjust&#39;</span><span class="p">,</span>
+<span class="p">]);</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><h2 id="jestspyonobject-methodname"><a href="#jestspyonobject-methodname" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:jestspyonobject-methodname" class="headings">jest.spyOn(object, methodName)</a></h2>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">play</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">video</span><span class="p">;</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./video&#39;</span><span class="p">);</span>
+
+<span class="nx">afterEach</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// restore the spy created with spyOn
+</span><span class="c1"></span>  <span class="nx">jest</span><span class="p">.</span><span class="nx">restoreAllMocks</span><span class="p">();</span>
+<span class="p">});</span>
+
+<span class="nx">test</span><span class="p">(</span><span class="s1">&#39;plays video&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">spy</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">video</span><span class="p">,</span> <span class="s1">&#39;play&#39;</span><span class="p">);</span>
+  <span class="kr">const</span> <span class="nx">isPlaying</span> <span class="o">=</span> <span class="nx">video</span><span class="p">.</span><span class="nx">play</span><span class="p">();</span>
+
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">spy</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">isPlaying</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>jest.spyOn(object, methodName)会跟踪对应的方法，会使其成为一个 mock function ，就可以调用 mockFn 的各种方法和断言。</p>
+<p>比如原函数是未被覆盖的，想要覆盖的话，就可以通过调用mockImplementation方法覆盖。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">object</span><span class="p">,</span> <span class="nx">methodName</span><span class="p">).</span><span class="nx">mockImplementation</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">customImplementation</span><span class="p">)</span>
+<span class="nx">object</span><span class="p">[</span><span class="nx">methodName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">(()</span> <span class="p">=&gt;</span> <span class="nx">customImplementation</span><span class="p">)</span>
+</code></pre></td></tr></table></div>
+</div>
+</div><p>因为 jest.spyOn 是一个模拟。 您可以在 afterEach 方法上调用 jest.restoreAllMocks 恢复初始状态。</p>
+<h2 id="jestspyonobject-methodname-accesstype"><a href="#jestspyonobject-methodname-accesstype" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:jestspyonobject-methodname-accesstype" class="headings">jest.spyOn(object, methodName, accessType?)</a></h2>
+<p>accessType为get或set，可以追踪get/set方法。</p>
+<div class="highlight"><div class="chroma">
+<div class="table-container"><table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-js" data-lang="js"><span class="kr">const</span> <span class="nx">video</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="c1">// it&#39;s a getter!
+</span><span class="c1"></span>  <span class="nx">get</span> <span class="nx">play</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">video</span><span class="p">;</span>
+
+<span class="c1">// xx.test.js
+</span><span class="c1"></span><span class="nx">test</span><span class="p">(</span><span class="s1">&#39;plays video&#39;</span><span class="p">,</span> <span class="p">()</span> <span class="p">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">spy</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">spyOn</span><span class="p">(</span><span class="nx">video</span><span class="p">,</span> <span class="s1">&#39;play&#39;</span><span class="p">,</span> <span class="s1">&#39;get&#39;</span><span class="p">);</span> <span class="c1">// we pass &#39;get&#39;
+</span><span class="c1"></span>  <span class="kr">const</span> <span class="nx">isPlaying</span> <span class="o">=</span> <span class="nx">video</span><span class="p">.</span><span class="nx">play</span><span class="p">;</span>
+
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">spy</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">();</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">isPlaying</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></td></tr></table></div>
+</div>
+</div>
             </div>
 
             
@@ -292,28 +694,9 @@
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-02-27 15:54:43 UTC" style="cursor:help">
+        <span title="Updated @ 2023-02-27 16:09:11 UTC" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge">
-    <linearGradient id="b" x2="0" y2="100%">
-        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
-        <stop offset="1" stop-opacity=".1"/>
-    </linearGradient>
-    <clipPath id="a">
-        <rect width="130" height="20" rx="3" fill="#fff"/>
-    </clipPath>
-    <g clip-path="url(#a)">
-        <path class="updated-badge-left" d="M0 0h55v20H0z"/>
-        <path class="updated-badge-right" d="M55 0h75v20H55z"/>
-        <path fill="url(#b)" d="M0 0h130v20H0z"/>
-    </g>
-    <g fill="#fff" text-anchor="middle" font-size="110">
-        <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
-        <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text>
-        <text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text>
-        <text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text></g></svg>
         </span></div>
 
 
@@ -505,6 +888,7 @@
     
 
 
+
     </div>
 </main>
 
@@ -523,7 +907,7 @@
             
 
 
-            <a target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VSImJnsiOic_FTM6LTg0PDl7Njo4" style="text-decoration:none;"><img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
+            
         </div>
     </footer>
 
@@ -549,7 +933,7 @@
 
         
             <script>
-    (function loadComments() {
+    function loadComments() {
         if (!document.getElementById('disqus_thread')) {
             return;
         }
@@ -575,7 +959,7 @@
                 }
             });
         }
-    })()
+    }
 </script>
 
         

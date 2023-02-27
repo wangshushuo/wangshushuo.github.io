@@ -17,11 +17,11 @@
 
     <title>Redux 概要 | 硕的研发日志</title>
 
-    <link rel="stylesheet" href="/css/meme.min.59d7080a0fae391fb3279a21c9de0ebfc20ed5edf69c3fd367047a2e83e70fed.css"/>
+    <link rel="stylesheet" href="/css/meme.min.7b775be0b3adb73813f2641bad6df3f2a792bbf99fb46de6e6a8104eaf40e645.css"/>
 
     
     
-        <script src="/js/meme.min.b001a404453e6c5bc202b0639a003aeaf480c91cc0e59cd334d29152d199235a.js"></script>
+        <script src="/js/meme.min.5d5b523d40bedb59053df1180183fcc458772ccc0bf1ece1e06110fbc725101b.js"></script>
 
     
 
@@ -54,7 +54,7 @@
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "datePublished": "2018-11-28T14:24:04+00:00",
-        "dateModified": "2023-02-27T15:54:43+00:00",
+        "dateModified": "2023-02-27T16:09:11+00:00",
         "url": "http://blog.wss.cool/posts/%E5%89%8D%E7%AB%AF/react/redux-%E6%A6%82%E8%A6%81/",
         "headline": "Redux 概要",
         "description": "参考：Redux 入门教程 基本概念 store：保存数据的容器，整个应用通常只有一个st……",
@@ -105,7 +105,7 @@
 <meta property="og:locale" content="zh" /><meta property="og:image" content="http://blog.wss.cool/icons/apple-touch-icon.png" />
     <meta property="og:type" content="article" />
     <meta property="article:published_time" content="2018-11-28T14:24:04&#43;00:00" />
-    <meta property="article:modified_time" content="2023-02-27T15:54:43&#43;00:00" />
+    <meta property="article:modified_time" content="2023-02-27T16:09:11&#43;00:00" />
     
     <meta property="article:section" content="posts" />
 
@@ -219,7 +219,7 @@
     
     
         
-        <time datetime="2023-02-27T15:54:43&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
+        <time datetime="2023-02-27T16:09:11&#43;00:00" class="post-meta-item modified dt-updated"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="icon post-meta-icon"><path d="M400 64h-48V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H160V12c0-6.627-5.373-12-12-12h-40c-6.627 0-12 5.373-12 12v52H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48V112c0-26.51-21.49-48-48-48zm-6 400H54a6 6 0 0 1-6-6V160h352v298a6 6 0 0 1-6 6zm-52.849-200.65L198.842 404.519c-4.705 4.667-12.303 4.637-16.971-.068l-75.091-75.699c-4.667-4.705-4.637-12.303.068-16.971l22.719-22.536c4.705-4.667 12.303-4.637 16.97.069l44.104 44.461 111.072-110.181c4.705-4.667 12.303-4.637 16.971.068l22.536 22.718c4.667 4.705 4.636 12.303-.069 16.97z"/></svg>&nbsp;2023.2.27</time>
     
     
     
@@ -257,7 +257,80 @@
     </li>
   </ol>
 </nav><div class="post-body e-content">
-                
+                <p id="page-title" class="asset-name entry-title">
+  参考：<a href="http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_one_basic_usages.html" target="_blank" rel="noopener">Redux 入门教程</a>
+</p>
+<h2 id="基本概念"><a href="#基本概念" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:基本概念" class="headings">基本概念</a></h2>
+<p>store：保存数据的容器，整个应用通常只有一个store。</p>
+<p>state：store在某时点的一个快照，一个state对应一个view。</p>
+<p>action：定义一个用户对view的操作。</p>
+<p>可以暂时这样理解：<br>
+<img class="aligncenter size-medium wp-image-81" src="http://58.87.109.73/wpBlog/wp-content/uploads/2018/11/屏幕快照-2018-11-28-下午10.24.34-300x184.png" alt="" width="300" height="184"   /><br>
+store生成一个快照state，state对应一个view，view发出action来通知store变化，使store变化而生成一个新的state，新的state又对应新的view。</p>
+<p>ActionCreator：通常action只是一个对象，且只有type属性使必须的。我们知道action代表着view的操作，所以action可能有很多个又被经常使用，所以用一个函数来生成各种action是比较合理的操作，这个函数就叫做ActionCreator。</p>
+<pre><code class="language-javascript">const ADD_TODO = '添加 TODO';
+function addTodo(text) {
+  return {
+    type: ADD_TODO,
+    text
+  }
+}
+const action = addTodo('Learn Redux');</code></pre>
+<h2 id="redux的api"><a href="#redux的api" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:redux的api" class="headings">Redux的API</a></h2>
+<p>生成store、获得state</p>
+<pre><code class="language-javascript">import { createStore } from 'redux';
+const store = createStore(fn);
+const state = store.getState();</code></pre>
+<p>view通过store.dispatch() 发出action：</p>
+<pre><code class="language-javascript">store.dispatch({
+  type: 'ADD_TODO',
+  payload: 'Learn Redux'
+});
+// store.dispatch(addTodo('learn Redux'));</code></pre>
+<p>store在接收到action时，会根据action生成一个新的state，那么如何生成新的state，这个计算过程怎么定义呢？</p>
+<h3 id="reducer"><a href="#reducer" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:reducer" class="headings">Reducer</a></h3>
+<p>Reducer是一个函数，它定义store在接收到action时state如何发生变化。action只描述发生了什么，而reducer描述state如何变化。这个函数是这样的：</p>
+<pre><code class="language-javascript">const reducer = function (state, action) {
+  // ...
+  return new_state;
+};
+// 或
+const defaultState = 0;
+const reducer = (state = defaultState, action) =&gt; {
+  switch (action.type) {
+    case 'ADD':
+      return state + action.payload;
+    default: 
+      return state;
+  }
+};
+const state = reducer(1, {
+  type: 'ADD',
+  payload: 2
+});
+</code></pre>
+<p>实际应用中，Reducer 函数不用像上面这样手动调用，store.dispatch方法会触发 Reducer 的自动执行。为此，Store 需要知道 Reducer 函数，做法就是在生成 Store 的时候，将 Reducer 传入createStore方法：</p>
+<pre><code class="language-javascript">import { createStore } from 'redux';
+const store = createStore(reducer);</code></pre>
+<p>⚠️ Reducer必须是纯函数：只要是同样的输入，必定得到同样的输出，必须遵守以下一些约束：</p>
+<ul>
+<li>不得改写参数</li>
+<li>不能调用系统 I/O 的API</li>
+<li>不能调用<code>Date.now()</code>或者<code>Math.random()</code>等不纯的方法，因为每次会得到不一样的结果</li>
+</ul>
+<p>⚠️ Reducer 函数里面不能改变 State，必须返回一个全新的对象：</p>
+<pre><code class="language-javascript">return { ...state, ...newState };
+// return [...state, newItem];</code></pre>
+<p>现在我们知道了Ruducer是处理state变化过程的，那么state变化以后又会发生什么呢？上面说过，通常一个state对应一个view，也就是说state改变后view也要随之变化，但是view怎么知道自己应该改变呢？</p>
+<h3 id="storesubscribe"><a href="#storesubscribe" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:storesubscribe" class="headings">store.subscribe()</a></h3>
+<p>Store 允许使用<code>store.subscribe</code>方法设置监听函数，一旦 State 发生变化，就自动执行这个监听函数，view也就可以通过它来更新。比如React的setState()。</p>
+<h3 id="工作流程大概可以这样理解"><a href="#工作流程大概可以这样理解" class="anchor-link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="icon anchor-icon"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg></a><a href="#contents:工作流程大概可以这样理解" class="headings">工作流程大概可以这样理解：</a></h3>
+<div style="width: 640px;" class="wp-video">
+  <!--[if lt IE 9]><![endif]--><video class="wp-video-shortcode" id="video-78-1" width="640" height="436" preload="metadata" controls="controls"><source type="video/mp4" src="http://58.87.109.73/wpBlog/wp-content/uploads/2018/11/redux.mp4?_=1" />
+<p><a href="http://58.87.109.73/wpBlog/wp-content/uploads/2018/11/redux.mp4" target="_blank" rel="noopener">http://58.87.109.73/wpBlog/wp-content/uploads/2018/11/redux.mp4</a></video></p>
+</div>
+<p> </p>
+
             </div>
 
             
@@ -285,28 +358,9 @@
 
         
     <div class="updated-badge-container">
-        <span title="Updated @ 2023-02-27 15:54:43 UTC" style="cursor:help">
+        <span title="Updated @ 2023-02-27 16:09:11 UTC" style="cursor:help">
 
-<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge">
-    <linearGradient id="b" x2="0" y2="100%">
-        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
-        <stop offset="1" stop-opacity=".1"/>
-    </linearGradient>
-    <clipPath id="a">
-        <rect width="130" height="20" rx="3" fill="#fff"/>
-    </clipPath>
-    <g clip-path="url(#a)">
-        <path class="updated-badge-left" d="M0 0h55v20H0z"/>
-        <path class="updated-badge-right" d="M55 0h75v20H55z"/>
-        <path fill="url(#b)" d="M0 0h130v20H0z"/>
-    </g>
-    <g fill="#fff" text-anchor="middle" font-size="110">
-        <text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text>
-        <text x="285" y="140" textLength="450" transform="scale(.1)">updated</text>
-        <text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text>
-        <text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="20" class="updated-badge"><linearGradient id="b" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="a"><rect width="130" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#a)"><path class="updated-badge-left" d="M0 0h55v20H0z"/><path class="updated-badge-right" d="M55 0h75v20H55z"/><path fill="url(#b)" d="M0 0h130v20H0z"/></g><g fill="#fff" text-anchor="middle" font-size="110"><text x="285" y="150" fill="#010101" fill-opacity=".3" textLength="450" transform="scale(.1)">updated</text><text x="285" y="140" textLength="450" transform="scale(.1)">updated</text><text x="915" y="150" fill="#010101" fill-opacity=".3" textLength="650" transform="scale(.1)">2023-02-27</text><text x="915" y="140" textLength="650" transform="scale(.1)">2023-02-27</text></g></svg>
         </span></div>
 
 
@@ -498,6 +552,7 @@
     
 
 
+
     </div>
 </main>
 
@@ -516,7 +571,7 @@
             
 
 
-            <a target="_blank" href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=VSImJnsiOic_FTM6LTg0PDl7Njo4" style="text-decoration:none;"><img src="https://rescdn.qqmail.com/zh_CN/htmledition/images/function/qm_open/ico_mailme_01.png"/></a>
+            
         </div>
     </footer>
 
@@ -542,7 +597,7 @@
 
         
             <script>
-    (function loadComments() {
+    function loadComments() {
         if (!document.getElementById('disqus_thread')) {
             return;
         }
@@ -568,7 +623,7 @@
                 }
             });
         }
-    })()
+    }
 </script>
 
         
